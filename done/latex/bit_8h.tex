@@ -1,0 +1,317 @@
+\hypertarget{bit_8h}{}\section{bit.\+h File Reference}
+\label{bit_8h}\index{bit.\+h@{bit.\+h}}
+
+
+Bit operations for Game\+Boy Emulator.  
+
+
+{\ttfamily \#include $<$inttypes.\+h$>$}\newline
+{\ttfamily \#include $<$stddef.\+h$>$}\newline
+Include dependency graph for bit.\+h\+:
+% FIG 0
+This graph shows which files directly or indirectly include this file\+:
+% FIG 1
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{bit_8h_a27446e4a757a5c312ce6200eadd4b01f}\label{bit_8h_a27446e4a757a5c312ce6200eadd4b01f}} 
+\#define \hyperlink{bit_8h_a27446e4a757a5c312ce6200eadd4b01f}{C\+L\+A\+M\+P07}(x)~(((x) $<$ 0) $\vert$$\vert$ ((x) $>$ 7) ? 0 \+: (x))
+\begin{DoxyCompactList}\small\item\em clamp a value to be a bit index between 0 and 7 \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{bit_8h_ad297b2342424c658fd7e35d2d64c3a5e}\label{bit_8h_ad297b2342424c658fd7e35d2d64c3a5e}} 
+\#define {\bfseries size}(T)~(sizeof T / sizeof T\mbox{[}0\mbox{]})
+\item 
+\mbox{\Hypertarget{bit_8h_ae73dd1b502e599d4b3cbeca6fbcdba7c}\label{bit_8h_ae73dd1b502e599d4b3cbeca6fbcdba7c}} 
+\#define {\bfseries F\+M\+T8}~\char`\"{}0x\%02\char`\"{} P\+R\+Ix8
+\item 
+\mbox{\Hypertarget{bit_8h_ab44be59926b2b2bf2282aaa4fe79de78}\label{bit_8h_ab44be59926b2b2bf2282aaa4fe79de78}} 
+\#define {\bfseries F\+M\+T16}~\char`\"{}0x\%04\char`\"{} P\+R\+Ix16
+\item 
+\mbox{\Hypertarget{bit_8h_a81ae8e717d2eba0253db0efa064ce838}\label{bit_8h_a81ae8e717d2eba0253db0efa064ce838}} 
+\#define {\bfseries show}(M,  S1)~printf(\#M \char`\"{}(\char`\"{} F\+MT \#\# S1 \char`\"{}) = \char`\"{} F\+M\+T8 \char`\"{}\textbackslash{}n\char`\"{}, value, result)
+\item 
+\mbox{\Hypertarget{bit_8h_add5f596835596d1108243f67486d2562}\label{bit_8h_add5f596835596d1108243f67486d2562}} 
+\#define {\bfseries show2}(M,  V)~printf(\char`\"{}bit\+\_\+\char`\"{} \#M \char`\"{}(\char`\"{} F\+M\+T8 \char`\"{}, \%d) = \char`\"{} F\+M\+T8 \char`\"{}\textbackslash{}n\char`\"{}, V, k, value2)
+\item 
+\#define \hyperlink{bit_8h_ae6e60ea67608d3797204771007b88b4d}{extend\+\_\+s\+\_\+16}(v)~((int16\+\_\+t) ((int8\+\_\+t)v))
+\begin{DoxyCompactList}\small\item\em Extends the signed value from 8 to 16 bits. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{bit_8h_a4a1b4f154ecc13b8b8f43122f799bdb2}\label{bit_8h_a4a1b4f154ecc13b8b8f43122f799bdb2}} 
+\#define \hyperlink{bit_8h_a4a1b4f154ecc13b8b8f43122f799bdb2}{extend\+\_\+u\+\_\+16}(v)~\hyperlink{bit_8h_a3973635c0fbfadd0b38c8bf124cb9cd2}{merge8}(0,v)
+\begin{DoxyCompactList}\small\item\em Extends an unsigned value from 8 to 16 bits. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{bit_8h_ab6e831ce3850688e9d0c2bb9ec57fb45}\label{bit_8h_ab6e831ce3850688e9d0c2bb9ec57fb45}} 
+typedef uint8\+\_\+t \hyperlink{bit_8h_ab6e831ce3850688e9d0c2bb9ec57fb45}{bit\+\_\+t}
+\begin{DoxyCompactList}\small\item\em a type to represent 1 single bit. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{bit_8h_aea1a6b36b8b3a06ce5ef08ea63e83059}\label{bit_8h_aea1a6b36b8b3a06ce5ef08ea63e83059}} 
+enum \hyperlink{bit_8h_aea1a6b36b8b3a06ce5ef08ea63e83059}{rot\+\_\+dir\+\_\+t} \{ {\bfseries L\+E\+FT}, 
+{\bfseries R\+I\+G\+HT}
+ \}\begin{DoxyCompactList}\small\item\em Enumeration type of rotation directions\+: either L\+E\+FT or R\+I\+G\+HT. \end{DoxyCompactList}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+uint8\+\_\+t \hyperlink{bit_8h_ac43324c622932937757c3c4991373466}{lsb4} (uint8\+\_\+t value)
+\begin{DoxyCompactList}\small\item\em returns the 4 L\+SB of a uint8\+\_\+t \end{DoxyCompactList}\item 
+uint8\+\_\+t \hyperlink{bit_8h_adb4ed12f38606ce603f0084faefe3298}{msb4} (uint8\+\_\+t value)
+\begin{DoxyCompactList}\small\item\em returns the 4 M\+SB of a uint8\+\_\+t \end{DoxyCompactList}\item 
+void \hyperlink{bit_8h_adfc1ec9f7d844083ac7977ffe2ff4991}{bit\+\_\+rotate} (uint8\+\_\+t $\ast$value, \hyperlink{bit_8h_aea1a6b36b8b3a06ce5ef08ea63e83059}{rot\+\_\+dir\+\_\+t} dir, int d)
+\begin{DoxyCompactList}\small\item\em Rotates the bits in a uint8\+\_\+t. \end{DoxyCompactList}\item 
+uint8\+\_\+t \hyperlink{bit_8h_aa7214f9bc705f6d655fafa3a15f672e8}{lsb8} (uint16\+\_\+t value)
+\begin{DoxyCompactList}\small\item\em returns the 8 L\+SB of a uint16\+\_\+t \end{DoxyCompactList}\item 
+uint8\+\_\+t \hyperlink{bit_8h_a09596cf7a6af9850451674d601cddf99}{msb8} (uint16\+\_\+t value)
+\begin{DoxyCompactList}\small\item\em returns the 8 M\+SB of a bit16\+\_\+t (uint16\+\_\+t) \end{DoxyCompactList}\item 
+uint16\+\_\+t \hyperlink{bit_8h_a3973635c0fbfadd0b38c8bf124cb9cd2}{merge8} (uint8\+\_\+t v1, uint8\+\_\+t v2)
+\begin{DoxyCompactList}\small\item\em Merges two 8bit into 16bits. \end{DoxyCompactList}\item 
+uint8\+\_\+t \hyperlink{bit_8h_af3c2abfc8893b099f1b4f08a7c124169}{merge4} (uint8\+\_\+t v1, uint8\+\_\+t v2)
+\begin{DoxyCompactList}\small\item\em Merges two 4bit into 8bits. \end{DoxyCompactList}\item 
+\hyperlink{bit_8h_ab6e831ce3850688e9d0c2bb9ec57fb45}{bit\+\_\+t} \hyperlink{bit_8h_afa7f855f3ed3b9234b74bc3805cc82e3}{bit\+\_\+get} (uint8\+\_\+t value, int index)
+\begin{DoxyCompactList}\small\item\em Gets the bit at a given index. \end{DoxyCompactList}\item 
+void \hyperlink{bit_8h_a6040d602167231c9e322e6a4e4fb1d99}{bit\+\_\+set} (uint8\+\_\+t $\ast$value, int index)
+\begin{DoxyCompactList}\small\item\em Set the bit at a given index to 1. \end{DoxyCompactList}\item 
+void \hyperlink{bit_8h_ab59f013bfa921c86049f440018e3a168}{bit\+\_\+unset} (uint8\+\_\+t $\ast$value, int index)
+\begin{DoxyCompactList}\small\item\em Set the bit at a given index to 0. \end{DoxyCompactList}\item 
+void \hyperlink{bit_8h_aadaecdff5a8293e6e8ccc1a325e53bb8}{bit\+\_\+edit} (uint8\+\_\+t $\ast$value, int index, uint8\+\_\+t v)
+\begin{DoxyCompactList}\small\item\em Set/\+Unset the bit at a given index. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Bit operations for Game\+Boy Emulator. 
+
+\begin{DoxyAuthor}{Author}
+C. Hölzl, E\+P\+FL 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2019 
+\end{DoxyDate}
+
+
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{bit_8h_ae6e60ea67608d3797204771007b88b4d}\label{bit_8h_ae6e60ea67608d3797204771007b88b4d}} 
+\index{bit.\+h@{bit.\+h}!extend\+\_\+s\+\_\+16@{extend\+\_\+s\+\_\+16}}
+\index{extend\+\_\+s\+\_\+16@{extend\+\_\+s\+\_\+16}!bit.\+h@{bit.\+h}}
+\subsubsection{\texorpdfstring{extend\+\_\+s\+\_\+16}{extend\_s\_16}}
+{\footnotesize\ttfamily \#define extend\+\_\+s\+\_\+16(\begin{DoxyParamCaption}\item[{}]{v }\end{DoxyParamCaption})~((int16\+\_\+t) ((int8\+\_\+t)v))}
+
+
+
+Extends the signed value from 8 to 16 bits. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em v} & 8 bit signed value to extend \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+signed value using 16 bits 
+\end{DoxyReturn}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{bit_8h_aadaecdff5a8293e6e8ccc1a325e53bb8}\label{bit_8h_aadaecdff5a8293e6e8ccc1a325e53bb8}} 
+\index{bit.\+h@{bit.\+h}!bit\+\_\+edit@{bit\+\_\+edit}}
+\index{bit\+\_\+edit@{bit\+\_\+edit}!bit.\+h@{bit.\+h}}
+\subsubsection{\texorpdfstring{bit\+\_\+edit()}{bit\_edit()}}
+{\footnotesize\ttfamily void bit\+\_\+edit (\begin{DoxyParamCaption}\item[{uint8\+\_\+t $\ast$}]{value,  }\item[{int}]{index,  }\item[{uint8\+\_\+t}]{v }\end{DoxyParamCaption})}
+
+
+
+Set/\+Unset the bit at a given index. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em value} & value to change the bit in \\
+\hline
+{\em index} & index of the bit \\
+\hline
+{\em v} & allows to choose between set and unset \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{bit_8h_afa7f855f3ed3b9234b74bc3805cc82e3}\label{bit_8h_afa7f855f3ed3b9234b74bc3805cc82e3}} 
+\index{bit.\+h@{bit.\+h}!bit\+\_\+get@{bit\+\_\+get}}
+\index{bit\+\_\+get@{bit\+\_\+get}!bit.\+h@{bit.\+h}}
+\subsubsection{\texorpdfstring{bit\+\_\+get()}{bit\_get()}}
+{\footnotesize\ttfamily \hyperlink{bit_8h_ab6e831ce3850688e9d0c2bb9ec57fb45}{bit\+\_\+t} bit\+\_\+get (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{value,  }\item[{int}]{index }\end{DoxyParamCaption})}
+
+
+
+Gets the bit at a given index. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em value} & value to get the bit from \\
+\hline
+{\em index} & index of the bit \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+returns the bit at a given index 
+\end{DoxyReturn}
+\mbox{\Hypertarget{bit_8h_adfc1ec9f7d844083ac7977ffe2ff4991}\label{bit_8h_adfc1ec9f7d844083ac7977ffe2ff4991}} 
+\index{bit.\+h@{bit.\+h}!bit\+\_\+rotate@{bit\+\_\+rotate}}
+\index{bit\+\_\+rotate@{bit\+\_\+rotate}!bit.\+h@{bit.\+h}}
+\subsubsection{\texorpdfstring{bit\+\_\+rotate()}{bit\_rotate()}}
+{\footnotesize\ttfamily void bit\+\_\+rotate (\begin{DoxyParamCaption}\item[{uint8\+\_\+t $\ast$}]{value,  }\item[{\hyperlink{bit_8h_aea1a6b36b8b3a06ce5ef08ea63e83059}{rot\+\_\+dir\+\_\+t}}]{dir,  }\item[{int}]{d }\end{DoxyParamCaption})}
+
+
+
+Rotates the bits in a uint8\+\_\+t. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em value} & pointer to the number to rotate \\
+\hline
+{\em dir} & rotation direction \\
+\hline
+{\em d} & number of rotation steps to execute \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{bit_8h_a6040d602167231c9e322e6a4e4fb1d99}\label{bit_8h_a6040d602167231c9e322e6a4e4fb1d99}} 
+\index{bit.\+h@{bit.\+h}!bit\+\_\+set@{bit\+\_\+set}}
+\index{bit\+\_\+set@{bit\+\_\+set}!bit.\+h@{bit.\+h}}
+\subsubsection{\texorpdfstring{bit\+\_\+set()}{bit\_set()}}
+{\footnotesize\ttfamily void bit\+\_\+set (\begin{DoxyParamCaption}\item[{uint8\+\_\+t $\ast$}]{value,  }\item[{int}]{index }\end{DoxyParamCaption})}
+
+
+
+Set the bit at a given index to 1. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em value} & value to change the bit in \\
+\hline
+{\em index} & index of the bit \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{bit_8h_ab59f013bfa921c86049f440018e3a168}\label{bit_8h_ab59f013bfa921c86049f440018e3a168}} 
+\index{bit.\+h@{bit.\+h}!bit\+\_\+unset@{bit\+\_\+unset}}
+\index{bit\+\_\+unset@{bit\+\_\+unset}!bit.\+h@{bit.\+h}}
+\subsubsection{\texorpdfstring{bit\+\_\+unset()}{bit\_unset()}}
+{\footnotesize\ttfamily void bit\+\_\+unset (\begin{DoxyParamCaption}\item[{uint8\+\_\+t $\ast$}]{value,  }\item[{int}]{index }\end{DoxyParamCaption})}
+
+
+
+Set the bit at a given index to 0. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em value} & value to change the bit in \\
+\hline
+{\em index} & index of the bit \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{bit_8h_ac43324c622932937757c3c4991373466}\label{bit_8h_ac43324c622932937757c3c4991373466}} 
+\index{bit.\+h@{bit.\+h}!lsb4@{lsb4}}
+\index{lsb4@{lsb4}!bit.\+h@{bit.\+h}}
+\subsubsection{\texorpdfstring{lsb4()}{lsb4()}}
+{\footnotesize\ttfamily uint8\+\_\+t lsb4 (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{value }\end{DoxyParamCaption})}
+
+
+
+returns the 4 L\+SB of a uint8\+\_\+t 
+
+
+\begin{DoxyParams}{Parameters}
+{\em value} & value to get the 4 L\+SB from \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+4 L\+SB of the input 
+\end{DoxyReturn}
+\mbox{\Hypertarget{bit_8h_aa7214f9bc705f6d655fafa3a15f672e8}\label{bit_8h_aa7214f9bc705f6d655fafa3a15f672e8}} 
+\index{bit.\+h@{bit.\+h}!lsb8@{lsb8}}
+\index{lsb8@{lsb8}!bit.\+h@{bit.\+h}}
+\subsubsection{\texorpdfstring{lsb8()}{lsb8()}}
+{\footnotesize\ttfamily uint8\+\_\+t lsb8 (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{value }\end{DoxyParamCaption})}
+
+
+
+returns the 8 L\+SB of a uint16\+\_\+t 
+
+
+\begin{DoxyParams}{Parameters}
+{\em value} & value to get the 8 L\+SB from \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+8 L\+SB of the input 
+\end{DoxyReturn}
+\mbox{\Hypertarget{bit_8h_af3c2abfc8893b099f1b4f08a7c124169}\label{bit_8h_af3c2abfc8893b099f1b4f08a7c124169}} 
+\index{bit.\+h@{bit.\+h}!merge4@{merge4}}
+\index{merge4@{merge4}!bit.\+h@{bit.\+h}}
+\subsubsection{\texorpdfstring{merge4()}{merge4()}}
+{\footnotesize\ttfamily uint8\+\_\+t merge4 (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{v1,  }\item[{uint8\+\_\+t}]{v2 }\end{DoxyParamCaption})}
+
+
+
+Merges two 4bit into 8bits. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em v1} & value for the 4 L\+SB \\
+\hline
+{\em v2} & value for the 4 M\+SB \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+result of merging v1 and v2 into 8bits 
+\end{DoxyReturn}
+\mbox{\Hypertarget{bit_8h_a3973635c0fbfadd0b38c8bf124cb9cd2}\label{bit_8h_a3973635c0fbfadd0b38c8bf124cb9cd2}} 
+\index{bit.\+h@{bit.\+h}!merge8@{merge8}}
+\index{merge8@{merge8}!bit.\+h@{bit.\+h}}
+\subsubsection{\texorpdfstring{merge8()}{merge8()}}
+{\footnotesize\ttfamily uint16\+\_\+t merge8 (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{v1,  }\item[{uint8\+\_\+t}]{v2 }\end{DoxyParamCaption})}
+
+
+
+Merges two 8bit into 16bits. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em v1} & value for the 8 L\+SB \\
+\hline
+{\em v2} & value for the 8 M\+SB \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+result of merging v1 and v2 into 16bits 
+\end{DoxyReturn}
+\mbox{\Hypertarget{bit_8h_adb4ed12f38606ce603f0084faefe3298}\label{bit_8h_adb4ed12f38606ce603f0084faefe3298}} 
+\index{bit.\+h@{bit.\+h}!msb4@{msb4}}
+\index{msb4@{msb4}!bit.\+h@{bit.\+h}}
+\subsubsection{\texorpdfstring{msb4()}{msb4()}}
+{\footnotesize\ttfamily uint8\+\_\+t msb4 (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{value }\end{DoxyParamCaption})}
+
+
+
+returns the 4 M\+SB of a uint8\+\_\+t 
+
+
+\begin{DoxyParams}{Parameters}
+{\em value} & value to get the 4 M\+SB from \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+4 M\+SB of the input 
+\end{DoxyReturn}
+\mbox{\Hypertarget{bit_8h_a09596cf7a6af9850451674d601cddf99}\label{bit_8h_a09596cf7a6af9850451674d601cddf99}} 
+\index{bit.\+h@{bit.\+h}!msb8@{msb8}}
+\index{msb8@{msb8}!bit.\+h@{bit.\+h}}
+\subsubsection{\texorpdfstring{msb8()}{msb8()}}
+{\footnotesize\ttfamily uint8\+\_\+t msb8 (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{value }\end{DoxyParamCaption})}
+
+
+
+returns the 8 M\+SB of a bit16\+\_\+t (uint16\+\_\+t) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em value} & value to get the 8 M\+SB from \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+8 M\+SB of the input 
+\end{DoxyReturn}

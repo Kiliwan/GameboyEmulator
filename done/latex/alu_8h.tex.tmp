@@ -1,0 +1,353 @@
+\hypertarget{alu_8h}{}\section{alu.\+h File Reference}
+\label{alu_8h}\index{alu.\+h@{alu.\+h}}
+
+
+A\+LU Header for Game\+Boy Emulator, part done by students.  
+
+
+{\ttfamily \#include \char`\"{}bit.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}error.\+h\char`\"{}}\newline
+Include dependency graph for alu.\+h\+:
+% FIG 0
+This graph shows which files directly or indirectly include this file\+:
+% FIG 1
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structalu__output__t}{alu\+\_\+output\+\_\+t}
+\begin{DoxyCompactList}\small\item\em type \hyperlink{structalu__output__t}{alu\+\_\+output\+\_\+t} holds a structure with a 16bit value field (usualy using only the 8 lsb), and a flags\+\_\+t flag field holding the various flags \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{alu_8h_a1a840248521351ea36ba4e1a17b8437b}\label{alu_8h_a1a840248521351ea36ba4e1a17b8437b}} 
+\#define {\bfseries get\+\_\+C}(X)~\hyperlink{alu_8h_a40009744b08aef60edf945fb914432bc}{get\+\_\+flag}(X, F\+L\+A\+G\+\_\+C)
+\item 
+\mbox{\Hypertarget{alu_8h_a9bbd3918783ec632276a5573a3b31af8}\label{alu_8h_a9bbd3918783ec632276a5573a3b31af8}} 
+\#define {\bfseries get\+\_\+H}(X)~\hyperlink{alu_8h_a40009744b08aef60edf945fb914432bc}{get\+\_\+flag}(X, F\+L\+A\+G\+\_\+H)
+\item 
+\mbox{\Hypertarget{alu_8h_a3ef760455d890df202cb96c4ea98b776}\label{alu_8h_a3ef760455d890df202cb96c4ea98b776}} 
+\#define {\bfseries get\+\_\+N}(X)~\hyperlink{alu_8h_a40009744b08aef60edf945fb914432bc}{get\+\_\+flag}(X, F\+L\+A\+G\+\_\+N)
+\item 
+\mbox{\Hypertarget{alu_8h_a5571d25ab9aece22842269bfa1705367}\label{alu_8h_a5571d25ab9aece22842269bfa1705367}} 
+\#define {\bfseries get\+\_\+Z}(X)~\hyperlink{alu_8h_a40009744b08aef60edf945fb914432bc}{get\+\_\+flag}(X, F\+L\+A\+G\+\_\+Z)
+\item 
+\mbox{\Hypertarget{alu_8h_aff54d5ac477cda7681959e547c5f6f88}\label{alu_8h_aff54d5ac477cda7681959e547c5f6f88}} 
+\#define {\bfseries set\+\_\+C}(X)~\hyperlink{alu_8h_a39ddb7d576735edff23751970f752f69}{set\+\_\+flag}(X, F\+L\+A\+G\+\_\+C)
+\item 
+\mbox{\Hypertarget{alu_8h_a75b432a9f77f477e4302b8e7238f0ba2}\label{alu_8h_a75b432a9f77f477e4302b8e7238f0ba2}} 
+\#define {\bfseries set\+\_\+H}(X)~\hyperlink{alu_8h_a39ddb7d576735edff23751970f752f69}{set\+\_\+flag}(X, F\+L\+A\+G\+\_\+H)
+\item 
+\mbox{\Hypertarget{alu_8h_a53b2dce53d0809dc314bb26d408fe89f}\label{alu_8h_a53b2dce53d0809dc314bb26d408fe89f}} 
+\#define {\bfseries set\+\_\+N}(X)~\hyperlink{alu_8h_a39ddb7d576735edff23751970f752f69}{set\+\_\+flag}(X, F\+L\+A\+G\+\_\+N)
+\item 
+\mbox{\Hypertarget{alu_8h_a9a7856ed9c862cb7cdcf79faed159f96}\label{alu_8h_a9a7856ed9c862cb7cdcf79faed159f96}} 
+\#define {\bfseries set\+\_\+Z}(X)~\hyperlink{alu_8h_a39ddb7d576735edff23751970f752f69}{set\+\_\+flag}(X, F\+L\+A\+G\+\_\+Z)
+\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{alu_8h_abadb4591ed8f9b06ae6b6a53337ce19e}\label{alu_8h_abadb4591ed8f9b06ae6b6a53337ce19e}} 
+typedef uint8\+\_\+t \hyperlink{alu_8h_abadb4591ed8f9b06ae6b6a53337ce19e}{flags\+\_\+t}
+\begin{DoxyCompactList}\small\item\em type flags\+\_\+t , a uint8\+\_\+t whose bits hold the value of various flags \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{alu_8h_a64670c36c0f9fbdbdbb66927bf38eeec}\label{alu_8h_a64670c36c0f9fbdbdbb66927bf38eeec}} 
+enum \hyperlink{alu_8h_a64670c36c0f9fbdbdbb66927bf38eeec}{flag\+\_\+bit\+\_\+t} \{ {\bfseries F\+L\+A\+G\+\_\+Z} = 0x80, 
+{\bfseries F\+L\+A\+G\+\_\+N} = 0x40, 
+{\bfseries F\+L\+A\+G\+\_\+H} = 0x20, 
+{\bfseries F\+L\+A\+G\+\_\+C} = 0x10
+ \}\begin{DoxyCompactList}\small\item\em Enum for the various flag values. \end{DoxyCompactList}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{alu_8h_a64670c36c0f9fbdbdbb66927bf38eeec}{flag\+\_\+bit\+\_\+t} \hyperlink{alu_8h_a40009744b08aef60edf945fb914432bc}{get\+\_\+flag} (\hyperlink{alu_8h_abadb4591ed8f9b06ae6b6a53337ce19e}{flags\+\_\+t} flags, \hyperlink{alu_8h_a64670c36c0f9fbdbdbb66927bf38eeec}{flag\+\_\+bit\+\_\+t} flag)
+\begin{DoxyCompactList}\small\item\em get flag value \end{DoxyCompactList}\item 
+void \hyperlink{alu_8h_a39ddb7d576735edff23751970f752f69}{set\+\_\+flag} (\hyperlink{alu_8h_abadb4591ed8f9b06ae6b6a53337ce19e}{flags\+\_\+t} $\ast$flags, \hyperlink{alu_8h_a64670c36c0f9fbdbdbb66927bf38eeec}{flag\+\_\+bit\+\_\+t} flag)
+\begin{DoxyCompactList}\small\item\em set flag \end{DoxyCompactList}\item 
+int \hyperlink{alu_8h_a16c87523bb132096b3dc9f11717ebb18}{alu\+\_\+add8} (\hyperlink{structalu__output__t}{alu\+\_\+output\+\_\+t} $\ast$result, uint8\+\_\+t x, uint8\+\_\+t y, \hyperlink{bit_8h_ab6e831ce3850688e9d0c2bb9ec57fb45}{bit\+\_\+t} c0)
+\begin{DoxyCompactList}\small\item\em adds two uint8 and writes the results and flags into an \hyperlink{structalu__output__t}{alu\+\_\+output\+\_\+t} structure \end{DoxyCompactList}\item 
+int \hyperlink{alu_8h_a217fb1cc084bdb9dc515f237fe41092c}{alu\+\_\+sub8} (\hyperlink{structalu__output__t}{alu\+\_\+output\+\_\+t} $\ast$result, uint8\+\_\+t x, uint8\+\_\+t y, \hyperlink{bit_8h_ab6e831ce3850688e9d0c2bb9ec57fb45}{bit\+\_\+t} b0)
+\begin{DoxyCompactList}\small\item\em subtract two uint8 and writes the results and flags into an \hyperlink{structalu__output__t}{alu\+\_\+output\+\_\+t} structure \end{DoxyCompactList}\item 
+int \hyperlink{alu_8h_a6d0b3e40af3a14d37c7aa26c0509bec8}{alu\+\_\+add16\+\_\+low} (\hyperlink{structalu__output__t}{alu\+\_\+output\+\_\+t} $\ast$result, uint16\+\_\+t x, uint16\+\_\+t y)
+\begin{DoxyCompactList}\small\item\em sum two uint16 and writes the results and flags into an \hyperlink{structalu__output__t}{alu\+\_\+output\+\_\+t} structure, the H \& C flags are being placed according to the 8 lsb \end{DoxyCompactList}\item 
+int \hyperlink{alu_8h_a55bc27fd85447bf5407dc622efd1d037}{alu\+\_\+add16\+\_\+high} (\hyperlink{structalu__output__t}{alu\+\_\+output\+\_\+t} $\ast$result, uint16\+\_\+t x, uint16\+\_\+t y)
+\begin{DoxyCompactList}\small\item\em sum two uint16 and writes the results and flags into an \hyperlink{structalu__output__t}{alu\+\_\+output\+\_\+t} structure, the H \& C flags are being placed according to the 8 msb \end{DoxyCompactList}\item 
+int \hyperlink{alu_8h_aafa93cd461a14252bfbd2b57dede7bcc}{alu\+\_\+shift} (\hyperlink{structalu__output__t}{alu\+\_\+output\+\_\+t} $\ast$result, uint8\+\_\+t x, \hyperlink{bit_8h_aea1a6b36b8b3a06ce5ef08ea63e83059}{rot\+\_\+dir\+\_\+t} dir)
+\begin{DoxyCompactList}\small\item\em logic shift \end{DoxyCompactList}\item 
+int \hyperlink{alu_8h_a800b1fde0d4ecf8dd66781b74b7dc330}{alu\+\_\+shift\+R\+\_\+A} (\hyperlink{structalu__output__t}{alu\+\_\+output\+\_\+t} $\ast$result, uint8\+\_\+t x)
+\begin{DoxyCompactList}\small\item\em arithmetic shift \end{DoxyCompactList}\item 
+int \hyperlink{alu_8h_aeefa7930040951455229eaedf1fd8ccc}{alu\+\_\+rotate} (\hyperlink{structalu__output__t}{alu\+\_\+output\+\_\+t} $\ast$result, uint8\+\_\+t x, \hyperlink{bit_8h_aea1a6b36b8b3a06ce5ef08ea63e83059}{rot\+\_\+dir\+\_\+t} dir)
+\begin{DoxyCompactList}\small\item\em logic rotate \end{DoxyCompactList}\item 
+int \hyperlink{alu_8h_a8223d3d790027c10860279c5320bb18f}{alu\+\_\+carry\+\_\+rotate} (\hyperlink{structalu__output__t}{alu\+\_\+output\+\_\+t} $\ast$result, uint8\+\_\+t x, \hyperlink{bit_8h_aea1a6b36b8b3a06ce5ef08ea63e83059}{rot\+\_\+dir\+\_\+t} dir, \hyperlink{alu_8h_abadb4591ed8f9b06ae6b6a53337ce19e}{flags\+\_\+t} flags)
+\begin{DoxyCompactList}\small\item\em logic rotate with carry taken into account \end{DoxyCompactList}\item 
+void \hyperlink{alu_8h_ad2c8e30aae6a9f4d687b2dc8ab03f85e}{update\+\_\+flags} (\hyperlink{structalu__output__t}{alu\+\_\+output\+\_\+t} $\ast$result, int carry\mbox{[}$\,$\mbox{]}, int temp)
+\begin{DoxyCompactList}\small\item\em function to update flags based on result \end{DoxyCompactList}\item 
+void \hyperlink{alu_8h_accaf5c6ae4076be4301e85349cd5ac3c}{alu\+\_\+add16\+\_\+update} (\hyperlink{structalu__output__t}{alu\+\_\+output\+\_\+t} $\ast$result)
+\begin{DoxyCompactList}\small\item\em function to update alu\+\_\+add16 flags \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+A\+LU Header for Game\+Boy Emulator, part done by students. 
+
+\begin{DoxyAuthor}{Author}
+C. Hölzl, E\+P\+FL 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2019 
+\end{DoxyDate}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{alu_8h_a55bc27fd85447bf5407dc622efd1d037}\label{alu_8h_a55bc27fd85447bf5407dc622efd1d037}} 
+\index{alu.\+h@{alu.\+h}!alu\+\_\+add16\+\_\+high@{alu\+\_\+add16\+\_\+high}}
+\index{alu\+\_\+add16\+\_\+high@{alu\+\_\+add16\+\_\+high}!alu.\+h@{alu.\+h}}
+\subsubsection{\texorpdfstring{alu\+\_\+add16\+\_\+high()}{alu\_add16\_high()}}
+{\footnotesize\ttfamily int alu\+\_\+add16\+\_\+high (\begin{DoxyParamCaption}\item[{\hyperlink{structalu__output__t}{alu\+\_\+output\+\_\+t} $\ast$}]{result,  }\item[{uint16\+\_\+t}]{x,  }\item[{uint16\+\_\+t}]{y }\end{DoxyParamCaption})}
+
+
+
+sum two uint16 and writes the results and flags into an \hyperlink{structalu__output__t}{alu\+\_\+output\+\_\+t} structure, the H \& C flags are being placed according to the 8 msb 
+
+
+\begin{DoxyParams}{Parameters}
+{\em result} & \hyperlink{structalu__output__t}{alu\+\_\+output\+\_\+t} pointer to write into \\
+\hline
+{\em x} & value to sum \\
+\hline
+{\em y} & value to sum \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+error code 
+\end{DoxyReturn}
+\mbox{\Hypertarget{alu_8h_a6d0b3e40af3a14d37c7aa26c0509bec8}\label{alu_8h_a6d0b3e40af3a14d37c7aa26c0509bec8}} 
+\index{alu.\+h@{alu.\+h}!alu\+\_\+add16\+\_\+low@{alu\+\_\+add16\+\_\+low}}
+\index{alu\+\_\+add16\+\_\+low@{alu\+\_\+add16\+\_\+low}!alu.\+h@{alu.\+h}}
+\subsubsection{\texorpdfstring{alu\+\_\+add16\+\_\+low()}{alu\_add16\_low()}}
+{\footnotesize\ttfamily int alu\+\_\+add16\+\_\+low (\begin{DoxyParamCaption}\item[{\hyperlink{structalu__output__t}{alu\+\_\+output\+\_\+t} $\ast$}]{result,  }\item[{uint16\+\_\+t}]{x,  }\item[{uint16\+\_\+t}]{y }\end{DoxyParamCaption})}
+
+
+
+sum two uint16 and writes the results and flags into an \hyperlink{structalu__output__t}{alu\+\_\+output\+\_\+t} structure, the H \& C flags are being placed according to the 8 lsb 
+
+
+\begin{DoxyParams}{Parameters}
+{\em result} & \hyperlink{structalu__output__t}{alu\+\_\+output\+\_\+t} pointer to write into \\
+\hline
+{\em x} & value to sum \\
+\hline
+{\em y} & value to sum \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+error code 
+\end{DoxyReturn}
+\mbox{\Hypertarget{alu_8h_accaf5c6ae4076be4301e85349cd5ac3c}\label{alu_8h_accaf5c6ae4076be4301e85349cd5ac3c}} 
+\index{alu.\+h@{alu.\+h}!alu\+\_\+add16\+\_\+update@{alu\+\_\+add16\+\_\+update}}
+\index{alu\+\_\+add16\+\_\+update@{alu\+\_\+add16\+\_\+update}!alu.\+h@{alu.\+h}}
+\subsubsection{\texorpdfstring{alu\+\_\+add16\+\_\+update()}{alu\_add16\_update()}}
+{\footnotesize\ttfamily void alu\+\_\+add16\+\_\+update (\begin{DoxyParamCaption}\item[{\hyperlink{structalu__output__t}{alu\+\_\+output\+\_\+t} $\ast$}]{result }\end{DoxyParamCaption})}
+
+
+
+function to update alu\+\_\+add16 flags 
+
+
+\begin{DoxyParams}{Parameters}
+{\em result} & \hyperlink{structalu__output__t}{alu\+\_\+output\+\_\+t} pointer to write into \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{alu_8h_a16c87523bb132096b3dc9f11717ebb18}\label{alu_8h_a16c87523bb132096b3dc9f11717ebb18}} 
+\index{alu.\+h@{alu.\+h}!alu\+\_\+add8@{alu\+\_\+add8}}
+\index{alu\+\_\+add8@{alu\+\_\+add8}!alu.\+h@{alu.\+h}}
+\subsubsection{\texorpdfstring{alu\+\_\+add8()}{alu\_add8()}}
+{\footnotesize\ttfamily int alu\+\_\+add8 (\begin{DoxyParamCaption}\item[{\hyperlink{structalu__output__t}{alu\+\_\+output\+\_\+t} $\ast$}]{result,  }\item[{uint8\+\_\+t}]{x,  }\item[{uint8\+\_\+t}]{y,  }\item[{\hyperlink{bit_8h_ab6e831ce3850688e9d0c2bb9ec57fb45}{bit\+\_\+t}}]{c0 }\end{DoxyParamCaption})}
+
+
+
+adds two uint8 and writes the results and flags into an \hyperlink{structalu__output__t}{alu\+\_\+output\+\_\+t} structure 
+
+
+\begin{DoxyParams}{Parameters}
+{\em result} & \hyperlink{structalu__output__t}{alu\+\_\+output\+\_\+t} pointer to write into \\
+\hline
+{\em x} & value to sum \\
+\hline
+{\em y} & value to sum \\
+\hline
+{\em c0} & carry in \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+error code 
+\end{DoxyReturn}
+\mbox{\Hypertarget{alu_8h_a8223d3d790027c10860279c5320bb18f}\label{alu_8h_a8223d3d790027c10860279c5320bb18f}} 
+\index{alu.\+h@{alu.\+h}!alu\+\_\+carry\+\_\+rotate@{alu\+\_\+carry\+\_\+rotate}}
+\index{alu\+\_\+carry\+\_\+rotate@{alu\+\_\+carry\+\_\+rotate}!alu.\+h@{alu.\+h}}
+\subsubsection{\texorpdfstring{alu\+\_\+carry\+\_\+rotate()}{alu\_carry\_rotate()}}
+{\footnotesize\ttfamily int alu\+\_\+carry\+\_\+rotate (\begin{DoxyParamCaption}\item[{\hyperlink{structalu__output__t}{alu\+\_\+output\+\_\+t} $\ast$}]{result,  }\item[{uint8\+\_\+t}]{x,  }\item[{\hyperlink{bit_8h_aea1a6b36b8b3a06ce5ef08ea63e83059}{rot\+\_\+dir\+\_\+t}}]{dir,  }\item[{\hyperlink{alu_8h_abadb4591ed8f9b06ae6b6a53337ce19e}{flags\+\_\+t}}]{flags }\end{DoxyParamCaption})}
+
+
+
+logic rotate with carry taken into account 
+
+
+\begin{DoxyParams}{Parameters}
+{\em result} & \hyperlink{structalu__output__t}{alu\+\_\+output\+\_\+t} pointer to write into \\
+\hline
+{\em x} & value to rotate \\
+\hline
+{\em dir} & rotation direction \\
+\hline
+{\em flags} & carry flag \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+error code 
+\end{DoxyReturn}
+\mbox{\Hypertarget{alu_8h_aeefa7930040951455229eaedf1fd8ccc}\label{alu_8h_aeefa7930040951455229eaedf1fd8ccc}} 
+\index{alu.\+h@{alu.\+h}!alu\+\_\+rotate@{alu\+\_\+rotate}}
+\index{alu\+\_\+rotate@{alu\+\_\+rotate}!alu.\+h@{alu.\+h}}
+\subsubsection{\texorpdfstring{alu\+\_\+rotate()}{alu\_rotate()}}
+{\footnotesize\ttfamily int alu\+\_\+rotate (\begin{DoxyParamCaption}\item[{\hyperlink{structalu__output__t}{alu\+\_\+output\+\_\+t} $\ast$}]{result,  }\item[{uint8\+\_\+t}]{x,  }\item[{\hyperlink{bit_8h_aea1a6b36b8b3a06ce5ef08ea63e83059}{rot\+\_\+dir\+\_\+t}}]{dir }\end{DoxyParamCaption})}
+
+
+
+logic rotate 
+
+
+\begin{DoxyParams}{Parameters}
+{\em result} & \hyperlink{structalu__output__t}{alu\+\_\+output\+\_\+t} pointer to write into \\
+\hline
+{\em x} & value to rotate \\
+\hline
+{\em dir} & rotation direction \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+error code 
+\end{DoxyReturn}
+\mbox{\Hypertarget{alu_8h_aafa93cd461a14252bfbd2b57dede7bcc}\label{alu_8h_aafa93cd461a14252bfbd2b57dede7bcc}} 
+\index{alu.\+h@{alu.\+h}!alu\+\_\+shift@{alu\+\_\+shift}}
+\index{alu\+\_\+shift@{alu\+\_\+shift}!alu.\+h@{alu.\+h}}
+\subsubsection{\texorpdfstring{alu\+\_\+shift()}{alu\_shift()}}
+{\footnotesize\ttfamily int alu\+\_\+shift (\begin{DoxyParamCaption}\item[{\hyperlink{structalu__output__t}{alu\+\_\+output\+\_\+t} $\ast$}]{result,  }\item[{uint8\+\_\+t}]{x,  }\item[{\hyperlink{bit_8h_aea1a6b36b8b3a06ce5ef08ea63e83059}{rot\+\_\+dir\+\_\+t}}]{dir }\end{DoxyParamCaption})}
+
+
+
+logic shift 
+
+
+\begin{DoxyParams}{Parameters}
+{\em result} & \hyperlink{structalu__output__t}{alu\+\_\+output\+\_\+t} pointer to write into \\
+\hline
+{\em x} & value to shift \\
+\hline
+{\em dir} & shift direction \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+error code 
+\end{DoxyReturn}
+\mbox{\Hypertarget{alu_8h_a800b1fde0d4ecf8dd66781b74b7dc330}\label{alu_8h_a800b1fde0d4ecf8dd66781b74b7dc330}} 
+\index{alu.\+h@{alu.\+h}!alu\+\_\+shift\+R\+\_\+A@{alu\+\_\+shift\+R\+\_\+A}}
+\index{alu\+\_\+shift\+R\+\_\+A@{alu\+\_\+shift\+R\+\_\+A}!alu.\+h@{alu.\+h}}
+\subsubsection{\texorpdfstring{alu\+\_\+shift\+R\+\_\+\+A()}{alu\_shiftR\_A()}}
+{\footnotesize\ttfamily int alu\+\_\+shift\+R\+\_\+A (\begin{DoxyParamCaption}\item[{\hyperlink{structalu__output__t}{alu\+\_\+output\+\_\+t} $\ast$}]{result,  }\item[{uint8\+\_\+t}]{x }\end{DoxyParamCaption})}
+
+
+
+arithmetic shift 
+
+
+\begin{DoxyParams}{Parameters}
+{\em result} & \hyperlink{structalu__output__t}{alu\+\_\+output\+\_\+t} pointer to write into \\
+\hline
+{\em x} & value to shift \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+error code 
+\end{DoxyReturn}
+\mbox{\Hypertarget{alu_8h_a217fb1cc084bdb9dc515f237fe41092c}\label{alu_8h_a217fb1cc084bdb9dc515f237fe41092c}} 
+\index{alu.\+h@{alu.\+h}!alu\+\_\+sub8@{alu\+\_\+sub8}}
+\index{alu\+\_\+sub8@{alu\+\_\+sub8}!alu.\+h@{alu.\+h}}
+\subsubsection{\texorpdfstring{alu\+\_\+sub8()}{alu\_sub8()}}
+{\footnotesize\ttfamily int alu\+\_\+sub8 (\begin{DoxyParamCaption}\item[{\hyperlink{structalu__output__t}{alu\+\_\+output\+\_\+t} $\ast$}]{result,  }\item[{uint8\+\_\+t}]{x,  }\item[{uint8\+\_\+t}]{y,  }\item[{\hyperlink{bit_8h_ab6e831ce3850688e9d0c2bb9ec57fb45}{bit\+\_\+t}}]{b0 }\end{DoxyParamCaption})}
+
+
+
+subtract two uint8 and writes the results and flags into an \hyperlink{structalu__output__t}{alu\+\_\+output\+\_\+t} structure 
+
+
+\begin{DoxyParams}{Parameters}
+{\em result} & \hyperlink{structalu__output__t}{alu\+\_\+output\+\_\+t} pointer to write into \\
+\hline
+{\em x} & value to subtract from \\
+\hline
+{\em y} & value to subtract \\
+\hline
+{\em b0} & initial borrow bit \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+error code 
+\end{DoxyReturn}
+\mbox{\Hypertarget{alu_8h_a40009744b08aef60edf945fb914432bc}\label{alu_8h_a40009744b08aef60edf945fb914432bc}} 
+\index{alu.\+h@{alu.\+h}!get\+\_\+flag@{get\+\_\+flag}}
+\index{get\+\_\+flag@{get\+\_\+flag}!alu.\+h@{alu.\+h}}
+\subsubsection{\texorpdfstring{get\+\_\+flag()}{get\_flag()}}
+{\footnotesize\ttfamily \hyperlink{alu_8h_a64670c36c0f9fbdbdbb66927bf38eeec}{flag\+\_\+bit\+\_\+t} get\+\_\+flag (\begin{DoxyParamCaption}\item[{\hyperlink{alu_8h_abadb4591ed8f9b06ae6b6a53337ce19e}{flags\+\_\+t}}]{flags,  }\item[{\hyperlink{alu_8h_a64670c36c0f9fbdbdbb66927bf38eeec}{flag\+\_\+bit\+\_\+t}}]{flag }\end{DoxyParamCaption})}
+
+
+
+get flag value 
+
+
+\begin{DoxyParams}{Parameters}
+{\em flags} & flag set to get flag from \\
+\hline
+{\em flag} & flag value to get \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+flag value 
+\end{DoxyReturn}
+\mbox{\Hypertarget{alu_8h_a39ddb7d576735edff23751970f752f69}\label{alu_8h_a39ddb7d576735edff23751970f752f69}} 
+\index{alu.\+h@{alu.\+h}!set\+\_\+flag@{set\+\_\+flag}}
+\index{set\+\_\+flag@{set\+\_\+flag}!alu.\+h@{alu.\+h}}
+\subsubsection{\texorpdfstring{set\+\_\+flag()}{set\_flag()}}
+{\footnotesize\ttfamily void set\+\_\+flag (\begin{DoxyParamCaption}\item[{\hyperlink{alu_8h_abadb4591ed8f9b06ae6b6a53337ce19e}{flags\+\_\+t} $\ast$}]{flags,  }\item[{\hyperlink{alu_8h_a64670c36c0f9fbdbdbb66927bf38eeec}{flag\+\_\+bit\+\_\+t}}]{flag }\end{DoxyParamCaption})}
+
+
+
+set flag 
+
+
+\begin{DoxyParams}{Parameters}
+{\em flags} & (modified) set of flags \\
+\hline
+{\em flag} & flag to be set \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{alu_8h_ad2c8e30aae6a9f4d687b2dc8ab03f85e}\label{alu_8h_ad2c8e30aae6a9f4d687b2dc8ab03f85e}} 
+\index{alu.\+h@{alu.\+h}!update\+\_\+flags@{update\+\_\+flags}}
+\index{update\+\_\+flags@{update\+\_\+flags}!alu.\+h@{alu.\+h}}
+\subsubsection{\texorpdfstring{update\+\_\+flags()}{update\_flags()}}
+{\footnotesize\ttfamily void update\+\_\+flags (\begin{DoxyParamCaption}\item[{\hyperlink{structalu__output__t}{alu\+\_\+output\+\_\+t} $\ast$}]{result,  }\item[{int}]{carry\mbox{[}$\,$\mbox{]},  }\item[{int}]{temp }\end{DoxyParamCaption})}
+
+
+
+function to update flags based on result 
+
+
+\begin{DoxyParams}{Parameters}
+{\em result} & \hyperlink{structalu__output__t}{alu\+\_\+output\+\_\+t} pointer to write into \\
+\hline
+{\em carry} & table of carry values \\
+\hline
+{\em temp} & temporary value to take into consideration in some cases \\
+\hline
+\end{DoxyParams}

@@ -1,0 +1,126 @@
+\hypertarget{unit-test-timer_8c}{}\section{unit-\/test-\/timer.c File Reference}
+\label{unit-test-timer_8c}\index{unit-\/test-\/timer.\+c@{unit-\/test-\/timer.\+c}}
+
+
+Unit test code for timer and related functions.  
+
+
+{\ttfamily \#include $<$time.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$sys/types.\+h$>$}\newline
+{\ttfamily \#include $<$unistd.\+h$>$}\newline
+{\ttfamily \#include $<$pthread.\+h$>$}\newline
+{\ttfamily \#include $<$check.\+h$>$}\newline
+{\ttfamily \#include $<$inttypes.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}util.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}tests.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}timer.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}cpu.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}bus.\+h\char`\"{}}\newline
+Include dependency graph for unit-\/test-\/timer.c\+:
+% FIG 0
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define {\bfseries I\+N\+IT}
+\item 
+\#define {\bfseries register}(X)
+\item 
+\#define {\bfseries I\+N\+I\+T\+\_\+\+B\+US}
+\item 
+\mbox{\Hypertarget{unit-test-timer_8c_a879b1c84bdfa8bcf78e8d0598f2eb608}\label{unit-test-timer_8c_a879b1c84bdfa8bcf78e8d0598f2eb608}} 
+\#define {\bfseries C\+Y\+C\+L\+E\+\_\+\+C\+O\+U\+N\+T\+\_\+3\+F\+FF}~0x3\+F\+FF
+\item 
+\mbox{\Hypertarget{unit-test-timer_8c_a26a685d3b1b76bfbd896619a8fa92a86}\label{unit-test-timer_8c_a26a685d3b1b76bfbd896619a8fa92a86}} 
+\#define {\bfseries C\+Y\+C\+L\+E\+\_\+\+C\+O\+U\+N\+T\+\_\+3\+F\+F\+F\+\_\+\+V\+A\+L\+UE}~0x\+F\+F\+FC
+\item 
+\mbox{\Hypertarget{unit-test-timer_8c_ab48e889c40cd52913354517971c2a988}\label{unit-test-timer_8c_ab48e889c40cd52913354517971c2a988}} 
+\#define {\bfseries C\+Y\+C\+L\+E\+\_\+\+T\+A\+C\+\_\+\+V\+A\+L\+UE}~0x4
+\item 
+\mbox{\Hypertarget{unit-test-timer_8c_a051dcd162f2226d2d669af3a3b1fff22}\label{unit-test-timer_8c_a051dcd162f2226d2d669af3a3b1fff22}} 
+\#define {\bfseries C\+Y\+C\+L\+E\+\_\+\+T\+I\+M\+A\+\_\+\+V\+A\+L\+UE}~0x3F
+\item 
+\mbox{\Hypertarget{unit-test-timer_8c_ae4e654efa8891a8480a9cfd3655c9ac2}\label{unit-test-timer_8c_ae4e654efa8891a8480a9cfd3655c9ac2}} 
+\#define {\bfseries C\+Y\+C\+L\+E\+\_\+\+T\+M\+A\+\_\+\+V\+A\+L\+UE}~0x0
+\item 
+\mbox{\Hypertarget{unit-test-timer_8c_a3f16b1cbb1908ded4ed54a21acb73bac}\label{unit-test-timer_8c_a3f16b1cbb1908ded4ed54a21acb73bac}} 
+\#define {\bfseries C\+Y\+C\+L\+E\+\_\+\+D\+I\+V\+\_\+\+V\+A\+L\+UE}~0x\+FF
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{unit-test-timer_8c_a1e64c5f8604c9a3146324b0fd7e1e757}\label{unit-test-timer_8c_a1e64c5f8604c9a3146324b0fd7e1e757}} 
+{\bfseries S\+T\+A\+R\+T\+\_\+\+T\+E\+ST} (timer\+\_\+init\+\_\+err)
+\item 
+\mbox{\Hypertarget{unit-test-timer_8c_a15efaa7d4a7aaf43cdf60374c961ed86}\label{unit-test-timer_8c_a15efaa7d4a7aaf43cdf60374c961ed86}} 
+E\+N\+D\+\_\+\+T\+E\+ST {\bfseries S\+T\+A\+R\+T\+\_\+\+T\+E\+ST} (timer\+\_\+init\+\_\+exec)
+\item 
+\mbox{\Hypertarget{unit-test-timer_8c_ac933fc886c1fea4a4eeeeb36f0bade3d}\label{unit-test-timer_8c_ac933fc886c1fea4a4eeeeb36f0bade3d}} 
+E\+N\+D\+\_\+\+T\+E\+ST {\bfseries S\+T\+A\+R\+T\+\_\+\+T\+E\+ST} (timer\+\_\+cycle\+\_\+err)
+\item 
+\mbox{\Hypertarget{unit-test-timer_8c_a40896d3e24705c9c99fa8ae644a22070}\label{unit-test-timer_8c_a40896d3e24705c9c99fa8ae644a22070}} 
+{\bfseries S\+T\+A\+R\+T\+\_\+\+T\+E\+ST} (timer\+\_\+cycle\+\_\+exec)
+\item 
+\mbox{\Hypertarget{unit-test-timer_8c_a55321d5c6fe94e1a5ea632483bb9a537}\label{unit-test-timer_8c_a55321d5c6fe94e1a5ea632483bb9a537}} 
+E\+N\+D\+\_\+\+T\+E\+ST {\bfseries S\+T\+A\+R\+T\+\_\+\+T\+E\+ST} (timer\+\_\+listener\+\_\+err)
+\item 
+\mbox{\Hypertarget{unit-test-timer_8c_a54e18dcc33450968690632aaa17c43bc}\label{unit-test-timer_8c_a54e18dcc33450968690632aaa17c43bc}} 
+E\+N\+D\+\_\+\+T\+E\+ST {\bfseries S\+T\+A\+R\+T\+\_\+\+T\+E\+ST} (timer\+\_\+listener\+\_\+exec)
+\item 
+\mbox{\Hypertarget{unit-test-timer_8c_ac25c76cc4e0dc4c858064c8e9043b78a}\label{unit-test-timer_8c_ac25c76cc4e0dc4c858064c8e9043b78a}} 
+E\+N\+D\+\_\+\+T\+E\+ST Suite $\ast$ {\bfseries timer\+\_\+test\+\_\+suite} ()
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Unit test code for timer and related functions. 
+
+\begin{DoxyAuthor}{Author}
+C. Hölzl, E\+P\+FL 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2020 
+\end{DoxyDate}
+
+
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{unit-test-timer_8c_ab5889105dcd019008c9448dff61323f6}\label{unit-test-timer_8c_ab5889105dcd019008c9448dff61323f6}} 
+\index{unit-\/test-\/timer.\+c@{unit-\/test-\/timer.\+c}!I\+N\+IT@{I\+N\+IT}}
+\index{I\+N\+IT@{I\+N\+IT}!unit-\/test-\/timer.\+c@{unit-\/test-\/timer.\+c}}
+\subsubsection{\texorpdfstring{I\+N\+IT}{INIT}}
+{\footnotesize\ttfamily \#define I\+N\+IT}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+\hyperlink{structgbtimer__t}{gbtimer\_t} timer; \(\backslash\)
+    cpu\_t cpu; \(\backslash\)
+    zero\_init\_var(timer); \(\backslash\)
+    zero\_init\_var(cpu)
+\end{DoxyCode}
+\mbox{\Hypertarget{unit-test-timer_8c_a707ae429a4bb01ef5bc1f825ad85e03f}\label{unit-test-timer_8c_a707ae429a4bb01ef5bc1f825ad85e03f}} 
+\index{unit-\/test-\/timer.\+c@{unit-\/test-\/timer.\+c}!I\+N\+I\+T\+\_\+\+B\+US@{I\+N\+I\+T\+\_\+\+B\+US}}
+\index{I\+N\+I\+T\+\_\+\+B\+US@{I\+N\+I\+T\+\_\+\+B\+US}!unit-\/test-\/timer.\+c@{unit-\/test-\/timer.\+c}}
+\subsubsection{\texorpdfstring{I\+N\+I\+T\+\_\+\+B\+US}{INIT\_BUS}}
+{\footnotesize\ttfamily \#define I\+N\+I\+T\+\_\+\+B\+US}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+\hyperlink{bus_8h_a68c80bdf896e826e4cb082244ce35427}{bus\_t} bus; \(\backslash\)
+    zero\_init\_var(bus); \(\backslash\)
+    register(DIV); \(\backslash\)
+    register(TIMA); \(\backslash\)
+    register(TMA); \(\backslash\)
+    register(TAC); \(\backslash\)
+    cpu.bus = &bus
+\end{DoxyCode}
+\mbox{\Hypertarget{unit-test-timer_8c_a41e0783a53ea3a3682f365e9223827f1}\label{unit-test-timer_8c_a41e0783a53ea3a3682f365e9223827f1}} 
+\index{unit-\/test-\/timer.\+c@{unit-\/test-\/timer.\+c}!register@{register}}
+\index{register@{register}!unit-\/test-\/timer.\+c@{unit-\/test-\/timer.\+c}}
+\subsubsection{\texorpdfstring{register}{register}}
+{\footnotesize\ttfamily \#define register(\begin{DoxyParamCaption}\item[{}]{X }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+data\_t reg\_ ## X ## \_var = 0; \(\backslash\)
+    bus[REG\_ ## X] = &reg\_ ## X ## \_var
+\end{DoxyCode}

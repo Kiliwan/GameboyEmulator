@@ -1,0 +1,207 @@
+\hypertarget{gameboy_8h}{}\section{gameboy.\+h File Reference}
+\label{gameboy_8h}\index{gameboy.\+h@{gameboy.\+h}}
+
+
+Gameboy Header for Game\+Boy Emulator.  
+
+
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}bus.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}component.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}cartridge.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}timer.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}error.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}lcdc.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}joypad.\+h\char`\"{}}\newline
+Include dependency graph for gameboy.\+h\+:
+% FIG 0
+This graph shows which files directly or indirectly include this file\+:
+% FIG 1
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structgameboy__}{gameboy\+\_\+}
+\begin{DoxyCompactList}\small\item\em Game Boy data structure. Regroups everything needed to simulate the Game Boy. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{gameboy_8h_ad51f6a06f5374e06512370127a878d0c}\label{gameboy_8h_ad51f6a06f5374e06512370127a878d0c}} 
+\#define \hyperlink{gameboy_8h_ad51f6a06f5374e06512370127a878d0c}{G\+B\+\_\+\+N\+B\+\_\+\+C\+O\+M\+P\+O\+N\+E\+N\+TS}~6
+\begin{DoxyCompactList}\small\item\em total number of gameboy components in the components array \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{gameboy_8h_a4900bb1ec4b0c65cfd68f0de63866fb6}\label{gameboy_8h_a4900bb1ec4b0c65cfd68f0de63866fb6}} 
+\#define {\bfseries G\+B\+\_\+\+C\+Y\+C\+L\+E\+S\+\_\+\+P\+E\+R\+\_\+S}~(((uint64\+\_\+t) 1) $<$$<$ 20)
+\item 
+\mbox{\Hypertarget{gameboy_8h_ab930bbb1ca3aabee7a9afbcd425b9164}\label{gameboy_8h_ab930bbb1ca3aabee7a9afbcd425b9164}} 
+\#define \hyperlink{gameboy_8h_ab930bbb1ca3aabee7a9afbcd425b9164}{M\+E\+M\+\_\+\+S\+I\+ZE}(X)~(X \#\# \+\_\+\+E\+ND -\/ X \#\# \+\_\+\+S\+T\+A\+RT + 1)
+\begin{DoxyCompactList}\small\item\em Adresses of the Game\+Boy. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{gameboy_8h_a6f2209833a0d2eab09fe7c5884a3c628}\label{gameboy_8h_a6f2209833a0d2eab09fe7c5884a3c628}} 
+\#define {\bfseries B\+O\+O\+T\+\_\+\+R\+O\+M\+\_\+\+S\+T\+A\+RT}~0x0000
+\item 
+\mbox{\Hypertarget{gameboy_8h_a994fa91a27a99bd628c73084f52188ff}\label{gameboy_8h_a994fa91a27a99bd628c73084f52188ff}} 
+\#define {\bfseries B\+O\+O\+T\+\_\+\+R\+O\+M\+\_\+\+E\+ND}~0x00\+FF
+\item 
+\mbox{\Hypertarget{gameboy_8h_a1edbca58008acee2219a81a1c87fbf73}\label{gameboy_8h_a1edbca58008acee2219a81a1c87fbf73}} 
+\#define {\bfseries V\+I\+D\+E\+O\+\_\+\+R\+A\+M\+\_\+\+S\+T\+A\+RT}~0x8000
+\item 
+\mbox{\Hypertarget{gameboy_8h_a455532e0a8a8b41f5ff167ba7ddf5227}\label{gameboy_8h_a455532e0a8a8b41f5ff167ba7ddf5227}} 
+\#define {\bfseries V\+I\+D\+E\+O\+\_\+\+R\+A\+M\+\_\+\+E\+ND}~0x9\+F\+FF
+\item 
+\mbox{\Hypertarget{gameboy_8h_a6b036c36a9eba55333abbc92deaffd82}\label{gameboy_8h_a6b036c36a9eba55333abbc92deaffd82}} 
+\#define {\bfseries E\+X\+T\+E\+R\+N\+\_\+\+R\+A\+M\+\_\+\+S\+T\+A\+RT}~0x\+A000
+\item 
+\mbox{\Hypertarget{gameboy_8h_a72364391a54302ac1bb290468c9859d7}\label{gameboy_8h_a72364391a54302ac1bb290468c9859d7}} 
+\#define {\bfseries E\+X\+T\+E\+R\+N\+\_\+\+R\+A\+M\+\_\+\+E\+ND}~0x\+B\+F\+FF
+\item 
+\mbox{\Hypertarget{gameboy_8h_a91b9da066b840d2c50e63ebae65c72d9}\label{gameboy_8h_a91b9da066b840d2c50e63ebae65c72d9}} 
+\#define {\bfseries W\+O\+R\+K\+\_\+\+R\+A\+M\+\_\+\+S\+T\+A\+RT}~0x\+C000
+\item 
+\mbox{\Hypertarget{gameboy_8h_a3c50f999a693a31b1f745476746df1e4}\label{gameboy_8h_a3c50f999a693a31b1f745476746df1e4}} 
+\#define {\bfseries W\+O\+R\+K\+\_\+\+R\+A\+M\+\_\+\+E\+ND}~0x\+D\+F\+FF
+\item 
+\mbox{\Hypertarget{gameboy_8h_a72caec5e2367ae0208b9cef9dc721e74}\label{gameboy_8h_a72caec5e2367ae0208b9cef9dc721e74}} 
+\#define {\bfseries E\+C\+H\+O\+\_\+\+R\+A\+M\+\_\+\+S\+T\+A\+RT}~0x\+E000
+\item 
+\mbox{\Hypertarget{gameboy_8h_acd1276277f334debe9369596c1c66aae}\label{gameboy_8h_acd1276277f334debe9369596c1c66aae}} 
+\#define {\bfseries E\+C\+H\+O\+\_\+\+R\+A\+M\+\_\+\+E\+ND}~0x\+F\+D\+FF
+\item 
+\mbox{\Hypertarget{gameboy_8h_a8f6f63482c25eaccabc7744759348b7e}\label{gameboy_8h_a8f6f63482c25eaccabc7744759348b7e}} 
+\#define {\bfseries G\+R\+A\+P\+H\+\_\+\+R\+A\+M\+\_\+\+S\+T\+A\+RT}~0x\+F\+E00
+\item 
+\mbox{\Hypertarget{gameboy_8h_a04e77eee324e5bb61218d0d97d37ea38}\label{gameboy_8h_a04e77eee324e5bb61218d0d97d37ea38}} 
+\#define {\bfseries G\+R\+A\+P\+H\+\_\+\+R\+A\+M\+\_\+\+E\+ND}~0x\+F\+E9F
+\item 
+\mbox{\Hypertarget{gameboy_8h_a24364e0db1974f19b7d86786ed5f297e}\label{gameboy_8h_a24364e0db1974f19b7d86786ed5f297e}} 
+\#define {\bfseries U\+S\+E\+L\+E\+S\+S\+\_\+\+S\+T\+A\+RT}~0x\+F\+E\+A0
+\item 
+\mbox{\Hypertarget{gameboy_8h_abd81800025899dcbe0aeb17fb1501f4b}\label{gameboy_8h_abd81800025899dcbe0aeb17fb1501f4b}} 
+\#define {\bfseries U\+S\+E\+L\+E\+S\+S\+\_\+\+E\+ND}~0x\+F\+E\+FF
+\item 
+\mbox{\Hypertarget{gameboy_8h_a64d679ded6ca3dd174db177ad3a64ac8}\label{gameboy_8h_a64d679ded6ca3dd174db177ad3a64ac8}} 
+\#define {\bfseries R\+E\+G\+I\+S\+T\+E\+R\+S\+\_\+\+S\+T\+A\+RT}~0x\+F\+F00
+\item 
+\mbox{\Hypertarget{gameboy_8h_a6cf0ffea495f69ad2c2e4ff751cf8843}\label{gameboy_8h_a6cf0ffea495f69ad2c2e4ff751cf8843}} 
+\#define {\bfseries R\+E\+G\+I\+S\+T\+E\+R\+S\+\_\+\+E\+ND}~0x\+F\+F7F
+\item 
+\mbox{\Hypertarget{gameboy_8h_a9ebf462bd2a1d5d70de14f75ea2916b0}\label{gameboy_8h_a9ebf462bd2a1d5d70de14f75ea2916b0}} 
+\#define {\bfseries R\+E\+G\+S\+\_\+\+S\+T\+A\+RT}~0x\+F\+F00
+\item 
+\mbox{\Hypertarget{gameboy_8h_a331a543e8c9cb6eca781ec4978a083a1}\label{gameboy_8h_a331a543e8c9cb6eca781ec4978a083a1}} 
+\#define {\bfseries B\+L\+A\+R\+G\+G\+\_\+\+R\+EG}~0x\+F\+F01
+\item 
+\mbox{\Hypertarget{gameboy_8h_a2a87b0ecf04886d9f224d8e597b8ca8b}\label{gameboy_8h_a2a87b0ecf04886d9f224d8e597b8ca8b}} 
+\#define {\bfseries R\+E\+G\+S\+\_\+\+L\+C\+D\+C\+\_\+\+S\+T\+A\+RT}~0x\+F\+F40
+\item 
+\mbox{\Hypertarget{gameboy_8h_a95e1698edf7a28dc06e77306a203a9fc}\label{gameboy_8h_a95e1698edf7a28dc06e77306a203a9fc}} 
+\#define {\bfseries R\+E\+G\+S\+\_\+\+L\+C\+D\+C\+\_\+\+E\+ND}~0x\+F\+F4C
+\item 
+\mbox{\Hypertarget{gameboy_8h_a8c83a66cce5878c611e0b5d820687ba4}\label{gameboy_8h_a8c83a66cce5878c611e0b5d820687ba4}} 
+\#define {\bfseries R\+E\+G\+\_\+\+B\+O\+O\+T\+\_\+\+R\+O\+M\+\_\+\+D\+I\+S\+A\+B\+LE}~0x\+F\+F50
+\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{gameboy_8h_a5c306e7ad818f585e1ed969f765f30aa}\label{gameboy_8h_a5c306e7ad818f585e1ed969f765f30aa}} 
+typedef struct \hyperlink{structgameboy__}{gameboy\+\_\+} \hyperlink{gameboy_8h_a5c306e7ad818f585e1ed969f765f30aa}{gameboy\+\_\+}
+\begin{DoxyCompactList}\small\item\em Game Boy data structure. Regroups everything needed to simulate the Game Boy. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{gameboy_8h_aa09d420942ccb22603b28a9b92e747fd}{gameboy\+\_\+create} (\hyperlink{structgameboy__}{gameboy\+\_\+t} $\ast$gameboy, const char $\ast$filename)
+\begin{DoxyCompactList}\small\item\em Creates a gameboy. \end{DoxyCompactList}\item 
+int \hyperlink{gameboy_8h_a2816092935a195ed6159228807635315}{add\+\_\+gameboy\+\_\+component} (int component\+\_\+number, \hyperlink{structgameboy__}{gameboy\+\_\+t} $\ast$gameboy, \hyperlink{memory_8h_a8a6444037e4d5cc2bf8ba22a9d9e33ca}{addr\+\_\+t} start, \hyperlink{memory_8h_a8a6444037e4d5cc2bf8ba22a9d9e33ca}{addr\+\_\+t} end)
+\begin{DoxyCompactList}\small\item\em Add a new component to the gameboy components array and plugs it to the bus. \end{DoxyCompactList}\item 
+void \hyperlink{gameboy_8h_aad0f33510557f00aa75fb82b56990d28}{gameboy\+\_\+free} (\hyperlink{structgameboy__}{gameboy\+\_\+t} $\ast$gameboy)
+\begin{DoxyCompactList}\small\item\em Destroys a gameboy. \end{DoxyCompactList}\item 
+int \hyperlink{gameboy_8h_a762f7b58a4579cbb396694d882c0b6b9}{gameboy\+\_\+run\+\_\+until} (\hyperlink{structgameboy__}{gameboy\+\_\+t} $\ast$gameboy, uint64\+\_\+t cycle)
+\begin{DoxyCompactList}\small\item\em Runs a gamefor for/until a given cycle. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Gameboy Header for Game\+Boy Emulator. 
+
+\begin{DoxyAuthor}{Author}
+C. Hölzl, E\+P\+FL 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2019 
+\end{DoxyDate}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{gameboy_8h_a2816092935a195ed6159228807635315}\label{gameboy_8h_a2816092935a195ed6159228807635315}} 
+\index{gameboy.\+h@{gameboy.\+h}!add\+\_\+gameboy\+\_\+component@{add\+\_\+gameboy\+\_\+component}}
+\index{add\+\_\+gameboy\+\_\+component@{add\+\_\+gameboy\+\_\+component}!gameboy.\+h@{gameboy.\+h}}
+\subsubsection{\texorpdfstring{add\+\_\+gameboy\+\_\+component()}{add\_gameboy\_component()}}
+{\footnotesize\ttfamily int add\+\_\+gameboy\+\_\+component (\begin{DoxyParamCaption}\item[{int}]{component\+\_\+number,  }\item[{\hyperlink{structgameboy__}{gameboy\+\_\+t} $\ast$}]{gameboy,  }\item[{\hyperlink{memory_8h_a8a6444037e4d5cc2bf8ba22a9d9e33ca}{addr\+\_\+t}}]{start,  }\item[{\hyperlink{memory_8h_a8a6444037e4d5cc2bf8ba22a9d9e33ca}{addr\+\_\+t}}]{end }\end{DoxyParamCaption})}
+
+
+
+Add a new component to the gameboy components array and plugs it to the bus. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em number} & of the component to add in the array \\
+\hline
+{\em gameboy} & pointer to add components to \\
+\hline
+{\em start} & of the component in the bus \\
+\hline
+{\em end} & of the component in the bus\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+error code 
+\end{DoxyReturn}
+\mbox{\Hypertarget{gameboy_8h_aa09d420942ccb22603b28a9b92e747fd}\label{gameboy_8h_aa09d420942ccb22603b28a9b92e747fd}} 
+\index{gameboy.\+h@{gameboy.\+h}!gameboy\+\_\+create@{gameboy\+\_\+create}}
+\index{gameboy\+\_\+create@{gameboy\+\_\+create}!gameboy.\+h@{gameboy.\+h}}
+\subsubsection{\texorpdfstring{gameboy\+\_\+create()}{gameboy\_create()}}
+{\footnotesize\ttfamily int gameboy\+\_\+create (\begin{DoxyParamCaption}\item[{\hyperlink{structgameboy__}{gameboy\+\_\+t} $\ast$}]{gameboy,  }\item[{const char $\ast$}]{filename }\end{DoxyParamCaption})}
+
+
+
+Creates a gameboy. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em gameboy} & pointer to gameboy to create \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{gameboy_8h_aad0f33510557f00aa75fb82b56990d28}\label{gameboy_8h_aad0f33510557f00aa75fb82b56990d28}} 
+\index{gameboy.\+h@{gameboy.\+h}!gameboy\+\_\+free@{gameboy\+\_\+free}}
+\index{gameboy\+\_\+free@{gameboy\+\_\+free}!gameboy.\+h@{gameboy.\+h}}
+\subsubsection{\texorpdfstring{gameboy\+\_\+free()}{gameboy\_free()}}
+{\footnotesize\ttfamily void gameboy\+\_\+free (\begin{DoxyParamCaption}\item[{\hyperlink{structgameboy__}{gameboy\+\_\+t} $\ast$}]{gameboy }\end{DoxyParamCaption})}
+
+
+
+Destroys a gameboy. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em gameboy} & pointer to gameboy to destroy \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+error code 
+\end{DoxyReturn}
+\mbox{\Hypertarget{gameboy_8h_a762f7b58a4579cbb396694d882c0b6b9}\label{gameboy_8h_a762f7b58a4579cbb396694d882c0b6b9}} 
+\index{gameboy.\+h@{gameboy.\+h}!gameboy\+\_\+run\+\_\+until@{gameboy\+\_\+run\+\_\+until}}
+\index{gameboy\+\_\+run\+\_\+until@{gameboy\+\_\+run\+\_\+until}!gameboy.\+h@{gameboy.\+h}}
+\subsubsection{\texorpdfstring{gameboy\+\_\+run\+\_\+until()}{gameboy\_run\_until()}}
+{\footnotesize\ttfamily int gameboy\+\_\+run\+\_\+until (\begin{DoxyParamCaption}\item[{\hyperlink{structgameboy__}{gameboy\+\_\+t} $\ast$}]{gameboy,  }\item[{uint64\+\_\+t}]{cycle }\end{DoxyParamCaption})}
+
+
+
+Runs a gamefor for/until a given cycle. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em gameboy} & pointer to run \\
+\hline
+{\em cycles} & to run \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+error code 
+\end{DoxyReturn}

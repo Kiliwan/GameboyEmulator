@@ -1,0 +1,65 @@
+\hypertarget{test-image_8c}{}\section{test-\/image.c File Reference}
+\label{test-image_8c}\index{test-\/image.\+c@{test-\/image.\+c}}
+
+
+ad-\/hoc end-\/to-\/end testing of \hyperlink{image_8c}{image.\+c}  
+
+
+{\ttfamily \#include \char`\"{}error.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}util.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}image.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}sidlib.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$assert.\+h$>$}\newline
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$inttypes.\+h$>$}\newline
+Include dependency graph for test-\/image.c\+:
+% FIG 0
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{test-image_8c_a0cbea62f1ce2043dd08108e65ed8de1d}\label{test-image_8c_a0cbea62f1ce2043dd08108e65ed8de1d}} 
+\#define {\bfseries S\+C\+A\+LE}~2
+\item 
+\#define {\bfseries C\+H\+E\+CK}(call,  msg\+\_\+err)
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{test-image_8c_a0ddf1224851353fc92bfbff6f499fa97}\label{test-image_8c_a0ddf1224851353fc92bfbff6f499fa97}} 
+int {\bfseries main} (int argc, char $\ast$argv\mbox{[}$\,$\mbox{]})
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{test-image_8c_a9c1af52f89abe23d6219ab71bd578388}\label{test-image_8c_a9c1af52f89abe23d6219ab71bd578388}} 
+\hyperlink{structimage__}{image\+\_\+t} {\bfseries image}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+ad-\/hoc end-\/to-\/end testing of \hyperlink{image_8c}{image.\+c} 
+
+\begin{DoxyAuthor}{Author}
+J.-\/C. Chappelier \& C.\+Hölzl, E\+P\+FL 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2019 
+\end{DoxyDate}
+
+
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{test-image_8c_a385848a86a03e7791a73468b1d8720e1}\label{test-image_8c_a385848a86a03e7791a73468b1d8720e1}} 
+\index{test-\/image.\+c@{test-\/image.\+c}!C\+H\+E\+CK@{C\+H\+E\+CK}}
+\index{C\+H\+E\+CK@{C\+H\+E\+CK}!test-\/image.\+c@{test-\/image.\+c}}
+\subsubsection{\texorpdfstring{C\+H\+E\+CK}{CHECK}}
+{\footnotesize\ttfamily \#define C\+H\+E\+CK(\begin{DoxyParamCaption}\item[{}]{call,  }\item[{}]{msg\+\_\+err }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+\textcolor{keywordflow}{do} \{ \(\backslash\)
+        if (call != ERR\_NONE) \{ \(\backslash\)
+            fclose(image\_file); \(\backslash\)
+            image\_free(&image); \(\backslash\)
+            return error(msg\_err); \} \(\backslash\)
+    \} \textcolor{keywordflow}{while}(0)
+\end{DoxyCode}

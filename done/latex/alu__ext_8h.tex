@@ -1,0 +1,141 @@
+\hypertarget{alu__ext_8h}{}\section{alu\+\_\+ext.\+h File Reference}
+\label{alu__ext_8h}\index{alu\+\_\+ext.\+h@{alu\+\_\+ext.\+h}}
+
+
+A\+LU Header for Game\+Boy Emulator, part provided.  
+
+
+{\ttfamily \#include \char`\"{}alu.\+h\char`\"{}}\newline
+Include dependency graph for alu\+\_\+ext.\+h\+:
+% FIG 0
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{alu__ext_8h_a624314d42009ae87da3a1e4becbe33f6}{alu\+\_\+bcd\+\_\+adjust} (\hyperlink{structalu__output__t}{alu\+\_\+output\+\_\+t} $\ast$result)
+\begin{DoxyCompactList}\small\item\em adjusts the value of a previous alu\+\_\+output using various flags to the bcd format \end{DoxyCompactList}\item 
+int \hyperlink{alu__ext_8h_a918c637b038a36a6e42e6c79e8a2ba88}{alu\+\_\+and} (\hyperlink{structalu__output__t}{alu\+\_\+output\+\_\+t} $\ast$result, uint8\+\_\+t x, uint8\+\_\+t y)
+\begin{DoxyCompactList}\small\item\em logic A\+ND of two inputs \end{DoxyCompactList}\item 
+int \hyperlink{alu__ext_8h_a3df5e37500097503b585e1a00b958526}{alu\+\_\+or} (\hyperlink{structalu__output__t}{alu\+\_\+output\+\_\+t} $\ast$result, uint8\+\_\+t x, uint8\+\_\+t y)
+\begin{DoxyCompactList}\small\item\em logic OR of two inputs \end{DoxyCompactList}\item 
+int \hyperlink{alu__ext_8h_acff973ff955eb1f10b89772e24d038c4}{alu\+\_\+xor} (\hyperlink{structalu__output__t}{alu\+\_\+output\+\_\+t} $\ast$result, uint8\+\_\+t x, uint8\+\_\+t y)
+\begin{DoxyCompactList}\small\item\em logic X\+OR of two inputs \end{DoxyCompactList}\item 
+int \hyperlink{alu__ext_8h_a07d41751e4a158784a3e4c00ab9944d0}{alu\+\_\+swap4} (\hyperlink{structalu__output__t}{alu\+\_\+output\+\_\+t} $\ast$result, uint8\+\_\+t x)
+\begin{DoxyCompactList}\small\item\em swaps 4lsb with 4msb \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+A\+LU Header for Game\+Boy Emulator, part provided. 
+
+\begin{DoxyAuthor}{Author}
+C. Hölzl, E\+P\+FL 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2019 
+\end{DoxyDate}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{alu__ext_8h_a918c637b038a36a6e42e6c79e8a2ba88}\label{alu__ext_8h_a918c637b038a36a6e42e6c79e8a2ba88}} 
+\index{alu\+\_\+ext.\+h@{alu\+\_\+ext.\+h}!alu\+\_\+and@{alu\+\_\+and}}
+\index{alu\+\_\+and@{alu\+\_\+and}!alu\+\_\+ext.\+h@{alu\+\_\+ext.\+h}}
+\subsubsection{\texorpdfstring{alu\+\_\+and()}{alu\_and()}}
+{\footnotesize\ttfamily int alu\+\_\+and (\begin{DoxyParamCaption}\item[{\hyperlink{structalu__output__t}{alu\+\_\+output\+\_\+t} $\ast$}]{result,  }\item[{uint8\+\_\+t}]{x,  }\item[{uint8\+\_\+t}]{y }\end{DoxyParamCaption})}
+
+
+
+logic A\+ND of two inputs 
+
+
+\begin{DoxyParams}{Parameters}
+{\em result} & \hyperlink{structalu__output__t}{alu\+\_\+output\+\_\+t} pointer to write into \\
+\hline
+{\em x} & value to and \\
+\hline
+{\em y} & value to and \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+error code 
+\end{DoxyReturn}
+\mbox{\Hypertarget{alu__ext_8h_a624314d42009ae87da3a1e4becbe33f6}\label{alu__ext_8h_a624314d42009ae87da3a1e4becbe33f6}} 
+\index{alu\+\_\+ext.\+h@{alu\+\_\+ext.\+h}!alu\+\_\+bcd\+\_\+adjust@{alu\+\_\+bcd\+\_\+adjust}}
+\index{alu\+\_\+bcd\+\_\+adjust@{alu\+\_\+bcd\+\_\+adjust}!alu\+\_\+ext.\+h@{alu\+\_\+ext.\+h}}
+\subsubsection{\texorpdfstring{alu\+\_\+bcd\+\_\+adjust()}{alu\_bcd\_adjust()}}
+{\footnotesize\ttfamily int alu\+\_\+bcd\+\_\+adjust (\begin{DoxyParamCaption}\item[{\hyperlink{structalu__output__t}{alu\+\_\+output\+\_\+t} $\ast$}]{result }\end{DoxyParamCaption})}
+
+
+
+adjusts the value of a previous alu\+\_\+output using various flags to the bcd format 
+
+
+\begin{DoxyParams}{Parameters}
+{\em result} & \hyperlink{structalu__output__t}{alu\+\_\+output\+\_\+t} pointer use the value and flags from and to write into \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+error code 
+\end{DoxyReturn}
+\mbox{\Hypertarget{alu__ext_8h_a3df5e37500097503b585e1a00b958526}\label{alu__ext_8h_a3df5e37500097503b585e1a00b958526}} 
+\index{alu\+\_\+ext.\+h@{alu\+\_\+ext.\+h}!alu\+\_\+or@{alu\+\_\+or}}
+\index{alu\+\_\+or@{alu\+\_\+or}!alu\+\_\+ext.\+h@{alu\+\_\+ext.\+h}}
+\subsubsection{\texorpdfstring{alu\+\_\+or()}{alu\_or()}}
+{\footnotesize\ttfamily int alu\+\_\+or (\begin{DoxyParamCaption}\item[{\hyperlink{structalu__output__t}{alu\+\_\+output\+\_\+t} $\ast$}]{result,  }\item[{uint8\+\_\+t}]{x,  }\item[{uint8\+\_\+t}]{y }\end{DoxyParamCaption})}
+
+
+
+logic OR of two inputs 
+
+
+\begin{DoxyParams}{Parameters}
+{\em result} & \hyperlink{structalu__output__t}{alu\+\_\+output\+\_\+t} pointer to write into \\
+\hline
+{\em x} & value to or \\
+\hline
+{\em y} & value to or \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+error code 
+\end{DoxyReturn}
+\mbox{\Hypertarget{alu__ext_8h_a07d41751e4a158784a3e4c00ab9944d0}\label{alu__ext_8h_a07d41751e4a158784a3e4c00ab9944d0}} 
+\index{alu\+\_\+ext.\+h@{alu\+\_\+ext.\+h}!alu\+\_\+swap4@{alu\+\_\+swap4}}
+\index{alu\+\_\+swap4@{alu\+\_\+swap4}!alu\+\_\+ext.\+h@{alu\+\_\+ext.\+h}}
+\subsubsection{\texorpdfstring{alu\+\_\+swap4()}{alu\_swap4()}}
+{\footnotesize\ttfamily int alu\+\_\+swap4 (\begin{DoxyParamCaption}\item[{\hyperlink{structalu__output__t}{alu\+\_\+output\+\_\+t} $\ast$}]{result,  }\item[{uint8\+\_\+t}]{x }\end{DoxyParamCaption})}
+
+
+
+swaps 4lsb with 4msb 
+
+
+\begin{DoxyParams}{Parameters}
+{\em result} & \hyperlink{structalu__output__t}{alu\+\_\+output\+\_\+t} pointer to write into \\
+\hline
+{\em x} & value to swap the bits from \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+error code 
+\end{DoxyReturn}
+\mbox{\Hypertarget{alu__ext_8h_acff973ff955eb1f10b89772e24d038c4}\label{alu__ext_8h_acff973ff955eb1f10b89772e24d038c4}} 
+\index{alu\+\_\+ext.\+h@{alu\+\_\+ext.\+h}!alu\+\_\+xor@{alu\+\_\+xor}}
+\index{alu\+\_\+xor@{alu\+\_\+xor}!alu\+\_\+ext.\+h@{alu\+\_\+ext.\+h}}
+\subsubsection{\texorpdfstring{alu\+\_\+xor()}{alu\_xor()}}
+{\footnotesize\ttfamily int alu\+\_\+xor (\begin{DoxyParamCaption}\item[{\hyperlink{structalu__output__t}{alu\+\_\+output\+\_\+t} $\ast$}]{result,  }\item[{uint8\+\_\+t}]{x,  }\item[{uint8\+\_\+t}]{y }\end{DoxyParamCaption})}
+
+
+
+logic X\+OR of two inputs 
+
+
+\begin{DoxyParams}{Parameters}
+{\em result} & \hyperlink{structalu__output__t}{alu\+\_\+output\+\_\+t} pointer to write into \\
+\hline
+{\em x} & value to xor \\
+\hline
+{\em y} & value to xor \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+error code 
+\end{DoxyReturn}

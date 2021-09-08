@@ -1,0 +1,217 @@
+\hypertarget{error_8h}{}\section{error.\+h File Reference}
+\label{error_8h}\index{error.\+h@{error.\+h}}
+
+
+Error codes for P\+P\+S-\/\+G\+Bemul project.  
+
+
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include $<$errno.\+h$>$}\newline
+Include dependency graph for error.\+h\+:
+% FIG 0
+This graph shows which files directly or indirectly include this file\+:
+% FIG 1
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{error_8h_a7377cc956f5c81538f0fbf0a0492a539}\label{error_8h_a7377cc956f5c81538f0fbf0a0492a539}} 
+\#define \hyperlink{error_8h_a7377cc956f5c81538f0fbf0a0492a539}{debug\+\_\+print}(fmt, ...)~do \{\} while(0)
+\begin{DoxyCompactList}\small\item\em debug\+\_\+print macro is usefull to print message in D\+E\+B\+UG mode only. \end{DoxyCompactList}\item 
+\#define \hyperlink{error_8h_a3191f6e6f4ab18558fdcb9c442403f80}{M\+\_\+\+E\+X\+IT}(\hyperlink{error_8h_a88a76ee847c844cc47b94caac600689d}{error\+\_\+code},  fmt, ...)
+\begin{DoxyCompactList}\small\item\em M\+\_\+\+E\+X\+IT macro is usefull to return an error code from a function with a debug message. Example usage\+: M\+\_\+\+E\+X\+IT(E\+R\+R\+\_\+\+B\+A\+D\+\_\+\+P\+A\+R\+A\+M\+E\+T\+ER, \char`\"{}unable to do something decent with value \%lu\char`\"{}, i);. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{error_8h_a2af872346c2af8ceecf8e500e46273a3}\label{error_8h_a2af872346c2af8ceecf8e500e46273a3}} 
+\#define \hyperlink{error_8h_a2af872346c2af8ceecf8e500e46273a3}{M\+\_\+\+E\+X\+I\+T\+\_\+\+E\+R\+R\+\_\+\+N\+O\+M\+SG}(\hyperlink{error_8h_a88a76ee847c844cc47b94caac600689d}{error\+\_\+code})~\hyperlink{error_8h_a3191f6e6f4ab18558fdcb9c442403f80}{M\+\_\+\+E\+X\+IT}(\hyperlink{error_8h_a88a76ee847c844cc47b94caac600689d}{error\+\_\+code}, \char`\"{}error\+: \%s\char`\"{}, E\+R\+R\+\_\+\+M\+E\+S\+S\+A\+G\+ES\mbox{[}\hyperlink{error_8h_a88a76ee847c844cc47b94caac600689d}{error\+\_\+code} -\/ E\+R\+R\+\_\+\+N\+O\+NE\mbox{]})
+\begin{DoxyCompactList}\small\item\em M\+\_\+\+E\+X\+I\+T\+\_\+\+E\+R\+R\+\_\+\+N\+O\+M\+SG macro is a kind of M\+\_\+\+E\+X\+IT, indicating (in debug mode) only the error message corresponding to the error code. Example usage\+: \hyperlink{error_8h_a2af872346c2af8ceecf8e500e46273a3}{M\+\_\+\+E\+X\+I\+T\+\_\+\+E\+R\+R\+\_\+\+N\+O\+M\+S\+G(\+E\+R\+R\+\_\+\+B\+A\+D\+\_\+\+P\+A\+R\+A\+M\+E\+T\+E\+R)};. \end{DoxyCompactList}\item 
+\#define \hyperlink{error_8h_aa07a7d2c59d0eafcd4f15b58ea94ad79}{M\+\_\+\+E\+X\+I\+T\+\_\+\+I\+F\+\_\+\+E\+R\+R\+\_\+\+D\+O\+\_\+\+S\+O\+M\+E\+T\+H\+I\+NG}(call\+\_\+one,  call\+\_\+two)
+\begin{DoxyCompactList}\small\item\em M\+\_\+\+E\+X\+I\+T\+\_\+\+I\+F\+\_\+\+E\+R\+R\+\_\+\+D\+O\+\_\+\+S\+O\+M\+E\+T\+H\+I\+NG macro is a shortcut for M\+\_\+\+E\+X\+I\+T\+\_\+\+IF testing if some error occured, i.\+e. if error {\ttfamily ret} is different from E\+R\+R\+\_\+\+N\+O\+NE, first executing some code (typically to disallocated ressources and displaying the call which causes the error . Example usage\+: M\+\_\+\+E\+X\+I\+T\+\_\+\+I\+F\+\_\+\+E\+R\+R\+\_\+\+D\+O\+\_\+\+S\+O\+M\+E\+T\+H\+I\+NG(foo(a, b), free(p));. \end{DoxyCompactList}\item 
+\#define \hyperlink{error_8h_a204838ff5f4cfc9255d0411e2926e4f2}{M\+\_\+\+E\+X\+I\+T\+\_\+\+E\+RR}(\hyperlink{error_8h_a88a76ee847c844cc47b94caac600689d}{error\+\_\+code},  fmt, ...)~\hyperlink{error_8h_a3191f6e6f4ab18558fdcb9c442403f80}{M\+\_\+\+E\+X\+IT}(\hyperlink{error_8h_a88a76ee847c844cc47b94caac600689d}{error\+\_\+code}, \char`\"{}error\+: \%s\char`\"{} fmt, \hyperlink{error_8h_ab32e44b131cc0439431081f6e955894e}{E\+R\+R\+\_\+\+M\+E\+S\+S\+A\+G\+ES}\mbox{[}\hyperlink{error_8h_a88a76ee847c844cc47b94caac600689d}{error\+\_\+code} -\/ E\+R\+R\+\_\+\+N\+O\+NE\mbox{]}, \+\_\+\+\_\+\+V\+A\+\_\+\+A\+R\+G\+S\+\_\+\+\_\+)
+\begin{DoxyCompactList}\small\item\em M\+\_\+\+E\+X\+I\+T\+\_\+\+E\+RR macro is a kind of M\+\_\+\+E\+X\+IT, indicating (in debug mode) the error message corresponding to the error code, followed by the message passed in argument. \end{DoxyCompactList}\item 
+\#define \hyperlink{error_8h_a3a98d2af14977ff74a1a4d65aed56834}{M\+\_\+\+E\+X\+I\+T\+\_\+\+IF}(test,  \hyperlink{error_8h_a88a76ee847c844cc47b94caac600689d}{error\+\_\+code},  fmt, ...)
+\begin{DoxyCompactList}\small\item\em M\+\_\+\+E\+X\+I\+T\+\_\+\+IF macro calls M\+\_\+\+E\+X\+I\+T\+\_\+\+E\+RR only if provided test is true. Example usage\+: M\+\_\+\+E\+X\+I\+T\+\_\+\+IF(i $>$ 3, E\+R\+R\+\_\+\+B\+A\+D\+\_\+\+P\+A\+R\+A\+M\+E\+T\+ER, \char`\"{}third argument value (\%lu) is too high ($>$ 3)\char`\"{}, i);. \end{DoxyCompactList}\item 
+\#define \hyperlink{error_8h_ab9b94bddb647208ef65592261936ca21}{M\+\_\+\+E\+X\+I\+T\+\_\+\+I\+F\+\_\+\+E\+R\+R\+\_\+\+M\+SG}(ret,  name)
+\begin{DoxyCompactList}\small\item\em M\+\_\+\+E\+X\+I\+T\+\_\+\+I\+F\+\_\+\+E\+R\+R\+\_\+\+M\+SG macro is a shortcut for M\+\_\+\+E\+X\+I\+T\+\_\+\+IF testing if some error occured, i.\+e. if error {\ttfamily ret} is different from E\+R\+R\+\_\+\+N\+O\+NE, and displaying some explaination. Without explaination, see M\+\_\+\+E\+X\+I\+T\+\_\+\+I\+F\+\_\+\+E\+RR below. Example usage\+: M\+\_\+\+E\+X\+I\+T\+\_\+\+I\+F\+\_\+\+E\+R\+R\+\_\+\+M\+SG(foo(a, b), \char`\"{}calling foo()\char`\"{});. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{error_8h_a020f09c1f1f780e41620d9b6f568d649}\label{error_8h_a020f09c1f1f780e41620d9b6f568d649}} 
+\#define \hyperlink{error_8h_a020f09c1f1f780e41620d9b6f568d649}{M\+\_\+\+E\+X\+I\+T\+\_\+\+I\+F\+\_\+\+E\+RR}(ret)~\hyperlink{error_8h_ab9b94bddb647208ef65592261936ca21}{M\+\_\+\+E\+X\+I\+T\+\_\+\+I\+F\+\_\+\+E\+R\+R\+\_\+\+M\+SG}(ret, \char`\"{}, when calling\+: \char`\"{} \#ret)
+\begin{DoxyCompactList}\small\item\em M\+\_\+\+E\+X\+I\+T\+\_\+\+I\+F\+\_\+\+E\+RR macro is like M\+\_\+\+E\+X\+I\+T\+\_\+\+I\+F\+\_\+\+E\+R\+R\+\_\+\+M\+SG but where the message is the full call. Example usage\+: \hyperlink{error_8h_a020f09c1f1f780e41620d9b6f568d649}{M\+\_\+\+E\+X\+I\+T\+\_\+\+I\+F\+\_\+\+E\+R\+R(foo(a, b))};. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{error_8h_aa76425b6e8169fdf8d6444089a9ea9eb}\label{error_8h_aa76425b6e8169fdf8d6444089a9ea9eb}} 
+\#define \hyperlink{error_8h_aa76425b6e8169fdf8d6444089a9ea9eb}{M\+\_\+\+E\+X\+I\+T\+\_\+\+I\+F\+\_\+\+N\+U\+LL}(var,  size)~\hyperlink{error_8h_a3a98d2af14977ff74a1a4d65aed56834}{M\+\_\+\+E\+X\+I\+T\+\_\+\+IF}((var) == N\+U\+LL, E\+R\+R\+\_\+\+M\+EM, \char`\"{}, cannot allocate \%zu bytes for \%s\char`\"{}, size, \#var)
+\begin{DoxyCompactList}\small\item\em M\+\_\+\+E\+X\+I\+T\+\_\+\+I\+F\+\_\+\+N\+U\+LL macro is usefull to warn (and stop) when N\+U\+LL pointers are detected. size is typically the allocation size. Example usage\+: M\+\_\+\+E\+X\+I\+T\+\_\+\+I\+F\+\_\+\+N\+U\+LL(p = malloc(size), size);. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{error_8h_a2eb20c37e357ba97e81f45b725f3a049}\label{error_8h_a2eb20c37e357ba97e81f45b725f3a049}} 
+\#define \hyperlink{error_8h_a2eb20c37e357ba97e81f45b725f3a049}{M\+\_\+\+E\+X\+I\+T\+\_\+\+I\+F\+\_\+\+T\+O\+O\+\_\+\+L\+O\+NG}(var,  size)~\hyperlink{error_8h_a3a98d2af14977ff74a1a4d65aed56834}{M\+\_\+\+E\+X\+I\+T\+\_\+\+IF}(strlen(var) $>$ size, E\+R\+R\+\_\+\+B\+A\+D\+\_\+\+P\+A\+R\+A\+M\+E\+T\+ER, \char`\"{}, given \%s is larger than \%d bytes\char`\"{}, \#var, size)
+\begin{DoxyCompactList}\small\item\em M\+\_\+\+E\+X\+I\+T\+\_\+\+I\+F\+\_\+\+T\+O\+O\+\_\+\+L\+O\+NG macro is usefull to warn (and stop) when a string is more than size characters long. Example usage\+: \hyperlink{error_8h_a2eb20c37e357ba97e81f45b725f3a049}{M\+\_\+\+E\+X\+I\+T\+\_\+\+I\+F\+\_\+\+T\+O\+O\+\_\+\+L\+O\+N\+G(answer, I\+N\+P\+U\+T\+\_\+\+M\+A\+X\+\_\+\+S\+I\+Z\+E)};. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{error_8h_aca7d8e431824749b54bb660d0bf242e9}\label{error_8h_aca7d8e431824749b54bb660d0bf242e9}} 
+\#define \hyperlink{error_8h_aca7d8e431824749b54bb660d0bf242e9}{M\+\_\+\+E\+X\+I\+T\+\_\+\+I\+F\+\_\+\+T\+R\+A\+I\+L\+I\+NG}(file)~\hyperlink{error_8h_a3a98d2af14977ff74a1a4d65aed56834}{M\+\_\+\+E\+X\+I\+T\+\_\+\+IF}(getc(file) != \textquotesingle{}\textbackslash{}n\textquotesingle{}, E\+R\+R\+\_\+\+B\+A\+D\+\_\+\+P\+A\+R\+A\+M\+E\+T\+ER, \char`\"{}, trailing chars on \textbackslash{}\char`\"{}\%s\textbackslash{}\char`\"{}\char`\"{}, \#file)
+\begin{DoxyCompactList}\small\item\em M\+\_\+\+E\+X\+I\+T\+\_\+\+I\+F\+\_\+\+T\+R\+A\+I\+L\+I\+NG macro is usefull to test whether some trailing character(s) remain(s) in file. Example usage\+: \hyperlink{error_8h_aca7d8e431824749b54bb660d0bf242e9}{M\+\_\+\+E\+X\+I\+T\+\_\+\+I\+F\+\_\+\+T\+R\+A\+I\+L\+I\+N\+G(file)};. \end{DoxyCompactList}\item 
+\#define \hyperlink{error_8h_aa9bf7e135d8472dd4cb42aa4096537a4}{M\+\_\+\+E\+X\+I\+T\+\_\+\+I\+F\+\_\+\+T\+R\+A\+I\+L\+I\+N\+G\+\_\+\+W\+I\+T\+H\+\_\+\+C\+O\+DE}(file,  code)
+\begin{DoxyCompactList}\small\item\em M\+\_\+\+E\+X\+I\+T\+\_\+\+I\+F\+\_\+\+T\+R\+A\+I\+L\+I\+N\+G\+\_\+\+W\+I\+T\+H\+\_\+\+C\+O\+DE macro is similar to M\+\_\+\+E\+X\+I\+T\+\_\+\+I\+F\+\_\+\+T\+R\+A\+I\+L\+I\+NG but allows to run some code before exiting. Example usage\+: M\+\_\+\+E\+X\+I\+T\+\_\+\+I\+F\+\_\+\+T\+R\+A\+I\+L\+I\+N\+G\+\_\+\+W\+I\+T\+H\+\_\+\+C\+O\+DE(stdin, \{ free(something); \} );. \end{DoxyCompactList}\item 
+\#define \hyperlink{error_8h_a83c518271b7028053a924a3cff9e5e58}{M\+\_\+\+R\+E\+Q\+U\+I\+RE}(test,  \hyperlink{error_8h_a88a76ee847c844cc47b94caac600689d}{error\+\_\+code},  fmt, ...)
+\begin{DoxyCompactList}\small\item\em M\+\_\+\+R\+E\+Q\+U\+I\+RE macro is similar to M\+\_\+\+E\+X\+I\+T\+\_\+\+IF but with two differences\+: 1) making use of the N\+E\+G\+A\+T\+I\+ON of the test (thus \char`\"{}require\char`\"{}) 2) making use of M\+\_\+\+E\+X\+IT rather than M\+\_\+\+E\+X\+I\+T\+\_\+\+E\+RR Example usage\+: M\+\_\+\+R\+E\+Q\+U\+I\+RE(i $<$= 3, E\+R\+R\+\_\+\+B\+A\+D\+\_\+\+P\+A\+R\+A\+M\+E\+T\+ER, \char`\"{}input value (\%lu) is too high ($>$ 3)\char`\"{}, i);. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{error_8h_a8f250dd5db912061cf02925e096a627c}\label{error_8h_a8f250dd5db912061cf02925e096a627c}} 
+\#define \hyperlink{error_8h_a8f250dd5db912061cf02925e096a627c}{M\+\_\+\+R\+E\+Q\+U\+I\+R\+E\+\_\+\+N\+O\+\_\+\+E\+RR}(\hyperlink{error_8h_a88a76ee847c844cc47b94caac600689d}{error\+\_\+code})~\hyperlink{error_8h_a83c518271b7028053a924a3cff9e5e58}{M\+\_\+\+R\+E\+Q\+U\+I\+RE}(\hyperlink{error_8h_a88a76ee847c844cc47b94caac600689d}{error\+\_\+code} == 0, \hyperlink{error_8h_a88a76ee847c844cc47b94caac600689d}{error\+\_\+code}, \char`\"{}\%s \%s\char`\"{}, \char`\"{}Recieved error code\+: \char`\"{}, E\+R\+R\+\_\+\+M\+E\+S\+S\+A\+G\+ES\mbox{[}\hyperlink{error_8h_a88a76ee847c844cc47b94caac600689d}{error\+\_\+code} -\/ E\+R\+R\+\_\+\+N\+O\+NE\mbox{]})
+\begin{DoxyCompactList}\small\item\em M\+\_\+\+R\+E\+Q\+U\+I\+R\+E\+\_\+\+N\+O\+\_\+\+E\+RR macro is a M\+\_\+\+R\+E\+Q\+U\+I\+RE test on a return. This might be useful to return an error if one occured. Example usage\+: \hyperlink{error_8h_a8f250dd5db912061cf02925e096a627c}{M\+\_\+\+R\+E\+Q\+U\+I\+R\+E\+\_\+\+N\+O\+\_\+\+E\+R\+R(\+E\+R\+R\+\_\+\+B\+A\+D\+\_\+\+P\+A\+R\+A\+M\+E\+T\+E\+R)};. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{error_8h_abb6a357e479249945df329429d304e96}\label{error_8h_abb6a357e479249945df329429d304e96}} 
+\#define \hyperlink{error_8h_abb6a357e479249945df329429d304e96}{M\+\_\+\+R\+E\+Q\+U\+I\+R\+E\+\_\+\+N\+O\+\_\+\+E\+R\+R\+NO}(\hyperlink{error_8h_a88a76ee847c844cc47b94caac600689d}{error\+\_\+code})~\hyperlink{error_8h_a83c518271b7028053a924a3cff9e5e58}{M\+\_\+\+R\+E\+Q\+U\+I\+RE}(errno == 0, \hyperlink{error_8h_a88a76ee847c844cc47b94caac600689d}{error\+\_\+code}, \char`\"{}\%s\char`\"{}, strerror(errno))
+\begin{DoxyCompactList}\small\item\em M\+\_\+\+R\+E\+Q\+U\+I\+R\+E\+\_\+\+N\+O\+\_\+\+E\+R\+R\+NO macro is a M\+\_\+\+R\+E\+Q\+U\+I\+RE test on errno. This might be useful to change errno into our own error code. Example usage\+: \hyperlink{error_8h_abb6a357e479249945df329429d304e96}{M\+\_\+\+R\+E\+Q\+U\+I\+R\+E\+\_\+\+N\+O\+\_\+\+E\+R\+R\+N\+O(\+E\+R\+R\+\_\+\+B\+A\+D\+\_\+\+P\+A\+R\+A\+M\+E\+T\+E\+R)};. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{error_8h_a41e6e3e467fd9759770dab4e31cf26e3}\label{error_8h_a41e6e3e467fd9759770dab4e31cf26e3}} 
+\#define \hyperlink{error_8h_a41e6e3e467fd9759770dab4e31cf26e3}{M\+\_\+\+R\+E\+Q\+U\+I\+R\+E\+\_\+\+N\+O\+N\+\_\+\+N\+U\+L\+L\+\_\+\+C\+U\+S\+T\+O\+M\+\_\+\+E\+RR}(arg,  \hyperlink{error_8h_a88a76ee847c844cc47b94caac600689d}{error\+\_\+code})~\hyperlink{error_8h_a83c518271b7028053a924a3cff9e5e58}{M\+\_\+\+R\+E\+Q\+U\+I\+RE}(arg != N\+U\+LL, \hyperlink{error_8h_a88a76ee847c844cc47b94caac600689d}{error\+\_\+code}, \char`\"{}parameter \%s is N\+U\+LL\char`\"{}, \#arg)
+\begin{DoxyCompactList}\small\item\em M\+\_\+\+R\+E\+Q\+U\+I\+R\+E\+\_\+\+N\+O\+N\+\_\+\+N\+U\+L\+L\+\_\+\+C\+U\+S\+T\+O\+M\+\_\+\+E\+RR macro is usefull to check for non N\+U\+LL argument. Example usage\+: \hyperlink{error_8h_a41e6e3e467fd9759770dab4e31cf26e3}{M\+\_\+\+R\+E\+Q\+U\+I\+R\+E\+\_\+\+N\+O\+N\+\_\+\+N\+U\+L\+L\+\_\+\+C\+U\+S\+T\+O\+M\+\_\+\+E\+R\+R(key, E\+R\+R\+\_\+\+I\+O)};. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{error_8h_a4844a3230620ca133e511ff9de77f452}\label{error_8h_a4844a3230620ca133e511ff9de77f452}} 
+\#define \hyperlink{error_8h_a4844a3230620ca133e511ff9de77f452}{M\+\_\+\+R\+E\+Q\+U\+I\+R\+E\+\_\+\+N\+O\+N\+\_\+\+N\+U\+LL}(arg)~\hyperlink{error_8h_a41e6e3e467fd9759770dab4e31cf26e3}{M\+\_\+\+R\+E\+Q\+U\+I\+R\+E\+\_\+\+N\+O\+N\+\_\+\+N\+U\+L\+L\+\_\+\+C\+U\+S\+T\+O\+M\+\_\+\+E\+RR}(arg, E\+R\+R\+\_\+\+B\+A\+D\+\_\+\+P\+A\+R\+A\+M\+E\+T\+ER)
+\begin{DoxyCompactList}\small\item\em M\+\_\+\+R\+E\+Q\+U\+I\+R\+E\+\_\+\+N\+O\+N\+\_\+\+N\+U\+LL macro is a shortcut for M\+\_\+\+R\+E\+Q\+U\+I\+R\+E\+\_\+\+N\+O\+N\+\_\+\+N\+U\+L\+L\+\_\+\+C\+U\+S\+T\+O\+M\+\_\+\+E\+RR returning E\+R\+R\+\_\+\+B\+A\+D\+\_\+\+P\+A\+R\+A\+M\+E\+T\+ER. Example usage\+: \hyperlink{error_8h_a4844a3230620ca133e511ff9de77f452}{M\+\_\+\+R\+E\+Q\+U\+I\+R\+E\+\_\+\+N\+O\+N\+\_\+\+N\+U\+L\+L(key)};. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{error_8h_a88a76ee847c844cc47b94caac600689d}\label{error_8h_a88a76ee847c844cc47b94caac600689d}} 
+enum \hyperlink{error_8h_a88a76ee847c844cc47b94caac600689d}{error\+\_\+code} \{ \newline
+{\bfseries E\+R\+R\+\_\+\+C\+L\+A\+N\+G\+\_\+\+T\+Y\+P\+E\+\_\+\+F\+IX} = -\/1, 
+{\bfseries E\+R\+R\+\_\+\+N\+O\+NE} = 0, 
+{\bfseries E\+R\+R\+\_\+\+M\+EM}, 
+{\bfseries E\+R\+R\+\_\+\+IO}, 
+\newline
+{\bfseries E\+R\+R\+\_\+\+B\+A\+D\+\_\+\+P\+A\+R\+A\+M\+E\+T\+ER}, 
+{\bfseries E\+R\+R\+\_\+\+A\+D\+D\+R\+E\+SS}, 
+{\bfseries E\+R\+R\+\_\+\+I\+N\+S\+TR}, 
+{\bfseries E\+R\+R\+\_\+\+N\+O\+T\+\_\+\+I\+M\+P\+L\+E\+M\+E\+N\+T\+ED}, 
+\newline
+{\bfseries N\+B\+\_\+\+E\+RR}
+ \}\begin{DoxyCompactList}\small\item\em internal error codes. \end{DoxyCompactList}
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{error_8h_ab32e44b131cc0439431081f6e955894e}\label{error_8h_ab32e44b131cc0439431081f6e955894e}} 
+const char $\ast$const \hyperlink{error_8h_ab32e44b131cc0439431081f6e955894e}{E\+R\+R\+\_\+\+M\+E\+S\+S\+A\+G\+ES} \mbox{[}$\,$\mbox{]}
+\begin{DoxyCompactList}\small\item\em internal error messages. defined in \hyperlink{error_8c}{error.\+c} \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Error codes for P\+P\+S-\/\+G\+Bemul project. 
+
+\begin{DoxyAuthor}{Author}
+E. Bugnion, J.-\/C. Chappelier, V. Rousset 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2016-\/2019 
+\end{DoxyDate}
+
+
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{error_8h_a3191f6e6f4ab18558fdcb9c442403f80}\label{error_8h_a3191f6e6f4ab18558fdcb9c442403f80}} 
+\index{error.\+h@{error.\+h}!M\+\_\+\+E\+X\+IT@{M\+\_\+\+E\+X\+IT}}
+\index{M\+\_\+\+E\+X\+IT@{M\+\_\+\+E\+X\+IT}!error.\+h@{error.\+h}}
+\subsubsection{\texorpdfstring{M\+\_\+\+E\+X\+IT}{M\_EXIT}}
+{\footnotesize\ttfamily \#define M\+\_\+\+E\+X\+IT(\begin{DoxyParamCaption}\item[{}]{\hyperlink{error_8h_a88a76ee847c844cc47b94caac600689d}{error\+\_\+code},  }\item[{}]{fmt,  }\item[{}]{... }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+\textcolor{keywordflow}{do} \{ \(\backslash\)
+        debug\_print(fmt, \_\_VA\_ARGS\_\_); \(\backslash\)
+        return \hyperlink{error_8h_a88a76ee847c844cc47b94caac600689d}{error\_code}; \(\backslash\)
+    \} \textcolor{keywordflow}{while}(0)
+\end{DoxyCode}
+
+
+M\+\_\+\+E\+X\+IT macro is usefull to return an error code from a function with a debug message. Example usage\+: M\+\_\+\+E\+X\+IT(E\+R\+R\+\_\+\+B\+A\+D\+\_\+\+P\+A\+R\+A\+M\+E\+T\+ER, \char`\"{}unable to do something decent with value \%lu\char`\"{}, i);. 
+
+\mbox{\Hypertarget{error_8h_a204838ff5f4cfc9255d0411e2926e4f2}\label{error_8h_a204838ff5f4cfc9255d0411e2926e4f2}} 
+\index{error.\+h@{error.\+h}!M\+\_\+\+E\+X\+I\+T\+\_\+\+E\+RR@{M\+\_\+\+E\+X\+I\+T\+\_\+\+E\+RR}}
+\index{M\+\_\+\+E\+X\+I\+T\+\_\+\+E\+RR@{M\+\_\+\+E\+X\+I\+T\+\_\+\+E\+RR}!error.\+h@{error.\+h}}
+\subsubsection{\texorpdfstring{M\+\_\+\+E\+X\+I\+T\+\_\+\+E\+RR}{M\_EXIT\_ERR}}
+{\footnotesize\ttfamily \#define M\+\_\+\+E\+X\+I\+T\+\_\+\+E\+RR(\begin{DoxyParamCaption}\item[{}]{\hyperlink{error_8h_a88a76ee847c844cc47b94caac600689d}{error\+\_\+code},  }\item[{}]{fmt,  }\item[{}]{... }\end{DoxyParamCaption})~\hyperlink{error_8h_a3191f6e6f4ab18558fdcb9c442403f80}{M\+\_\+\+E\+X\+IT}(\hyperlink{error_8h_a88a76ee847c844cc47b94caac600689d}{error\+\_\+code}, \char`\"{}error\+: \%s\char`\"{} fmt, \hyperlink{error_8h_ab32e44b131cc0439431081f6e955894e}{E\+R\+R\+\_\+\+M\+E\+S\+S\+A\+G\+ES}\mbox{[}\hyperlink{error_8h_a88a76ee847c844cc47b94caac600689d}{error\+\_\+code} -\/ E\+R\+R\+\_\+\+N\+O\+NE\mbox{]}, \+\_\+\+\_\+\+V\+A\+\_\+\+A\+R\+G\+S\+\_\+\+\_\+)}
+
+
+
+M\+\_\+\+E\+X\+I\+T\+\_\+\+E\+RR macro is a kind of M\+\_\+\+E\+X\+IT, indicating (in debug mode) the error message corresponding to the error code, followed by the message passed in argument. 
+
+Example usage\+: M\+\_\+\+E\+X\+I\+T\+\_\+\+E\+RR(E\+R\+R\+\_\+\+B\+A\+D\+\_\+\+P\+A\+R\+A\+M\+E\+T\+ER, \char`\"{}unable to generate from \%lu\char`\"{}, i); \mbox{\Hypertarget{error_8h_a3a98d2af14977ff74a1a4d65aed56834}\label{error_8h_a3a98d2af14977ff74a1a4d65aed56834}} 
+\index{error.\+h@{error.\+h}!M\+\_\+\+E\+X\+I\+T\+\_\+\+IF@{M\+\_\+\+E\+X\+I\+T\+\_\+\+IF}}
+\index{M\+\_\+\+E\+X\+I\+T\+\_\+\+IF@{M\+\_\+\+E\+X\+I\+T\+\_\+\+IF}!error.\+h@{error.\+h}}
+\subsubsection{\texorpdfstring{M\+\_\+\+E\+X\+I\+T\+\_\+\+IF}{M\_EXIT\_IF}}
+{\footnotesize\ttfamily \#define M\+\_\+\+E\+X\+I\+T\+\_\+\+IF(\begin{DoxyParamCaption}\item[{}]{test,  }\item[{}]{\hyperlink{error_8h_a88a76ee847c844cc47b94caac600689d}{error\+\_\+code},  }\item[{}]{fmt,  }\item[{}]{... }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+\textcolor{keywordflow}{do} \{ \(\backslash\)
+        if (test) \{ \(\backslash\)
+            M\_EXIT\_ERR(\hyperlink{error_8h_a88a76ee847c844cc47b94caac600689d}{error\_code}, fmt, \_\_VA\_ARGS\_\_); \(\backslash\)
+        \} \(\backslash\)
+    \} \textcolor{keywordflow}{while}(0)
+\end{DoxyCode}
+
+
+M\+\_\+\+E\+X\+I\+T\+\_\+\+IF macro calls M\+\_\+\+E\+X\+I\+T\+\_\+\+E\+RR only if provided test is true. Example usage\+: M\+\_\+\+E\+X\+I\+T\+\_\+\+IF(i $>$ 3, E\+R\+R\+\_\+\+B\+A\+D\+\_\+\+P\+A\+R\+A\+M\+E\+T\+ER, \char`\"{}third argument value (\%lu) is too high ($>$ 3)\char`\"{}, i);. 
+
+\mbox{\Hypertarget{error_8h_aa07a7d2c59d0eafcd4f15b58ea94ad79}\label{error_8h_aa07a7d2c59d0eafcd4f15b58ea94ad79}} 
+\index{error.\+h@{error.\+h}!M\+\_\+\+E\+X\+I\+T\+\_\+\+I\+F\+\_\+\+E\+R\+R\+\_\+\+D\+O\+\_\+\+S\+O\+M\+E\+T\+H\+I\+NG@{M\+\_\+\+E\+X\+I\+T\+\_\+\+I\+F\+\_\+\+E\+R\+R\+\_\+\+D\+O\+\_\+\+S\+O\+M\+E\+T\+H\+I\+NG}}
+\index{M\+\_\+\+E\+X\+I\+T\+\_\+\+I\+F\+\_\+\+E\+R\+R\+\_\+\+D\+O\+\_\+\+S\+O\+M\+E\+T\+H\+I\+NG@{M\+\_\+\+E\+X\+I\+T\+\_\+\+I\+F\+\_\+\+E\+R\+R\+\_\+\+D\+O\+\_\+\+S\+O\+M\+E\+T\+H\+I\+NG}!error.\+h@{error.\+h}}
+\subsubsection{\texorpdfstring{M\+\_\+\+E\+X\+I\+T\+\_\+\+I\+F\+\_\+\+E\+R\+R\+\_\+\+D\+O\+\_\+\+S\+O\+M\+E\+T\+H\+I\+NG}{M\_EXIT\_IF\_ERR\_DO\_SOMETHING}}
+{\footnotesize\ttfamily \#define M\+\_\+\+E\+X\+I\+T\+\_\+\+I\+F\+\_\+\+E\+R\+R\+\_\+\+D\+O\+\_\+\+S\+O\+M\+E\+T\+H\+I\+NG(\begin{DoxyParamCaption}\item[{}]{call\+\_\+one,  }\item[{}]{call\+\_\+two }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+\textcolor{keywordflow}{do} \{ \(\backslash\)
+        const \hyperlink{error_8h_a88a76ee847c844cc47b94caac600689d}{error\_code} retVal = call\_one; \(\backslash\)
+        if (retVal != ERR\_NONE) \{ \(\backslash\)
+            call\_two; \(\backslash\)
+            M\_EXIT\_ERR(retVal, \textcolor{stringliteral}{", when calling: %s"}, #call\_one); \(\backslash\)
+        \} \(\backslash\)
+    \} \textcolor{keywordflow}{while}(0)
+\end{DoxyCode}
+
+
+M\+\_\+\+E\+X\+I\+T\+\_\+\+I\+F\+\_\+\+E\+R\+R\+\_\+\+D\+O\+\_\+\+S\+O\+M\+E\+T\+H\+I\+NG macro is a shortcut for M\+\_\+\+E\+X\+I\+T\+\_\+\+IF testing if some error occured, i.\+e. if error {\ttfamily ret} is different from E\+R\+R\+\_\+\+N\+O\+NE, first executing some code (typically to disallocated ressources and displaying the call which causes the error . Example usage\+: M\+\_\+\+E\+X\+I\+T\+\_\+\+I\+F\+\_\+\+E\+R\+R\+\_\+\+D\+O\+\_\+\+S\+O\+M\+E\+T\+H\+I\+NG(foo(a, b), free(p));. 
+
+\mbox{\Hypertarget{error_8h_ab9b94bddb647208ef65592261936ca21}\label{error_8h_ab9b94bddb647208ef65592261936ca21}} 
+\index{error.\+h@{error.\+h}!M\+\_\+\+E\+X\+I\+T\+\_\+\+I\+F\+\_\+\+E\+R\+R\+\_\+\+M\+SG@{M\+\_\+\+E\+X\+I\+T\+\_\+\+I\+F\+\_\+\+E\+R\+R\+\_\+\+M\+SG}}
+\index{M\+\_\+\+E\+X\+I\+T\+\_\+\+I\+F\+\_\+\+E\+R\+R\+\_\+\+M\+SG@{M\+\_\+\+E\+X\+I\+T\+\_\+\+I\+F\+\_\+\+E\+R\+R\+\_\+\+M\+SG}!error.\+h@{error.\+h}}
+\subsubsection{\texorpdfstring{M\+\_\+\+E\+X\+I\+T\+\_\+\+I\+F\+\_\+\+E\+R\+R\+\_\+\+M\+SG}{M\_EXIT\_IF\_ERR\_MSG}}
+{\footnotesize\ttfamily \#define M\+\_\+\+E\+X\+I\+T\+\_\+\+I\+F\+\_\+\+E\+R\+R\+\_\+\+M\+SG(\begin{DoxyParamCaption}\item[{}]{ret,  }\item[{}]{name }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+\textcolor{keywordflow}{do} \{ \(\backslash\)
+        const \hyperlink{error_8h_a88a76ee847c844cc47b94caac600689d}{error\_code} retVal = ret; \(\backslash\)
+        M\_EXIT\_IF(retVal != ERR\_NONE, retVal, \textcolor{stringliteral}{"%s"}, name);   \(\backslash\)
+    \} \textcolor{keywordflow}{while}(0)
+\end{DoxyCode}
+
+
+M\+\_\+\+E\+X\+I\+T\+\_\+\+I\+F\+\_\+\+E\+R\+R\+\_\+\+M\+SG macro is a shortcut for M\+\_\+\+E\+X\+I\+T\+\_\+\+IF testing if some error occured, i.\+e. if error {\ttfamily ret} is different from E\+R\+R\+\_\+\+N\+O\+NE, and displaying some explaination. Without explaination, see M\+\_\+\+E\+X\+I\+T\+\_\+\+I\+F\+\_\+\+E\+RR below. Example usage\+: M\+\_\+\+E\+X\+I\+T\+\_\+\+I\+F\+\_\+\+E\+R\+R\+\_\+\+M\+SG(foo(a, b), \char`\"{}calling foo()\char`\"{});. 
+
+\mbox{\Hypertarget{error_8h_aa9bf7e135d8472dd4cb42aa4096537a4}\label{error_8h_aa9bf7e135d8472dd4cb42aa4096537a4}} 
+\index{error.\+h@{error.\+h}!M\+\_\+\+E\+X\+I\+T\+\_\+\+I\+F\+\_\+\+T\+R\+A\+I\+L\+I\+N\+G\+\_\+\+W\+I\+T\+H\+\_\+\+C\+O\+DE@{M\+\_\+\+E\+X\+I\+T\+\_\+\+I\+F\+\_\+\+T\+R\+A\+I\+L\+I\+N\+G\+\_\+\+W\+I\+T\+H\+\_\+\+C\+O\+DE}}
+\index{M\+\_\+\+E\+X\+I\+T\+\_\+\+I\+F\+\_\+\+T\+R\+A\+I\+L\+I\+N\+G\+\_\+\+W\+I\+T\+H\+\_\+\+C\+O\+DE@{M\+\_\+\+E\+X\+I\+T\+\_\+\+I\+F\+\_\+\+T\+R\+A\+I\+L\+I\+N\+G\+\_\+\+W\+I\+T\+H\+\_\+\+C\+O\+DE}!error.\+h@{error.\+h}}
+\subsubsection{\texorpdfstring{M\+\_\+\+E\+X\+I\+T\+\_\+\+I\+F\+\_\+\+T\+R\+A\+I\+L\+I\+N\+G\+\_\+\+W\+I\+T\+H\+\_\+\+C\+O\+DE}{M\_EXIT\_IF\_TRAILING\_WITH\_CODE}}
+{\footnotesize\ttfamily \#define M\+\_\+\+E\+X\+I\+T\+\_\+\+I\+F\+\_\+\+T\+R\+A\+I\+L\+I\+N\+G\+\_\+\+W\+I\+T\+H\+\_\+\+C\+O\+DE(\begin{DoxyParamCaption}\item[{}]{file,  }\item[{}]{code }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+\textcolor{keywordflow}{do} \{ \(\backslash\)
+        if (getc(file) != \textcolor{charliteral}{'\(\backslash\)n'}) \{ \(\backslash\)
+            code; \(\backslash\)
+            M\_EXIT\_ERR(ERR\_BAD\_PARAMETER, \textcolor{stringliteral}{", trailing chars on \(\backslash\)"%s\(\backslash\)""}, #file); \(\backslash\)
+        \} \(\backslash\)
+    \} \textcolor{keywordflow}{while}(0)
+\end{DoxyCode}
+
+
+M\+\_\+\+E\+X\+I\+T\+\_\+\+I\+F\+\_\+\+T\+R\+A\+I\+L\+I\+N\+G\+\_\+\+W\+I\+T\+H\+\_\+\+C\+O\+DE macro is similar to M\+\_\+\+E\+X\+I\+T\+\_\+\+I\+F\+\_\+\+T\+R\+A\+I\+L\+I\+NG but allows to run some code before exiting. Example usage\+: M\+\_\+\+E\+X\+I\+T\+\_\+\+I\+F\+\_\+\+T\+R\+A\+I\+L\+I\+N\+G\+\_\+\+W\+I\+T\+H\+\_\+\+C\+O\+DE(stdin, \{ free(something); \} );. 
+
+\mbox{\Hypertarget{error_8h_a83c518271b7028053a924a3cff9e5e58}\label{error_8h_a83c518271b7028053a924a3cff9e5e58}} 
+\index{error.\+h@{error.\+h}!M\+\_\+\+R\+E\+Q\+U\+I\+RE@{M\+\_\+\+R\+E\+Q\+U\+I\+RE}}
+\index{M\+\_\+\+R\+E\+Q\+U\+I\+RE@{M\+\_\+\+R\+E\+Q\+U\+I\+RE}!error.\+h@{error.\+h}}
+\subsubsection{\texorpdfstring{M\+\_\+\+R\+E\+Q\+U\+I\+RE}{M\_REQUIRE}}
+{\footnotesize\ttfamily \#define M\+\_\+\+R\+E\+Q\+U\+I\+RE(\begin{DoxyParamCaption}\item[{}]{test,  }\item[{}]{\hyperlink{error_8h_a88a76ee847c844cc47b94caac600689d}{error\+\_\+code},  }\item[{}]{fmt,  }\item[{}]{... }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+\textcolor{keywordflow}{do} \{ \(\backslash\)
+        if (!(test)) \{ \(\backslash\)
+             M\_EXIT(\hyperlink{error_8h_a88a76ee847c844cc47b94caac600689d}{error\_code}, fmt, \_\_VA\_ARGS\_\_); \(\backslash\)
+        \} \(\backslash\)
+    \} \textcolor{keywordflow}{while}(0)
+\end{DoxyCode}
+
+
+M\+\_\+\+R\+E\+Q\+U\+I\+RE macro is similar to M\+\_\+\+E\+X\+I\+T\+\_\+\+IF but with two differences\+: 1) making use of the N\+E\+G\+A\+T\+I\+ON of the test (thus \char`\"{}require\char`\"{}) 2) making use of M\+\_\+\+E\+X\+IT rather than M\+\_\+\+E\+X\+I\+T\+\_\+\+E\+RR Example usage\+: M\+\_\+\+R\+E\+Q\+U\+I\+RE(i $<$= 3, E\+R\+R\+\_\+\+B\+A\+D\+\_\+\+P\+A\+R\+A\+M\+E\+T\+ER, \char`\"{}input value (\%lu) is too high ($>$ 3)\char`\"{}, i);. 
+

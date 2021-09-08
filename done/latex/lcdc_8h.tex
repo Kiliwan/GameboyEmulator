@@ -1,0 +1,276 @@
+\hypertarget{lcdc_8h}{}\section{lcdc.\+h File Reference}
+\label{lcdc_8h}\index{lcdc.\+h@{lcdc.\+h}}
+
+
+Game Boy L\+CD (liquid cristal display) controller simulation header.  
+
+
+{\ttfamily \#include \char`\"{}cpu.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}component.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}memory.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}bit.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}image.\+h\char`\"{}}\newline
+Include dependency graph for lcdc.\+h\+:
+% FIG 0
+This graph shows which files directly or indirectly include this file\+:
+% FIG 1
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structlcdc__t}{lcdc\+\_\+t}
+\begin{DoxyCompactList}\small\item\em lcdc type \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{lcdc_8h_a4124a455880e37060d4de2a21c9dcb17}\label{lcdc_8h_a4124a455880e37060d4de2a21c9dcb17}} 
+\#define {\bfseries R\+E\+G\+\_\+\+L\+C\+DC}~0x\+F\+F40
+\item 
+\mbox{\Hypertarget{lcdc_8h_a16cb55f1e05a630c9e356cf90607a78c}\label{lcdc_8h_a16cb55f1e05a630c9e356cf90607a78c}} 
+\#define {\bfseries R\+E\+G\+\_\+\+S\+T\+AT}~0x\+F\+F41
+\item 
+\mbox{\Hypertarget{lcdc_8h_ac4b23d58a1a6ae2df1e3209c6623b933}\label{lcdc_8h_ac4b23d58a1a6ae2df1e3209c6623b933}} 
+\#define {\bfseries R\+E\+G\+\_\+\+S\+CY}~0x\+F\+F42
+\item 
+\mbox{\Hypertarget{lcdc_8h_a1e29bb55dbcff68fd67f8a6203b45c97}\label{lcdc_8h_a1e29bb55dbcff68fd67f8a6203b45c97}} 
+\#define {\bfseries R\+E\+G\+\_\+\+S\+CX}~0x\+F\+F43
+\item 
+\mbox{\Hypertarget{lcdc_8h_afc526e0e7b4b4bf2ed95ef5745db38e9}\label{lcdc_8h_afc526e0e7b4b4bf2ed95ef5745db38e9}} 
+\#define {\bfseries R\+E\+G\+\_\+\+LY}~0x\+F\+F44
+\item 
+\mbox{\Hypertarget{lcdc_8h_aff618c890ffce980da0f3cba612de5ec}\label{lcdc_8h_aff618c890ffce980da0f3cba612de5ec}} 
+\#define {\bfseries R\+E\+G\+\_\+\+L\+YC}~0x\+F\+F45
+\item 
+\mbox{\Hypertarget{lcdc_8h_ae3dbd89703f60cc5909ff26bca119db8}\label{lcdc_8h_ae3dbd89703f60cc5909ff26bca119db8}} 
+\#define {\bfseries R\+E\+G\+\_\+\+D\+MA}~0x\+F\+F46
+\item 
+\mbox{\Hypertarget{lcdc_8h_a55a0d9df84e7e71c81aa4113e7c8b85e}\label{lcdc_8h_a55a0d9df84e7e71c81aa4113e7c8b85e}} 
+\#define {\bfseries R\+E\+G\+\_\+\+B\+GP}~0x\+F\+F47
+\item 
+\mbox{\Hypertarget{lcdc_8h_af0a834fb45ca7eff4b7fc7539d66516c}\label{lcdc_8h_af0a834fb45ca7eff4b7fc7539d66516c}} 
+\#define {\bfseries R\+E\+G\+\_\+\+O\+B\+P0}~0x\+F\+F48
+\item 
+\mbox{\Hypertarget{lcdc_8h_a4a22c8735bb5bc52176a15c953487501}\label{lcdc_8h_a4a22c8735bb5bc52176a15c953487501}} 
+\#define {\bfseries R\+E\+G\+\_\+\+O\+B\+P1}~0x\+F\+F49
+\item 
+\mbox{\Hypertarget{lcdc_8h_a2ec80d3ea8cc317c62ca70d595c8c309}\label{lcdc_8h_a2ec80d3ea8cc317c62ca70d595c8c309}} 
+\#define {\bfseries R\+E\+G\+\_\+\+WY}~0x\+F\+F4A
+\item 
+\mbox{\Hypertarget{lcdc_8h_a4f73088bc34b4449794682952ed6f0c1}\label{lcdc_8h_a4f73088bc34b4449794682952ed6f0c1}} 
+\#define {\bfseries R\+E\+G\+\_\+\+WX}~0x\+F\+F4B
+\item 
+\mbox{\Hypertarget{lcdc_8h_a19693eac3018d3e7800fde141921b812}\label{lcdc_8h_a19693eac3018d3e7800fde141921b812}} 
+\#define {\bfseries L\+C\+D\+\_\+\+W\+I\+D\+TH}~160
+\item 
+\mbox{\Hypertarget{lcdc_8h_a53a8b2a971de4b88047192655a48b651}\label{lcdc_8h_a53a8b2a971de4b88047192655a48b651}} 
+\#define {\bfseries L\+C\+D\+\_\+\+H\+E\+I\+G\+HT}~144
+\item 
+\mbox{\Hypertarget{lcdc_8h_a4ed933a1f05cd7cb4d2ab3df6b2bd0ad}\label{lcdc_8h_a4ed933a1f05cd7cb4d2ab3df6b2bd0ad}} 
+\#define {\bfseries V\+B\+L\+A\+N\+K\+\_\+\+L\+I\+N\+ES}~10
+\item 
+\mbox{\Hypertarget{lcdc_8h_a9c142b877954130a77c9d57873f3ce87}\label{lcdc_8h_a9c142b877954130a77c9d57873f3ce87}} 
+\#define {\bfseries L\+I\+N\+E\+\_\+\+M\+O\+D\+E\+\_\+2\+\_\+\+C\+Y\+C\+L\+ES}~20
+\item 
+\mbox{\Hypertarget{lcdc_8h_a285e2aa33bbcac60608fb1fbd113cc32}\label{lcdc_8h_a285e2aa33bbcac60608fb1fbd113cc32}} 
+\#define {\bfseries L\+I\+N\+E\+\_\+\+M\+O\+D\+E\+\_\+3\+\_\+\+C\+Y\+C\+L\+ES}~43
+\item 
+\mbox{\Hypertarget{lcdc_8h_a4892183be375477846481f8c7715513e}\label{lcdc_8h_a4892183be375477846481f8c7715513e}} 
+\#define {\bfseries L\+I\+N\+E\+\_\+\+M\+O\+D\+E\+\_\+0\+\_\+\+C\+Y\+C\+L\+ES}~51
+\item 
+\mbox{\Hypertarget{lcdc_8h_a68183f74f868760a21f674078fca628c}\label{lcdc_8h_a68183f74f868760a21f674078fca628c}} 
+\#define {\bfseries L\+I\+N\+E\+\_\+\+M\+O\+D\+E\+\_\+2\+\_\+\+S\+T\+A\+R\+T\+\_\+\+C\+Y\+C\+LE}~0
+\item 
+\mbox{\Hypertarget{lcdc_8h_ac62d8482a5ee533a31bd3b2701014803}\label{lcdc_8h_ac62d8482a5ee533a31bd3b2701014803}} 
+\#define {\bfseries L\+I\+N\+E\+\_\+\+M\+O\+D\+E\+\_\+3\+\_\+\+S\+T\+A\+R\+T\+\_\+\+C\+Y\+C\+LE}~(L\+I\+N\+E\+\_\+\+M\+O\+D\+E\+\_\+2\+\_\+\+S\+T\+A\+R\+T\+\_\+\+C\+Y\+C\+LE + L\+I\+N\+E\+\_\+\+M\+O\+D\+E\+\_\+2\+\_\+\+C\+Y\+C\+L\+ES)
+\item 
+\mbox{\Hypertarget{lcdc_8h_a150f6de2bc9f0bf4b6ded64c021579c9}\label{lcdc_8h_a150f6de2bc9f0bf4b6ded64c021579c9}} 
+\#define {\bfseries L\+I\+N\+E\+\_\+\+M\+O\+D\+E\+\_\+0\+\_\+\+S\+T\+A\+R\+T\+\_\+\+C\+Y\+C\+LE}~(L\+I\+N\+E\+\_\+\+M\+O\+D\+E\+\_\+3\+\_\+\+S\+T\+A\+R\+T\+\_\+\+C\+Y\+C\+LE + L\+I\+N\+E\+\_\+\+M\+O\+D\+E\+\_\+3\+\_\+\+C\+Y\+C\+L\+ES)
+\item 
+\mbox{\Hypertarget{lcdc_8h_ad169ca8b1081ea23f121a0b1749d9a95}\label{lcdc_8h_ad169ca8b1081ea23f121a0b1749d9a95}} 
+\#define {\bfseries L\+I\+N\+E\+\_\+\+T\+O\+T\+A\+L\+\_\+\+C\+Y\+C\+L\+ES}~(L\+I\+N\+E\+\_\+\+M\+O\+D\+E\+\_\+2\+\_\+\+C\+Y\+C\+L\+ES + L\+I\+N\+E\+\_\+\+M\+O\+D\+E\+\_\+3\+\_\+\+C\+Y\+C\+L\+ES + L\+I\+N\+E\+\_\+\+M\+O\+D\+E\+\_\+0\+\_\+\+C\+Y\+C\+L\+ES)
+\item 
+\mbox{\Hypertarget{lcdc_8h_a9ac78de8dc6f82bef78f6a8bf3bf4644}\label{lcdc_8h_a9ac78de8dc6f82bef78f6a8bf3bf4644}} 
+\#define {\bfseries F\+R\+A\+M\+E\+\_\+\+T\+O\+T\+A\+L\+\_\+\+C\+Y\+C\+L\+ES}~((L\+C\+D\+\_\+\+H\+E\+I\+G\+HT + V\+B\+L\+A\+N\+K\+\_\+\+L\+I\+N\+ES) $\ast$ L\+I\+N\+E\+\_\+\+T\+O\+T\+A\+L\+\_\+\+C\+Y\+C\+L\+ES)
+\item 
+\mbox{\Hypertarget{lcdc_8h_a6e4635f73fdb80b5f14083b6830aa649}\label{lcdc_8h_a6e4635f73fdb80b5f14083b6830aa649}} 
+\#define {\bfseries L\+C\+D\+C\+\_\+\+R\+E\+G\+\_\+\+B\+G\+\_\+\+M\+A\+SK}~0x01
+\item 
+\mbox{\Hypertarget{lcdc_8h_a0b6663b8280d594cf2637adcc6bfc220}\label{lcdc_8h_a0b6663b8280d594cf2637adcc6bfc220}} 
+\#define {\bfseries L\+C\+D\+C\+\_\+\+R\+E\+G\+\_\+\+O\+B\+J\+\_\+\+M\+A\+SK}~0x02
+\item 
+\mbox{\Hypertarget{lcdc_8h_a82fdd94274c18ce35d90ce6265933eb7}\label{lcdc_8h_a82fdd94274c18ce35d90ce6265933eb7}} 
+\#define {\bfseries L\+C\+D\+C\+\_\+\+R\+E\+G\+\_\+\+O\+B\+J\+\_\+\+S\+I\+Z\+E\+\_\+\+M\+A\+SK}~0x04
+\item 
+\mbox{\Hypertarget{lcdc_8h_a38aa037ac3e48d3465a52d5cc1ca8392}\label{lcdc_8h_a38aa037ac3e48d3465a52d5cc1ca8392}} 
+\#define {\bfseries L\+C\+D\+C\+\_\+\+R\+E\+G\+\_\+\+B\+G\+\_\+\+A\+R\+E\+A\+\_\+\+M\+A\+SK}~0x08
+\item 
+\mbox{\Hypertarget{lcdc_8h_a0555a171fd97ade6550a2acc3a743e52}\label{lcdc_8h_a0555a171fd97ade6550a2acc3a743e52}} 
+\#define {\bfseries L\+C\+D\+C\+\_\+\+R\+E\+G\+\_\+\+T\+I\+L\+E\+\_\+\+S\+O\+U\+R\+C\+E\+\_\+\+M\+A\+SK}~0x10
+\item 
+\mbox{\Hypertarget{lcdc_8h_aeca123635eb2194260829d3fefb7d327}\label{lcdc_8h_aeca123635eb2194260829d3fefb7d327}} 
+\#define {\bfseries L\+C\+D\+C\+\_\+\+R\+E\+G\+\_\+\+W\+I\+N\+\_\+\+M\+A\+SK}~0x20
+\item 
+\mbox{\Hypertarget{lcdc_8h_a7b7db74ddcadf06181b0781de5ff8b19}\label{lcdc_8h_a7b7db74ddcadf06181b0781de5ff8b19}} 
+\#define {\bfseries L\+C\+D\+C\+\_\+\+R\+E\+G\+\_\+\+W\+I\+N\+\_\+\+A\+R\+E\+A\+\_\+\+M\+A\+SK}~0x40
+\item 
+\mbox{\Hypertarget{lcdc_8h_adb38efa214ee626b8c3f80a74432891b}\label{lcdc_8h_adb38efa214ee626b8c3f80a74432891b}} 
+\#define {\bfseries L\+C\+D\+C\+\_\+\+R\+E\+G\+\_\+\+L\+C\+D\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+M\+A\+SK}~0x80
+\item 
+\mbox{\Hypertarget{lcdc_8h_aedb98b75f60c2344ba4943d0dcbf149a}\label{lcdc_8h_aedb98b75f60c2344ba4943d0dcbf149a}} 
+\#define {\bfseries S\+T\+A\+T\+\_\+\+R\+E\+G\+\_\+\+M\+O\+D\+E\+\_\+\+M\+A\+SK}~0x03
+\item 
+\mbox{\Hypertarget{lcdc_8h_a3b92a067117d2ba592597386a8337642}\label{lcdc_8h_a3b92a067117d2ba592597386a8337642}} 
+\#define {\bfseries S\+T\+A\+T\+\_\+\+R\+E\+G\+\_\+\+L\+Y\+C\+\_\+\+E\+Q\+\_\+\+L\+Y\+\_\+\+B\+IT}~2
+\item 
+\mbox{\Hypertarget{lcdc_8h_a3d2e7e5992af0375a1a9fc742869792c}\label{lcdc_8h_a3d2e7e5992af0375a1a9fc742869792c}} 
+\#define {\bfseries S\+T\+A\+T\+\_\+\+R\+E\+G\+\_\+\+I\+N\+T\+\_\+\+L\+Y\+C\+\_\+\+B\+IT}~6
+\item 
+\mbox{\Hypertarget{lcdc_8h_a384ecc660162daf506bf668a3417031a}\label{lcdc_8h_a384ecc660162daf506bf668a3417031a}} 
+\#define {\bfseries T\+I\+L\+E\+\_\+\+A\+D\+D\+R\+\_\+\+B\+A\+S\+E\+\_\+\+L\+OW}~0x9800
+\item 
+\mbox{\Hypertarget{lcdc_8h_aec273aa04885cff25a23f553cac66858}\label{lcdc_8h_aec273aa04885cff25a23f553cac66858}} 
+\#define {\bfseries T\+I\+L\+E\+\_\+\+A\+D\+D\+R\+\_\+\+B\+A\+S\+E\+\_\+\+H\+I\+GH}~0x9\+C00
+\item 
+\mbox{\Hypertarget{lcdc_8h_acfe5859757f6b8a7b97812a453d3680c}\label{lcdc_8h_acfe5859757f6b8a7b97812a453d3680c}} 
+\#define {\bfseries T\+I\+L\+E\+\_\+\+S\+R\+C\+\_\+\+A\+D\+D\+R\+\_\+\+L\+OW}~0x8000
+\item 
+\mbox{\Hypertarget{lcdc_8h_af55d25e22f2ed18d4fada032ce129902}\label{lcdc_8h_af55d25e22f2ed18d4fada032ce129902}} 
+\#define {\bfseries T\+I\+L\+E\+\_\+\+S\+R\+C\+\_\+\+A\+D\+D\+R\+\_\+\+H\+I\+GH}~0x8800
+\item 
+\mbox{\Hypertarget{lcdc_8h_a62ecd70800687eb2d625af180c4210d7}\label{lcdc_8h_a62ecd70800687eb2d625af180c4210d7}} 
+\#define {\bfseries T\+I\+L\+E\+\_\+\+S\+I\+ZE}~16
+\item 
+\mbox{\Hypertarget{lcdc_8h_ae1c23804ab2c1cbffd368d3383452b41}\label{lcdc_8h_ae1c23804ab2c1cbffd368d3383452b41}} 
+\#define {\bfseries T\+I\+L\+E\+\_\+\+L\+I\+N\+E\+\_\+\+S\+I\+ZE}~32
+\item 
+\mbox{\Hypertarget{lcdc_8h_ac239dcbe53a467ce738f8b3c1ab5111d}\label{lcdc_8h_ac239dcbe53a467ce738f8b3c1ab5111d}} 
+\#define {\bfseries V\+I\+S\+I\+B\+L\+E\+\_\+\+L\+I\+N\+E\+\_\+\+S\+I\+ZE}~20
+\item 
+\mbox{\Hypertarget{lcdc_8h_a8a709f3324b8b6bb45ecb91c72a85503}\label{lcdc_8h_a8a709f3324b8b6bb45ecb91c72a85503}} 
+\#define {\bfseries W\+I\+N\+D\+O\+W\+\_\+\+O\+F\+F\+S\+E\+T\+\_\+X}~7
+\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{lcdc_8h_a2cb2b175773604522266a634186a69ff}\label{lcdc_8h_a2cb2b175773604522266a634186a69ff}} 
+typedef struct \hyperlink{structgameboy__}{gameboy\+\_\+} {\bfseries gameboy\+\_\+t}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{lcdc_8h_a32f20cbec90a91cdcfa4f431eaca5e40}{lcdc\+\_\+init} (\hyperlink{structgameboy__}{gameboy\+\_\+t} $\ast$gb)
+\begin{DoxyCompactList}\small\item\em Initiates a L\+CD controler. \end{DoxyCompactList}\item 
+void \hyperlink{lcdc_8h_a7ee217ecda56ba43885d28e9bc88db28}{lcdc\+\_\+free} (\hyperlink{structlcdc__t}{lcdc\+\_\+t} $\ast$lcd)
+\begin{DoxyCompactList}\small\item\em Frees a L\+CD controler. \end{DoxyCompactList}\item 
+int \hyperlink{lcdc_8h_af18ee9344fcaecc446b5a06eeee99cff}{lcdc\+\_\+plug} (\hyperlink{structlcdc__t}{lcdc\+\_\+t} $\ast$lcd, \hyperlink{bus_8h_a68c80bdf896e826e4cb082244ce35427}{bus\+\_\+t} bus)
+\begin{DoxyCompactList}\small\item\em Plugs a L\+CD controler onto the bus. \end{DoxyCompactList}\item 
+int \hyperlink{lcdc_8h_a06427e18d9c6e68d068de553e434ea1f}{lcdc\+\_\+cycle} (\hyperlink{structlcdc__t}{lcdc\+\_\+t} $\ast$lcd, uint64\+\_\+t cycle)
+\begin{DoxyCompactList}\small\item\em Run one L\+CD controler cycle. \end{DoxyCompactList}\item 
+int \hyperlink{lcdc_8h_af7a54a7dfda2051169f5b8d5f02e5ee6}{lcdc\+\_\+bus\+\_\+listener} (\hyperlink{structlcdc__t}{lcdc\+\_\+t} $\ast$lcd, \hyperlink{memory_8h_a8a6444037e4d5cc2bf8ba22a9d9e33ca}{addr\+\_\+t} addr)
+\begin{DoxyCompactList}\small\item\em L\+CD controler bus listening handler. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Game Boy L\+CD (liquid cristal display) controller simulation header. 
+
+\begin{DoxyAuthor}{Author}
+J.-\/C. Chappelier 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2020 
+\end{DoxyDate}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{lcdc_8h_af7a54a7dfda2051169f5b8d5f02e5ee6}\label{lcdc_8h_af7a54a7dfda2051169f5b8d5f02e5ee6}} 
+\index{lcdc.\+h@{lcdc.\+h}!lcdc\+\_\+bus\+\_\+listener@{lcdc\+\_\+bus\+\_\+listener}}
+\index{lcdc\+\_\+bus\+\_\+listener@{lcdc\+\_\+bus\+\_\+listener}!lcdc.\+h@{lcdc.\+h}}
+\subsubsection{\texorpdfstring{lcdc\+\_\+bus\+\_\+listener()}{lcdc\_bus\_listener()}}
+{\footnotesize\ttfamily int lcdc\+\_\+bus\+\_\+listener (\begin{DoxyParamCaption}\item[{\hyperlink{structlcdc__t}{lcdc\+\_\+t} $\ast$}]{lcd,  }\item[{\hyperlink{memory_8h_a8a6444037e4d5cc2bf8ba22a9d9e33ca}{addr\+\_\+t}}]{addr }\end{DoxyParamCaption})}
+
+
+
+L\+CD controler bus listening handler. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em lcd} & L\+CD controler \\
+\hline
+{\em address} & trigger address \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+error code 
+\end{DoxyReturn}
+\mbox{\Hypertarget{lcdc_8h_a06427e18d9c6e68d068de553e434ea1f}\label{lcdc_8h_a06427e18d9c6e68d068de553e434ea1f}} 
+\index{lcdc.\+h@{lcdc.\+h}!lcdc\+\_\+cycle@{lcdc\+\_\+cycle}}
+\index{lcdc\+\_\+cycle@{lcdc\+\_\+cycle}!lcdc.\+h@{lcdc.\+h}}
+\subsubsection{\texorpdfstring{lcdc\+\_\+cycle()}{lcdc\_cycle()}}
+{\footnotesize\ttfamily int lcdc\+\_\+cycle (\begin{DoxyParamCaption}\item[{\hyperlink{structlcdc__t}{lcdc\+\_\+t} $\ast$}]{lcd,  }\item[{uint64\+\_\+t}]{cycle }\end{DoxyParamCaption})}
+
+
+
+Run one L\+CD controler cycle. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em lcd} & L\+CD controler to cycle \\
+\hline
+{\em cycle} & the current cycle number \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+error code 
+\end{DoxyReturn}
+\mbox{\Hypertarget{lcdc_8h_a7ee217ecda56ba43885d28e9bc88db28}\label{lcdc_8h_a7ee217ecda56ba43885d28e9bc88db28}} 
+\index{lcdc.\+h@{lcdc.\+h}!lcdc\+\_\+free@{lcdc\+\_\+free}}
+\index{lcdc\+\_\+free@{lcdc\+\_\+free}!lcdc.\+h@{lcdc.\+h}}
+\subsubsection{\texorpdfstring{lcdc\+\_\+free()}{lcdc\_free()}}
+{\footnotesize\ttfamily void lcdc\+\_\+free (\begin{DoxyParamCaption}\item[{\hyperlink{structlcdc__t}{lcdc\+\_\+t} $\ast$}]{lcd }\end{DoxyParamCaption})}
+
+
+
+Frees a L\+CD controler. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em lcd} & L\+CD controler to free \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{lcdc_8h_a32f20cbec90a91cdcfa4f431eaca5e40}\label{lcdc_8h_a32f20cbec90a91cdcfa4f431eaca5e40}} 
+\index{lcdc.\+h@{lcdc.\+h}!lcdc\+\_\+init@{lcdc\+\_\+init}}
+\index{lcdc\+\_\+init@{lcdc\+\_\+init}!lcdc.\+h@{lcdc.\+h}}
+\subsubsection{\texorpdfstring{lcdc\+\_\+init()}{lcdc\_init()}}
+{\footnotesize\ttfamily int lcdc\+\_\+init (\begin{DoxyParamCaption}\item[{\hyperlink{structgameboy__}{gameboy\+\_\+t} $\ast$}]{gb }\end{DoxyParamCaption})}
+
+
+
+Initiates a L\+CD controler. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em gb} & Game Boy, the screen of which has to be initalized \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+error code 
+\end{DoxyReturn}
+\mbox{\Hypertarget{lcdc_8h_af18ee9344fcaecc446b5a06eeee99cff}\label{lcdc_8h_af18ee9344fcaecc446b5a06eeee99cff}} 
+\index{lcdc.\+h@{lcdc.\+h}!lcdc\+\_\+plug@{lcdc\+\_\+plug}}
+\index{lcdc\+\_\+plug@{lcdc\+\_\+plug}!lcdc.\+h@{lcdc.\+h}}
+\subsubsection{\texorpdfstring{lcdc\+\_\+plug()}{lcdc\_plug()}}
+{\footnotesize\ttfamily int lcdc\+\_\+plug (\begin{DoxyParamCaption}\item[{\hyperlink{structlcdc__t}{lcdc\+\_\+t} $\ast$}]{lcd,  }\item[{\hyperlink{bus_8h_a68c80bdf896e826e4cb082244ce35427}{bus\+\_\+t}}]{bus }\end{DoxyParamCaption})}
+
+
+
+Plugs a L\+CD controler onto the bus. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em lcd} & L\+CD controler to plug \\
+\hline
+{\em bus} & bus to plug onto \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+error code 
+\end{DoxyReturn}

@@ -1,0 +1,26 @@
+digraph "cartridge.h"
+{
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  Node13 [label="cartridge.h",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node13 -> Node14 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node14 [label="gameboy.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$gameboy_8h.html",tooltip="Gameboy Header for GameBoy Emulator. "];
+  Node14 -> Node15 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node15 [label="bootrom.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$bootrom_8h.html",tooltip="Game Boy Boot ROM. "];
+  Node14 -> Node16 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node16 [label="cpu-storage.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$cpu-storage_8h.html",tooltip="CPU model for PPS-GBemul project, storage part. "];
+  Node16 -> Node17 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node17 [label="cpu-alu.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$cpu-alu_8h.html",tooltip="CPU model for PPS-GBemul project, ALU part. "];
+  Node17 -> Node18 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node18 [label="cpu-alu.c",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$cpu-alu_8c.html",tooltip="Game Boy CPU simulation, ALU part asked to students. "];
+  Node17 -> Node19 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node19 [label="cpu.c",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$cpu_8c.html",tooltip="Game Boy CPU simulation. "];
+  Node19 -> Node20 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node20 [label="unit-test-cpu-dispatch.c",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$unit-test-cpu-dispatch_8c.html",tooltip="Unit test for cpu dispatch function. "];
+  Node17 -> Node21 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node21 [label="unit-test-cpu.c",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$unit-test-cpu_8c.html",tooltip="Unit test for cpu and related functions. "];
+  Node16 -> Node19 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node16 -> Node21 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node13 -> Node22 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node22 [label="unit-test-cartridge.c",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$unit-test-cartridge_8c.html",tooltip="Unit test code for cartridge and related functions. "];
+}

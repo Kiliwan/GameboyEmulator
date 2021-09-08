@@ -1,0 +1,511 @@
+\hypertarget{unit-test-cpu-dispatch_8c}{}\section{unit-\/test-\/cpu-\/dispatch.c File Reference}
+\label{unit-test-cpu-dispatch_8c}\index{unit-\/test-\/cpu-\/dispatch.\+c@{unit-\/test-\/cpu-\/dispatch.\+c}}
+
+
+Unit test for cpu dispatch function.  
+
+
+{\ttfamily \#include $<$time.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$sys/types.\+h$>$}\newline
+{\ttfamily \#include $<$unistd.\+h$>$}\newline
+{\ttfamily \#include $<$pthread.\+h$>$}\newline
+{\ttfamily \#include $<$check.\+h$>$}\newline
+{\ttfamily \#include $<$inttypes.\+h$>$}\newline
+{\ttfamily \#include $<$assert.\+h$>$}\newline
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}tests.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}error.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}alu.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}cpu.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}opcode.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}bit.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}util.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}unit-\/test-\/cpu-\/dispatch.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}cpu.\+c\char`\"{}}\newline
+Include dependency graph for unit-\/test-\/cpu-\/dispatch.c\+:
+% FIG 0
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define {\bfseries R\+U\+N\+\_\+\+D\+I\+S\+P\+A\+T\+C\+H\+\_\+\+A\+L\+U\+\_\+A}(input\+\_\+a,  input\+\_\+f,  expected\+\_\+v,  expected\+\_\+f, ...)
+\item 
+\#define {\bfseries R\+U\+N\+\_\+\+D\+I\+S\+P\+A\+T\+C\+H\+\_\+\+A\+L\+U\+\_\+\+H\+L\+\_\+S}(input\+\_\+a,  input\+\_\+f,  expected\+\_\+v,  expected\+\_\+f, ...)
+\item 
+\mbox{\Hypertarget{unit-test-cpu-dispatch_8c_ad224c11f2b4405e798e012f2e216f6c4}\label{unit-test-cpu-dispatch_8c_ad224c11f2b4405e798e012f2e216f6c4}} 
+\#define {\bfseries S\+U\+B\+\_\+\+I\+N\+\_\+\+D\+A\+T\+A\+\_\+A}~\{0x00, 0x00, 0x01, 0x01, 0x02, 0x02, 0x04, 0x08, 0x08, 0x00, 0x00, 0x01, 0x01, 0x\+E\+F, 0x80, 0x\+F\+F, 0x0\+F, 0x00, 0x00, 0x01, 0x01, 0x\+E\+F, 0x80, 0x\+F\+F, 0x0\+F\}
+\item 
+\mbox{\Hypertarget{unit-test-cpu-dispatch_8c_a97a58d9be7b1f799ce7241b5c72bafbf}\label{unit-test-cpu-dispatch_8c_a97a58d9be7b1f799ce7241b5c72bafbf}} 
+\#define {\bfseries S\+U\+B\+\_\+\+I\+N\+\_\+\+D\+A\+T\+A\+\_\+B}~\{0x00, 0x00, 0x01, 0x01, 0x02, 0x02, 0x04, 0x08, 0x08, 0x00, 0x01, 0x00, 0x0\+F, 0x01, 0x80, 0x\+F\+F, 0x\+F1, 0x00, 0x01, 0x00, 0x0\+F, 0x01, 0x80, 0x\+F\+F, 0x\+F1\}
+\item 
+\mbox{\Hypertarget{unit-test-cpu-dispatch_8c_aed6c5bf5bf00496207486e3914ac0cec}\label{unit-test-cpu-dispatch_8c_aed6c5bf5bf00496207486e3914ac0cec}} 
+\#define {\bfseries S\+U\+B\+\_\+\+I\+N\+\_\+\+F\+L\+AG}~\{0x00, 0x10, 0x00, 0x10, 0x00, 0x10, 0x00, 0x00, 0x10, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x\+F0, 0x\+F0, 0x\+F0, 0x\+F0, 0x\+F0, 0x\+F0, 0x\+F0, 0x\+F0\}
+\item 
+\mbox{\Hypertarget{unit-test-cpu-dispatch_8c_a83788455f68eac79f9fbb48100031c55}\label{unit-test-cpu-dispatch_8c_a83788455f68eac79f9fbb48100031c55}} 
+\#define {\bfseries S\+U\+B\+\_\+\+O\+U\+T\+\_\+\+D\+A\+TA}~\{0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x\+F\+F, 0x01, 0x\+F2, 0x\+E\+E, 0x00, 0x00, 0x1\+E, 0x00, 0x\+F\+F, 0x01, 0x\+F2, 0x\+E\+E, 0x00, 0x00, 0x1\+E\}
+\item 
+\mbox{\Hypertarget{unit-test-cpu-dispatch_8c_a241e08d55cc7ade6859c9cd9293e4a45}\label{unit-test-cpu-dispatch_8c_a241e08d55cc7ade6859c9cd9293e4a45}} 
+\#define {\bfseries S\+U\+B\+\_\+\+O\+U\+T\+\_\+\+F\+L\+AG}~\{0x\+C0, 0x\+C0, 0x\+C0, 0x\+C0, 0x\+C0, 0x\+C0, 0x\+C0, 0x\+C0, 0x\+C0, 0x\+C0, 0x70, 0x40, 0x70, 0x40, 0x\+C0, 0x\+C0, 0x50, 0x\+C0, 0x70, 0x40, 0x70, 0x40, 0x\+C0, 0x\+C0, 0x50\}
+\item 
+\mbox{\Hypertarget{unit-test-cpu-dispatch_8c_abfa2dcf4f03c6c5d74854d48aec18548}\label{unit-test-cpu-dispatch_8c_abfa2dcf4f03c6c5d74854d48aec18548}} 
+\#define {\bfseries S\+U\+B\+\_\+\+O\+U\+T\+\_\+\+S\+\_\+\+D\+A\+TA}~\{0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00\}
+\item 
+\mbox{\Hypertarget{unit-test-cpu-dispatch_8c_a9c9721a601578ce247115487e69375c6}\label{unit-test-cpu-dispatch_8c_a9c9721a601578ce247115487e69375c6}} 
+\#define {\bfseries S\+U\+B\+\_\+\+O\+U\+T\+\_\+\+S\+\_\+\+F\+L\+AG}~\{0x\+C0, 0x\+C0, 0x\+C0, 0x\+C0, 0x\+C0, 0x\+C0, 0x\+C0, 0x\+C0, 0x\+C0, 0x\+C0, 0x\+C0, 0x\+C0, 0x\+C0, 0x\+C0, 0x\+C0, 0x\+C0, 0x\+C0, 0x\+C0, 0x\+C0, 0x\+C0, 0x\+C0, 0x\+C0, 0x\+C0, 0x\+C0, 0x\+C0\}
+\item 
+\mbox{\Hypertarget{unit-test-cpu-dispatch_8c_a82eed4c782439d39142ddbdd911090a0}\label{unit-test-cpu-dispatch_8c_a82eed4c782439d39142ddbdd911090a0}} 
+\#define {\bfseries S\+U\+B\+\_\+\+O\+U\+T\+\_\+\+C\+\_\+\+D\+A\+TA}~\{0x00, 0x\+F\+F, 0x00, 0x\+F\+F, 0x00, 0x\+F\+F, 0x00, 0x00, 0x\+F\+F, 0x00, 0x\+F\+F, 0x01, 0x\+F2, 0x\+E\+E, 0x00, 0x00, 0x1\+E, 0x\+F\+F, 0x\+F\+E, 0x00, 0x\+F1, 0x\+E\+D, 0x\+F\+F, 0x\+F\+F, 0x1\+D\}
+\item 
+\mbox{\Hypertarget{unit-test-cpu-dispatch_8c_a740c259cf08a9a231c29d4de0015673c}\label{unit-test-cpu-dispatch_8c_a740c259cf08a9a231c29d4de0015673c}} 
+\#define {\bfseries S\+U\+B\+\_\+\+O\+U\+T\+\_\+\+C\+\_\+\+F\+L\+AG}~\{0x\+C0, 0x70, 0x\+C0, 0x70, 0x\+C0, 0x70, 0x\+C0, 0x\+C0, 0x70, 0x\+C0, 0x70, 0x40, 0x70, 0x40, 0x\+C0, 0x\+C0, 0x50, 0x70, 0x70, 0x\+C0, 0x70, 0x40, 0x70, 0x70, 0x50\}
+\item 
+\mbox{\Hypertarget{unit-test-cpu-dispatch_8c_aae8a6a7276a1df10c3a7ed1766a3bf3b}\label{unit-test-cpu-dispatch_8c_aae8a6a7276a1df10c3a7ed1766a3bf3b}} 
+\#define {\bfseries S\+U\+B\+\_\+\+O\+U\+T\+\_\+\+S\+C\+\_\+\+D\+A\+TA}~\{0x00, 0x\+F\+F, 0x00, 0x\+F\+F, 0x00, 0x\+F\+F, 0x00, 0x00, 0x\+F\+F, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x\+F\+F, 0x\+F\+F, 0x\+F\+F, 0x\+F\+F, 0x\+F\+F, 0x\+F\+F, 0x\+F\+F, 0x\+F\+F\}
+\item 
+\mbox{\Hypertarget{unit-test-cpu-dispatch_8c_a17607a97ae4b0294acd737762fce6982}\label{unit-test-cpu-dispatch_8c_a17607a97ae4b0294acd737762fce6982}} 
+\#define {\bfseries S\+U\+B\+\_\+\+O\+U\+T\+\_\+\+S\+C\+\_\+\+F\+L\+AG}~\{0x\+C0, 0x70, 0x\+C0, 0x70, 0x\+C0, 0x70, 0x\+C0, 0x\+C0, 0x70, 0x\+C0, 0x\+C0, 0x\+C0, 0x\+C0, 0x\+C0, 0x\+C0, 0x\+C0, 0x\+C0, 0x70, 0x70, 0x70, 0x70, 0x70, 0x70, 0x70, 0x70\}
+\item 
+\mbox{\Hypertarget{unit-test-cpu-dispatch_8c_ac01175fcbadda6ede6d46f45ff32dcce}\label{unit-test-cpu-dispatch_8c_ac01175fcbadda6ede6d46f45ff32dcce}} 
+\#define {\bfseries D\+E\+C\+\_\+\+I\+N\+\_\+\+D\+A\+TA}~\{0x00, 0x01, 0x\+F\+F, 0x\+F\+E, 0x10, 0x11, 0xdd, 0xbb, 0x0\+F, 0x00, 0x\+F\+F, 0x\+F0\}
+\item 
+\mbox{\Hypertarget{unit-test-cpu-dispatch_8c_ab8601c4621ff89d1ec09cb5369a5d1b0}\label{unit-test-cpu-dispatch_8c_ab8601c4621ff89d1ec09cb5369a5d1b0}} 
+\#define {\bfseries D\+E\+C\+\_\+\+I\+N\+\_\+\+F\+L\+AG}~\{0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x\+F0, 0x\+F0, 0x\+F0\}
+\item 
+\mbox{\Hypertarget{unit-test-cpu-dispatch_8c_ab7d97e7e3da9bd8bf9fe13b0a85c7a5b}\label{unit-test-cpu-dispatch_8c_ab7d97e7e3da9bd8bf9fe13b0a85c7a5b}} 
+\#define {\bfseries D\+E\+C\+\_\+\+O\+U\+T\+\_\+\+D\+A\+TA}~\{0x\+F\+F, 0x00, 0x\+F\+E, 0x\+F\+D, 0x0\+F, 0x10, 0xdc, 0xba, 0x0\+E, 0x\+F\+F, 0x\+F\+E, 0x\+E\+F\}
+\item 
+\mbox{\Hypertarget{unit-test-cpu-dispatch_8c_ad5714c88847280577f6abc6d2654c73d}\label{unit-test-cpu-dispatch_8c_ad5714c88847280577f6abc6d2654c73d}} 
+\#define {\bfseries D\+E\+C\+\_\+\+O\+U\+T\+\_\+\+F\+L\+AG}~\{0x60, 0x\+C0, 0x40, 0x40, 0x60, 0x40, 0x40, 0x40, 0x40, 0x70, 0x50, 0x70\}
+\item 
+\mbox{\Hypertarget{unit-test-cpu-dispatch_8c_a49e4317e944feb62eaa6a69f2e7a2922}\label{unit-test-cpu-dispatch_8c_a49e4317e944feb62eaa6a69f2e7a2922}} 
+\#define {\bfseries D\+E\+C\+\_\+\+I\+N\+\_\+\+D\+A\+T\+A16}~\{0x1000, 0x0000, 0x\+F\+F\+F\+F, 0x\+F\+F\+F0, 0x0001, 0x\+F000, 0xdead, 0x\+B011, 0x\+B005, 0x0000, 0x\+F\+F\+F\+F\}
+\item 
+\mbox{\Hypertarget{unit-test-cpu-dispatch_8c_a3bbea8e4629c9375196d7bc75478768a}\label{unit-test-cpu-dispatch_8c_a3bbea8e4629c9375196d7bc75478768a}} 
+\#define {\bfseries D\+E\+C\+\_\+\+I\+N\+\_\+\+F\+L\+A\+G16}~\{  0x00,   0x00,   0x00,   0x00,   0x80,   0x00,   0x00,   0x00,   0x00,   0x\+F0,   0x\+F0\}
+\item 
+\mbox{\Hypertarget{unit-test-cpu-dispatch_8c_ae8b7cd663c73eacf5c6011b50bcf5203}\label{unit-test-cpu-dispatch_8c_ae8b7cd663c73eacf5c6011b50bcf5203}} 
+\#define {\bfseries D\+E\+C\+\_\+\+O\+U\+T\+\_\+\+D\+A\+T\+A16}~\{0x0\+F\+F\+F, 0x\+F\+F\+F\+F, 0x\+F\+F\+F\+E, 0x\+F\+F\+E\+F, 0x0000, 0x\+E\+F\+F\+F, 0xdeac, 0x\+B010, 0x\+B004, 0x\+F\+F\+F\+F, 0x\+F\+F\+F\+E\}
+\item 
+\mbox{\Hypertarget{unit-test-cpu-dispatch_8c_a1e043adae6874806212dfe6367ae4850}\label{unit-test-cpu-dispatch_8c_a1e043adae6874806212dfe6367ae4850}} 
+\#define {\bfseries D\+E\+C\+\_\+\+O\+U\+T\+\_\+\+F\+L\+A\+G16}~\{  0x00,   0x00,   0x00,   0x00,   0x80,   0x00,   0x00,   0x00,   0x00,   0x\+F0,   0x\+F0\}
+\item 
+\mbox{\Hypertarget{unit-test-cpu-dispatch_8c_adaf9c49f99e1ed08592629d00ff1ca0d}\label{unit-test-cpu-dispatch_8c_adaf9c49f99e1ed08592629d00ff1ca0d}} 
+\#define {\bfseries A\+N\+D\+\_\+\+I\+N\+\_\+\+D\+A\+T\+A\+\_\+A}~\{0x00, 0x00, 0x01, 0x01, 0x02, 0x02, 0x04, 0x08, 0x08, 0x00, 0x\+F\+F\}
+\item 
+\mbox{\Hypertarget{unit-test-cpu-dispatch_8c_af49770246c2634bf353d3d2511a1eb40}\label{unit-test-cpu-dispatch_8c_af49770246c2634bf353d3d2511a1eb40}} 
+\#define {\bfseries A\+N\+D\+\_\+\+I\+N\+\_\+\+D\+A\+T\+A\+\_\+B}~\{0x00, 0x00, 0x01, 0x01, 0x02, 0x03, 0x03, 0x08, 0x0\+F, 0x00, 0x\+F\+F\}
+\item 
+\mbox{\Hypertarget{unit-test-cpu-dispatch_8c_a81d2e7a323679f487fef407559c0c44b}\label{unit-test-cpu-dispatch_8c_a81d2e7a323679f487fef407559c0c44b}} 
+\#define {\bfseries A\+N\+D\+\_\+\+I\+N\+\_\+\+F\+L\+AG}~\{0x00, 0x10, 0x00, 0x10, 0x00, 0x10, 0x00, 0x00, 0x10, 0x\+F0, 0x\+F0\}
+\item 
+\mbox{\Hypertarget{unit-test-cpu-dispatch_8c_a00b92d39fb3d1e3837c7b33c897dad65}\label{unit-test-cpu-dispatch_8c_a00b92d39fb3d1e3837c7b33c897dad65}} 
+\#define {\bfseries A\+N\+D\+\_\+\+O\+U\+T\+\_\+\+D\+A\+TA}~\{0x00, 0x00, 0x01, 0x01, 0x02, 0x02, 0x00, 0x08, 0x08, 0x00, 0x\+F\+F\}
+\item 
+\mbox{\Hypertarget{unit-test-cpu-dispatch_8c_a6b6259d71981920f07a962bb08270caa}\label{unit-test-cpu-dispatch_8c_a6b6259d71981920f07a962bb08270caa}} 
+\#define {\bfseries A\+N\+D\+\_\+\+O\+U\+T\+\_\+\+F\+L\+AG}~\{0x\+A0, 0x\+A0, 0x20, 0x20, 0x20, 0x20, 0x\+A0, 0x20, 0x20, 0x\+A0, 0x20\}
+\item 
+\mbox{\Hypertarget{unit-test-cpu-dispatch_8c_ac484f884c76cec8b1ac9b2f85fcd1946}\label{unit-test-cpu-dispatch_8c_ac484f884c76cec8b1ac9b2f85fcd1946}} 
+\#define {\bfseries A\+N\+D\+\_\+\+O\+U\+T\+\_\+\+S\+\_\+\+D\+A\+TA}~\{0x00, 0x00, 0x01, 0x01, 0x02, 0x02, 0x04, 0x08, 0x08, 0x00, 0x\+F\+F\}
+\item 
+\mbox{\Hypertarget{unit-test-cpu-dispatch_8c_a4ce5e43158d077c400a459fe8c29e956}\label{unit-test-cpu-dispatch_8c_a4ce5e43158d077c400a459fe8c29e956}} 
+\#define {\bfseries A\+N\+D\+\_\+\+O\+U\+T\+\_\+\+S\+\_\+\+F\+L\+AG}~\{0x\+A0, 0x\+A0, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x\+A0, 0x20\}
+\item 
+\mbox{\Hypertarget{unit-test-cpu-dispatch_8c_ad16d557e9d511f29ab5ec1c8485ac3bc}\label{unit-test-cpu-dispatch_8c_ad16d557e9d511f29ab5ec1c8485ac3bc}} 
+\#define {\bfseries O\+R\+\_\+\+I\+N\+\_\+\+D\+A\+T\+A\+\_\+A}~\{0x00, 0x0\+F, 0x00, 0x03, 0x00, 0x\+F\+F, 0x00\}
+\item 
+\mbox{\Hypertarget{unit-test-cpu-dispatch_8c_a14579b23c0ebf2af29e41fd8c4423821}\label{unit-test-cpu-dispatch_8c_a14579b23c0ebf2af29e41fd8c4423821}} 
+\#define {\bfseries O\+R\+\_\+\+I\+N\+\_\+\+D\+A\+T\+A\+\_\+B}~\{0x00, 0x00, 0x0\+F, 0x0\+C, 0x00, 0x\+F\+F, 0x\+F\+F\}
+\item 
+\mbox{\Hypertarget{unit-test-cpu-dispatch_8c_add12e62946da3c76902c8aecc5bdf09e}\label{unit-test-cpu-dispatch_8c_add12e62946da3c76902c8aecc5bdf09e}} 
+\#define {\bfseries O\+R\+\_\+\+I\+N\+\_\+\+F\+L\+AG}~\{0x00, 0x00, 0x00, 0x00, 0x\+F0, 0x\+F0, 0x\+F0\}
+\item 
+\mbox{\Hypertarget{unit-test-cpu-dispatch_8c_a6880246013c39711d5d6305143dcc755}\label{unit-test-cpu-dispatch_8c_a6880246013c39711d5d6305143dcc755}} 
+\#define {\bfseries O\+R\+\_\+\+O\+U\+T\+\_\+\+D\+A\+TA}~\{0x00, 0x0\+F, 0x0\+F, 0x0\+F, 0x00, 0x\+F\+F, 0x\+F\+F\}
+\item 
+\mbox{\Hypertarget{unit-test-cpu-dispatch_8c_ad141183d588fe9d3f2b2bdef402eac8a}\label{unit-test-cpu-dispatch_8c_ad141183d588fe9d3f2b2bdef402eac8a}} 
+\#define {\bfseries O\+R\+\_\+\+O\+U\+T\+\_\+\+F\+L\+AG}~\{0x80, 0x00, 0x00, 0x00, 0x80, 0x00, 0x00\}
+\item 
+\mbox{\Hypertarget{unit-test-cpu-dispatch_8c_aa90b9e72483a7450f20cef022496dbc8}\label{unit-test-cpu-dispatch_8c_aa90b9e72483a7450f20cef022496dbc8}} 
+\#define {\bfseries O\+R\+\_\+\+O\+U\+T\+\_\+\+S\+\_\+\+D\+A\+TA}~\{0x00, 0x0\+F, 0x00, 0x03, 0x00, 0x\+F\+F, 0x00\}
+\item 
+\mbox{\Hypertarget{unit-test-cpu-dispatch_8c_a44176d76efd0cb15bd9b9af0cb76e07c}\label{unit-test-cpu-dispatch_8c_a44176d76efd0cb15bd9b9af0cb76e07c}} 
+\#define {\bfseries O\+R\+\_\+\+O\+U\+T\+\_\+\+S\+\_\+\+F\+L\+AG}~\{0x80, 0x00, 0x80, 0x00, 0x80, 0x00, 0x80\}
+\item 
+\mbox{\Hypertarget{unit-test-cpu-dispatch_8c_a5e33a679a3fec9625b23bcf70a9c353c}\label{unit-test-cpu-dispatch_8c_a5e33a679a3fec9625b23bcf70a9c353c}} 
+\#define {\bfseries X\+O\+R\+\_\+\+I\+N\+\_\+\+D\+A\+T\+A\+\_\+A}~\{0x00, 0x0\+F, 0x00, 0x03, 0x00, 0x\+F\+F, 0x00, 0x\+F\+F, 0x00\}
+\item 
+\mbox{\Hypertarget{unit-test-cpu-dispatch_8c_ab0dc92eac08b718b03b28da447165958}\label{unit-test-cpu-dispatch_8c_ab0dc92eac08b718b03b28da447165958}} 
+\#define {\bfseries X\+O\+R\+\_\+\+I\+N\+\_\+\+D\+A\+T\+A\+\_\+B}~\{0x00, 0x00, 0x0\+F, 0x0\+C, 0x\+F\+F, 0x\+F\+F, 0x00, 0x\+F\+F, 0x\+F\+F\}
+\item 
+\mbox{\Hypertarget{unit-test-cpu-dispatch_8c_a4d9de72822427608084ba877dcecae5b}\label{unit-test-cpu-dispatch_8c_a4d9de72822427608084ba877dcecae5b}} 
+\#define {\bfseries X\+O\+R\+\_\+\+I\+N\+\_\+\+F\+L\+AG}~\{0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x\+F0, 0x\+F0, 0x\+F0\}
+\item 
+\mbox{\Hypertarget{unit-test-cpu-dispatch_8c_ae7d6b97fb63c54791fb3de16701c2168}\label{unit-test-cpu-dispatch_8c_ae7d6b97fb63c54791fb3de16701c2168}} 
+\#define {\bfseries X\+O\+R\+\_\+\+O\+U\+T\+\_\+\+D\+A\+TA}~\{0x00, 0x0\+F, 0x0\+F, 0x0\+F, 0x\+F\+F, 0x00, 0x00, 0x00, 0x\+F\+F\}
+\item 
+\mbox{\Hypertarget{unit-test-cpu-dispatch_8c_a01fad358e64ca1597ded327ef58cc30b}\label{unit-test-cpu-dispatch_8c_a01fad358e64ca1597ded327ef58cc30b}} 
+\#define {\bfseries X\+O\+R\+\_\+\+O\+U\+T\+\_\+\+F\+L\+AG}~\{0x80, 0x00, 0x00, 0x00, 0x00, 0x80, 0x80, 0x80, 0x00\}
+\item 
+\mbox{\Hypertarget{unit-test-cpu-dispatch_8c_ac4500fb0f0123f1a7ec3267d445b22a5}\label{unit-test-cpu-dispatch_8c_ac4500fb0f0123f1a7ec3267d445b22a5}} 
+\#define {\bfseries X\+O\+R\+\_\+\+O\+U\+T\+\_\+\+S\+\_\+\+D\+A\+TA}~\{0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00\}
+\item 
+\mbox{\Hypertarget{unit-test-cpu-dispatch_8c_aace6814daf7c1e2bb92a78926a9b9e37}\label{unit-test-cpu-dispatch_8c_aace6814daf7c1e2bb92a78926a9b9e37}} 
+\#define {\bfseries X\+O\+R\+\_\+\+O\+U\+T\+\_\+\+S\+\_\+\+F\+L\+AG}~\{0x80, 0x80, 0x80, 0x80, 0x80, 0x80, 0x80, 0x80, 0x80\}
+\item 
+\mbox{\Hypertarget{unit-test-cpu-dispatch_8c_a1b1bad255c4f1d4fc220e0994155f2d6}\label{unit-test-cpu-dispatch_8c_a1b1bad255c4f1d4fc220e0994155f2d6}} 
+\#define {\bfseries R\+O\+T\+\_\+\+I\+N\+\_\+\+D\+A\+TA}~\{0x00, 0x00, 0x0\+F, 0x\+F\+F, 0x03, 0x00, 0x\+F\+F, 0x\+F\+E, 0x01, 0x80, 0x00, 0x01, 0x10, 0x80, 0x08\}
+\item 
+\mbox{\Hypertarget{unit-test-cpu-dispatch_8c_a4a419f873e751b8a08366aac14e2be05}\label{unit-test-cpu-dispatch_8c_a4a419f873e751b8a08366aac14e2be05}} 
+\#define {\bfseries R\+O\+T\+\_\+\+I\+N\+\_\+\+F\+L\+AG}~\{0x00, 0x10, 0x00, 0x00, 0x00, 0x00, 0x10, 0x00, 0x00, 0x00, 0x\+F0, 0x\+F0, 0x\+F0, 0x\+F0, 0x\+F0\}
+\item 
+\mbox{\Hypertarget{unit-test-cpu-dispatch_8c_a177b320d65490cc2a7eec4bf91f01e53}\label{unit-test-cpu-dispatch_8c_a177b320d65490cc2a7eec4bf91f01e53}} 
+\#define {\bfseries R\+O\+T\+\_\+\+O\+U\+T\+\_\+\+L\+\_\+\+D\+A\+TA}~\{0x00, 0x01, 0x1\+E, 0x\+F\+E, 0x06, 0x00, 0x\+F\+F, 0x\+F\+C, 0x02, 0x00, 0x01, 0x03, 0x21, 0x01, 0x11\}
+\item 
+\mbox{\Hypertarget{unit-test-cpu-dispatch_8c_a0e3a94117a21f48e0f1cd06baaffddfc}\label{unit-test-cpu-dispatch_8c_a0e3a94117a21f48e0f1cd06baaffddfc}} 
+\#define {\bfseries R\+O\+T\+\_\+\+O\+U\+T\+\_\+\+L\+\_\+\+F\+L\+AG}~\{0x00, 0x00, 0x00, 0x10, 0x00, 0x00, 0x10, 0x10, 0x00, 0x10, 0x00, 0x00, 0x00, 0x10, 0x00\}
+\item 
+\mbox{\Hypertarget{unit-test-cpu-dispatch_8c_a419055a8e5762a8b7ff5a71eba09fc13}\label{unit-test-cpu-dispatch_8c_a419055a8e5762a8b7ff5a71eba09fc13}} 
+\#define {\bfseries R\+O\+T\+\_\+\+O\+U\+T\+\_\+\+L\+Z\+\_\+\+F\+L\+AG}~\{0x80, 0x00, 0x00, 0x10, 0x00, 0x80, 0x10, 0x10, 0x00, 0x90, 0x00, 0x00, 0x00, 0x10, 0x00\}
+\item 
+\mbox{\Hypertarget{unit-test-cpu-dispatch_8c_a249af367bbd32a0993c593cc2c991217}\label{unit-test-cpu-dispatch_8c_a249af367bbd32a0993c593cc2c991217}} 
+\#define {\bfseries R\+O\+T\+\_\+\+O\+U\+T\+\_\+\+R\+\_\+\+D\+A\+TA}~\{0x00, 0x80, 0x07, 0x7\+F, 0x01, 0x00, 0x\+F\+F, 0x7\+F, 0x00, 0x40, 0x80, 0x80, 0x88, 0x\+C0, 0x84\}
+\item 
+\mbox{\Hypertarget{unit-test-cpu-dispatch_8c_a6664545e08d920195e3cf443fd21e634}\label{unit-test-cpu-dispatch_8c_a6664545e08d920195e3cf443fd21e634}} 
+\#define {\bfseries R\+O\+T\+\_\+\+O\+U\+T\+\_\+\+R\+\_\+\+F\+L\+AG}~\{0x00, 0x00, 0x10, 0x10, 0x10, 0x00, 0x10, 0x00, 0x10, 0x00, 0x00, 0x10, 0x00, 0x00, 0x00\}
+\item 
+\mbox{\Hypertarget{unit-test-cpu-dispatch_8c_a213e9fd62d79000ca472d3528f144c4f}\label{unit-test-cpu-dispatch_8c_a213e9fd62d79000ca472d3528f144c4f}} 
+\#define {\bfseries R\+O\+T\+\_\+\+O\+U\+T\+\_\+\+R\+Z\+\_\+\+F\+L\+AG}~\{0x80, 0x00, 0x10, 0x10, 0x10, 0x80, 0x10, 0x00, 0x90, 0x00, 0x00, 0x10, 0x00, 0x00, 0x00\}
+\item 
+\mbox{\Hypertarget{unit-test-cpu-dispatch_8c_a3711f2a77c7cf5732a366c4068d7fdad}\label{unit-test-cpu-dispatch_8c_a3711f2a77c7cf5732a366c4068d7fdad}} 
+\#define {\bfseries R\+O\+T\+\_\+\+O\+U\+T\+\_\+\+L\+C\+\_\+\+D\+A\+TA}~\{0x00, 0x00, 0x1\+E, 0x\+F\+F, 0x06, 0x00, 0x\+F\+F, 0x\+F\+D, 0x02, 0x01, 0x00, 0x02, 0x20, 0x01, 0x10\}
+\item 
+\mbox{\Hypertarget{unit-test-cpu-dispatch_8c_ab5ee565c1df5d066e4d54b4f2c9c156a}\label{unit-test-cpu-dispatch_8c_ab5ee565c1df5d066e4d54b4f2c9c156a}} 
+\#define {\bfseries R\+O\+T\+\_\+\+O\+U\+T\+\_\+\+L\+C\+\_\+\+F\+L\+AG}~\{0x00, 0x00, 0x00, 0x10, 0x00, 0x00, 0x10, 0x10, 0x00, 0x10, 0x00, 0x00, 0x00, 0x10, 0x00\}
+\item 
+\mbox{\Hypertarget{unit-test-cpu-dispatch_8c_ae27a518a53cbc4c7702f89f664faa8e8}\label{unit-test-cpu-dispatch_8c_ae27a518a53cbc4c7702f89f664faa8e8}} 
+\#define {\bfseries R\+O\+T\+\_\+\+O\+U\+T\+\_\+\+L\+C\+Z\+\_\+\+F\+L\+AG}~\{0x80, 0x80, 0x00, 0x10, 0x00, 0x80, 0x10, 0x10, 0x00, 0x10, 0x80, 0x00, 0x00, 0x10, 0x00\}
+\item 
+\mbox{\Hypertarget{unit-test-cpu-dispatch_8c_ad736c0d09f8fb61c43e71cef82323e72}\label{unit-test-cpu-dispatch_8c_ad736c0d09f8fb61c43e71cef82323e72}} 
+\#define {\bfseries R\+O\+T\+\_\+\+O\+U\+T\+\_\+\+R\+C\+\_\+\+D\+A\+TA}~\{0x00, 0x00, 0x87, 0x\+F\+F, 0x81, 0x00, 0x\+F\+F, 0x7\+F, 0x80, 0x40, 0x00, 0x80, 0x08, 0x40, 0x04\}
+\item 
+\mbox{\Hypertarget{unit-test-cpu-dispatch_8c_aad91ad9949f9b186382357bbc68229f2}\label{unit-test-cpu-dispatch_8c_aad91ad9949f9b186382357bbc68229f2}} 
+\#define {\bfseries R\+O\+T\+\_\+\+O\+U\+T\+\_\+\+R\+C\+\_\+\+F\+L\+AG}~\{0x00, 0x00, 0x10, 0x10, 0x10, 0x00, 0x10, 0x00, 0x10, 0x00, 0x00, 0x10, 0x00, 0x00, 0x00\}
+\item 
+\mbox{\Hypertarget{unit-test-cpu-dispatch_8c_a3f8a29a8f5e9ed9d75fcf116a9e3792c}\label{unit-test-cpu-dispatch_8c_a3f8a29a8f5e9ed9d75fcf116a9e3792c}} 
+\#define {\bfseries R\+O\+T\+\_\+\+O\+U\+T\+\_\+\+R\+C\+Z\+\_\+\+F\+L\+AG}~\{0x80, 0x80, 0x10, 0x10, 0x10, 0x80, 0x10, 0x00, 0x10, 0x00, 0x80, 0x10, 0x00, 0x00, 0x00\}
+\item 
+\mbox{\Hypertarget{unit-test-cpu-dispatch_8c_a79005785ae5b5ae4d849dbcddb5a5351}\label{unit-test-cpu-dispatch_8c_a79005785ae5b5ae4d849dbcddb5a5351}} 
+\#define {\bfseries S\+H\+F\+T\+\_\+\+I\+N\+\_\+\+D\+A\+TA}~\{0x00, 0x00, 0x0\+F, 0x\+F\+F, 0x03, 0x00, 0x\+F\+F, 0x\+F\+E, 0x01, 0x02, 0x10, 0x80, 0x00, 0x01, 0x10, 0x08, 0x80\}
+\item 
+\mbox{\Hypertarget{unit-test-cpu-dispatch_8c_ab5cf7e1dff7ff6b2b45617aa6fe0622b}\label{unit-test-cpu-dispatch_8c_ab5cf7e1dff7ff6b2b45617aa6fe0622b}} 
+\#define {\bfseries S\+H\+F\+T\+\_\+\+I\+N\+\_\+\+F\+L\+AG}~\{0x00, 0x10, 0x00, 0x00, 0x00, 0x00, 0x10, 0x00, 0x00, 0x00, 0x00, 0x00, 0x\+F0, 0x\+F0, 0x\+F0, 0x\+F0, 0x\+F0\}
+\item 
+\mbox{\Hypertarget{unit-test-cpu-dispatch_8c_a65614f35143d06e558652fd1aca8a607}\label{unit-test-cpu-dispatch_8c_a65614f35143d06e558652fd1aca8a607}} 
+\#define {\bfseries S\+H\+F\+T\+\_\+\+O\+U\+T\+\_\+\+L\+\_\+\+D\+A\+TA}~\{0x00, 0x00, 0x1\+E, 0x\+F\+E, 0x06, 0x00, 0x\+F\+E, 0x\+F\+C, 0x02, 0x04, 0x20, 0x00, 0x00, 0x02, 0x20, 0x10, 0x00\}
+\item 
+\mbox{\Hypertarget{unit-test-cpu-dispatch_8c_a63831dda47d505750c15e301ae22df93}\label{unit-test-cpu-dispatch_8c_a63831dda47d505750c15e301ae22df93}} 
+\#define {\bfseries S\+H\+F\+T\+\_\+\+O\+U\+T\+\_\+\+L\+\_\+\+F\+L\+AG}~\{0x80, 0x80, 0x00, 0x10, 0x00, 0x80, 0x10, 0x10, 0x00, 0x00, 0x00, 0x90, 0x80, 0x00, 0x00, 0x00, 0x90\}
+\item 
+\mbox{\Hypertarget{unit-test-cpu-dispatch_8c_a5e1a2fe2b7ffee34dad5286708d85fbf}\label{unit-test-cpu-dispatch_8c_a5e1a2fe2b7ffee34dad5286708d85fbf}} 
+\#define {\bfseries S\+H\+F\+T\+\_\+\+O\+U\+T\+\_\+\+R\+\_\+\+D\+A\+TA}~\{0x00, 0x00, 0x07, 0x\+F\+F, 0x01, 0x00, 0x\+F\+F, 0x\+F\+F, 0x00, 0x01, 0x08, 0x\+C0, 0x00, 0x00, 0x08, 0x04, 0x\+C0\}
+\item 
+\mbox{\Hypertarget{unit-test-cpu-dispatch_8c_a4dc30257b036e8f158ed0ecad472f139}\label{unit-test-cpu-dispatch_8c_a4dc30257b036e8f158ed0ecad472f139}} 
+\#define {\bfseries S\+H\+F\+T\+\_\+\+O\+U\+T\+\_\+\+R\+\_\+\+F\+L\+AG}~\{0x80, 0x80, 0x10, 0x10, 0x10, 0x80, 0x10, 0x00, 0x90, 0x00, 0x00, 0x00, 0x80, 0x90, 0x00, 0x00, 0x00\}
+\item 
+\mbox{\Hypertarget{unit-test-cpu-dispatch_8c_ae1fc842fce3111f908998f2a12b4f417}\label{unit-test-cpu-dispatch_8c_ae1fc842fce3111f908998f2a12b4f417}} 
+\#define {\bfseries S\+H\+F\+T\+\_\+\+O\+U\+T\+\_\+\+R\+L\+\_\+\+D\+A\+TA}~\{0x00, 0x00, 0x07, 0x7\+F, 0x01, 0x00, 0x7\+F, 0x7\+F, 0x00, 0x01, 0x08, 0x40, 0x00, 0x00, 0x08, 0x04, 0x40\}
+\item 
+\mbox{\Hypertarget{unit-test-cpu-dispatch_8c_a7e50dfdeb9d1faa8476f5fe38c58c741}\label{unit-test-cpu-dispatch_8c_a7e50dfdeb9d1faa8476f5fe38c58c741}} 
+\#define {\bfseries S\+H\+F\+T\+\_\+\+O\+U\+T\+\_\+\+R\+L\+\_\+\+F\+L\+AG}~\{0x80, 0x80, 0x10, 0x10, 0x10, 0x80, 0x10, 0x00, 0x90, 0x00, 0x00, 0x00, 0x80, 0x90, 0x00, 0x00, 0x00\}
+\item 
+\mbox{\Hypertarget{unit-test-cpu-dispatch_8c_a228c5b1e2ffacf71990674634ac5a14d}\label{unit-test-cpu-dispatch_8c_a228c5b1e2ffacf71990674634ac5a14d}} 
+\#define {\bfseries C\+P\+\_\+\+I\+N\+\_\+\+D\+A\+T\+A\+\_\+A}~\{0x00, 0x00, 0x01, 0x01, 0x02, 0x02, 0x04, 0x08, 0x08, 0x00, 0x00, 0x01, 0x01, 0x\+E\+F, 0x80, 0x\+F\+F, 0x0\+F, 0x00, 0x00, 0x01, 0x01, 0x\+E\+F, 0x80, 0x\+F\+F, 0x0\+F\}
+\item 
+\mbox{\Hypertarget{unit-test-cpu-dispatch_8c_ae82cbc7d5faecda24999518d325b0b0f}\label{unit-test-cpu-dispatch_8c_ae82cbc7d5faecda24999518d325b0b0f}} 
+\#define {\bfseries C\+P\+\_\+\+I\+N\+\_\+\+D\+A\+T\+A\+\_\+B}~\{0x00, 0x00, 0x01, 0x01, 0x02, 0x02, 0x04, 0x08, 0x08, 0x00, 0x01, 0x00, 0x0\+F, 0x01, 0x80, 0x\+F\+F, 0x\+F1, 0x00, 0x01, 0x00, 0x0\+F, 0x01, 0x80, 0x\+F\+F, 0x\+F1\}
+\item 
+\mbox{\Hypertarget{unit-test-cpu-dispatch_8c_af00857cd1fb8ffc91b222c458cd961f2}\label{unit-test-cpu-dispatch_8c_af00857cd1fb8ffc91b222c458cd961f2}} 
+\#define {\bfseries C\+P\+\_\+\+I\+N\+\_\+\+F\+L\+AG}~\{0x00, 0x10, 0x00, 0x10, 0x00, 0x10, 0x00, 0x00, 0x10, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x\+F0, 0x\+F0, 0x\+F0, 0x\+F0, 0x\+F0, 0x\+F0, 0x\+F0, 0x\+F0\}
+\item 
+\mbox{\Hypertarget{unit-test-cpu-dispatch_8c_a9c53bd7d9f12654918c3cbed39eb6bd5}\label{unit-test-cpu-dispatch_8c_a9c53bd7d9f12654918c3cbed39eb6bd5}} 
+\#define {\bfseries C\+P\+\_\+\+O\+U\+T\+\_\+\+D\+A\+TA}~\{0x00, 0x00, 0x01, 0x01, 0x02, 0x02, 0x04, 0x08, 0x08, 0x00, 0x00, 0x01, 0x01, 0x\+E\+F, 0x80, 0x\+F\+F, 0x0\+F, 0x00, 0x00, 0x01, 0x01, 0x\+E\+F, 0x80, 0x\+F\+F, 0x0\+F\}
+\item 
+\mbox{\Hypertarget{unit-test-cpu-dispatch_8c_aa9cb272f7d2ad33391ce888443926594}\label{unit-test-cpu-dispatch_8c_aa9cb272f7d2ad33391ce888443926594}} 
+\#define {\bfseries C\+P\+\_\+\+O\+U\+T\+\_\+\+F\+L\+AG}~\{0x\+C0, 0x\+C0, 0x\+C0, 0x\+C0, 0x\+C0, 0x\+C0, 0x\+C0, 0x\+C0, 0x\+C0, 0x\+C0, 0x70, 0x40, 0x70, 0x40, 0x\+C0, 0x\+C0, 0x50, 0x\+C0, 0x70, 0x40, 0x70, 0x40, 0x\+C0, 0x\+C0, 0x50\}
+\item 
+\mbox{\Hypertarget{unit-test-cpu-dispatch_8c_ae11cbe253cab0c37e67f62a8866eadf2}\label{unit-test-cpu-dispatch_8c_ae11cbe253cab0c37e67f62a8866eadf2}} 
+\#define {\bfseries C\+P\+\_\+\+O\+U\+T\+\_\+\+S\+\_\+\+F\+L\+AG}~\{0x\+C0, 0x\+C0, 0x\+C0, 0x\+C0, 0x\+C0, 0x\+C0, 0x\+C0, 0x\+C0, 0x\+C0, 0x\+C0, 0x\+C0, 0x\+C0, 0x\+C0, 0x\+C0, 0x\+C0, 0x\+C0, 0x\+C0, 0x\+C0, 0x\+C0, 0x\+C0, 0x\+C0, 0x\+C0, 0x\+C0, 0x\+C0, 0x\+C0\}
+\item 
+\mbox{\Hypertarget{unit-test-cpu-dispatch_8c_ae49d8cb65d721901dffb000f0bcd6d5e}\label{unit-test-cpu-dispatch_8c_ae49d8cb65d721901dffb000f0bcd6d5e}} 
+\#define {\bfseries S\+W\+A\+P\+\_\+\+I\+N\+\_\+\+D\+A\+T\+A\+\_\+A}~\{0x00, 0x00, 0x01, 0x01, 0x02, 0x02, 0x04, 0x08, 0x08, 0x00, 0x01, 0x05, 0x\+E\+F, 0x80, 0x\+F\+F, 0x0\+F, 0x00, 0x00, 0x01, 0x01, 0x\+E\+F, 0x80, 0x\+F\+F, 0x0\+F\}
+\item 
+\mbox{\Hypertarget{unit-test-cpu-dispatch_8c_a8a765ae9c8a34f9b12984153335b1e12}\label{unit-test-cpu-dispatch_8c_a8a765ae9c8a34f9b12984153335b1e12}} 
+\#define {\bfseries S\+W\+A\+P\+\_\+\+I\+N\+\_\+\+F\+L\+AG}~\{0x00, 0x10, 0x00, 0x10, 0x00, 0x10, 0x00, 0x00, 0x10, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x\+F0, 0x\+F0, 0x\+F0, 0x\+F0, 0x\+F0, 0x\+F0, 0x\+F0, 0x\+F0\}
+\item 
+\mbox{\Hypertarget{unit-test-cpu-dispatch_8c_abc4e797a5d65e81013fc52a9476e874f}\label{unit-test-cpu-dispatch_8c_abc4e797a5d65e81013fc52a9476e874f}} 
+\#define {\bfseries S\+W\+A\+P\+\_\+\+O\+U\+T\+\_\+\+D\+A\+TA}~\{0x00, 0x00, 0x10, 0x10, 0x20, 0x20, 0x40, 0x80, 0x80, 0x00, 0x10, 0x50, 0x\+F\+E, 0x08, 0x\+F\+F, 0x\+F0, 0x00, 0x00, 0x10, 0x10, 0x\+F\+E, 0x08, 0x\+F\+F, 0x\+F0\}
+\item 
+\mbox{\Hypertarget{unit-test-cpu-dispatch_8c_a2aec0d49f06840fb9b8d017a0a5bbf91}\label{unit-test-cpu-dispatch_8c_a2aec0d49f06840fb9b8d017a0a5bbf91}} 
+\#define {\bfseries S\+W\+A\+P\+\_\+\+O\+U\+T\+\_\+\+F\+L\+AG}~\{0x80, 0x80, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x80, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x80, 0x80, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00\}
+\item 
+\mbox{\Hypertarget{unit-test-cpu-dispatch_8c_af0d2ed7e2bef0302a41acb1d9afbac47}\label{unit-test-cpu-dispatch_8c_af0d2ed7e2bef0302a41acb1d9afbac47}} 
+\#define {\bfseries S\+W\+A\+P\+\_\+\+O\+U\+T\+\_\+\+S\+\_\+\+F\+L\+AG}~\{0x80, 0x80, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x80, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x80, 0x80, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00\}
+\item 
+\#define {\bfseries B\+I\+T\+O\+P\+\_\+\+H\+L\+\_\+\+H\+E\+L\+P\+ER}(cpu,  expected\+\_\+f,  expected\+\_\+v, ...)
+\item 
+\#define {\bfseries B\+I\+T\+O\+P\+\_\+\+R8\+\_\+\+H\+E\+L\+P\+ER}(cpu,  expected\+\_\+f,  expected\+\_\+v,  reg, ...)
+\item 
+\mbox{\Hypertarget{unit-test-cpu-dispatch_8c_a0e5ecba49a15075d0322a30b2fc05f22}\label{unit-test-cpu-dispatch_8c_a0e5ecba49a15075d0322a30b2fc05f22}} 
+\#define {\bfseries L\+D\+\_\+\+H\+L\+S\+P\+\_\+\+I\+N\+P\+U\+T\+\_\+\+D\+A\+T\+A1}~\{0x00, 0x00, 0x01, 0x01, 0x02, 0x02, 0x04, 0x08, 0x08, 0x00, 0x00, 0x01, 0x01, 0x\+E\+F, 0x80, 0x\+F\+F, 0x0\+F, 0x00, 0x00, 0x01, 0x01, 0x\+E\+F, 0x80, 0x\+F\+F, 0x0\+F\}
+\item 
+\mbox{\Hypertarget{unit-test-cpu-dispatch_8c_aa42ceac63414a6dd2fb8e5c541833f10}\label{unit-test-cpu-dispatch_8c_aa42ceac63414a6dd2fb8e5c541833f10}} 
+\#define {\bfseries L\+D\+\_\+\+H\+L\+S\+P\+\_\+\+I\+N\+P\+U\+T\+\_\+\+D\+A\+T\+A2}~\{0x00, 0x00, 0x01, 0x01, 0x02, 0x02, 0x04, 0x08, 0x08, 0x00, 0x01, 0x00, 0x0\+F, 0x01, 0x80, 0x\+F\+F, 0x\+F1, 0x00, 0x01, 0x00, 0x0\+F, 0x01, 0x80, 0x\+F\+F, 0x\+F1\}
+\item 
+\mbox{\Hypertarget{unit-test-cpu-dispatch_8c_a875c5f2502a756a26f5153eb0c7b9e81}\label{unit-test-cpu-dispatch_8c_a875c5f2502a756a26f5153eb0c7b9e81}} 
+\#define {\bfseries L\+D\+\_\+\+H\+L\+S\+P\+\_\+\+I\+N\+P\+U\+T\+\_\+\+F\+L\+AG}~\{0x00, 0x10, 0x00, 0x10, 0x00, 0x10, 0x00, 0x00, 0x10, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x\+F0, 0x\+F0, 0x\+F0, 0x\+F0, 0x\+F0, 0x\+F0, 0x\+F0, 0x\+F0\}
+\item 
+\mbox{\Hypertarget{unit-test-cpu-dispatch_8c_ae71c130bf94e6ad26b64fb333ed45885}\label{unit-test-cpu-dispatch_8c_ae71c130bf94e6ad26b64fb333ed45885}} 
+\#define {\bfseries L\+D\+\_\+\+H\+L\+S\+P\+\_\+\+O\+U\+T\+P\+U\+T\+\_\+\+D\+A\+T\+A1}~\{0x00, 0x00, 0x02, 0x02, 0x04, 0x04, 0x08, 0x10, 0x10, 0x00, 0x01, 0x01, 0x10, 0x\+F0, 0x00, 0x\+F\+E, 0x00, 0x00, 0x01, 0x01, 0x10, 0x\+F0, 0x00, 0x\+F\+E, 0x00\}
+\item 
+\mbox{\Hypertarget{unit-test-cpu-dispatch_8c_a11435b77121020da76cfabbb81ce0184}\label{unit-test-cpu-dispatch_8c_a11435b77121020da76cfabbb81ce0184}} 
+\#define {\bfseries L\+D\+\_\+\+H\+L\+S\+P\+\_\+\+O\+U\+T\+P\+U\+T\+\_\+\+D\+A\+T\+A2}~\{0x00, 0x00, 0x02, 0x02, 0x04, 0x04, 0x08, 0x10, 0x10, 0x00, 0x01, 0x01, 0x10, 0x\+F0, 0x00, 0x\+F\+E, 0x00, 0x00, 0x01, 0x01, 0x10, 0x\+F0, 0x00, 0x\+F\+E, 0x00\}
+\item 
+\mbox{\Hypertarget{unit-test-cpu-dispatch_8c_a793fb9351a908e60f9117581259c2264}\label{unit-test-cpu-dispatch_8c_a793fb9351a908e60f9117581259c2264}} 
+\#define {\bfseries L\+D\+\_\+\+H\+L\+S\+P\+\_\+\+O\+U\+T\+P\+U\+T\+\_\+\+F\+L\+AG}~\{0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x20, 0x20, 0x00, 0x00, 0x00, 0x20, 0x20, 0x10, 0x30, 0x30, 0x00, 0x00, 0x00, 0x20, 0x20, 0x10, 0x30, 0x30\}
+\item 
+\mbox{\Hypertarget{unit-test-cpu-dispatch_8c_a9156171d35ef4c0e9b8b64615315dbd6}\label{unit-test-cpu-dispatch_8c_a9156171d35ef4c0e9b8b64615315dbd6}} 
+\#define {\bfseries D\+A\+A\+\_\+\+I\+N\+P\+U\+T\+\_\+\+D\+A\+TA}~\{0x00, 0x01, 0x02, 0x04, 0x08, 0x10, 0x20, 0x40, 0x80, 0x\+F\+F, 0x0\+F, 0x\+F0, 0xdd, 0x11, 0x00, 0x01, 0x02, 0x04, 0x08, 0x10, 0x20, 0x40, 0x80, 0x\+F\+F, 0x0\+F, 0x\+F0, 0xdd, 0x11\}
+\item 
+\mbox{\Hypertarget{unit-test-cpu-dispatch_8c_a8da3904eaa9a16464c42a8c11217a926}\label{unit-test-cpu-dispatch_8c_a8da3904eaa9a16464c42a8c11217a926}} 
+\#define {\bfseries D\+A\+A\+\_\+\+I\+N\+P\+U\+T\+\_\+\+F\+L\+AG}~\{0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x\+F0, 0x\+F0, 0x\+F0, 0x\+F0, 0x\+F0, 0x\+F0, 0x\+F0, 0x\+F0, 0x\+F0, 0x\+F0, 0x\+F0, 0x\+F0, 0x\+F0, 0x\+F0\}
+\item 
+\mbox{\Hypertarget{unit-test-cpu-dispatch_8c_a9ae1252dff7da03320bdc7ec1f90a89c}\label{unit-test-cpu-dispatch_8c_a9ae1252dff7da03320bdc7ec1f90a89c}} 
+\#define {\bfseries D\+A\+A\+\_\+\+O\+U\+T\+P\+U\+T\+\_\+\+D\+A\+TA}~\{0x00, 0x01, 0x02, 0x04, 0x08, 0x10, 0x20, 0x40, 0x80, 0x65, 0x15, 0x50, 0x43, 0x11, 0x9\+A, 0x9\+B, 0x9\+C, 0x9\+E, 0x\+A2, 0x\+A\+A, 0x\+B\+A, 0x\+D\+A, 0x1\+A, 0x99, 0x\+A9, 0x8\+A, 0x77, 0x\+A\+B\}
+\item 
+\mbox{\Hypertarget{unit-test-cpu-dispatch_8c_a7d52abbcc7e576164da93ab8381f3ff5}\label{unit-test-cpu-dispatch_8c_a7d52abbcc7e576164da93ab8381f3ff5}} 
+\#define {\bfseries D\+A\+A\+\_\+\+O\+U\+T\+P\+U\+T\+\_\+\+F\+L\+AG}~\{0x80, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x10, 0x00, 0x10, 0x10, 0x00, 0x50, 0x50, 0x50, 0x50, 0x50, 0x50, 0x50, 0x50, 0x50, 0x50, 0x50, 0x50, 0x50, 0x50\}
+\item 
+\mbox{\Hypertarget{unit-test-cpu-dispatch_8c_af7f1246e8d6b657ec148c22b78378c7e}\label{unit-test-cpu-dispatch_8c_af7f1246e8d6b657ec148c22b78378c7e}} 
+\#define {\bfseries S\+C\+C\+F\+\_\+\+I\+N\+P\+U\+T\+\_\+\+F\+L\+AG}~\{0x10, 0x20, 0x30, 0x40, 0x50, 0x60, 0x70, 0x80, 0x90, 0x\+A0, 0x\+B0, 0x\+C0, 0x\+D0, 0x\+E0, 0x\+F0\}
+\item 
+\mbox{\Hypertarget{unit-test-cpu-dispatch_8c_a9966f2a5032c87f3e9ec3f8cc45e0711}\label{unit-test-cpu-dispatch_8c_a9966f2a5032c87f3e9ec3f8cc45e0711}} 
+\#define {\bfseries C\+C\+F\+\_\+\+O\+U\+T\+P\+U\+T\+\_\+\+F\+L\+AG}~\{0x00, 0x10, 0x00, 0x10, 0x00, 0x10, 0x00, 0x90, 0x80, 0x90, 0x80, 0x90, 0x80, 0x90, 0x80\}
+\item 
+\mbox{\Hypertarget{unit-test-cpu-dispatch_8c_aeafe05c465e74f4b6dada56503c3b261}\label{unit-test-cpu-dispatch_8c_aeafe05c465e74f4b6dada56503c3b261}} 
+\#define {\bfseries S\+C\+F\+\_\+\+O\+U\+T\+P\+U\+T\+\_\+\+F\+L\+AG}~\{0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x90, 0x90, 0x90, 0x90, 0x90, 0x90, 0x90, 0x90\}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{unit-test-cpu-dispatch_8c_ae89ae59cd0e8561450eb562f044dd0e6}\label{unit-test-cpu-dispatch_8c_ae89ae59cd0e8561450eb562f044dd0e6}} 
+{\bfseries S\+T\+A\+R\+T\+\_\+\+T\+E\+ST} (test\+\_\+\+S\+U\+B\+\_\+\+A\+\_\+\+H\+LR)
+\item 
+\mbox{\Hypertarget{unit-test-cpu-dispatch_8c_a7c7245a26c5396572805f8e3f079054a}\label{unit-test-cpu-dispatch_8c_a7c7245a26c5396572805f8e3f079054a}} 
+E\+N\+D\+\_\+\+T\+E\+ST {\bfseries S\+T\+A\+R\+T\+\_\+\+T\+E\+ST} (test\+\_\+\+S\+B\+C\+\_\+\+A\+\_\+\+H\+LR)
+\item 
+\mbox{\Hypertarget{unit-test-cpu-dispatch_8c_a0dbdf11726e2208bb3990acb9ec08ef3}\label{unit-test-cpu-dispatch_8c_a0dbdf11726e2208bb3990acb9ec08ef3}} 
+E\+N\+D\+\_\+\+T\+E\+ST {\bfseries S\+T\+A\+R\+T\+\_\+\+T\+E\+ST} (test\+\_\+\+S\+U\+B\+\_\+\+A\+\_\+\+N8)
+\item 
+\mbox{\Hypertarget{unit-test-cpu-dispatch_8c_aaba8905e046a19ff288b24a70a2b009a}\label{unit-test-cpu-dispatch_8c_aaba8905e046a19ff288b24a70a2b009a}} 
+E\+N\+D\+\_\+\+T\+E\+ST {\bfseries S\+T\+A\+R\+T\+\_\+\+T\+E\+ST} (test\+\_\+\+S\+B\+C\+\_\+\+A\+\_\+\+N8)
+\item 
+\mbox{\Hypertarget{unit-test-cpu-dispatch_8c_abc9e5a6f5b13e919384b7f847821e64d}\label{unit-test-cpu-dispatch_8c_abc9e5a6f5b13e919384b7f847821e64d}} 
+E\+N\+D\+\_\+\+T\+E\+ST {\bfseries S\+T\+A\+R\+T\+\_\+\+T\+E\+ST} (test\+\_\+\+S\+U\+B\+\_\+\+A\+\_\+\+R8)
+\item 
+\mbox{\Hypertarget{unit-test-cpu-dispatch_8c_a2d21db06a8222bf8e12a2d69aef9aae1}\label{unit-test-cpu-dispatch_8c_a2d21db06a8222bf8e12a2d69aef9aae1}} 
+E\+N\+D\+\_\+\+T\+E\+ST {\bfseries S\+T\+A\+R\+T\+\_\+\+T\+E\+ST} (test\+\_\+\+S\+B\+C\+\_\+\+A\+\_\+\+R8)
+\item 
+\mbox{\Hypertarget{unit-test-cpu-dispatch_8c_abef833667827024b3a66d3aaf7912783}\label{unit-test-cpu-dispatch_8c_abef833667827024b3a66d3aaf7912783}} 
+E\+N\+D\+\_\+\+T\+E\+ST {\bfseries S\+T\+A\+R\+T\+\_\+\+T\+E\+ST} (test\+\_\+\+D\+E\+C8)
+\item 
+\mbox{\Hypertarget{unit-test-cpu-dispatch_8c_ac339e560a2cf20ea7250f41d7dc1265d}\label{unit-test-cpu-dispatch_8c_ac339e560a2cf20ea7250f41d7dc1265d}} 
+E\+N\+D\+\_\+\+T\+E\+ST {\bfseries S\+T\+A\+R\+T\+\_\+\+T\+E\+ST} (test\+\_\+\+D\+E\+C16)
+\item 
+\mbox{\Hypertarget{unit-test-cpu-dispatch_8c_a41d304e2fc3956c0e947b3bed68134c2}\label{unit-test-cpu-dispatch_8c_a41d304e2fc3956c0e947b3bed68134c2}} 
+{\bfseries S\+T\+A\+R\+T\+\_\+\+T\+E\+ST} (test\+\_\+\+A\+N\+D\+\_\+\+A\+\_\+\+H\+LR)
+\item 
+\mbox{\Hypertarget{unit-test-cpu-dispatch_8c_a11aec4a321fd9f1e1af55d9af4e78e89}\label{unit-test-cpu-dispatch_8c_a11aec4a321fd9f1e1af55d9af4e78e89}} 
+E\+N\+D\+\_\+\+T\+E\+ST {\bfseries S\+T\+A\+R\+T\+\_\+\+T\+E\+ST} (test\+\_\+\+A\+N\+D\+\_\+\+A\+\_\+\+N8)
+\item 
+\mbox{\Hypertarget{unit-test-cpu-dispatch_8c_afe80a275a07af0088667f7caacb98ddf}\label{unit-test-cpu-dispatch_8c_afe80a275a07af0088667f7caacb98ddf}} 
+E\+N\+D\+\_\+\+T\+E\+ST {\bfseries S\+T\+A\+R\+T\+\_\+\+T\+E\+ST} (test\+\_\+\+A\+N\+D\+\_\+\+A\+\_\+\+R8)
+\item 
+\mbox{\Hypertarget{unit-test-cpu-dispatch_8c_a792dd42c428a5a7febed8299b0b4aee4}\label{unit-test-cpu-dispatch_8c_a792dd42c428a5a7febed8299b0b4aee4}} 
+{\bfseries S\+T\+A\+R\+T\+\_\+\+T\+E\+ST} (test\+\_\+\+O\+R\+\_\+\+A\+\_\+\+H\+LR)
+\item 
+\mbox{\Hypertarget{unit-test-cpu-dispatch_8c_afba3a8449a370e71fd28dd16e126c26e}\label{unit-test-cpu-dispatch_8c_afba3a8449a370e71fd28dd16e126c26e}} 
+E\+N\+D\+\_\+\+T\+E\+ST {\bfseries S\+T\+A\+R\+T\+\_\+\+T\+E\+ST} (test\+\_\+\+O\+R\+\_\+\+A\+\_\+\+N8)
+\item 
+\mbox{\Hypertarget{unit-test-cpu-dispatch_8c_a5875c0922520aa0e70ed5c7bbcf49322}\label{unit-test-cpu-dispatch_8c_a5875c0922520aa0e70ed5c7bbcf49322}} 
+E\+N\+D\+\_\+\+T\+E\+ST {\bfseries S\+T\+A\+R\+T\+\_\+\+T\+E\+ST} (test\+\_\+\+O\+R\+\_\+\+A\+\_\+\+R8)
+\item 
+\mbox{\Hypertarget{unit-test-cpu-dispatch_8c_ac675e22264f47d11472800d7647e846c}\label{unit-test-cpu-dispatch_8c_ac675e22264f47d11472800d7647e846c}} 
+{\bfseries S\+T\+A\+R\+T\+\_\+\+T\+E\+ST} (test\+\_\+\+X\+O\+R\+\_\+\+A\+\_\+\+H\+LR)
+\item 
+\mbox{\Hypertarget{unit-test-cpu-dispatch_8c_ad0fb55b8e75250a878308b70dec1f0bf}\label{unit-test-cpu-dispatch_8c_ad0fb55b8e75250a878308b70dec1f0bf}} 
+E\+N\+D\+\_\+\+T\+E\+ST {\bfseries S\+T\+A\+R\+T\+\_\+\+T\+E\+ST} (test\+\_\+\+X\+O\+R\+\_\+\+A\+\_\+\+N8)
+\item 
+\mbox{\Hypertarget{unit-test-cpu-dispatch_8c_aae118f363b2ffbb7dfe70fc1756844ef}\label{unit-test-cpu-dispatch_8c_aae118f363b2ffbb7dfe70fc1756844ef}} 
+E\+N\+D\+\_\+\+T\+E\+ST {\bfseries S\+T\+A\+R\+T\+\_\+\+T\+E\+ST} (test\+\_\+\+X\+O\+R\+\_\+\+A\+\_\+\+R8)
+\item 
+\mbox{\Hypertarget{unit-test-cpu-dispatch_8c_a88cf49e2ba4d2b2fa5d26c77807fdd16}\label{unit-test-cpu-dispatch_8c_a88cf49e2ba4d2b2fa5d26c77807fdd16}} 
+{\bfseries S\+T\+A\+R\+T\+\_\+\+T\+E\+ST} (test\+\_\+\+R\+O\+TA)
+\item 
+\mbox{\Hypertarget{unit-test-cpu-dispatch_8c_a785d0a0fdb90d06a6f73e8f9254946c5}\label{unit-test-cpu-dispatch_8c_a785d0a0fdb90d06a6f73e8f9254946c5}} 
+E\+N\+D\+\_\+\+T\+E\+ST {\bfseries S\+T\+A\+R\+T\+\_\+\+T\+E\+ST} (test\+\_\+\+R\+O\+T\+CA)
+\item 
+\mbox{\Hypertarget{unit-test-cpu-dispatch_8c_a2d1764d66c171da869cab64f9f2a4739}\label{unit-test-cpu-dispatch_8c_a2d1764d66c171da869cab64f9f2a4739}} 
+E\+N\+D\+\_\+\+T\+E\+ST {\bfseries S\+T\+A\+R\+T\+\_\+\+T\+E\+ST} (test\+\_\+\+R\+O\+T\+\_\+\+H\+LR)
+\item 
+\mbox{\Hypertarget{unit-test-cpu-dispatch_8c_adebc91289e9ea023316f367a5619b7bc}\label{unit-test-cpu-dispatch_8c_adebc91289e9ea023316f367a5619b7bc}} 
+E\+N\+D\+\_\+\+T\+E\+ST {\bfseries S\+T\+A\+R\+T\+\_\+\+T\+E\+ST} (test\+\_\+\+R\+O\+T\+C\+\_\+\+H\+LR)
+\item 
+\mbox{\Hypertarget{unit-test-cpu-dispatch_8c_a9dca2f9cde903ed9a06b631f01c34fbe}\label{unit-test-cpu-dispatch_8c_a9dca2f9cde903ed9a06b631f01c34fbe}} 
+E\+N\+D\+\_\+\+T\+E\+ST {\bfseries S\+T\+A\+R\+T\+\_\+\+T\+E\+ST} (test\+\_\+\+R\+O\+T\+C\+\_\+\+R8)
+\item 
+\mbox{\Hypertarget{unit-test-cpu-dispatch_8c_a79edfd9f89f1a311d99ec00fb3c85eb5}\label{unit-test-cpu-dispatch_8c_a79edfd9f89f1a311d99ec00fb3c85eb5}} 
+{\bfseries S\+T\+A\+R\+T\+\_\+\+T\+E\+ST} (test\+\_\+\+S\+X\+A\+\_\+\+H\+LR)
+\item 
+\mbox{\Hypertarget{unit-test-cpu-dispatch_8c_a5da2bde57e28209154b3bb6440badb02}\label{unit-test-cpu-dispatch_8c_a5da2bde57e28209154b3bb6440badb02}} 
+E\+N\+D\+\_\+\+T\+E\+ST {\bfseries S\+T\+A\+R\+T\+\_\+\+T\+E\+ST} (test\+\_\+\+S\+X\+A\+\_\+\+R8)
+\item 
+\mbox{\Hypertarget{unit-test-cpu-dispatch_8c_a092b4d6c64281634b8129e1f39941d05}\label{unit-test-cpu-dispatch_8c_a092b4d6c64281634b8129e1f39941d05}} 
+E\+N\+D\+\_\+\+T\+E\+ST {\bfseries S\+T\+A\+R\+T\+\_\+\+T\+E\+ST} (test\+\_\+\+S\+R\+L\+\_\+\+H\+LR)
+\item 
+\mbox{\Hypertarget{unit-test-cpu-dispatch_8c_aad9c37da0201f700cb14514b1fe789fe}\label{unit-test-cpu-dispatch_8c_aad9c37da0201f700cb14514b1fe789fe}} 
+E\+N\+D\+\_\+\+T\+E\+ST {\bfseries S\+T\+A\+R\+T\+\_\+\+T\+E\+ST} (test\+\_\+\+S\+R\+L\+\_\+\+R8)
+\item 
+\mbox{\Hypertarget{unit-test-cpu-dispatch_8c_abe46add04ac78a55e982128d69d5886a}\label{unit-test-cpu-dispatch_8c_abe46add04ac78a55e982128d69d5886a}} 
+{\bfseries S\+T\+A\+R\+T\+\_\+\+T\+E\+ST} (test\+\_\+\+C\+P\+\_\+\+A\+\_\+\+H\+LR)
+\item 
+\mbox{\Hypertarget{unit-test-cpu-dispatch_8c_a5227d75aea79f7fa1d18a8451abe2fb9}\label{unit-test-cpu-dispatch_8c_a5227d75aea79f7fa1d18a8451abe2fb9}} 
+E\+N\+D\+\_\+\+T\+E\+ST {\bfseries S\+T\+A\+R\+T\+\_\+\+T\+E\+ST} (test\+\_\+\+C\+P\+\_\+\+A\+\_\+\+N8)
+\item 
+\mbox{\Hypertarget{unit-test-cpu-dispatch_8c_a1519c0b6f7a19fcbd50f7e92dfc9454a}\label{unit-test-cpu-dispatch_8c_a1519c0b6f7a19fcbd50f7e92dfc9454a}} 
+{\bfseries S\+T\+A\+R\+T\+\_\+\+T\+E\+ST} (test\+\_\+\+S\+W\+A\+P\+\_\+\+H\+LR)
+\item 
+\mbox{\Hypertarget{unit-test-cpu-dispatch_8c_a73444a1d0b7e2f5ac0967ad58f68ed67}\label{unit-test-cpu-dispatch_8c_a73444a1d0b7e2f5ac0967ad58f68ed67}} 
+E\+N\+D\+\_\+\+T\+E\+ST {\bfseries S\+T\+A\+R\+T\+\_\+\+T\+E\+ST} (test\+\_\+\+S\+W\+A\+P\+\_\+\+R8)
+\item 
+\mbox{\Hypertarget{unit-test-cpu-dispatch_8c_adf34a8c545e19ddac667398f09735779}\label{unit-test-cpu-dispatch_8c_adf34a8c545e19ddac667398f09735779}} 
+{\bfseries S\+T\+A\+R\+T\+\_\+\+T\+E\+ST} (test\+\_\+\+B\+I\+T\+\_\+\+U3\+\_\+\+H\+LR)
+\item 
+\mbox{\Hypertarget{unit-test-cpu-dispatch_8c_abb4b6bd3e99d4ac0ff0caa6273aac844}\label{unit-test-cpu-dispatch_8c_abb4b6bd3e99d4ac0ff0caa6273aac844}} 
+E\+N\+D\+\_\+\+T\+E\+ST {\bfseries S\+T\+A\+R\+T\+\_\+\+T\+E\+ST} (test\+\_\+\+C\+H\+G\+\_\+\+U3\+\_\+\+H\+LR)
+\item 
+\mbox{\Hypertarget{unit-test-cpu-dispatch_8c_af4030280d46f9db452de29dbf42f649f}\label{unit-test-cpu-dispatch_8c_af4030280d46f9db452de29dbf42f649f}} 
+{\bfseries S\+T\+A\+R\+T\+\_\+\+T\+E\+ST} (test\+\_\+\+L\+D\+\_\+\+H\+L\+S\+P\+\_\+\+S8)
+\item 
+\mbox{\Hypertarget{unit-test-cpu-dispatch_8c_a09ee34026428c1bf30f2a5c6d3c347d9}\label{unit-test-cpu-dispatch_8c_a09ee34026428c1bf30f2a5c6d3c347d9}} 
+E\+N\+D\+\_\+\+T\+E\+ST {\bfseries S\+T\+A\+R\+T\+\_\+\+T\+E\+ST} (test\+\_\+\+D\+AA)
+\item 
+\mbox{\Hypertarget{unit-test-cpu-dispatch_8c_a06abc329ad18f0a6ad792ce2e1aca8c2}\label{unit-test-cpu-dispatch_8c_a06abc329ad18f0a6ad792ce2e1aca8c2}} 
+E\+N\+D\+\_\+\+T\+E\+ST {\bfseries S\+T\+A\+R\+T\+\_\+\+T\+E\+ST} (test\+\_\+\+S\+C\+CF)
+\item 
+\mbox{\Hypertarget{unit-test-cpu-dispatch_8c_a4c9cbb657fbc29519addb71dcc4928b8}\label{unit-test-cpu-dispatch_8c_a4c9cbb657fbc29519addb71dcc4928b8}} 
+E\+N\+D\+\_\+\+T\+E\+ST Suite $\ast$ {\bfseries cpu\+\_\+test\+\_\+suite} ()
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Unit test for cpu dispatch function. 
+
+\begin{DoxyAuthor}{Author}
+C. Hölzl, E\+P\+FL 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2019 
+\end{DoxyDate}
+
+
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{unit-test-cpu-dispatch_8c_a24d1365b42b4caf2fc88e4c9e724c7ab}\label{unit-test-cpu-dispatch_8c_a24d1365b42b4caf2fc88e4c9e724c7ab}} 
+\index{unit-\/test-\/cpu-\/dispatch.\+c@{unit-\/test-\/cpu-\/dispatch.\+c}!B\+I\+T\+O\+P\+\_\+\+H\+L\+\_\+\+H\+E\+L\+P\+ER@{B\+I\+T\+O\+P\+\_\+\+H\+L\+\_\+\+H\+E\+L\+P\+ER}}
+\index{B\+I\+T\+O\+P\+\_\+\+H\+L\+\_\+\+H\+E\+L\+P\+ER@{B\+I\+T\+O\+P\+\_\+\+H\+L\+\_\+\+H\+E\+L\+P\+ER}!unit-\/test-\/cpu-\/dispatch.\+c@{unit-\/test-\/cpu-\/dispatch.\+c}}
+\subsubsection{\texorpdfstring{B\+I\+T\+O\+P\+\_\+\+H\+L\+\_\+\+H\+E\+L\+P\+ER}{BITOP\_HL\_HELPER}}
+{\footnotesize\ttfamily \#define B\+I\+T\+O\+P\+\_\+\+H\+L\+\_\+\+H\+E\+L\+P\+ER(\begin{DoxyParamCaption}\item[{}]{cpu,  }\item[{}]{expected\+\_\+f,  }\item[{}]{expected\+\_\+v,  }\item[{}]{... }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+\textcolor{keywordflow}{do}\{\(\backslash\)
+        cpu\_write\_at\_HL(&cpu,input\_a[i\_]);\(\backslash\)
+        cpu.F = input\_f[i\_];\(\backslash\)
+        DO\_RUN(cpu, \_\_VA\_ARGS\_\_);\(\backslash\)
+        ck\_assert\_msg(\hyperlink{cpu-storage_8h_accb2e5189860ff3f46efdca63fe4f3c6}{cpu\_read\_at\_HL}(&cpu) == expected\_v[i\_],\textcolor{stringliteral}{"Opcode 0x%"} PRIX8 \textcolor{stringliteral}{", i=%d: (0x%
+      "} PRIX8 \textcolor{stringliteral}{") => value 0x%"} PRIX8 \textcolor{stringliteral}{" (!= 0x%"} PRIX8 \textcolor{stringliteral}{")"},\(\backslash\)
+                lu.opcode, i\_, input\_a[i\_], \hyperlink{cpu-storage_8h_accb2e5189860ff3f46efdca63fe4f3c6}{cpu\_read\_at\_HL}(&cpu), expected\_v[i\_]);\(\backslash\)
+        ck\_assert\_msg(cpu.F == expected\_f[i\_],\textcolor{stringliteral}{"Opcode 0x%"} PRIX8 \textcolor{stringliteral}{", i=%d: (0x%"} PRIX8 \textcolor{stringliteral}{") => flag 0x%"} PRIX8
+       \textcolor{stringliteral}{" (!= 0x%"} PRIX8 \textcolor{stringliteral}{")"},\(\backslash\)
+                lu.opcode, i\_, input\_a[i\_], cpu.F, expected\_f[i\_]);\(\backslash\)
+    \}\textcolor{keywordflow}{while}(0)
+\end{DoxyCode}
+\mbox{\Hypertarget{unit-test-cpu-dispatch_8c_a492a82b5b1fc00110e57ce06930451ca}\label{unit-test-cpu-dispatch_8c_a492a82b5b1fc00110e57ce06930451ca}} 
+\index{unit-\/test-\/cpu-\/dispatch.\+c@{unit-\/test-\/cpu-\/dispatch.\+c}!B\+I\+T\+O\+P\+\_\+\+R8\+\_\+\+H\+E\+L\+P\+ER@{B\+I\+T\+O\+P\+\_\+\+R8\+\_\+\+H\+E\+L\+P\+ER}}
+\index{B\+I\+T\+O\+P\+\_\+\+R8\+\_\+\+H\+E\+L\+P\+ER@{B\+I\+T\+O\+P\+\_\+\+R8\+\_\+\+H\+E\+L\+P\+ER}!unit-\/test-\/cpu-\/dispatch.\+c@{unit-\/test-\/cpu-\/dispatch.\+c}}
+\subsubsection{\texorpdfstring{B\+I\+T\+O\+P\+\_\+\+R8\+\_\+\+H\+E\+L\+P\+ER}{BITOP\_R8\_HELPER}}
+{\footnotesize\ttfamily \#define B\+I\+T\+O\+P\+\_\+\+R8\+\_\+\+H\+E\+L\+P\+ER(\begin{DoxyParamCaption}\item[{}]{cpu,  }\item[{}]{expected\+\_\+f,  }\item[{}]{expected\+\_\+v,  }\item[{}]{reg,  }\item[{}]{... }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+\textcolor{keywordflow}{do}\{\(\backslash\)
+        cpu\_reg\_set(&cpu, reg, input\_a[i\_]);\(\backslash\)
+        cpu.F = input\_f[i\_];\(\backslash\)
+        DO\_RUN(cpu, \_\_VA\_ARGS\_\_);\(\backslash\)
+        ck\_assert\_msg(\hyperlink{cpu-registers_8c_abe62e977d253f7a6be79d0b5ca8f105f}{cpu\_reg\_get}(&cpu, reg) == expected\_v[i\_],\textcolor{stringliteral}{"Opcode 0x%"} PRIX8 \textcolor{stringliteral}{", i=%d: (0x%"}
+       PRIX8 \textcolor{stringliteral}{") => value 0x%"} PRIX8 \textcolor{stringliteral}{" (!= 0x%"} PRIX8 \textcolor{stringliteral}{")"},\(\backslash\)
+                lu.opcode, i\_, input\_a[i\_], \hyperlink{cpu-registers_8c_abe62e977d253f7a6be79d0b5ca8f105f}{cpu\_reg\_get}(&cpu, reg), input\_a[i\_]);\(\backslash\)
+        ck\_assert\_msg(cpu.F == expected\_f[i\_],\textcolor{stringliteral}{"Opcode 0x%"} PRIX8 \textcolor{stringliteral}{", i=%d: (0x%"} PRIX8 \textcolor{stringliteral}{") => flag 0x%"} PRIX8
+       \textcolor{stringliteral}{" (!= 0x%"} PRIX8 \textcolor{stringliteral}{")"},\(\backslash\)
+                lu.opcode, i\_, input\_a[i\_], cpu.F, expected\_f[i\_]);\(\backslash\)
+    \}\textcolor{keywordflow}{while}(0)
+\end{DoxyCode}
+\mbox{\Hypertarget{unit-test-cpu-dispatch_8c_a120a8cdb787b9d7df51922e28b5cd961}\label{unit-test-cpu-dispatch_8c_a120a8cdb787b9d7df51922e28b5cd961}} 
+\index{unit-\/test-\/cpu-\/dispatch.\+c@{unit-\/test-\/cpu-\/dispatch.\+c}!R\+U\+N\+\_\+\+D\+I\+S\+P\+A\+T\+C\+H\+\_\+\+A\+L\+U\+\_\+A@{R\+U\+N\+\_\+\+D\+I\+S\+P\+A\+T\+C\+H\+\_\+\+A\+L\+U\+\_\+A}}
+\index{R\+U\+N\+\_\+\+D\+I\+S\+P\+A\+T\+C\+H\+\_\+\+A\+L\+U\+\_\+A@{R\+U\+N\+\_\+\+D\+I\+S\+P\+A\+T\+C\+H\+\_\+\+A\+L\+U\+\_\+A}!unit-\/test-\/cpu-\/dispatch.\+c@{unit-\/test-\/cpu-\/dispatch.\+c}}
+\subsubsection{\texorpdfstring{R\+U\+N\+\_\+\+D\+I\+S\+P\+A\+T\+C\+H\+\_\+\+A\+L\+U\+\_\+A}{RUN\_DISPATCH\_ALU\_A}}
+{\footnotesize\ttfamily \#define R\+U\+N\+\_\+\+D\+I\+S\+P\+A\+T\+C\+H\+\_\+\+A\+L\+U\+\_\+A(\begin{DoxyParamCaption}\item[{}]{input\+\_\+a,  }\item[{}]{input\+\_\+f,  }\item[{}]{expected\+\_\+v,  }\item[{}]{expected\+\_\+f,  }\item[{}]{... }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+\textcolor{keywordflow}{do}\{ \(\backslash\)
+        INIT\_RUN();\(\backslash\)
+        LOOP\_ON(input\_f) \{\(\backslash\)
+            cpu.A = input\_a[i\_];\(\backslash\)
+            cpu.F = input\_f[i\_];\(\backslash\)
+            DO\_RUN(cpu,\_\_VA\_ARGS\_\_);\(\backslash\)
+        ck\_assert\_msg(cpu.A == expected\_v[i\_],\textcolor{stringliteral}{"Opcode 0x%"} PRIX8 \textcolor{stringliteral}{", i=%d: (0x%"} PRIX8 \textcolor{stringliteral}{") => value 0x%"} 
+      PRIX8 \textcolor{stringliteral}{" (!= 0x%"} PRIX8 \textcolor{stringliteral}{")"},\(\backslash\)
+            lu.opcode, i\_, input\_a[i\_],cpu.A, expected\_v[i\_]);\(\backslash\)
+        ck\_assert\_msg(cpu.F == expected\_f[i\_],\textcolor{stringliteral}{"Opcode 0x%"} PRIX8 \textcolor{stringliteral}{", i=%d: (0x%"} PRIX8 \textcolor{stringliteral}{") => flag 0x%"} PRIX8
+       \textcolor{stringliteral}{" (!= 0x%"} PRIX8 \textcolor{stringliteral}{")"},\(\backslash\)
+            lu.opcode, i\_, input\_a[i\_],cpu.F, expected\_f[i\_]);\(\backslash\)
+        \}\(\backslash\)
+        END\_RUN();\(\backslash\)
+    \} \textcolor{keywordflow}{while}(0)
+\end{DoxyCode}
+\mbox{\Hypertarget{unit-test-cpu-dispatch_8c_afb7fe0b8844ff7fca884c087d8023a86}\label{unit-test-cpu-dispatch_8c_afb7fe0b8844ff7fca884c087d8023a86}} 
+\index{unit-\/test-\/cpu-\/dispatch.\+c@{unit-\/test-\/cpu-\/dispatch.\+c}!R\+U\+N\+\_\+\+D\+I\+S\+P\+A\+T\+C\+H\+\_\+\+A\+L\+U\+\_\+\+H\+L\+\_\+S@{R\+U\+N\+\_\+\+D\+I\+S\+P\+A\+T\+C\+H\+\_\+\+A\+L\+U\+\_\+\+H\+L\+\_\+S}}
+\index{R\+U\+N\+\_\+\+D\+I\+S\+P\+A\+T\+C\+H\+\_\+\+A\+L\+U\+\_\+\+H\+L\+\_\+S@{R\+U\+N\+\_\+\+D\+I\+S\+P\+A\+T\+C\+H\+\_\+\+A\+L\+U\+\_\+\+H\+L\+\_\+S}!unit-\/test-\/cpu-\/dispatch.\+c@{unit-\/test-\/cpu-\/dispatch.\+c}}
+\subsubsection{\texorpdfstring{R\+U\+N\+\_\+\+D\+I\+S\+P\+A\+T\+C\+H\+\_\+\+A\+L\+U\+\_\+\+H\+L\+\_\+S}{RUN\_DISPATCH\_ALU\_HL\_S}}
+{\footnotesize\ttfamily \#define R\+U\+N\+\_\+\+D\+I\+S\+P\+A\+T\+C\+H\+\_\+\+A\+L\+U\+\_\+\+H\+L\+\_\+S(\begin{DoxyParamCaption}\item[{}]{input\+\_\+a,  }\item[{}]{input\+\_\+f,  }\item[{}]{expected\+\_\+v,  }\item[{}]{expected\+\_\+f,  }\item[{}]{... }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+\textcolor{keywordflow}{do}\{ \(\backslash\)
+        INIT\_RUN();\(\backslash\)
+        LOOP\_ON(input\_f) \{\(\backslash\)
+            cpu.F = input\_f[i\_];\(\backslash\)
+            cpu\_HL\_set(&cpu,0);\(\backslash\)
+            ck\_assert\_int\_eq(cpu\_write\_at\_HL(&cpu, input\_a[i\_]), ERR\_NONE);\(\backslash\)
+            DO\_RUN(cpu,\_\_VA\_ARGS\_\_);\(\backslash\)
+        ck\_assert\_msg(\hyperlink{cpu-storage_8h_accb2e5189860ff3f46efdca63fe4f3c6}{cpu\_read\_at\_HL}(&cpu) == \hyperlink{bit_8h_aa7214f9bc705f6d655fafa3a15f672e8}{lsb8}(expected\_v[i\_]),\textcolor{stringliteral}{"Opcode 0x%"} PRIX8 \textcolor{stringliteral}{",
+       i=%d: (0x%"} PRIX8 \textcolor{stringliteral}{") => value 0x%"} PRIX8 \textcolor{stringliteral}{" (!= 0x%"} PRIX8 \textcolor{stringliteral}{")"},\(\backslash\)
+                lu.opcode, i\_, input\_a[i\_], \hyperlink{cpu-storage_8h_accb2e5189860ff3f46efdca63fe4f3c6}{cpu\_read\_at\_HL}(&cpu), 
+      \hyperlink{bit_8h_aa7214f9bc705f6d655fafa3a15f672e8}{lsb8}(expected\_v[i\_]));\(\backslash\)
+        ck\_assert\_msg(cpu.F == expected\_f[i\_],\textcolor{stringliteral}{"Opcode 0x%"} PRIX8 \textcolor{stringliteral}{", i=%d: (0x%"} PRIX8 \textcolor{stringliteral}{") => flag 0x%"} PRIX8
+       \textcolor{stringliteral}{" (!= 0x%"} PRIX8 \textcolor{stringliteral}{")"},\(\backslash\)
+                lu.opcode, i\_, input\_a[i\_], cpu.F, expected\_f[i\_]);\(\backslash\)
+        \}\(\backslash\)
+        END\_RUN();\(\backslash\)
+    \} \textcolor{keywordflow}{while}(0)
+\end{DoxyCode}

@@ -1,0 +1,151 @@
+\hypertarget{joypad_8h}{}\section{joypad.\+h File Reference}
+\label{joypad_8h}\index{joypad.\+h@{joypad.\+h}}
+
+
+Game Boy joypad simulation header.  
+
+
+{\ttfamily \#include \char`\"{}memory.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}cpu.\+h\char`\"{}}\newline
+Include dependency graph for joypad.\+h\+:
+% FIG 0
+This graph shows which files directly or indirectly include this file\+:
+% FIG 1
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structjoypad__t}{joypad\+\_\+t}
+\begin{DoxyCompactList}\small\item\em joypad type \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{joypad_8h_a30044eeefc3b96783eac304ef6452db1}\label{joypad_8h_a30044eeefc3b96783eac304ef6452db1}} 
+\#define {\bfseries R\+E\+G\+\_\+\+P1}~0x\+F\+F00
+\item 
+\mbox{\Hypertarget{joypad_8h_a95a1fb2bb42091c272b6aa53f5fa0cf2}\label{joypad_8h_a95a1fb2bb42091c272b6aa53f5fa0cf2}} 
+\#define {\bfseries N\+B\+\_\+\+G\+B\+\_\+\+K\+E\+Y\+\_\+\+R\+O\+WS}~2
+\item 
+\mbox{\Hypertarget{joypad_8h_aa4776f4daf84f0c4b2012cee53f775ac}\label{joypad_8h_aa4776f4daf84f0c4b2012cee53f775ac}} 
+\#define {\bfseries N\+B\+\_\+\+G\+B\+\_\+\+K\+E\+Y\+\_\+\+C\+O\+LS}~4
+\end{DoxyCompactItemize}
+\subsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{joypad_8h_afa434f7264f1ba42f09d42dd15abd361}\label{joypad_8h_afa434f7264f1ba42f09d42dd15abd361}} 
+enum \hyperlink{joypad_8h_afa434f7264f1ba42f09d42dd15abd361}{gb\+\_\+key\+\_\+t} \{ \newline
+{\bfseries R\+I\+G\+H\+T\+\_\+\+K\+EY}, 
+{\bfseries L\+E\+F\+T\+\_\+\+K\+EY}, 
+{\bfseries U\+P\+\_\+\+K\+EY}, 
+{\bfseries D\+O\+W\+N\+\_\+\+K\+EY}, 
+\newline
+{\bfseries A\+\_\+\+K\+EY}, 
+{\bfseries B\+\_\+\+K\+EY}, 
+{\bfseries S\+E\+L\+E\+C\+T\+\_\+\+K\+EY}, 
+{\bfseries S\+T\+A\+R\+T\+\_\+\+K\+EY}, 
+\newline
+{\bfseries N\+B\+\_\+\+G\+B\+\_\+\+K\+E\+YS}
+ \}\begin{DoxyCompactList}\small\item\em Game Boy keys. \end{DoxyCompactList}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{joypad_8h_a042a54fa16fe0921d7c132a5695cc64d}{joypad\+\_\+init\+\_\+and\+\_\+plug} (\hyperlink{structjoypad__t}{joypad\+\_\+t} $\ast$pad, \hyperlink{structcpu__t}{cpu\+\_\+t} $\ast$cpu)
+\begin{DoxyCompactList}\small\item\em Initiates a joypad and plugs it onto the bus (from C\+PU) \end{DoxyCompactList}\item 
+int \hyperlink{joypad_8h_a30e6865a69be7134bd46ba583aecd441}{joypad\+\_\+bus\+\_\+listener} (\hyperlink{structjoypad__t}{joypad\+\_\+t} $\ast$pad, \hyperlink{memory_8h_a8a6444037e4d5cc2bf8ba22a9d9e33ca}{addr\+\_\+t} addr)
+\begin{DoxyCompactList}\small\item\em Joypad bus listening handler. \end{DoxyCompactList}\item 
+int \hyperlink{joypad_8h_ad8d7d317b712ca539b656eea0e9720fc}{joypad\+\_\+key\+\_\+pressed} (\hyperlink{structjoypad__t}{joypad\+\_\+t} $\ast$pad, \hyperlink{joypad_8h_afa434f7264f1ba42f09d42dd15abd361}{gb\+\_\+key\+\_\+t} key)
+\begin{DoxyCompactList}\small\item\em Joypad key press handler. \end{DoxyCompactList}\item 
+int \hyperlink{joypad_8h_a4ac48c7c591dd5a9648d90bb8c5827bd}{joypad\+\_\+key\+\_\+released} (\hyperlink{structjoypad__t}{joypad\+\_\+t} $\ast$pad, \hyperlink{joypad_8h_afa434f7264f1ba42f09d42dd15abd361}{gb\+\_\+key\+\_\+t} key)
+\begin{DoxyCompactList}\small\item\em Joypad key release handler. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Game Boy joypad simulation header. 
+
+\begin{DoxyAuthor}{Author}
+J.-\/C. Chappelier 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2020 
+\end{DoxyDate}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{joypad_8h_a30e6865a69be7134bd46ba583aecd441}\label{joypad_8h_a30e6865a69be7134bd46ba583aecd441}} 
+\index{joypad.\+h@{joypad.\+h}!joypad\+\_\+bus\+\_\+listener@{joypad\+\_\+bus\+\_\+listener}}
+\index{joypad\+\_\+bus\+\_\+listener@{joypad\+\_\+bus\+\_\+listener}!joypad.\+h@{joypad.\+h}}
+\subsubsection{\texorpdfstring{joypad\+\_\+bus\+\_\+listener()}{joypad\_bus\_listener()}}
+{\footnotesize\ttfamily int joypad\+\_\+bus\+\_\+listener (\begin{DoxyParamCaption}\item[{\hyperlink{structjoypad__t}{joypad\+\_\+t} $\ast$}]{pad,  }\item[{\hyperlink{memory_8h_a8a6444037e4d5cc2bf8ba22a9d9e33ca}{addr\+\_\+t}}]{addr }\end{DoxyParamCaption})}
+
+
+
+Joypad bus listening handler. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pad} & joypad \\
+\hline
+{\em address} & trigger address \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+error code 
+\end{DoxyReturn}
+\mbox{\Hypertarget{joypad_8h_a042a54fa16fe0921d7c132a5695cc64d}\label{joypad_8h_a042a54fa16fe0921d7c132a5695cc64d}} 
+\index{joypad.\+h@{joypad.\+h}!joypad\+\_\+init\+\_\+and\+\_\+plug@{joypad\+\_\+init\+\_\+and\+\_\+plug}}
+\index{joypad\+\_\+init\+\_\+and\+\_\+plug@{joypad\+\_\+init\+\_\+and\+\_\+plug}!joypad.\+h@{joypad.\+h}}
+\subsubsection{\texorpdfstring{joypad\+\_\+init\+\_\+and\+\_\+plug()}{joypad\_init\_and\_plug()}}
+{\footnotesize\ttfamily int joypad\+\_\+init\+\_\+and\+\_\+plug (\begin{DoxyParamCaption}\item[{\hyperlink{structjoypad__t}{joypad\+\_\+t} $\ast$}]{pad,  }\item[{\hyperlink{structcpu__t}{cpu\+\_\+t} $\ast$}]{cpu }\end{DoxyParamCaption})}
+
+
+
+Initiates a joypad and plugs it onto the bus (from C\+PU) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pad} & joypad to initiate \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+error code 
+\end{DoxyReturn}
+\mbox{\Hypertarget{joypad_8h_ad8d7d317b712ca539b656eea0e9720fc}\label{joypad_8h_ad8d7d317b712ca539b656eea0e9720fc}} 
+\index{joypad.\+h@{joypad.\+h}!joypad\+\_\+key\+\_\+pressed@{joypad\+\_\+key\+\_\+pressed}}
+\index{joypad\+\_\+key\+\_\+pressed@{joypad\+\_\+key\+\_\+pressed}!joypad.\+h@{joypad.\+h}}
+\subsubsection{\texorpdfstring{joypad\+\_\+key\+\_\+pressed()}{joypad\_key\_pressed()}}
+{\footnotesize\ttfamily int joypad\+\_\+key\+\_\+pressed (\begin{DoxyParamCaption}\item[{\hyperlink{structjoypad__t}{joypad\+\_\+t} $\ast$}]{pad,  }\item[{\hyperlink{joypad_8h_afa434f7264f1ba42f09d42dd15abd361}{gb\+\_\+key\+\_\+t}}]{key }\end{DoxyParamCaption})}
+
+
+
+Joypad key press handler. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pad} & joypad \\
+\hline
+{\em key} & the key pressed \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+error code 
+\end{DoxyReturn}
+\mbox{\Hypertarget{joypad_8h_a4ac48c7c591dd5a9648d90bb8c5827bd}\label{joypad_8h_a4ac48c7c591dd5a9648d90bb8c5827bd}} 
+\index{joypad.\+h@{joypad.\+h}!joypad\+\_\+key\+\_\+released@{joypad\+\_\+key\+\_\+released}}
+\index{joypad\+\_\+key\+\_\+released@{joypad\+\_\+key\+\_\+released}!joypad.\+h@{joypad.\+h}}
+\subsubsection{\texorpdfstring{joypad\+\_\+key\+\_\+released()}{joypad\_key\_released()}}
+{\footnotesize\ttfamily int joypad\+\_\+key\+\_\+released (\begin{DoxyParamCaption}\item[{\hyperlink{structjoypad__t}{joypad\+\_\+t} $\ast$}]{pad,  }\item[{\hyperlink{joypad_8h_afa434f7264f1ba42f09d42dd15abd361}{gb\+\_\+key\+\_\+t}}]{key }\end{DoxyParamCaption})}
+
+
+
+Joypad key release handler. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pad} & joypad \\
+\hline
+{\em key} & the key released \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+error code 
+\end{DoxyReturn}

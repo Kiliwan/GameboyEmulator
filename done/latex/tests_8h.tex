@@ -1,0 +1,80 @@
+\hypertarget{tests_8h}{}\section{tests.\+h File Reference}
+\label{tests_8h}\index{tests.\+h@{tests.\+h}}
+
+
+Utilities for tests.  
+
+
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$check.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}error.\+h\char`\"{}}\newline
+Include dependency graph for tests.\+h\+:
+% FIG 0
+This graph shows which files directly or indirectly include this file\+:
+% FIG 1
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{tests_8h_ae178870dd8c5f6c2885b61374f2206be}\label{tests_8h_ae178870dd8c5f6c2885b61374f2206be}} 
+\#define {\bfseries ck\+\_\+assert\+\_\+bad\+\_\+param}(value)~ck\+\_\+assert\+\_\+int\+\_\+eq(value, E\+R\+R\+\_\+\+B\+A\+D\+\_\+\+P\+A\+R\+A\+M\+E\+T\+ER)
+\item 
+\mbox{\Hypertarget{tests_8h_a1468be73a69a5f14965ea2d99b777d74}\label{tests_8h_a1468be73a69a5f14965ea2d99b777d74}} 
+\#define {\bfseries ck\+\_\+assert\+\_\+err\+\_\+mem}(value)~ck\+\_\+assert\+\_\+int\+\_\+eq(value, E\+R\+R\+\_\+\+M\+EM)
+\item 
+\mbox{\Hypertarget{tests_8h_a677001fc84204a2ff7300e88b2ca95bf}\label{tests_8h_a677001fc84204a2ff7300e88b2ca95bf}} 
+\#define {\bfseries ck\+\_\+assert\+\_\+err\+\_\+none}(value)~ck\+\_\+assert\+\_\+int\+\_\+eq(value, E\+R\+R\+\_\+\+N\+O\+NE)
+\item 
+\mbox{\Hypertarget{tests_8h_a1722f44544eda01e80c19db05a243036}\label{tests_8h_a1722f44544eda01e80c19db05a243036}} 
+\#define {\bfseries ck\+\_\+assert\+\_\+ptr\+\_\+nonnull}(ptr)~ck\+\_\+assert\+\_\+ptr\+\_\+ne(ptr, N\+U\+LL)
+\item 
+\mbox{\Hypertarget{tests_8h_a0b063ff75d324c07ddafd163fc8970ab}\label{tests_8h_a0b063ff75d324c07ddafd163fc8970ab}} 
+\#define {\bfseries ck\+\_\+assert\+\_\+ptr\+\_\+null}(ptr)~ck\+\_\+assert\+\_\+ptr\+\_\+eq(ptr, N\+U\+LL)
+\item 
+\#define {\bfseries Add\+\_\+\+Case}(S,  C,  Title)
+\item 
+\#define {\bfseries T\+E\+S\+T\+\_\+\+S\+U\+I\+TE}(get\+\_\+suite)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Utilities for tests. 
+
+\begin{DoxyAuthor}{Author}
+Valérian Rousset 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2017 
+\end{DoxyDate}
+
+
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{tests_8h_aaccf40f7940e1191c22ecc0c8384c4e9}\label{tests_8h_aaccf40f7940e1191c22ecc0c8384c4e9}} 
+\index{tests.\+h@{tests.\+h}!Add\+\_\+\+Case@{Add\+\_\+\+Case}}
+\index{Add\+\_\+\+Case@{Add\+\_\+\+Case}!tests.\+h@{tests.\+h}}
+\subsubsection{\texorpdfstring{Add\+\_\+\+Case}{Add\_Case}}
+{\footnotesize\ttfamily \#define Add\+\_\+\+Case(\begin{DoxyParamCaption}\item[{}]{S,  }\item[{}]{C,  }\item[{}]{Title }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+TCase* C = tcase\_create(Title); \(\backslash\)
+    suite\_add\_tcase(S, C)
+\end{DoxyCode}
+\mbox{\Hypertarget{tests_8h_a02e0ce82f6fe57b9c09d2b3466aedd18}\label{tests_8h_a02e0ce82f6fe57b9c09d2b3466aedd18}} 
+\index{tests.\+h@{tests.\+h}!T\+E\+S\+T\+\_\+\+S\+U\+I\+TE@{T\+E\+S\+T\+\_\+\+S\+U\+I\+TE}}
+\index{T\+E\+S\+T\+\_\+\+S\+U\+I\+TE@{T\+E\+S\+T\+\_\+\+S\+U\+I\+TE}!tests.\+h@{tests.\+h}}
+\subsubsection{\texorpdfstring{T\+E\+S\+T\+\_\+\+S\+U\+I\+TE}{TEST\_SUITE}}
+{\footnotesize\ttfamily \#define T\+E\+S\+T\+\_\+\+S\+U\+I\+TE(\begin{DoxyParamCaption}\item[{}]{get\+\_\+suite }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+\textcolor{keywordtype}{int} main() \(\backslash\)
+\{ \(\backslash\)
+    SRunner* sr = srunner\_create(get\_suite()); \(\backslash\)
+    srunner\_run\_all(sr, CK\_VERBOSE); \(\backslash\)
+ \(\backslash\)
+    int number\_failed = srunner\_ntests\_failed(sr); \(\backslash\)
+    srunner\_free(sr); \(\backslash\)
+ \(\backslash\)
+    return (number\_failed == 0) ? EXIT\_SUCCESS : EXIT\_FAILURE; \(\backslash\)
+\}
+\end{DoxyCode}

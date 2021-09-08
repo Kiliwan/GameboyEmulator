@@ -1,0 +1,205 @@
+\hypertarget{unit-test-cpu_8c}{}\section{unit-\/test-\/cpu.c File Reference}
+\label{unit-test-cpu_8c}\index{unit-\/test-\/cpu.\+c@{unit-\/test-\/cpu.\+c}}
+
+
+Unit test for cpu and related functions.  
+
+
+{\ttfamily \#include $<$time.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$sys/types.\+h$>$}\newline
+{\ttfamily \#include $<$unistd.\+h$>$}\newline
+{\ttfamily \#include $<$pthread.\+h$>$}\newline
+{\ttfamily \#include $<$check.\+h$>$}\newline
+{\ttfamily \#include $<$inttypes.\+h$>$}\newline
+{\ttfamily \#include $<$assert.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}tests.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}alu.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}opcode.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}bit.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}util.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}error.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}cpu.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}cpu-\/registers.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}cpu-\/storage.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}cpu-\/alu.\+h\char`\"{}}\newline
+Include dependency graph for unit-\/test-\/cpu.c\+:
+% FIG 0
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define {\bfseries L\+O\+O\+P\+\_\+\+ON}(T)
+\item 
+\mbox{\Hypertarget{unit-test-cpu_8c_a412e475035f76eb4fed2cfd999c8d89c}\label{unit-test-cpu_8c_a412e475035f76eb4fed2cfd999c8d89c}} 
+\#define {\bfseries A\+S\+S\+E\+R\+T\+\_\+\+E\+Q\+\_\+\+N\+B\+\_\+\+EL}(T1,  T2)~static\+\_\+assert(sizeof(T1) / sizeof($\ast$T1) == sizeof(T2) / sizeof($\ast$T2), \char`\"{}Wrong Size in test tables\char`\"{})
+\item 
+\mbox{\Hypertarget{unit-test-cpu_8c_a94ac54ac8dcaf9afceaec7f667b8a2ea}\label{unit-test-cpu_8c_a94ac54ac8dcaf9afceaec7f667b8a2ea}} 
+\#define {\bfseries C\+P\+U\+\_\+\+B\+U\+S\+\_\+\+V\+\_\+\+AT}(cpu,  idx)~$\ast$(($\ast$(cpu).bus)\mbox{[}idx\mbox{]})
+\item 
+\#define {\bfseries add\+\_\+bus}(cpu,  size)
+\item 
+\#define {\bfseries finish}()
+\item 
+\#define {\bfseries F\+O\+R\+\_\+\+E\+A\+C\+H\+\_\+\+R\+EG}(cpu,  regp,  regk)
+\item 
+\#define {\bfseries F\+I\+L\+L\+\_\+\+R\+EG}(cpu,  a,  b,  c,  d,  e,  f,  h,  l)
+\item 
+\#define {\bfseries I\+N\+IT}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{unit-test-cpu_8c_ab4d9666b17cefeff42c3006c19af5a77}\label{unit-test-cpu_8c_ab4d9666b17cefeff42c3006c19af5a77}} 
+{\bfseries S\+T\+A\+R\+T\+\_\+\+T\+E\+ST} (test\+\_\+reg\+\_\+get)
+\item 
+\mbox{\Hypertarget{unit-test-cpu_8c_a71e3f1eb1b75977f8f4fa93bc9814d21}\label{unit-test-cpu_8c_a71e3f1eb1b75977f8f4fa93bc9814d21}} 
+E\+N\+D\+\_\+\+T\+E\+ST {\bfseries S\+T\+A\+R\+T\+\_\+\+T\+E\+ST} (test\+\_\+reg\+\_\+set)
+\item 
+\mbox{\Hypertarget{unit-test-cpu_8c_acad8c9a309f4bd261c89619dc69c3f45}\label{unit-test-cpu_8c_acad8c9a309f4bd261c89619dc69c3f45}} 
+E\+N\+D\+\_\+\+T\+E\+ST {\bfseries S\+T\+A\+R\+T\+\_\+\+T\+E\+ST} (test\+\_\+reg\+\_\+pair\+\_\+get)
+\item 
+\mbox{\Hypertarget{unit-test-cpu_8c_aba35772c502b19379f28a88a77fcb34f}\label{unit-test-cpu_8c_aba35772c502b19379f28a88a77fcb34f}} 
+E\+N\+D\+\_\+\+T\+E\+ST {\bfseries S\+T\+A\+R\+T\+\_\+\+T\+E\+ST} (test\+\_\+reg\+\_\+pair\+\_\+set)
+\item 
+\mbox{\Hypertarget{unit-test-cpu_8c_ad255b1572868381f630bc0b5974b067e}\label{unit-test-cpu_8c_ad255b1572868381f630bc0b5974b067e}} 
+E\+N\+D\+\_\+\+T\+E\+ST {\bfseries S\+T\+A\+R\+T\+\_\+\+T\+E\+ST} (test\+\_\+cpu\+\_\+init\+\_\+err)
+\item 
+\mbox{\Hypertarget{unit-test-cpu_8c_a239af3f9e882de238caf325bed7e9ca1}\label{unit-test-cpu_8c_a239af3f9e882de238caf325bed7e9ca1}} 
+E\+N\+D\+\_\+\+T\+E\+ST {\bfseries S\+T\+A\+R\+T\+\_\+\+T\+E\+ST} (test\+\_\+cpu\+\_\+init\+\_\+exec)
+\item 
+\mbox{\Hypertarget{unit-test-cpu_8c_aee445784e6920e35eafdc2796b46818c}\label{unit-test-cpu_8c_aee445784e6920e35eafdc2796b46818c}} 
+E\+N\+D\+\_\+\+T\+E\+ST {\bfseries S\+T\+A\+R\+T\+\_\+\+T\+E\+ST} (test\+\_\+cpu\+\_\+plug\+\_\+err)
+\item 
+\mbox{\Hypertarget{unit-test-cpu_8c_a25b45e468d5d8b59fda3eea2e2abefb4}\label{unit-test-cpu_8c_a25b45e468d5d8b59fda3eea2e2abefb4}} 
+E\+N\+D\+\_\+\+T\+E\+ST {\bfseries S\+T\+A\+R\+T\+\_\+\+T\+E\+ST} (test\+\_\+cpu\+\_\+plug\+\_\+exec)
+\item 
+\mbox{\Hypertarget{unit-test-cpu_8c_a5779983b2ac4549a43e038eb346a64bd}\label{unit-test-cpu_8c_a5779983b2ac4549a43e038eb346a64bd}} 
+E\+N\+D\+\_\+\+T\+E\+ST {\bfseries S\+T\+A\+R\+T\+\_\+\+T\+E\+ST} (test\+\_\+cpu\+\_\+read\+\_\+at\+\_\+idx)
+\item 
+\mbox{\Hypertarget{unit-test-cpu_8c_af62d0cede898cb219804e73c6b9577f0}\label{unit-test-cpu_8c_af62d0cede898cb219804e73c6b9577f0}} 
+E\+N\+D\+\_\+\+T\+E\+ST {\bfseries S\+T\+A\+R\+T\+\_\+\+T\+E\+ST} (test\+\_\+cpu\+\_\+read16\+\_\+at\+\_\+idx)
+\item 
+\mbox{\Hypertarget{unit-test-cpu_8c_a8796dd3a2ba35f266c8f79f4baacc499}\label{unit-test-cpu_8c_a8796dd3a2ba35f266c8f79f4baacc499}} 
+E\+N\+D\+\_\+\+T\+E\+ST {\bfseries S\+T\+A\+R\+T\+\_\+\+T\+E\+ST} (test\+\_\+cpu\+\_\+write\+\_\+at\+\_\+idx)
+\item 
+\mbox{\Hypertarget{unit-test-cpu_8c_a2073efc091ea804d0e1d41068e64a30e}\label{unit-test-cpu_8c_a2073efc091ea804d0e1d41068e64a30e}} 
+E\+N\+D\+\_\+\+T\+E\+ST {\bfseries S\+T\+A\+R\+T\+\_\+\+T\+E\+ST} (test\+\_\+cpu\+\_\+write16\+\_\+at\+\_\+idx)
+\item 
+\mbox{\Hypertarget{unit-test-cpu_8c_adada909a27f9f2424d3a004968cd652d}\label{unit-test-cpu_8c_adada909a27f9f2424d3a004968cd652d}} 
+E\+N\+D\+\_\+\+T\+E\+ST {\bfseries S\+T\+A\+R\+T\+\_\+\+T\+E\+ST} (test\+\_\+cpu\+\_\+bus\+\_\+\+H\+L\+\_\+macro)
+\item 
+\mbox{\Hypertarget{unit-test-cpu_8c_ac62fabd59104aa498ea44e849140d085}\label{unit-test-cpu_8c_ac62fabd59104aa498ea44e849140d085}} 
+E\+N\+D\+\_\+\+T\+E\+ST {\bfseries S\+T\+A\+R\+T\+\_\+\+T\+E\+ST} (test\+\_\+cpu\+\_\+bus\+\_\+after\+\_\+op\+\_\+macro)
+\item 
+\mbox{\Hypertarget{unit-test-cpu_8c_ac0ba5cbaefbf88c9f2ff30db8836b0d5}\label{unit-test-cpu_8c_ac0ba5cbaefbf88c9f2ff30db8836b0d5}} 
+E\+N\+D\+\_\+\+T\+E\+ST {\bfseries S\+T\+A\+R\+T\+\_\+\+T\+E\+ST} (test\+\_\+cpu\+\_\+sp\+\_\+exec)
+\item 
+\mbox{\Hypertarget{unit-test-cpu_8c_a75cd14b476ee128b6acb70489af3ee07}\label{unit-test-cpu_8c_a75cd14b476ee128b6acb70489af3ee07}} 
+E\+N\+D\+\_\+\+T\+E\+ST {\bfseries S\+T\+A\+R\+T\+\_\+\+T\+E\+ST} (test\+\_\+cpu\+\_\+cycle\+\_\+err)
+\item 
+\mbox{\Hypertarget{unit-test-cpu_8c_a0ecb7e954458a2c08a91590c5b6381d6}\label{unit-test-cpu_8c_a0ecb7e954458a2c08a91590c5b6381d6}} 
+E\+N\+D\+\_\+\+T\+E\+ST {\bfseries S\+T\+A\+R\+T\+\_\+\+T\+E\+ST} (test\+\_\+cpu\+\_\+cycle\+\_\+exec)
+\item 
+\mbox{\Hypertarget{unit-test-cpu_8c_a4c9cbb657fbc29519addb71dcc4928b8}\label{unit-test-cpu_8c_a4c9cbb657fbc29519addb71dcc4928b8}} 
+E\+N\+D\+\_\+\+T\+E\+ST Suite $\ast$ {\bfseries cpu\+\_\+test\+\_\+suite} ()
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Unit test for cpu and related functions. 
+
+\begin{DoxyAuthor}{Author}
+C. Hölzl, E\+P\+FL 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2019 
+\end{DoxyDate}
+
+
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{unit-test-cpu_8c_a3495385952727508217759f285c809e8}\label{unit-test-cpu_8c_a3495385952727508217759f285c809e8}} 
+\index{unit-\/test-\/cpu.\+c@{unit-\/test-\/cpu.\+c}!add\+\_\+bus@{add\+\_\+bus}}
+\index{add\+\_\+bus@{add\+\_\+bus}!unit-\/test-\/cpu.\+c@{unit-\/test-\/cpu.\+c}}
+\subsubsection{\texorpdfstring{add\+\_\+bus}{add\_bus}}
+{\footnotesize\ttfamily \#define add\+\_\+bus(\begin{DoxyParamCaption}\item[{}]{cpu,  }\item[{}]{size }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+\hyperlink{bus_8h_a68c80bdf896e826e4cb082244ce35427}{bus\_t} bus = \{0\}; \(\backslash\)
+    component\_t c = \{NULL, 0, 0\};\(\backslash\)
+    do\{ \(\backslash\)
+        ck\_assert\_int\_eq(\hyperlink{component_8h_a7774f00e205f6d588602d6e9dcda417a}{component\_create}(&c, size), ERR\_NONE);         \(\backslash\)
+        ck\_assert\_int\_eq(\hyperlink{cpu_8c_a7449e22f2f4ab77db550aff8db36f3df}{cpu\_init}(&cpu), ERR\_NONE);                     \(\backslash\)
+        ck\_assert\_int\_eq(\hyperlink{cpu_8c_a6410926983c64b5a2b2f99782f4e9e12}{cpu\_plug}(&cpu,&bus), ERR\_NONE);                \(\backslash\)
+        ck\_assert\_int\_eq(\hyperlink{bus_8h_a386edaf5382cf5876c99c7ce85cca05b}{bus\_forced\_plug}(bus, &c, 0, (\hyperlink{memory_8h_a8a6444037e4d5cc2bf8ba22a9d9e33ca}{addr\_t})(size-1), 0), ERR\_NONE); 
+      \(\backslash\)
+    \} \textcolor{keywordflow}{while}(0)
+\end{DoxyCode}
+\mbox{\Hypertarget{unit-test-cpu_8c_ad47d222fb0d5b1f2bae81af44d5f4456}\label{unit-test-cpu_8c_ad47d222fb0d5b1f2bae81af44d5f4456}} 
+\index{unit-\/test-\/cpu.\+c@{unit-\/test-\/cpu.\+c}!F\+I\+L\+L\+\_\+\+R\+EG@{F\+I\+L\+L\+\_\+\+R\+EG}}
+\index{F\+I\+L\+L\+\_\+\+R\+EG@{F\+I\+L\+L\+\_\+\+R\+EG}!unit-\/test-\/cpu.\+c@{unit-\/test-\/cpu.\+c}}
+\subsubsection{\texorpdfstring{F\+I\+L\+L\+\_\+\+R\+EG}{FILL\_REG}}
+{\footnotesize\ttfamily \#define F\+I\+L\+L\+\_\+\+R\+EG(\begin{DoxyParamCaption}\item[{}]{cpu,  }\item[{}]{a,  }\item[{}]{b,  }\item[{}]{c,  }\item[{}]{d,  }\item[{}]{e,  }\item[{}]{f,  }\item[{}]{h,  }\item[{}]{l }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+\textcolor{keywordflow}{do}\{\(\backslash\)
+        cpu.A = a;\(\backslash\)
+        cpu.B = b;\(\backslash\)
+        cpu.C = c;\(\backslash\)
+        cpu.D = d;\(\backslash\)
+        cpu.E = e;\(\backslash\)
+        cpu.F = f;\(\backslash\)
+        cpu.H = h;\(\backslash\)
+        cpu.L = l;\(\backslash\)
+    \}\textcolor{keywordflow}{while}(0)
+\end{DoxyCode}
+\mbox{\Hypertarget{unit-test-cpu_8c_a732276d6073aa608f33c955e7fcd9d26}\label{unit-test-cpu_8c_a732276d6073aa608f33c955e7fcd9d26}} 
+\index{unit-\/test-\/cpu.\+c@{unit-\/test-\/cpu.\+c}!finish@{finish}}
+\index{finish@{finish}!unit-\/test-\/cpu.\+c@{unit-\/test-\/cpu.\+c}}
+\subsubsection{\texorpdfstring{finish}{finish}}
+{\footnotesize\ttfamily \#define finish(\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+\textcolor{keywordflow}{do}\{ \(\backslash\)
+        component\_free(&c); \(\backslash\)
+        cpu\_free(&cpu); \(\backslash\)
+    \} \textcolor{keywordflow}{while}(0)
+\end{DoxyCode}
+\mbox{\Hypertarget{unit-test-cpu_8c_a1c042f33c66bee922bfd4c9876b428e0}\label{unit-test-cpu_8c_a1c042f33c66bee922bfd4c9876b428e0}} 
+\index{unit-\/test-\/cpu.\+c@{unit-\/test-\/cpu.\+c}!F\+O\+R\+\_\+\+E\+A\+C\+H\+\_\+\+R\+EG@{F\+O\+R\+\_\+\+E\+A\+C\+H\+\_\+\+R\+EG}}
+\index{F\+O\+R\+\_\+\+E\+A\+C\+H\+\_\+\+R\+EG@{F\+O\+R\+\_\+\+E\+A\+C\+H\+\_\+\+R\+EG}!unit-\/test-\/cpu.\+c@{unit-\/test-\/cpu.\+c}}
+\subsubsection{\texorpdfstring{F\+O\+R\+\_\+\+E\+A\+C\+H\+\_\+\+R\+EG}{FOR\_EACH\_REG}}
+{\footnotesize\ttfamily \#define F\+O\+R\+\_\+\+E\+A\+C\+H\+\_\+\+R\+EG(\begin{DoxyParamCaption}\item[{}]{cpu,  }\item[{}]{regp,  }\item[{}]{regk }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+uint8\_t* regp\_list[]= \{  &(cpu.A),   &(cpu.B),   &(cpu.C),   &(cpu.D),   &(cpu.E),   &(cpu.H),  &(cpu.L)\};\(\backslash\)
+    uint8\_t regk\_list[]=  \{REG\_A\_CODE, REG\_B\_CODE, REG\_C\_CODE, REG\_D\_CODE, REG\_E\_CODE, REG\_H\_CODE, 
+      REG\_L\_CODE\};\(\backslash\)
+    const \textcolor{keywordtype}{size\_t} s2\_ = \textcolor{keyword}{sizeof}(regp\_list) / \textcolor{keyword}{sizeof}(*regp\_list);  \(\backslash\)
+    for(\textcolor{keywordtype}{size\_t} j\_ = 0; j\_ < s2\_ && (regp = regp\_list[j\_]) && (regk = regk\_list[j\_]); ++j\_)
+\end{DoxyCode}
+\mbox{\Hypertarget{unit-test-cpu_8c_ab5889105dcd019008c9448dff61323f6}\label{unit-test-cpu_8c_ab5889105dcd019008c9448dff61323f6}} 
+\index{unit-\/test-\/cpu.\+c@{unit-\/test-\/cpu.\+c}!I\+N\+IT@{I\+N\+IT}}
+\index{I\+N\+IT@{I\+N\+IT}!unit-\/test-\/cpu.\+c@{unit-\/test-\/cpu.\+c}}
+\subsubsection{\texorpdfstring{I\+N\+IT}{INIT}}
+{\footnotesize\ttfamily \#define I\+N\+IT}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+\hyperlink{structcpu__t}{cpu\_t} cpu; \(\backslash\)
+    zero\_init\_var(cpu)
+\end{DoxyCode}
+\mbox{\Hypertarget{unit-test-cpu_8c_aacea32bb563e40cc17843f7d5163527b}\label{unit-test-cpu_8c_aacea32bb563e40cc17843f7d5163527b}} 
+\index{unit-\/test-\/cpu.\+c@{unit-\/test-\/cpu.\+c}!L\+O\+O\+P\+\_\+\+ON@{L\+O\+O\+P\+\_\+\+ON}}
+\index{L\+O\+O\+P\+\_\+\+ON@{L\+O\+O\+P\+\_\+\+ON}!unit-\/test-\/cpu.\+c@{unit-\/test-\/cpu.\+c}}
+\subsubsection{\texorpdfstring{L\+O\+O\+P\+\_\+\+ON}{LOOP\_ON}}
+{\footnotesize\ttfamily \#define L\+O\+O\+P\+\_\+\+ON(\begin{DoxyParamCaption}\item[{}]{T }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+\textcolor{keyword}{const} \textcolor{keywordtype}{size\_t} s\_ = \textcolor{keyword}{sizeof}(T) / \textcolor{keyword}{sizeof}(*T);  \(\backslash\)
+  for(\textcolor{keywordtype}{size\_t} i\_ = 0; i\_ < s\_; ++i\_)
+\end{DoxyCode}

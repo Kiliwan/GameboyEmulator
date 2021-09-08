@@ -1,0 +1,102 @@
+\hypertarget{sidlib_8c}{}\section{sidlib.\+c File Reference}
+\label{sidlib_8c}\index{sidlib.\+c@{sidlib.\+c}}
+
+
+\mbox{[}S\mbox{]}imple \mbox{[}I\mbox{]}mage \mbox{[}D\mbox{]}isplayer library, for simply displaying images  
+
+
+{\ttfamily \#include \char`\"{}sidlib.\+h\char`\"{}}\newline
+Include dependency graph for sidlib.\+c\+:
+% FIG 0
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{structsimple__image__displayer__t}{simple\+\_\+image\+\_\+displayer\+\_\+t} $\ast$ \hyperlink{sidlib_8c_a59234ce66f2eb01454268ce391d56b1d}{sd\+\_\+init} (const char $\ast$title, int width, int height, guint time, \hyperlink{sidlib_8h_a9af3774c328a6ae6add97d212d5cd2ec}{ds\+\_\+image\+\_\+generator} generator, \hyperlink{sidlib_8h_ae7f399563eabb6f589356887b3db1e61}{ds\+\_\+key\+\_\+handler} key\+\_\+p\+\_\+handler, \hyperlink{sidlib_8h_ae7f399563eabb6f589356887b3db1e61}{ds\+\_\+key\+\_\+handler} key\+\_\+r\+\_\+handler)
+\begin{DoxyCompactList}\small\item\em Create (and initialize) a Simple Image Displayer. \end{DoxyCompactList}\item 
+gboolean \hyperlink{sidlib_8c_a5c76a4e2a32e92e900f8de4a0e24d04f}{ds\+\_\+simple\+\_\+key\+\_\+handler} (guint keyval, gpointer data)
+\begin{DoxyCompactList}\small\item\em a simple keypress handler, which pauses timer on \textquotesingle{}S\+P\+A\+CE\textquotesingle{} and quit application on \textquotesingle{}Q\textquotesingle{} or \textquotesingle{}q\textquotesingle{}. \end{DoxyCompactList}\item 
+void \hyperlink{sidlib_8c_a062485d74d3ce726151136015c98eadd}{sd\+\_\+launch} (int $\ast$p\+\_\+argc, char $\ast$$\ast$$\ast$p\+\_\+argv, \hyperlink{structsimple__image__displayer__t}{simple\+\_\+image\+\_\+displayer\+\_\+t} $\ast$p\+\_\+sd)
+\begin{DoxyCompactList}\small\item\em Run a Simple Image Displayer. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\mbox{[}S\mbox{]}imple \mbox{[}I\mbox{]}mage \mbox{[}D\mbox{]}isplayer library, for simply displaying images 
+
+\begin{DoxyAuthor}{Author}
+J.-\/C Chappelier, E\+P\+FL 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2019 Bonjour !! 
+\end{DoxyDate}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{sidlib_8c_a5c76a4e2a32e92e900f8de4a0e24d04f}\label{sidlib_8c_a5c76a4e2a32e92e900f8de4a0e24d04f}} 
+\index{sidlib.\+c@{sidlib.\+c}!ds\+\_\+simple\+\_\+key\+\_\+handler@{ds\+\_\+simple\+\_\+key\+\_\+handler}}
+\index{ds\+\_\+simple\+\_\+key\+\_\+handler@{ds\+\_\+simple\+\_\+key\+\_\+handler}!sidlib.\+c@{sidlib.\+c}}
+\subsubsection{\texorpdfstring{ds\+\_\+simple\+\_\+key\+\_\+handler()}{ds\_simple\_key\_handler()}}
+{\footnotesize\ttfamily gboolean ds\+\_\+simple\+\_\+key\+\_\+handler (\begin{DoxyParamCaption}\item[{guint}]{keyval,  }\item[{gpointer}]{data }\end{DoxyParamCaption})}
+
+
+
+a simple keypress handler, which pauses timer on \textquotesingle{}S\+P\+A\+CE\textquotesingle{} and quit application on \textquotesingle{}Q\textquotesingle{} or \textquotesingle{}q\textquotesingle{}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em keyval} & the key value \\
+\hline
+{\em data} & some data if needed \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\textquotesingle{}T\+R\+UE\textquotesingle{} if key was handled, \textquotesingle{}F\+A\+L\+SE\textquotesingle{} otherwise. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{sidlib_8c_a59234ce66f2eb01454268ce391d56b1d}\label{sidlib_8c_a59234ce66f2eb01454268ce391d56b1d}} 
+\index{sidlib.\+c@{sidlib.\+c}!sd\+\_\+init@{sd\+\_\+init}}
+\index{sd\+\_\+init@{sd\+\_\+init}!sidlib.\+c@{sidlib.\+c}}
+\subsubsection{\texorpdfstring{sd\+\_\+init()}{sd\_init()}}
+{\footnotesize\ttfamily \hyperlink{structsimple__image__displayer__t}{simple\+\_\+image\+\_\+displayer\+\_\+t}$\ast$ sd\+\_\+init (\begin{DoxyParamCaption}\item[{const char $\ast$}]{title,  }\item[{int}]{width,  }\item[{int}]{height,  }\item[{guint}]{time,  }\item[{\hyperlink{sidlib_8h_a9af3774c328a6ae6add97d212d5cd2ec}{ds\+\_\+image\+\_\+generator}}]{generator,  }\item[{\hyperlink{sidlib_8h_ae7f399563eabb6f589356887b3db1e61}{ds\+\_\+key\+\_\+handler}}]{key\+\_\+p\+\_\+handler,  }\item[{\hyperlink{sidlib_8h_ae7f399563eabb6f589356887b3db1e61}{ds\+\_\+key\+\_\+handler}}]{key\+\_\+r\+\_\+handler }\end{DoxyParamCaption})}
+
+
+
+Create (and initialize) a Simple Image Displayer. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em title} & title of the window \\
+\hline
+{\em width} & width of the image(s) to be displayed \\
+\hline
+{\em height} & height of the image(s) to be displayed \\
+\hline
+{\em time} & timelaps between two image refresh (in milliseconds); if 0, no refresh at all \\
+\hline
+{\em generator} & image generating function (will be called each {\ttfamily time} milliseconds); if 0, no refresh at all \\
+\hline
+{\em key\+\_\+p\+\_\+handler} & a key handling function used on key-\/press event; if N\+U\+LL, \hyperlink{sidlib_8h_a5c76a4e2a32e92e900f8de4a0e24d04f}{ds\+\_\+simple\+\_\+key\+\_\+handler()} is used \\
+\hline
+{\em key\+\_\+r\+\_\+handler} & a key handling functionused on key-\/release event \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a pointer to the newly created Simple Image Displayer 
+\end{DoxyReturn}
+\mbox{\Hypertarget{sidlib_8c_a062485d74d3ce726151136015c98eadd}\label{sidlib_8c_a062485d74d3ce726151136015c98eadd}} 
+\index{sidlib.\+c@{sidlib.\+c}!sd\+\_\+launch@{sd\+\_\+launch}}
+\index{sd\+\_\+launch@{sd\+\_\+launch}!sidlib.\+c@{sidlib.\+c}}
+\subsubsection{\texorpdfstring{sd\+\_\+launch()}{sd\_launch()}}
+{\footnotesize\ttfamily void sd\+\_\+launch (\begin{DoxyParamCaption}\item[{int $\ast$}]{p\+\_\+argc,  }\item[{char $\ast$$\ast$$\ast$}]{p\+\_\+argv,  }\item[{\hyperlink{structsimple__image__displayer__t}{simple\+\_\+image\+\_\+displayer\+\_\+t} $\ast$}]{p\+\_\+sd }\end{DoxyParamCaption})}
+
+
+
+Run a Simple Image Displayer. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p\+\_\+argc} & a pointer to main argc \\
+\hline
+{\em p\+\_\+argv} & a pointer to main argv \\
+\hline
+{\em p\+\_\+sd} & a pointer to the Simple Image Displayer to be launched \\
+\hline
+\end{DoxyParams}

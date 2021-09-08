@@ -1,0 +1,182 @@
+\hypertarget{cpu-registers_8h}{}\section{cpu-\/registers.h File Reference}
+\label{cpu-registers_8h}\index{cpu-\/registers.\+h@{cpu-\/registers.\+h}}
+
+
+C\+PU model for P\+P\+S-\/\+G\+Bemul project, registers part.  
+
+
+{\ttfamily \#include \char`\"{}cpu.\+h\char`\"{}}\newline
+Include dependency graph for cpu-\/registers.h\+:
+% FIG 0
+This graph shows which files directly or indirectly include this file\+:
+% FIG 1
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{cpu-registers_8h_ab4b9587b94920d448a1eb0700f4e4efb}\label{cpu-registers_8h_ab4b9587b94920d448a1eb0700f4e4efb}} 
+\#define {\bfseries cpu\+\_\+\+A\+F\+\_\+get}(cpu)~\hyperlink{cpu-registers_8h_a259712cddf80a16395900832af372953}{cpu\+\_\+reg\+\_\+pair\+\_\+get}(cpu, R\+E\+G\+\_\+\+A\+F\+\_\+\+C\+O\+DE)
+\item 
+\mbox{\Hypertarget{cpu-registers_8h_a8226adc4ff6ccd7c3aaa5a22dee3c07c}\label{cpu-registers_8h_a8226adc4ff6ccd7c3aaa5a22dee3c07c}} 
+\#define {\bfseries cpu\+\_\+\+B\+C\+\_\+get}(cpu)~\hyperlink{cpu-registers_8h_a259712cddf80a16395900832af372953}{cpu\+\_\+reg\+\_\+pair\+\_\+get}(cpu, R\+E\+G\+\_\+\+B\+C\+\_\+\+C\+O\+DE)
+\item 
+\mbox{\Hypertarget{cpu-registers_8h_a70499b334dcd9fa49688fbf527d84e53}\label{cpu-registers_8h_a70499b334dcd9fa49688fbf527d84e53}} 
+\#define {\bfseries cpu\+\_\+\+D\+E\+\_\+get}(cpu)~\hyperlink{cpu-registers_8h_a259712cddf80a16395900832af372953}{cpu\+\_\+reg\+\_\+pair\+\_\+get}(cpu, R\+E\+G\+\_\+\+D\+E\+\_\+\+C\+O\+DE)
+\item 
+\mbox{\Hypertarget{cpu-registers_8h_a2f765933abb0b9e3a0a13e8c5762cbad}\label{cpu-registers_8h_a2f765933abb0b9e3a0a13e8c5762cbad}} 
+\#define {\bfseries cpu\+\_\+\+H\+L\+\_\+get}(cpu)~\hyperlink{cpu-registers_8h_a259712cddf80a16395900832af372953}{cpu\+\_\+reg\+\_\+pair\+\_\+get}(cpu, R\+E\+G\+\_\+\+H\+L\+\_\+\+C\+O\+DE)
+\item 
+\mbox{\Hypertarget{cpu-registers_8h_ae63583df0e36f561fa84b7642e47bc90}\label{cpu-registers_8h_ae63583df0e36f561fa84b7642e47bc90}} 
+\#define {\bfseries cpu\+\_\+\+A\+F\+\_\+set}(cpu,  value)~\hyperlink{cpu-registers_8h_aa7482c91cfc29f6a4a1ba62127f6ea35}{cpu\+\_\+reg\+\_\+pair\+\_\+set}(cpu, R\+E\+G\+\_\+\+A\+F\+\_\+\+C\+O\+DE, value)
+\item 
+\mbox{\Hypertarget{cpu-registers_8h_aa22bb78466784134b76625d99b3caf28}\label{cpu-registers_8h_aa22bb78466784134b76625d99b3caf28}} 
+\#define {\bfseries cpu\+\_\+\+B\+C\+\_\+set}(cpu,  value)~\hyperlink{cpu-registers_8h_aa7482c91cfc29f6a4a1ba62127f6ea35}{cpu\+\_\+reg\+\_\+pair\+\_\+set}(cpu, R\+E\+G\+\_\+\+B\+C\+\_\+\+C\+O\+DE, value)
+\item 
+\mbox{\Hypertarget{cpu-registers_8h_ac5a28382dd202886f7bfe5f7fe7d57f1}\label{cpu-registers_8h_ac5a28382dd202886f7bfe5f7fe7d57f1}} 
+\#define {\bfseries cpu\+\_\+\+D\+E\+\_\+set}(cpu,  value)~\hyperlink{cpu-registers_8h_aa7482c91cfc29f6a4a1ba62127f6ea35}{cpu\+\_\+reg\+\_\+pair\+\_\+set}(cpu, R\+E\+G\+\_\+\+D\+E\+\_\+\+C\+O\+DE, value)
+\item 
+\mbox{\Hypertarget{cpu-registers_8h_accd9f248a886b30709b7edeee1e0bff5}\label{cpu-registers_8h_accd9f248a886b30709b7edeee1e0bff5}} 
+\#define {\bfseries cpu\+\_\+\+H\+L\+\_\+set}(cpu,  value)~\hyperlink{cpu-registers_8h_aa7482c91cfc29f6a4a1ba62127f6ea35}{cpu\+\_\+reg\+\_\+pair\+\_\+set}(cpu, R\+E\+G\+\_\+\+H\+L\+\_\+\+C\+O\+DE, value)
+\item 
+\#define \hyperlink{cpu-registers_8h_ada31ffcbbeebed96cc72f2d9bab0f6b0}{cpu\+\_\+reg\+\_\+set\+\_\+from\+\_\+alu8}(cpu,  reg)~\hyperlink{cpu-registers_8h_a422598e03e342ec1c700cd61a3bc69b6}{cpu\+\_\+reg\+\_\+set}(cpu, reg, \hyperlink{bit_8h_aa7214f9bc705f6d655fafa3a15f672e8}{lsb8}((cpu)-\/$>$alu.\+value))
+\begin{DoxyCompactList}\small\item\em writes to a register the 8 L\+SB from A\+LU \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{cpu-registers_8h_a843750750b64110582a8a9bc53adb873}\label{cpu-registers_8h_a843750750b64110582a8a9bc53adb873}} 
+\#define {\bfseries cpu\+\_\+reg\+\_\+pair\+\_\+\+S\+P\+\_\+get}(cpu,  reg)~(reg == R\+E\+G\+\_\+\+A\+F\+\_\+\+C\+O\+DE ? ((cpu)-\/$>$SP) \+: \hyperlink{cpu-registers_8h_a259712cddf80a16395900832af372953}{cpu\+\_\+reg\+\_\+pair\+\_\+get}(cpu, reg))
+\item 
+\mbox{\Hypertarget{cpu-registers_8h_ac7e75cf600f29bb9fdbbfa13800bb80a}\label{cpu-registers_8h_ac7e75cf600f29bb9fdbbfa13800bb80a}} 
+\#define {\bfseries cpu\+\_\+reg\+\_\+pair\+\_\+\+S\+P\+\_\+set}(cpu,  reg,  value)~(reg == R\+E\+G\+\_\+\+A\+F\+\_\+\+C\+O\+DE ? (void)((cpu)-\/$>$SP = value) \+: \hyperlink{cpu-registers_8h_aa7482c91cfc29f6a4a1ba62127f6ea35}{cpu\+\_\+reg\+\_\+pair\+\_\+set}(cpu,reg,value))
+\end{DoxyCompactItemize}
+\subsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{cpu-registers_8h_ae7a73a08aaa7af3cfe957f32ef8af9d3}\label{cpu-registers_8h_ae7a73a08aaa7af3cfe957f32ef8af9d3}} 
+enum \hyperlink{cpu-registers_8h_ae7a73a08aaa7af3cfe957f32ef8af9d3}{reg\+\_\+kind} \{ \newline
+{\bfseries R\+E\+G\+\_\+\+B\+\_\+\+C\+O\+DE} = 0x00, 
+{\bfseries R\+E\+G\+\_\+\+C\+\_\+\+C\+O\+DE} = 0x01, 
+{\bfseries R\+E\+G\+\_\+\+D\+\_\+\+C\+O\+DE} = 0x02, 
+{\bfseries R\+E\+G\+\_\+\+E\+\_\+\+C\+O\+DE} = 0x03, 
+\newline
+{\bfseries R\+E\+G\+\_\+\+H\+\_\+\+C\+O\+DE} = 0x04, 
+{\bfseries R\+E\+G\+\_\+\+L\+\_\+\+C\+O\+DE} = 0x05, 
+{\bfseries R\+E\+G\+\_\+\+A\+\_\+\+C\+O\+DE} = 0x07
+ \}\begin{DoxyCompactList}\small\item\em Register codes and register pair codes in Op\+Codes. \end{DoxyCompactList}
+\item 
+\mbox{\Hypertarget{cpu-registers_8h_acfb92270996ad66c5a9bcff5389416c6}\label{cpu-registers_8h_acfb92270996ad66c5a9bcff5389416c6}} 
+enum {\bfseries reg\+\_\+pair\+\_\+kind} \{ {\bfseries R\+E\+G\+\_\+\+B\+C\+\_\+\+C\+O\+DE} = 0x00, 
+{\bfseries R\+E\+G\+\_\+\+D\+E\+\_\+\+C\+O\+DE} = 0x01, 
+{\bfseries R\+E\+G\+\_\+\+H\+L\+\_\+\+C\+O\+DE} = 0x02, 
+{\bfseries R\+E\+G\+\_\+\+A\+F\+\_\+\+C\+O\+DE} = 0x03
+ \}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+uint8\+\_\+t \hyperlink{cpu-registers_8h_abe62e977d253f7a6be79d0b5ca8f105f}{cpu\+\_\+reg\+\_\+get} (const \hyperlink{structcpu__t}{cpu\+\_\+t} $\ast$cpu, \hyperlink{cpu-registers_8h_ae7a73a08aaa7af3cfe957f32ef8af9d3}{reg\+\_\+kind} reg)
+\begin{DoxyCompactList}\small\item\em returns a register given the register value \end{DoxyCompactList}\item 
+void \hyperlink{cpu-registers_8h_a422598e03e342ec1c700cd61a3bc69b6}{cpu\+\_\+reg\+\_\+set} (\hyperlink{structcpu__t}{cpu\+\_\+t} $\ast$cpu, \hyperlink{cpu-registers_8h_ae7a73a08aaa7af3cfe957f32ef8af9d3}{reg\+\_\+kind} reg, uint8\+\_\+t value)
+\begin{DoxyCompactList}\small\item\em writes to a register given the register value \end{DoxyCompactList}\item 
+uint16\+\_\+t \hyperlink{cpu-registers_8h_a259712cddf80a16395900832af372953}{cpu\+\_\+reg\+\_\+pair\+\_\+get} (const \hyperlink{structcpu__t}{cpu\+\_\+t} $\ast$cpu, reg\+\_\+pair\+\_\+kind reg)
+\begin{DoxyCompactList}\small\item\em returns a register given the register pair value \end{DoxyCompactList}\item 
+void \hyperlink{cpu-registers_8h_aa7482c91cfc29f6a4a1ba62127f6ea35}{cpu\+\_\+reg\+\_\+pair\+\_\+set} (\hyperlink{structcpu__t}{cpu\+\_\+t} $\ast$cpu, reg\+\_\+pair\+\_\+kind reg, uint16\+\_\+t value)
+\begin{DoxyCompactList}\small\item\em writes to a register given the register pair value \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+C\+PU model for P\+P\+S-\/\+G\+Bemul project, registers part. 
+
+\begin{DoxyAuthor}{Author}
+J.-\/C. Chappelier \& C. Hölzl, E\+P\+FL 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2019 
+\end{DoxyDate}
+
+
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{cpu-registers_8h_ada31ffcbbeebed96cc72f2d9bab0f6b0}\label{cpu-registers_8h_ada31ffcbbeebed96cc72f2d9bab0f6b0}} 
+\index{cpu-\/registers.\+h@{cpu-\/registers.\+h}!cpu\+\_\+reg\+\_\+set\+\_\+from\+\_\+alu8@{cpu\+\_\+reg\+\_\+set\+\_\+from\+\_\+alu8}}
+\index{cpu\+\_\+reg\+\_\+set\+\_\+from\+\_\+alu8@{cpu\+\_\+reg\+\_\+set\+\_\+from\+\_\+alu8}!cpu-\/registers.\+h@{cpu-\/registers.\+h}}
+\subsubsection{\texorpdfstring{cpu\+\_\+reg\+\_\+set\+\_\+from\+\_\+alu8}{cpu\_reg\_set\_from\_alu8}}
+{\footnotesize\ttfamily \#define cpu\+\_\+reg\+\_\+set\+\_\+from\+\_\+alu8(\begin{DoxyParamCaption}\item[{}]{cpu,  }\item[{}]{reg }\end{DoxyParamCaption})~\hyperlink{cpu-registers_8h_a422598e03e342ec1c700cd61a3bc69b6}{cpu\+\_\+reg\+\_\+set}(cpu, reg, \hyperlink{bit_8h_aa7214f9bc705f6d655fafa3a15f672e8}{lsb8}((cpu)-\/$>$alu.\+value))}
+
+
+
+writes to a register the 8 L\+SB from A\+LU 
+
+cpu pointer to the cpu 
+\begin{DoxyParams}{Parameters}
+{\em reg} & register type \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{cpu-registers_8h_abe62e977d253f7a6be79d0b5ca8f105f}\label{cpu-registers_8h_abe62e977d253f7a6be79d0b5ca8f105f}} 
+\index{cpu-\/registers.\+h@{cpu-\/registers.\+h}!cpu\+\_\+reg\+\_\+get@{cpu\+\_\+reg\+\_\+get}}
+\index{cpu\+\_\+reg\+\_\+get@{cpu\+\_\+reg\+\_\+get}!cpu-\/registers.\+h@{cpu-\/registers.\+h}}
+\subsubsection{\texorpdfstring{cpu\+\_\+reg\+\_\+get()}{cpu\_reg\_get()}}
+{\footnotesize\ttfamily uint8\+\_\+t cpu\+\_\+reg\+\_\+get (\begin{DoxyParamCaption}\item[{const \hyperlink{structcpu__t}{cpu\+\_\+t} $\ast$}]{cpu,  }\item[{\hyperlink{cpu-registers_8h_ae7a73a08aaa7af3cfe957f32ef8af9d3}{reg\+\_\+kind}}]{reg }\end{DoxyParamCaption})}
+
+
+
+returns a register given the register value 
+
+cpu pointer to the cpu 
+\begin{DoxyParams}{Parameters}
+{\em reg} & register type\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+value of the desired register 
+\end{DoxyReturn}
+\mbox{\Hypertarget{cpu-registers_8h_a259712cddf80a16395900832af372953}\label{cpu-registers_8h_a259712cddf80a16395900832af372953}} 
+\index{cpu-\/registers.\+h@{cpu-\/registers.\+h}!cpu\+\_\+reg\+\_\+pair\+\_\+get@{cpu\+\_\+reg\+\_\+pair\+\_\+get}}
+\index{cpu\+\_\+reg\+\_\+pair\+\_\+get@{cpu\+\_\+reg\+\_\+pair\+\_\+get}!cpu-\/registers.\+h@{cpu-\/registers.\+h}}
+\subsubsection{\texorpdfstring{cpu\+\_\+reg\+\_\+pair\+\_\+get()}{cpu\_reg\_pair\_get()}}
+{\footnotesize\ttfamily uint16\+\_\+t cpu\+\_\+reg\+\_\+pair\+\_\+get (\begin{DoxyParamCaption}\item[{const \hyperlink{structcpu__t}{cpu\+\_\+t} $\ast$}]{cpu,  }\item[{reg\+\_\+pair\+\_\+kind}]{reg }\end{DoxyParamCaption})}
+
+
+
+returns a register given the register pair value 
+
+cpu pointer to the cpu 
+\begin{DoxyParams}{Parameters}
+{\em reg} & register pair type\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+value of the desired register pair 
+\end{DoxyReturn}
+\mbox{\Hypertarget{cpu-registers_8h_aa7482c91cfc29f6a4a1ba62127f6ea35}\label{cpu-registers_8h_aa7482c91cfc29f6a4a1ba62127f6ea35}} 
+\index{cpu-\/registers.\+h@{cpu-\/registers.\+h}!cpu\+\_\+reg\+\_\+pair\+\_\+set@{cpu\+\_\+reg\+\_\+pair\+\_\+set}}
+\index{cpu\+\_\+reg\+\_\+pair\+\_\+set@{cpu\+\_\+reg\+\_\+pair\+\_\+set}!cpu-\/registers.\+h@{cpu-\/registers.\+h}}
+\subsubsection{\texorpdfstring{cpu\+\_\+reg\+\_\+pair\+\_\+set()}{cpu\_reg\_pair\_set()}}
+{\footnotesize\ttfamily void cpu\+\_\+reg\+\_\+pair\+\_\+set (\begin{DoxyParamCaption}\item[{\hyperlink{structcpu__t}{cpu\+\_\+t} $\ast$}]{cpu,  }\item[{reg\+\_\+pair\+\_\+kind}]{reg,  }\item[{uint16\+\_\+t}]{value }\end{DoxyParamCaption})}
+
+
+
+writes to a register given the register pair value 
+
+cpu pointer to the cpu 
+\begin{DoxyParams}{Parameters}
+{\em reg} & register pair type \\
+\hline
+{\em value} & value to write to desired register pair \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{cpu-registers_8h_a422598e03e342ec1c700cd61a3bc69b6}\label{cpu-registers_8h_a422598e03e342ec1c700cd61a3bc69b6}} 
+\index{cpu-\/registers.\+h@{cpu-\/registers.\+h}!cpu\+\_\+reg\+\_\+set@{cpu\+\_\+reg\+\_\+set}}
+\index{cpu\+\_\+reg\+\_\+set@{cpu\+\_\+reg\+\_\+set}!cpu-\/registers.\+h@{cpu-\/registers.\+h}}
+\subsubsection{\texorpdfstring{cpu\+\_\+reg\+\_\+set()}{cpu\_reg\_set()}}
+{\footnotesize\ttfamily void cpu\+\_\+reg\+\_\+set (\begin{DoxyParamCaption}\item[{\hyperlink{structcpu__t}{cpu\+\_\+t} $\ast$}]{cpu,  }\item[{\hyperlink{cpu-registers_8h_ae7a73a08aaa7af3cfe957f32ef8af9d3}{reg\+\_\+kind}}]{reg,  }\item[{uint8\+\_\+t}]{value }\end{DoxyParamCaption})}
+
+
+
+writes to a register given the register value 
+
+cpu pointer to the cpu 
+\begin{DoxyParams}{Parameters}
+{\em reg} & register type \\
+\hline
+{\em value} & value to write to desired register \\
+\hline
+\end{DoxyParams}

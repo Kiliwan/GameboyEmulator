@@ -1,0 +1,14 @@
+digraph "cpu-alu.h"
+{
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  Node29 [label="cpu-alu.h",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node29 -> Node30 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node30 [label="cpu-alu.c",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$cpu-alu_8c.html",tooltip="Game Boy CPU simulation, ALU part asked to students. "];
+  Node29 -> Node31 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node31 [label="cpu.c",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$cpu_8c.html",tooltip="Game Boy CPU simulation. "];
+  Node31 -> Node32 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node32 [label="unit-test-cpu-dispatch.c",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$unit-test-cpu-dispatch_8c.html",tooltip="Unit test for cpu dispatch function. "];
+  Node29 -> Node33 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node33 [label="unit-test-cpu.c",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$unit-test-cpu_8c.html",tooltip="Unit test for cpu and related functions. "];
+}

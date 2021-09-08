@@ -1,0 +1,73 @@
+\hypertarget{unit-test-bit_8c}{}\section{unit-\/test-\/bit.c File Reference}
+\label{unit-test-bit_8c}\index{unit-\/test-\/bit.\+c@{unit-\/test-\/bit.\+c}}
+
+
+Unit test code for bit operations and related functions.  
+
+
+{\ttfamily \#include $<$time.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$sys/types.\+h$>$}\newline
+{\ttfamily \#include $<$unistd.\+h$>$}\newline
+{\ttfamily \#include $<$pthread.\+h$>$}\newline
+{\ttfamily \#include $<$check.\+h$>$}\newline
+{\ttfamily \#include $<$inttypes.\+h$>$}\newline
+{\ttfamily \#include $<$assert.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}tests.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}bit.\+h\char`\"{}}\newline
+Include dependency graph for unit-\/test-\/bit.c\+:
+% FIG 0
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define {\bfseries L\+O\+O\+P\+\_\+\+ON}(T)
+\item 
+\mbox{\Hypertarget{unit-test-bit_8c_a412e475035f76eb4fed2cfd999c8d89c}\label{unit-test-bit_8c_a412e475035f76eb4fed2cfd999c8d89c}} 
+\#define {\bfseries A\+S\+S\+E\+R\+T\+\_\+\+E\+Q\+\_\+\+N\+B\+\_\+\+EL}(T1,  T2)~static\+\_\+assert(sizeof(T1) / sizeof($\ast$T1) == sizeof(T2) / sizeof($\ast$T2), \char`\"{}Wrong Size in test tables\char`\"{})
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{unit-test-bit_8c_ad51d3a3f0cd5bca7b488da2c5451819f}\label{unit-test-bit_8c_ad51d3a3f0cd5bca7b488da2c5451819f}} 
+{\bfseries S\+T\+A\+R\+T\+\_\+\+T\+E\+ST} (handout\+\_\+examples)
+\item 
+\mbox{\Hypertarget{unit-test-bit_8c_afa4741df7ac75c78ea8c23ba5b3517e6}\label{unit-test-bit_8c_afa4741df7ac75c78ea8c23ba5b3517e6}} 
+E\+N\+D\+\_\+\+T\+E\+ST {\bfseries S\+T\+A\+R\+T\+\_\+\+T\+E\+ST} (lsb4\+\_\+exec)
+\item 
+\mbox{\Hypertarget{unit-test-bit_8c_a85c29388c1af6e853f533f9bc1b94386}\label{unit-test-bit_8c_a85c29388c1af6e853f533f9bc1b94386}} 
+E\+N\+D\+\_\+\+T\+E\+ST {\bfseries S\+T\+A\+R\+T\+\_\+\+T\+E\+ST} (bit\+\_\+rotate\+\_\+exec)
+\item 
+\mbox{\Hypertarget{unit-test-bit_8c_a3665719b0b66911e6fdb244dd1eebf0c}\label{unit-test-bit_8c_a3665719b0b66911e6fdb244dd1eebf0c}} 
+E\+N\+D\+\_\+\+T\+E\+ST {\bfseries S\+T\+A\+R\+T\+\_\+\+T\+E\+ST} (lsb8\+\_\+msb8\+\_\+exec)
+\item 
+\mbox{\Hypertarget{unit-test-bit_8c_a81d99faed4f8e7cc0fecda43b1113fd1}\label{unit-test-bit_8c_a81d99faed4f8e7cc0fecda43b1113fd1}} 
+E\+N\+D\+\_\+\+T\+E\+ST {\bfseries S\+T\+A\+R\+T\+\_\+\+T\+E\+ST} (merge8\+\_\+exec)
+\item 
+\mbox{\Hypertarget{unit-test-bit_8c_a9942b766a70847794d9eba89f6f01b42}\label{unit-test-bit_8c_a9942b766a70847794d9eba89f6f01b42}} 
+E\+N\+D\+\_\+\+T\+E\+ST Suite $\ast$ {\bfseries bus\+\_\+test\+\_\+suite} ()
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Unit test code for bit operations and related functions. 
+
+\begin{DoxyAuthor}{Author}
+C. Hölzl \& J.-\/C Chappelier, E\+P\+FL 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2019 
+\end{DoxyDate}
+
+
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{unit-test-bit_8c_aacea32bb563e40cc17843f7d5163527b}\label{unit-test-bit_8c_aacea32bb563e40cc17843f7d5163527b}} 
+\index{unit-\/test-\/bit.\+c@{unit-\/test-\/bit.\+c}!L\+O\+O\+P\+\_\+\+ON@{L\+O\+O\+P\+\_\+\+ON}}
+\index{L\+O\+O\+P\+\_\+\+ON@{L\+O\+O\+P\+\_\+\+ON}!unit-\/test-\/bit.\+c@{unit-\/test-\/bit.\+c}}
+\subsubsection{\texorpdfstring{L\+O\+O\+P\+\_\+\+ON}{LOOP\_ON}}
+{\footnotesize\ttfamily \#define L\+O\+O\+P\+\_\+\+ON(\begin{DoxyParamCaption}\item[{}]{T }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+\textcolor{keyword}{const} \textcolor{keywordtype}{size\_t} s\_ = \textcolor{keyword}{sizeof}(T) / \textcolor{keyword}{sizeof}(*T);  \(\backslash\)
+  for(\textcolor{keywordtype}{size\_t} i\_ = 0; i\_ < s\_; ++i\_)
+\end{DoxyCode}

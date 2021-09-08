@@ -1,0 +1,28 @@
+digraph "util.h"
+{
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  Node2 [label="util.h",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node2 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node3 [label="cpu-storage.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$cpu-storage_8h.html",tooltip="CPU model for PPS-GBemul project, storage part. "];
+  Node3 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node4 [label="cpu-alu.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$cpu-alu_8h.html",tooltip="CPU model for PPS-GBemul project, ALU part. "];
+  Node4 -> Node5 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node5 [label="cpu-alu.c",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$cpu-alu_8c.html",tooltip="Game Boy CPU simulation, ALU part asked to students. "];
+  Node4 -> Node6 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node6 [label="cpu.c",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$cpu_8c.html",tooltip="Game Boy CPU simulation. "];
+  Node6 -> Node7 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node7 [label="unit-test-cpu-dispatch.c",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$unit-test-cpu-dispatch_8c.html",tooltip="Unit test for cpu dispatch function. "];
+  Node4 -> Node8 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node8 [label="unit-test-cpu.c",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$unit-test-cpu_8c.html",tooltip="Unit test for cpu and related functions. "];
+  Node3 -> Node6 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node3 -> Node8 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node2 -> Node9 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node9 [label="test-image.c",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$test-image_8c.html",tooltip="ad-hoc end-to-end testing of image.c "];
+  Node2 -> Node10 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node10 [label="unit-test-bus.c",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$unit-test-bus_8c.html",tooltip="Unit test code for bus and related functions. "];
+  Node2 -> Node7 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node2 -> Node8 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node2 -> Node11 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node11 [label="unit-test-timer.c",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$unit-test-timer_8c.html",tooltip="Unit test code for timer and related functions. "];
+}

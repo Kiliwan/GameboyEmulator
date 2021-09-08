@@ -1,0 +1,90 @@
+\hypertarget{opcode_8c}{}\section{opcode.\+c File Reference}
+\label{opcode_8c}\index{opcode.\+c@{opcode.\+c}}
+
+
+Instruction opcodes for P\+P\+S-\/\+G\+Bemul project.  
+
+
+{\ttfamily \#include \char`\"{}opcode.\+h\char`\"{}}\newline
+Include dependency graph for opcode.\+c\+:
+% FIG 0
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{opcode_8c_a04223419866bce205ce08f34cd0f8930}\label{opcode_8c_a04223419866bce205ce08f34cd0f8930}} 
+\#define {\bfseries E\+P\+F\+L\+\_\+\+P\+P\+S\+\_\+\+G\+B\+E\+M\+U\+L\+\_\+\+O\+P\+C\+O\+D\+E\+\_\+C}
+\item 
+\mbox{\Hypertarget{opcode_8c_adb70a6e7df8608a0652f16f2e696da33}\label{opcode_8c_adb70a6e7df8608a0652f16f2e696da33}} 
+\#define {\bfseries last}(T\+AB)~(sizeof T\+AB / sizeof T\+AB\mbox{[}0\mbox{]})
+\item 
+\#define {\bfseries do\+\_\+check}(T\+AB,  K\+I\+ND)
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{opcode_8c_a14f872ff37ec9da9626c2cf3123f47c1}{opcode\+\_\+check\+\_\+integrity} ()
+\begin{DoxyCompactList}\small\item\em Check opcodes. To be launched once for all at the beginning of your program if you want to be sure no bug was introduced in the opcode representation. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{opcode_8c_a8e300a3610ea68c06f4d598bb2a97360}\label{opcode_8c_a8e300a3610ea68c06f4d598bb2a97360}} 
+const \hyperlink{structinstruction__t}{instruction\+\_\+t} {\bfseries instruction\+\_\+prefixed} \mbox{[}$\,$\mbox{]}
+\item 
+\mbox{\Hypertarget{opcode_8c_a8a2721bec4b96cdc2ea3b710e60e15a0}\label{opcode_8c_a8a2721bec4b96cdc2ea3b710e60e15a0}} 
+const \hyperlink{structinstruction__t}{instruction\+\_\+t} \hyperlink{opcode_8c_a8a2721bec4b96cdc2ea3b710e60e15a0}{instruction\+\_\+direct} \mbox{[}$\,$\mbox{]}
+\begin{DoxyCompactList}\small\item\em Two arrays mapping opcodes to instruction\+: one for direct instructions and another for prefixed instructions. Content is such that tab\mbox{[}i\mbox{]}.opcode == i. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Instruction opcodes for P\+P\+S-\/\+G\+Bemul project. 
+
+\begin{DoxyAuthor}{Author}
+J.-\/C. Chappelier \& C. Hölzl, E\+P\+FL 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2020 
+\end{DoxyDate}
+
+
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{opcode_8c_a155945f6a75e3bc971ce42ed8774264b}\label{opcode_8c_a155945f6a75e3bc971ce42ed8774264b}} 
+\index{opcode.\+c@{opcode.\+c}!do\+\_\+check@{do\+\_\+check}}
+\index{do\+\_\+check@{do\+\_\+check}!opcode.\+c@{opcode.\+c}}
+\subsubsection{\texorpdfstring{do\+\_\+check}{do\_check}}
+{\footnotesize\ttfamily \#define do\+\_\+check(\begin{DoxyParamCaption}\item[{}]{T\+AB,  }\item[{}]{K\+I\+ND }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+\textcolor{keywordflow}{do} \{ \(\backslash\)
+  const \textcolor{keywordtype}{size\_t} end = last(TAB); \(\backslash\)
+  for(\textcolor{keywordtype}{size\_t} i = 0; i < end; ++i) \{ \(\backslash\)
+    if (TAB[i].kind != KIND) \{ \(\backslash\)
+      fprintf(stderr, \textcolor{stringliteral}{"opcode\_check\_integrity(): wrong kind (%0x) in "} #TAB \textcolor{stringliteral}{"[], index %zu\(\backslash\)n"}, \(\backslash\)
+              TAB[i].kind, i); \(\backslash\)
+      return 0; \(\backslash\)
+    \} \(\backslash\)
+    if ((TAB[i].family != UNKN) && (TAB[i].opcode != i)) \{ \(\backslash\)
+      fprintf(stderr, \textcolor{stringliteral}{"opcode\_check\_integrity(): wrong index/opcode in "} #TAB \textcolor{stringliteral}{"[]: index=%zu, opcode=%d\(\backslash\)n"},
+       \(\backslash\)
+              i, TAB[i].opcode); \(\backslash\)
+      return 0;  \(\backslash\)
+    \} \(\backslash\)
+  \} \(\backslash\)
+  \} \textcolor{keywordflow}{while}(0)
+\end{DoxyCode}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{opcode_8c_a14f872ff37ec9da9626c2cf3123f47c1}\label{opcode_8c_a14f872ff37ec9da9626c2cf3123f47c1}} 
+\index{opcode.\+c@{opcode.\+c}!opcode\+\_\+check\+\_\+integrity@{opcode\+\_\+check\+\_\+integrity}}
+\index{opcode\+\_\+check\+\_\+integrity@{opcode\+\_\+check\+\_\+integrity}!opcode.\+c@{opcode.\+c}}
+\subsubsection{\texorpdfstring{opcode\+\_\+check\+\_\+integrity()}{opcode\_check\_integrity()}}
+{\footnotesize\ttfamily int opcode\+\_\+check\+\_\+integrity (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Check opcodes. To be launched once for all at the beginning of your program if you want to be sure no bug was introduced in the opcode representation. 
+
+\begin{DoxyReturn}{Returns}
+1 if ok, 0 if not. 
+\end{DoxyReturn}

@@ -1,0 +1,247 @@
+\hypertarget{bus_8h}{}\section{bus.\+h File Reference}
+\label{bus_8h}\index{bus.\+h@{bus.\+h}}
+
+
+Game Boy Bus Emulator.  
+
+
+{\ttfamily \#include \char`\"{}component.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}error.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}bit.\+h\char`\"{}}\newline
+Include dependency graph for bus.\+h\+:
+% FIG 0
+This graph shows which files directly or indirectly include this file\+:
+% FIG 1
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{bus_8h_a56412fb9c60e88dc42e7af78b0dbbe5e}\label{bus_8h_a56412fb9c60e88dc42e7af78b0dbbe5e}} 
+\#define {\bfseries B\+U\+S\+\_\+\+S\+I\+ZE}~65536
+\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef data\+\_\+t $\ast$ \hyperlink{bus_8h_a68c80bdf896e826e4cb082244ce35427}{bus\+\_\+t}\mbox{[}B\+U\+S\+\_\+\+S\+I\+ZE\mbox{]}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{bus_8h_a4f6c73e431b718e2010683ed600eb60d}{bus\+\_\+plug} (\hyperlink{bus_8h_a68c80bdf896e826e4cb082244ce35427}{bus\+\_\+t} bus, \hyperlink{structcomponent__t}{component\+\_\+t} $\ast$c, \hyperlink{memory_8h_a8a6444037e4d5cc2bf8ba22a9d9e33ca}{addr\+\_\+t} start, \hyperlink{memory_8h_a8a6444037e4d5cc2bf8ba22a9d9e33ca}{addr\+\_\+t} end)
+\begin{DoxyCompactList}\small\item\em Plug a component into the bus. \end{DoxyCompactList}\item 
+int \hyperlink{bus_8h_a386edaf5382cf5876c99c7ce85cca05b}{bus\+\_\+forced\+\_\+plug} (\hyperlink{bus_8h_a68c80bdf896e826e4cb082244ce35427}{bus\+\_\+t} bus, \hyperlink{structcomponent__t}{component\+\_\+t} $\ast$c, \hyperlink{memory_8h_a8a6444037e4d5cc2bf8ba22a9d9e33ca}{addr\+\_\+t} start, \hyperlink{memory_8h_a8a6444037e4d5cc2bf8ba22a9d9e33ca}{addr\+\_\+t} end, \hyperlink{memory_8h_a8a6444037e4d5cc2bf8ba22a9d9e33ca}{addr\+\_\+t} offset)
+\begin{DoxyCompactList}\small\item\em Plug forcibly a component into the bus (allows to use outside of range start and end). For example, if we want to map a component to somewhere else than the initialy described area. \end{DoxyCompactList}\item 
+int \hyperlink{bus_8h_a6e2d84c3a4391e9e41096cbde22d0180}{bus\+\_\+remap} (\hyperlink{bus_8h_a68c80bdf896e826e4cb082244ce35427}{bus\+\_\+t} bus, \hyperlink{structcomponent__t}{component\+\_\+t} $\ast$c, \hyperlink{memory_8h_a8a6444037e4d5cc2bf8ba22a9d9e33ca}{addr\+\_\+t} offset)
+\begin{DoxyCompactList}\small\item\em Remap the memory of a component to the bus. \end{DoxyCompactList}\item 
+int \hyperlink{bus_8h_a7d34c169ceee21b8e388443985f76221}{bus\+\_\+unplug} (\hyperlink{bus_8h_a68c80bdf896e826e4cb082244ce35427}{bus\+\_\+t} bus, \hyperlink{structcomponent__t}{component\+\_\+t} $\ast$c)
+\begin{DoxyCompactList}\small\item\em Unplug a component from the bus. \end{DoxyCompactList}\item 
+int \hyperlink{bus_8h_a70e56ce3fb52fbdc8a31a0017bf2b5f9}{bus\+\_\+read} (const \hyperlink{bus_8h_a68c80bdf896e826e4cb082244ce35427}{bus\+\_\+t} bus, \hyperlink{memory_8h_a8a6444037e4d5cc2bf8ba22a9d9e33ca}{addr\+\_\+t} address, data\+\_\+t $\ast$data)
+\begin{DoxyCompactList}\small\item\em Read the bus at a given address. \end{DoxyCompactList}\item 
+int \hyperlink{bus_8h_a72a7afcb86209450917d47d2d46256c1}{bus\+\_\+write} (\hyperlink{bus_8h_a68c80bdf896e826e4cb082244ce35427}{bus\+\_\+t} bus, \hyperlink{memory_8h_a8a6444037e4d5cc2bf8ba22a9d9e33ca}{addr\+\_\+t} address, data\+\_\+t data)
+\begin{DoxyCompactList}\small\item\em Write to the bus at a given address. \end{DoxyCompactList}\item 
+int \hyperlink{bus_8h_a295d4791f4ba19e73fc573810fd13661}{bus\+\_\+read16} (const \hyperlink{bus_8h_a68c80bdf896e826e4cb082244ce35427}{bus\+\_\+t} bus, \hyperlink{memory_8h_a8a6444037e4d5cc2bf8ba22a9d9e33ca}{addr\+\_\+t} address, \hyperlink{memory_8h_a8a6444037e4d5cc2bf8ba22a9d9e33ca}{addr\+\_\+t} $\ast$data16)
+\begin{DoxyCompactList}\small\item\em Read the bus at a given address (reads 16 bits) \end{DoxyCompactList}\item 
+int \hyperlink{bus_8h_a1594d0682837cf87c39ee6ed6d06e999}{bus\+\_\+write16} (\hyperlink{bus_8h_a68c80bdf896e826e4cb082244ce35427}{bus\+\_\+t} bus, \hyperlink{memory_8h_a8a6444037e4d5cc2bf8ba22a9d9e33ca}{addr\+\_\+t} address, \hyperlink{memory_8h_a8a6444037e4d5cc2bf8ba22a9d9e33ca}{addr\+\_\+t} data16)
+\begin{DoxyCompactList}\small\item\em Write to the bus at a given address (writes 16 bits) \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Game Boy Bus Emulator. 
+
+\begin{DoxyAuthor}{Author}
+J.-\/C. Chappelier \& C. Hölzl, E\+P\+FL 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2019 
+\end{DoxyDate}
+
+
+\subsection{Typedef Documentation}
+\mbox{\Hypertarget{bus_8h_a68c80bdf896e826e4cb082244ce35427}\label{bus_8h_a68c80bdf896e826e4cb082244ce35427}} 
+\index{bus.\+h@{bus.\+h}!bus\+\_\+t@{bus\+\_\+t}}
+\index{bus\+\_\+t@{bus\+\_\+t}!bus.\+h@{bus.\+h}}
+\subsubsection{\texorpdfstring{bus\+\_\+t}{bus\_t}}
+{\footnotesize\ttfamily typedef data\+\_\+t$\ast$ bus\+\_\+t\mbox{[}B\+U\+S\+\_\+\+S\+I\+ZE\mbox{]}}
+
+@ brief Bus Type, a table of memory pointer pointing to the various component memories 
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{bus_8h_a386edaf5382cf5876c99c7ce85cca05b}\label{bus_8h_a386edaf5382cf5876c99c7ce85cca05b}} 
+\index{bus.\+h@{bus.\+h}!bus\+\_\+forced\+\_\+plug@{bus\+\_\+forced\+\_\+plug}}
+\index{bus\+\_\+forced\+\_\+plug@{bus\+\_\+forced\+\_\+plug}!bus.\+h@{bus.\+h}}
+\subsubsection{\texorpdfstring{bus\+\_\+forced\+\_\+plug()}{bus\_forced\_plug()}}
+{\footnotesize\ttfamily int bus\+\_\+forced\+\_\+plug (\begin{DoxyParamCaption}\item[{\hyperlink{bus_8h_a68c80bdf896e826e4cb082244ce35427}{bus\+\_\+t}}]{bus,  }\item[{\hyperlink{structcomponent__t}{component\+\_\+t} $\ast$}]{c,  }\item[{\hyperlink{memory_8h_a8a6444037e4d5cc2bf8ba22a9d9e33ca}{addr\+\_\+t}}]{start,  }\item[{\hyperlink{memory_8h_a8a6444037e4d5cc2bf8ba22a9d9e33ca}{addr\+\_\+t}}]{end,  }\item[{\hyperlink{memory_8h_a8a6444037e4d5cc2bf8ba22a9d9e33ca}{addr\+\_\+t}}]{offset }\end{DoxyParamCaption})}
+
+
+
+Plug forcibly a component into the bus (allows to use outside of range start and end). For example, if we want to map a component to somewhere else than the initialy described area. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em bus} & bus to plug into \\
+\hline
+{\em c} & component to plug into bus \\
+\hline
+{\em start} & address from where to plug to (included) \\
+\hline
+{\em end} & address until where to plug to (included) \\
+\hline
+{\em offset} & offset where to start in the component \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+error code 
+\end{DoxyReturn}
+\mbox{\Hypertarget{bus_8h_a4f6c73e431b718e2010683ed600eb60d}\label{bus_8h_a4f6c73e431b718e2010683ed600eb60d}} 
+\index{bus.\+h@{bus.\+h}!bus\+\_\+plug@{bus\+\_\+plug}}
+\index{bus\+\_\+plug@{bus\+\_\+plug}!bus.\+h@{bus.\+h}}
+\subsubsection{\texorpdfstring{bus\+\_\+plug()}{bus\_plug()}}
+{\footnotesize\ttfamily int bus\+\_\+plug (\begin{DoxyParamCaption}\item[{\hyperlink{bus_8h_a68c80bdf896e826e4cb082244ce35427}{bus\+\_\+t}}]{bus,  }\item[{\hyperlink{structcomponent__t}{component\+\_\+t} $\ast$}]{c,  }\item[{\hyperlink{memory_8h_a8a6444037e4d5cc2bf8ba22a9d9e33ca}{addr\+\_\+t}}]{start,  }\item[{\hyperlink{memory_8h_a8a6444037e4d5cc2bf8ba22a9d9e33ca}{addr\+\_\+t}}]{end }\end{DoxyParamCaption})}
+
+
+
+Plug a component into the bus. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em bus} & bus to plug into \\
+\hline
+{\em c} & component to plug into bus \\
+\hline
+{\em start} & address from where to plug (included) \\
+\hline
+{\em end} & address until where to plug (included) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+error code 
+\end{DoxyReturn}
+\mbox{\Hypertarget{bus_8h_a70e56ce3fb52fbdc8a31a0017bf2b5f9}\label{bus_8h_a70e56ce3fb52fbdc8a31a0017bf2b5f9}} 
+\index{bus.\+h@{bus.\+h}!bus\+\_\+read@{bus\+\_\+read}}
+\index{bus\+\_\+read@{bus\+\_\+read}!bus.\+h@{bus.\+h}}
+\subsubsection{\texorpdfstring{bus\+\_\+read()}{bus\_read()}}
+{\footnotesize\ttfamily int bus\+\_\+read (\begin{DoxyParamCaption}\item[{const \hyperlink{bus_8h_a68c80bdf896e826e4cb082244ce35427}{bus\+\_\+t}}]{bus,  }\item[{\hyperlink{memory_8h_a8a6444037e4d5cc2bf8ba22a9d9e33ca}{addr\+\_\+t}}]{address,  }\item[{data\+\_\+t $\ast$}]{data }\end{DoxyParamCaption})}
+
+
+
+Read the bus at a given address. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em bus} & bus to read from \\
+\hline
+{\em address} & address to read at \\
+\hline
+{\em data} & pointer to write read data to \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+error code 
+\end{DoxyReturn}
+\mbox{\Hypertarget{bus_8h_a295d4791f4ba19e73fc573810fd13661}\label{bus_8h_a295d4791f4ba19e73fc573810fd13661}} 
+\index{bus.\+h@{bus.\+h}!bus\+\_\+read16@{bus\+\_\+read16}}
+\index{bus\+\_\+read16@{bus\+\_\+read16}!bus.\+h@{bus.\+h}}
+\subsubsection{\texorpdfstring{bus\+\_\+read16()}{bus\_read16()}}
+{\footnotesize\ttfamily int bus\+\_\+read16 (\begin{DoxyParamCaption}\item[{const \hyperlink{bus_8h_a68c80bdf896e826e4cb082244ce35427}{bus\+\_\+t}}]{bus,  }\item[{\hyperlink{memory_8h_a8a6444037e4d5cc2bf8ba22a9d9e33ca}{addr\+\_\+t}}]{address,  }\item[{\hyperlink{memory_8h_a8a6444037e4d5cc2bf8ba22a9d9e33ca}{addr\+\_\+t} $\ast$}]{data16 }\end{DoxyParamCaption})}
+
+
+
+Read the bus at a given address (reads 16 bits) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em bus} & bus to read from \\
+\hline
+{\em address} & address to read at \\
+\hline
+{\em data16} & pointer to write read data to \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+error code 
+\end{DoxyReturn}
+\mbox{\Hypertarget{bus_8h_a6e2d84c3a4391e9e41096cbde22d0180}\label{bus_8h_a6e2d84c3a4391e9e41096cbde22d0180}} 
+\index{bus.\+h@{bus.\+h}!bus\+\_\+remap@{bus\+\_\+remap}}
+\index{bus\+\_\+remap@{bus\+\_\+remap}!bus.\+h@{bus.\+h}}
+\subsubsection{\texorpdfstring{bus\+\_\+remap()}{bus\_remap()}}
+{\footnotesize\ttfamily int bus\+\_\+remap (\begin{DoxyParamCaption}\item[{\hyperlink{bus_8h_a68c80bdf896e826e4cb082244ce35427}{bus\+\_\+t}}]{bus,  }\item[{\hyperlink{structcomponent__t}{component\+\_\+t} $\ast$}]{c,  }\item[{\hyperlink{memory_8h_a8a6444037e4d5cc2bf8ba22a9d9e33ca}{addr\+\_\+t}}]{offset }\end{DoxyParamCaption})}
+
+
+
+Remap the memory of a component to the bus. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em bus} & bus to remap to \\
+\hline
+{\em c} & component to remap \\
+\hline
+{\em offset} & new offset to use \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+error code 
+\end{DoxyReturn}
+\mbox{\Hypertarget{bus_8h_a7d34c169ceee21b8e388443985f76221}\label{bus_8h_a7d34c169ceee21b8e388443985f76221}} 
+\index{bus.\+h@{bus.\+h}!bus\+\_\+unplug@{bus\+\_\+unplug}}
+\index{bus\+\_\+unplug@{bus\+\_\+unplug}!bus.\+h@{bus.\+h}}
+\subsubsection{\texorpdfstring{bus\+\_\+unplug()}{bus\_unplug()}}
+{\footnotesize\ttfamily int bus\+\_\+unplug (\begin{DoxyParamCaption}\item[{\hyperlink{bus_8h_a68c80bdf896e826e4cb082244ce35427}{bus\+\_\+t}}]{bus,  }\item[{\hyperlink{structcomponent__t}{component\+\_\+t} $\ast$}]{c }\end{DoxyParamCaption})}
+
+
+
+Unplug a component from the bus. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em bus} & bus to unplug from \\
+\hline
+{\em c} & component to plug into bus \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+error code 
+\end{DoxyReturn}
+\mbox{\Hypertarget{bus_8h_a72a7afcb86209450917d47d2d46256c1}\label{bus_8h_a72a7afcb86209450917d47d2d46256c1}} 
+\index{bus.\+h@{bus.\+h}!bus\+\_\+write@{bus\+\_\+write}}
+\index{bus\+\_\+write@{bus\+\_\+write}!bus.\+h@{bus.\+h}}
+\subsubsection{\texorpdfstring{bus\+\_\+write()}{bus\_write()}}
+{\footnotesize\ttfamily int bus\+\_\+write (\begin{DoxyParamCaption}\item[{\hyperlink{bus_8h_a68c80bdf896e826e4cb082244ce35427}{bus\+\_\+t}}]{bus,  }\item[{\hyperlink{memory_8h_a8a6444037e4d5cc2bf8ba22a9d9e33ca}{addr\+\_\+t}}]{address,  }\item[{data\+\_\+t}]{data }\end{DoxyParamCaption})}
+
+
+
+Write to the bus at a given address. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em bus} & bus to write to \\
+\hline
+{\em address} & address to write at \\
+\hline
+{\em data} & data to write \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+error code 
+\end{DoxyReturn}
+\mbox{\Hypertarget{bus_8h_a1594d0682837cf87c39ee6ed6d06e999}\label{bus_8h_a1594d0682837cf87c39ee6ed6d06e999}} 
+\index{bus.\+h@{bus.\+h}!bus\+\_\+write16@{bus\+\_\+write16}}
+\index{bus\+\_\+write16@{bus\+\_\+write16}!bus.\+h@{bus.\+h}}
+\subsubsection{\texorpdfstring{bus\+\_\+write16()}{bus\_write16()}}
+{\footnotesize\ttfamily int bus\+\_\+write16 (\begin{DoxyParamCaption}\item[{\hyperlink{bus_8h_a68c80bdf896e826e4cb082244ce35427}{bus\+\_\+t}}]{bus,  }\item[{\hyperlink{memory_8h_a8a6444037e4d5cc2bf8ba22a9d9e33ca}{addr\+\_\+t}}]{address,  }\item[{\hyperlink{memory_8h_a8a6444037e4d5cc2bf8ba22a9d9e33ca}{addr\+\_\+t}}]{data16 }\end{DoxyParamCaption})}
+
+
+
+Write to the bus at a given address (writes 16 bits) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em bus} & bus to write to \\
+\hline
+{\em address} & address to write at \\
+\hline
+{\em data16} & data to write \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+error code 
+\end{DoxyReturn}

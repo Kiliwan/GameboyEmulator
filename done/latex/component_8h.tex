@@ -1,0 +1,103 @@
+\hypertarget{component_8h}{}\section{component.\+h File Reference}
+\label{component_8h}\index{component.\+h@{component.\+h}}
+
+
+Game Boy Component simulation header.  
+
+
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}memory.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}error.\+h\char`\"{}}\newline
+Include dependency graph for component.\+h\+:
+% FIG 0
+This graph shows which files directly or indirectly include this file\+:
+% FIG 1
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structcomponent__t}{component\+\_\+t}
+\begin{DoxyCompactList}\small\item\em Component data structure. Holds a pointer to its memory and start/end addresses. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{component_8h_a2975b7859ebebf11ef9ab578e8226357}\label{component_8h_a2975b7859ebebf11ef9ab578e8226357}} 
+typedef struct \hyperlink{structcomponent__t}{component\+\_\+t} \hyperlink{component_8h_a2975b7859ebebf11ef9ab578e8226357}{component\+\_\+t}
+\begin{DoxyCompactList}\small\item\em Component data structure. Holds a pointer to its memory and start/end addresses. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{component_8h_a7774f00e205f6d588602d6e9dcda417a}{component\+\_\+create} (\hyperlink{structcomponent__t}{component\+\_\+t} $\ast$c, size\+\_\+t mem\+\_\+size)
+\begin{DoxyCompactList}\small\item\em Creates a component given various arguments. \end{DoxyCompactList}\item 
+int \hyperlink{component_8h_a54486f0bee17ccb61a725d7d1b50cdee}{component\+\_\+shared} (\hyperlink{structcomponent__t}{component\+\_\+t} $\ast$c, \hyperlink{structcomponent__t}{component\+\_\+t} $\ast$c\+\_\+old)
+\begin{DoxyCompactList}\small\item\em Shares memory between two components. \end{DoxyCompactList}\item 
+void \hyperlink{component_8h_a7d62f447ee3a885ed687fb86e19e8dae}{component\+\_\+free} (\hyperlink{structcomponent__t}{component\+\_\+t} $\ast$c)
+\begin{DoxyCompactList}\small\item\em Destroy\textquotesingle{}s a component. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Game Boy Component simulation header. 
+
+\begin{DoxyAuthor}{Author}
+C. Hölzl, E\+P\+FL 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2019 
+\end{DoxyDate}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{component_8h_a7774f00e205f6d588602d6e9dcda417a}\label{component_8h_a7774f00e205f6d588602d6e9dcda417a}} 
+\index{component.\+h@{component.\+h}!component\+\_\+create@{component\+\_\+create}}
+\index{component\+\_\+create@{component\+\_\+create}!component.\+h@{component.\+h}}
+\subsubsection{\texorpdfstring{component\+\_\+create()}{component\_create()}}
+{\footnotesize\ttfamily int component\+\_\+create (\begin{DoxyParamCaption}\item[{\hyperlink{structcomponent__t}{component\+\_\+t} $\ast$}]{c,  }\item[{size\+\_\+t}]{mem\+\_\+size }\end{DoxyParamCaption})}
+
+
+
+Creates a component given various arguments. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em c} & component pointer to initialize \\
+\hline
+{\em mem\+\_\+size} & size of the memory of the component \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+error code 
+\end{DoxyReturn}
+\mbox{\Hypertarget{component_8h_a7d62f447ee3a885ed687fb86e19e8dae}\label{component_8h_a7d62f447ee3a885ed687fb86e19e8dae}} 
+\index{component.\+h@{component.\+h}!component\+\_\+free@{component\+\_\+free}}
+\index{component\+\_\+free@{component\+\_\+free}!component.\+h@{component.\+h}}
+\subsubsection{\texorpdfstring{component\+\_\+free()}{component\_free()}}
+{\footnotesize\ttfamily void component\+\_\+free (\begin{DoxyParamCaption}\item[{\hyperlink{structcomponent__t}{component\+\_\+t} $\ast$}]{c }\end{DoxyParamCaption})}
+
+
+
+Destroy\textquotesingle{}s a component. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em c} & component pointer to destroy \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{component_8h_a54486f0bee17ccb61a725d7d1b50cdee}\label{component_8h_a54486f0bee17ccb61a725d7d1b50cdee}} 
+\index{component.\+h@{component.\+h}!component\+\_\+shared@{component\+\_\+shared}}
+\index{component\+\_\+shared@{component\+\_\+shared}!component.\+h@{component.\+h}}
+\subsubsection{\texorpdfstring{component\+\_\+shared()}{component\_shared()}}
+{\footnotesize\ttfamily int component\+\_\+shared (\begin{DoxyParamCaption}\item[{\hyperlink{structcomponent__t}{component\+\_\+t} $\ast$}]{c,  }\item[{\hyperlink{structcomponent__t}{component\+\_\+t} $\ast$}]{c\+\_\+old }\end{DoxyParamCaption})}
+
+
+
+Shares memory between two components. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em c} & component pointer to share to \\
+\hline
+{\em c\+\_\+old} & component to share from \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+error code 
+\end{DoxyReturn}

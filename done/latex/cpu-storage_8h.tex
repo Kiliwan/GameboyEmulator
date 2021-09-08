@@ -1,0 +1,208 @@
+\hypertarget{cpu-storage_8h}{}\section{cpu-\/storage.h File Reference}
+\label{cpu-storage_8h}\index{cpu-\/storage.\+h@{cpu-\/storage.\+h}}
+
+
+C\+PU model for P\+P\+S-\/\+G\+Bemul project, storage part.  
+
+
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}cpu.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}bus.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}memory.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}opcode.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}cpu-\/registers.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}util.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}gameboy.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}error.\+h\char`\"{}}\newline
+Include dependency graph for cpu-\/storage.h\+:
+% FIG 0
+This graph shows which files directly or indirectly include this file\+:
+% FIG 1
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{cpu-storage_8h_accb2e5189860ff3f46efdca63fe4f3c6}\label{cpu-storage_8h_accb2e5189860ff3f46efdca63fe4f3c6}} 
+\#define \hyperlink{cpu-storage_8h_accb2e5189860ff3f46efdca63fe4f3c6}{cpu\+\_\+read\+\_\+at\+\_\+\+HL}(cpu)~\hyperlink{cpu-storage_8h_a344ca7bbdfd21880efbf1fa20c5750b9}{cpu\+\_\+read\+\_\+at\+\_\+idx}(cpu, cpu\+\_\+\+H\+L\+\_\+get(cpu))
+\begin{DoxyCompactList}\small\item\em Reads data at HL address from bus. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{cpu-storage_8h_acbe1f9d259d3fc25ede7ed09c973992b}\label{cpu-storage_8h_acbe1f9d259d3fc25ede7ed09c973992b}} 
+\#define \hyperlink{cpu-storage_8h_acbe1f9d259d3fc25ede7ed09c973992b}{cpu\+\_\+read\+\_\+data\+\_\+after\+\_\+opcode}(cpu)~\hyperlink{cpu-storage_8h_a344ca7bbdfd21880efbf1fa20c5750b9}{cpu\+\_\+read\+\_\+at\+\_\+idx}(cpu,(\hyperlink{memory_8h_a8a6444037e4d5cc2bf8ba22a9d9e33ca}{addr\+\_\+t})((cpu)-\/$>$PC + 1))
+\begin{DoxyCompactList}\small\item\em Reads data after opcode from bus. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{cpu-storage_8h_ad3b9553f37930361c6d34332bbb88e78}\label{cpu-storage_8h_ad3b9553f37930361c6d34332bbb88e78}} 
+\#define \hyperlink{cpu-storage_8h_ad3b9553f37930361c6d34332bbb88e78}{cpu\+\_\+read\+\_\+addr\+\_\+after\+\_\+opcode}(cpu)~F\+R\+O\+M\+\_\+\+Game\+Boy\+\_\+16(\hyperlink{cpu-storage_8h_aa4dd23db2c717ae059d9daff6051501b}{cpu\+\_\+read16\+\_\+at\+\_\+idx}(cpu, (\hyperlink{memory_8h_a8a6444037e4d5cc2bf8ba22a9d9e33ca}{addr\+\_\+t})((cpu)-\/$>$PC + 1)))
+\begin{DoxyCompactList}\small\item\em Reads 16bit data after opcode from bus. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{cpu-storage_8h_a2358227ced3cd18bb494c3bb68999f65}\label{cpu-storage_8h_a2358227ced3cd18bb494c3bb68999f65}} 
+\#define {\bfseries cpu\+\_\+write\+\_\+at\+\_\+\+HL}(cpu,  data)~\hyperlink{cpu-storage_8h_ae76e9c113ecf820b05d8b5f5db09b229}{cpu\+\_\+write\+\_\+at\+\_\+idx}(cpu, cpu\+\_\+\+H\+L\+\_\+get(cpu), data)
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+data\+\_\+t \hyperlink{cpu-storage_8h_a344ca7bbdfd21880efbf1fa20c5750b9}{cpu\+\_\+read\+\_\+at\+\_\+idx} (const \hyperlink{structcpu__t}{cpu\+\_\+t} $\ast$cpu, \hyperlink{memory_8h_a8a6444037e4d5cc2bf8ba22a9d9e33ca}{addr\+\_\+t} addr)
+\begin{DoxyCompactList}\small\item\em Reads data from the bus at a given adress. \end{DoxyCompactList}\item 
+\hyperlink{memory_8h_a8a6444037e4d5cc2bf8ba22a9d9e33ca}{addr\+\_\+t} \hyperlink{cpu-storage_8h_aa4dd23db2c717ae059d9daff6051501b}{cpu\+\_\+read16\+\_\+at\+\_\+idx} (const \hyperlink{structcpu__t}{cpu\+\_\+t} $\ast$cpu, \hyperlink{memory_8h_a8a6444037e4d5cc2bf8ba22a9d9e33ca}{addr\+\_\+t} addr)
+\begin{DoxyCompactList}\small\item\em Reads 16bit data from the bus at a given adress. \end{DoxyCompactList}\item 
+int \hyperlink{cpu-storage_8h_ae76e9c113ecf820b05d8b5f5db09b229}{cpu\+\_\+write\+\_\+at\+\_\+idx} (\hyperlink{structcpu__t}{cpu\+\_\+t} $\ast$cpu, \hyperlink{memory_8h_a8a6444037e4d5cc2bf8ba22a9d9e33ca}{addr\+\_\+t} addr, data\+\_\+t data)
+\begin{DoxyCompactList}\small\item\em Write data to the bus at a given adress. \end{DoxyCompactList}\item 
+int \hyperlink{cpu-storage_8h_a0028e52dcb528bbee5ab3945357f2729}{cpu\+\_\+write16\+\_\+at\+\_\+idx} (\hyperlink{structcpu__t}{cpu\+\_\+t} $\ast$cpu, \hyperlink{memory_8h_a8a6444037e4d5cc2bf8ba22a9d9e33ca}{addr\+\_\+t} addr, \hyperlink{memory_8h_a8a6444037e4d5cc2bf8ba22a9d9e33ca}{addr\+\_\+t} data16)
+\begin{DoxyCompactList}\small\item\em Write 16bit data to the bus at a given adress. \end{DoxyCompactList}\item 
+int \hyperlink{cpu-storage_8h_a59cdfbe22b2caa6792b7bbb53656e3ef}{cpu\+\_\+dispatch\+\_\+storage} (const \hyperlink{structinstruction__t}{instruction\+\_\+t} $\ast$lu, \hyperlink{structcpu__t}{cpu\+\_\+t} $\ast$cpu)
+\begin{DoxyCompactList}\small\item\em Executes a cpu storage instruction. \end{DoxyCompactList}\item 
+int \hyperlink{cpu-storage_8h_aba3b649b19e786e16958bb4d8b478ab3}{cpu\+\_\+\+S\+P\+\_\+push} (\hyperlink{structcpu__t}{cpu\+\_\+t} $\ast$cpu, \hyperlink{memory_8h_a8a6444037e4d5cc2bf8ba22a9d9e33ca}{addr\+\_\+t} data16)
+\begin{DoxyCompactList}\small\item\em Push 16bit data to the stack. \end{DoxyCompactList}\item 
+\hyperlink{memory_8h_a8a6444037e4d5cc2bf8ba22a9d9e33ca}{addr\+\_\+t} \hyperlink{cpu-storage_8h_a809e7f4261a0d5f17708404017d50eb4}{cpu\+\_\+\+S\+P\+\_\+pop} (\hyperlink{structcpu__t}{cpu\+\_\+t} $\ast$cpu)
+\begin{DoxyCompactList}\small\item\em Pop 16bit data from the stack. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+C\+PU model for P\+P\+S-\/\+G\+Bemul project, storage part. 
+
+\begin{DoxyAuthor}{Author}
+J.-\/C. Chappelier \& C. Hölzl, E\+P\+FL 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2019 
+\end{DoxyDate}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{cpu-storage_8h_a59cdfbe22b2caa6792b7bbb53656e3ef}\label{cpu-storage_8h_a59cdfbe22b2caa6792b7bbb53656e3ef}} 
+\index{cpu-\/storage.\+h@{cpu-\/storage.\+h}!cpu\+\_\+dispatch\+\_\+storage@{cpu\+\_\+dispatch\+\_\+storage}}
+\index{cpu\+\_\+dispatch\+\_\+storage@{cpu\+\_\+dispatch\+\_\+storage}!cpu-\/storage.\+h@{cpu-\/storage.\+h}}
+\subsubsection{\texorpdfstring{cpu\+\_\+dispatch\+\_\+storage()}{cpu\_dispatch\_storage()}}
+{\footnotesize\ttfamily int cpu\+\_\+dispatch\+\_\+storage (\begin{DoxyParamCaption}\item[{const \hyperlink{structinstruction__t}{instruction\+\_\+t} $\ast$}]{lu,  }\item[{\hyperlink{structcpu__t}{cpu\+\_\+t} $\ast$}]{cpu }\end{DoxyParamCaption})}
+
+
+
+Executes a cpu storage instruction. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em lu} & instruction \\
+\hline
+{\em cpu,the} & C\+PU which shall execute \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+error code
+\end{DoxyReturn}
+See \hyperlink{opcode_8h}{opcode.\+h} and \hyperlink{cpu_8h}{cpu.\+h} \mbox{\Hypertarget{cpu-storage_8h_aa4dd23db2c717ae059d9daff6051501b}\label{cpu-storage_8h_aa4dd23db2c717ae059d9daff6051501b}} 
+\index{cpu-\/storage.\+h@{cpu-\/storage.\+h}!cpu\+\_\+read16\+\_\+at\+\_\+idx@{cpu\+\_\+read16\+\_\+at\+\_\+idx}}
+\index{cpu\+\_\+read16\+\_\+at\+\_\+idx@{cpu\+\_\+read16\+\_\+at\+\_\+idx}!cpu-\/storage.\+h@{cpu-\/storage.\+h}}
+\subsubsection{\texorpdfstring{cpu\+\_\+read16\+\_\+at\+\_\+idx()}{cpu\_read16\_at\_idx()}}
+{\footnotesize\ttfamily \hyperlink{memory_8h_a8a6444037e4d5cc2bf8ba22a9d9e33ca}{addr\+\_\+t} cpu\+\_\+read16\+\_\+at\+\_\+idx (\begin{DoxyParamCaption}\item[{const \hyperlink{structcpu__t}{cpu\+\_\+t} $\ast$}]{cpu,  }\item[{\hyperlink{memory_8h_a8a6444037e4d5cc2bf8ba22a9d9e33ca}{addr\+\_\+t}}]{addr }\end{DoxyParamCaption})}
+
+
+
+Reads 16bit data from the bus at a given adress. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em cpu} & cpu to read from \\
+\hline
+{\em addr} & address to read at\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+data16 read 
+\end{DoxyReturn}
+\mbox{\Hypertarget{cpu-storage_8h_a344ca7bbdfd21880efbf1fa20c5750b9}\label{cpu-storage_8h_a344ca7bbdfd21880efbf1fa20c5750b9}} 
+\index{cpu-\/storage.\+h@{cpu-\/storage.\+h}!cpu\+\_\+read\+\_\+at\+\_\+idx@{cpu\+\_\+read\+\_\+at\+\_\+idx}}
+\index{cpu\+\_\+read\+\_\+at\+\_\+idx@{cpu\+\_\+read\+\_\+at\+\_\+idx}!cpu-\/storage.\+h@{cpu-\/storage.\+h}}
+\subsubsection{\texorpdfstring{cpu\+\_\+read\+\_\+at\+\_\+idx()}{cpu\_read\_at\_idx()}}
+{\footnotesize\ttfamily data\+\_\+t cpu\+\_\+read\+\_\+at\+\_\+idx (\begin{DoxyParamCaption}\item[{const \hyperlink{structcpu__t}{cpu\+\_\+t} $\ast$}]{cpu,  }\item[{\hyperlink{memory_8h_a8a6444037e4d5cc2bf8ba22a9d9e33ca}{addr\+\_\+t}}]{addr }\end{DoxyParamCaption})}
+
+
+
+Reads data from the bus at a given adress. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em cpu} & cpu to read from \\
+\hline
+{\em addr} & address to read at\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+data read 
+\end{DoxyReturn}
+\mbox{\Hypertarget{cpu-storage_8h_a809e7f4261a0d5f17708404017d50eb4}\label{cpu-storage_8h_a809e7f4261a0d5f17708404017d50eb4}} 
+\index{cpu-\/storage.\+h@{cpu-\/storage.\+h}!cpu\+\_\+\+S\+P\+\_\+pop@{cpu\+\_\+\+S\+P\+\_\+pop}}
+\index{cpu\+\_\+\+S\+P\+\_\+pop@{cpu\+\_\+\+S\+P\+\_\+pop}!cpu-\/storage.\+h@{cpu-\/storage.\+h}}
+\subsubsection{\texorpdfstring{cpu\+\_\+\+S\+P\+\_\+pop()}{cpu\_SP\_pop()}}
+{\footnotesize\ttfamily \hyperlink{memory_8h_a8a6444037e4d5cc2bf8ba22a9d9e33ca}{addr\+\_\+t} cpu\+\_\+\+S\+P\+\_\+pop (\begin{DoxyParamCaption}\item[{\hyperlink{structcpu__t}{cpu\+\_\+t} $\ast$}]{cpu }\end{DoxyParamCaption})}
+
+
+
+Pop 16bit data from the stack. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em cpu} & cpu to use\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+16bit poped data 
+\end{DoxyReturn}
+\mbox{\Hypertarget{cpu-storage_8h_aba3b649b19e786e16958bb4d8b478ab3}\label{cpu-storage_8h_aba3b649b19e786e16958bb4d8b478ab3}} 
+\index{cpu-\/storage.\+h@{cpu-\/storage.\+h}!cpu\+\_\+\+S\+P\+\_\+push@{cpu\+\_\+\+S\+P\+\_\+push}}
+\index{cpu\+\_\+\+S\+P\+\_\+push@{cpu\+\_\+\+S\+P\+\_\+push}!cpu-\/storage.\+h@{cpu-\/storage.\+h}}
+\subsubsection{\texorpdfstring{cpu\+\_\+\+S\+P\+\_\+push()}{cpu\_SP\_push()}}
+{\footnotesize\ttfamily int cpu\+\_\+\+S\+P\+\_\+push (\begin{DoxyParamCaption}\item[{\hyperlink{structcpu__t}{cpu\+\_\+t} $\ast$}]{cpu,  }\item[{\hyperlink{memory_8h_a8a6444037e4d5cc2bf8ba22a9d9e33ca}{addr\+\_\+t}}]{data16 }\end{DoxyParamCaption})}
+
+
+
+Push 16bit data to the stack. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em cpu} & cpu to use \\
+\hline
+{\em data16} & 16bit data to push to stack\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+error code 
+\end{DoxyReturn}
+\mbox{\Hypertarget{cpu-storage_8h_a0028e52dcb528bbee5ab3945357f2729}\label{cpu-storage_8h_a0028e52dcb528bbee5ab3945357f2729}} 
+\index{cpu-\/storage.\+h@{cpu-\/storage.\+h}!cpu\+\_\+write16\+\_\+at\+\_\+idx@{cpu\+\_\+write16\+\_\+at\+\_\+idx}}
+\index{cpu\+\_\+write16\+\_\+at\+\_\+idx@{cpu\+\_\+write16\+\_\+at\+\_\+idx}!cpu-\/storage.\+h@{cpu-\/storage.\+h}}
+\subsubsection{\texorpdfstring{cpu\+\_\+write16\+\_\+at\+\_\+idx()}{cpu\_write16\_at\_idx()}}
+{\footnotesize\ttfamily int cpu\+\_\+write16\+\_\+at\+\_\+idx (\begin{DoxyParamCaption}\item[{\hyperlink{structcpu__t}{cpu\+\_\+t} $\ast$}]{cpu,  }\item[{\hyperlink{memory_8h_a8a6444037e4d5cc2bf8ba22a9d9e33ca}{addr\+\_\+t}}]{addr,  }\item[{\hyperlink{memory_8h_a8a6444037e4d5cc2bf8ba22a9d9e33ca}{addr\+\_\+t}}]{data16 }\end{DoxyParamCaption})}
+
+
+
+Write 16bit data to the bus at a given adress. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em cpu} & cpu to write to \\
+\hline
+{\em addr} & address to write at \\
+\hline
+{\em data16} & 16bit data to write\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+error code 
+\end{DoxyReturn}
+\mbox{\Hypertarget{cpu-storage_8h_ae76e9c113ecf820b05d8b5f5db09b229}\label{cpu-storage_8h_ae76e9c113ecf820b05d8b5f5db09b229}} 
+\index{cpu-\/storage.\+h@{cpu-\/storage.\+h}!cpu\+\_\+write\+\_\+at\+\_\+idx@{cpu\+\_\+write\+\_\+at\+\_\+idx}}
+\index{cpu\+\_\+write\+\_\+at\+\_\+idx@{cpu\+\_\+write\+\_\+at\+\_\+idx}!cpu-\/storage.\+h@{cpu-\/storage.\+h}}
+\subsubsection{\texorpdfstring{cpu\+\_\+write\+\_\+at\+\_\+idx()}{cpu\_write\_at\_idx()}}
+{\footnotesize\ttfamily int cpu\+\_\+write\+\_\+at\+\_\+idx (\begin{DoxyParamCaption}\item[{\hyperlink{structcpu__t}{cpu\+\_\+t} $\ast$}]{cpu,  }\item[{\hyperlink{memory_8h_a8a6444037e4d5cc2bf8ba22a9d9e33ca}{addr\+\_\+t}}]{addr,  }\item[{data\+\_\+t}]{data }\end{DoxyParamCaption})}
+
+
+
+Write data to the bus at a given adress. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em cpu} & cpu to write to \\
+\hline
+{\em addr} & address to write at \\
+\hline
+{\em data} & data to write\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+error code 
+\end{DoxyReturn}

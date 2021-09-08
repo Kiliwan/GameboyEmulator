@@ -1,0 +1,222 @@
+\hypertarget{unit-test-bit-vector_8c}{}\section{unit-\/test-\/bit-\/vector.c File Reference}
+\label{unit-test-bit-vector_8c}\index{unit-\/test-\/bit-\/vector.\+c@{unit-\/test-\/bit-\/vector.\+c}}
+
+
+Unit test code for bit\+\_\+vector and related functions.  
+
+
+{\ttfamily \#include $<$time.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$sys/types.\+h$>$}\newline
+{\ttfamily \#include $<$unistd.\+h$>$}\newline
+{\ttfamily \#include $<$pthread.\+h$>$}\newline
+{\ttfamily \#include $<$check.\+h$>$}\newline
+{\ttfamily \#include $<$inttypes.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}tests.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}bit\+\_\+vector.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}image.\+h\char`\"{}}\newline
+Include dependency graph for unit-\/test-\/bit-\/vector.c\+:
+% FIG 0
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{unit-test-bit-vector_8c_a2a699ae341bf13293afbdea04c5d9085}\label{unit-test-bit-vector_8c_a2a699ae341bf13293afbdea04c5d9085}} 
+\#define {\bfseries P\+V1\+\_\+\+S\+I\+ZE}~1
+\item 
+\mbox{\Hypertarget{unit-test-bit-vector_8c_aa0bb5d067529fcceaaead6398aa1e15d}\label{unit-test-bit-vector_8c_aa0bb5d067529fcceaaead6398aa1e15d}} 
+\#define {\bfseries P\+V1\+\_\+1\+\_\+\+V\+A\+L\+UE}~\{0x\+F\+F\+F\+F\+F\+F\+F\+F\}
+\item 
+\mbox{\Hypertarget{unit-test-bit-vector_8c_af3dd5a0e0035c7d8ce002ebdd7fcb955}\label{unit-test-bit-vector_8c_af3dd5a0e0035c7d8ce002ebdd7fcb955}} 
+\#define {\bfseries P\+V1\+\_\+0\+\_\+\+V\+A\+L\+UE}~\{0x00000000\}
+\item 
+\mbox{\Hypertarget{unit-test-bit-vector_8c_a7eec10033d15aed107a8f40ceeacb8b4}\label{unit-test-bit-vector_8c_a7eec10033d15aed107a8f40ceeacb8b4}} 
+\#define {\bfseries P\+V1\+\_\+5\+\_\+\+V\+A\+L\+UE}~\{0x0000\+F\+F\+F\+F\}
+\item 
+\mbox{\Hypertarget{unit-test-bit-vector_8c_a8f86d696cd0d090ef7702c27ddd2d3f3}\label{unit-test-bit-vector_8c_a8f86d696cd0d090ef7702c27ddd2d3f3}} 
+\#define {\bfseries P\+V2\+\_\+\+S\+I\+ZE}~2
+\item 
+\mbox{\Hypertarget{unit-test-bit-vector_8c_a89fe50fddb8645ea6c2dbb1664623fdd}\label{unit-test-bit-vector_8c_a89fe50fddb8645ea6c2dbb1664623fdd}} 
+\#define {\bfseries P\+V2\+\_\+1\+\_\+\+V\+A\+L\+UE}~\{0x\+F\+F\+F\+F\+F\+F\+F\+F, 0x\+F\+F\+F\+F\+F\+F\+F\+F\}
+\item 
+\mbox{\Hypertarget{unit-test-bit-vector_8c_ad5eadf9f0b984db5a7fb3261079e1823}\label{unit-test-bit-vector_8c_ad5eadf9f0b984db5a7fb3261079e1823}} 
+\#define {\bfseries P\+V2\+\_\+0\+\_\+\+V\+A\+L\+UE}~\{0x00000000, 0x00000000\}
+\item 
+\mbox{\Hypertarget{unit-test-bit-vector_8c_a0dd044dc3cbe647e899897e4e5e665af}\label{unit-test-bit-vector_8c_a0dd044dc3cbe647e899897e4e5e665af}} 
+\#define {\bfseries P\+V2\+\_\+5\+\_\+\+V\+A\+L\+UE}~\{0x\+F\+F\+F\+F\+F\+F\+F\+F, 0x0000\+F\+F\+F\+F\}
+\item 
+\mbox{\Hypertarget{unit-test-bit-vector_8c_a3a4e0a3aa6d8376a4fa6521383450e87}\label{unit-test-bit-vector_8c_a3a4e0a3aa6d8376a4fa6521383450e87}} 
+\#define {\bfseries P\+V1\+\_\+\+A\+A\+A\+A\+A\+A\+A\+A\+\_\+\+V\+A\+L\+UE}~\{0x\+A\+A\+A\+A\+A\+A\+A\+A\}
+\item 
+\mbox{\Hypertarget{unit-test-bit-vector_8c_a6b58503ed6317253b05296cda8ba25e8}\label{unit-test-bit-vector_8c_a6b58503ed6317253b05296cda8ba25e8}} 
+\#define {\bfseries P\+V1\+\_\+\+D\+E\+A\+D\+B\+O\+S\+S\+\_\+\+V\+A\+L\+UE}~\{0xdeadb055\}
+\item 
+\mbox{\Hypertarget{unit-test-bit-vector_8c_a79b8064d37186610fa0b8e8d885177fd}\label{unit-test-bit-vector_8c_a79b8064d37186610fa0b8e8d885177fd}} 
+\#define {\bfseries P\+V1\+\_\+\+D\+E\+A\+D\+B\+O\+S\+S\+\_\+\+N\+O\+T\+\_\+\+V\+A\+L\+UE}~\{0x21524\+F\+A\+A\}
+\item 
+\mbox{\Hypertarget{unit-test-bit-vector_8c_aea11da933492735b8e16f8f16baeff2e}\label{unit-test-bit-vector_8c_aea11da933492735b8e16f8f16baeff2e}} 
+\#define {\bfseries P\+V1\+\_\+\+D\+E\+A\+D\+B\+O\+S\+S\+\_\+\+A\+A\+A\+A\+A\+A\+A\+A\+\_\+\+A\+N\+D\+\_\+\+V\+A\+L\+UE}~\{0x8\+A\+A8\+A000\}
+\item 
+\mbox{\Hypertarget{unit-test-bit-vector_8c_abfe60d2fc21862514f8824591931bcfe}\label{unit-test-bit-vector_8c_abfe60d2fc21862514f8824591931bcfe}} 
+\#define {\bfseries P\+V1\+\_\+\+D\+E\+A\+D\+B\+O\+S\+S\+\_\+\+A\+A\+A\+A\+A\+A\+A\+A\+\_\+\+O\+R\+\_\+\+V\+A\+L\+UE}~\{0x\+F\+E\+A\+F\+B\+A\+F\+F\}
+\item 
+\mbox{\Hypertarget{unit-test-bit-vector_8c_a1479c7f052e45fcb16cc9b05d4356f02}\label{unit-test-bit-vector_8c_a1479c7f052e45fcb16cc9b05d4356f02}} 
+\#define {\bfseries P\+V1\+\_\+\+D\+E\+A\+D\+B\+O\+S\+S\+\_\+\+A\+A\+A\+A\+A\+A\+A\+A\+\_\+\+X\+O\+R\+\_\+\+V\+A\+L\+UE}~\{0x74071\+A\+F\+F\}
+\item 
+\mbox{\Hypertarget{unit-test-bit-vector_8c_a96473330f486cb6de236936b2836c1b3}\label{unit-test-bit-vector_8c_a96473330f486cb6de236936b2836c1b3}} 
+\#define {\bfseries P\+V1\+\_\+\+D\+E\+A\+D\+B\+O\+S\+S\+\_\+\+E\+X\+T\+\_\+\+Z\+E\+R\+O\+\_\+\+P5\+\_\+\+V\+A\+L\+UE}~\{0x\+A\+E\+F56\+D82, 0x6\+F56\+D82\}
+\item 
+\mbox{\Hypertarget{unit-test-bit-vector_8c_a841437db2e66bd6322c6f76a19d998fd}\label{unit-test-bit-vector_8c_a841437db2e66bd6322c6f76a19d998fd}} 
+\#define {\bfseries P\+V1\+\_\+\+D\+E\+A\+D\+B\+O\+S\+S\+\_\+\+E\+X\+T\+\_\+\+Z\+E\+R\+O\+\_\+\+M5\+\_\+\+V\+A\+L\+UE}~\{0x\+D5\+B60\+A\+A0, 0x\+D5\+B60\+A\+B\+B\}
+\item 
+\mbox{\Hypertarget{unit-test-bit-vector_8c_af59292b444174680df0b68cdfe75f2b2}\label{unit-test-bit-vector_8c_af59292b444174680df0b68cdfe75f2b2}} 
+\#define {\bfseries P\+V1\+\_\+\+D\+E\+A\+D\+B\+O\+S\+S\+\_\+\+E\+X\+T\+\_\+\+Z\+E\+R\+O\+\_\+\+P10\+\_\+\+V\+A\+L\+UE}~\{0x1577\+A\+B6\+C, 0x0037\+A\+B6\+C\}
+\item 
+\mbox{\Hypertarget{unit-test-bit-vector_8c_a3ed76d9952e6eef1aa1e92dffd8f06f5}\label{unit-test-bit-vector_8c_a3ed76d9952e6eef1aa1e92dffd8f06f5}} 
+\#define {\bfseries P\+V1\+\_\+\+D\+E\+A\+D\+B\+O\+S\+S\+\_\+\+E\+X\+T\+\_\+\+Z\+E\+R\+O\+\_\+\+M10\+\_\+\+V\+A\+L\+UE}~\{0x\+B6\+C15400, 0x\+B6\+C1577\+A\}
+\item 
+\mbox{\Hypertarget{unit-test-bit-vector_8c_a78e872e1901cc92fc6b3cead809380f6}\label{unit-test-bit-vector_8c_a78e872e1901cc92fc6b3cead809380f6}} 
+\#define {\bfseries P\+V1\+\_\+\+D\+E\+A\+D\+B\+O\+S\+S\+\_\+\+E\+X\+T\+\_\+\+W\+R\+A\+P\+\_\+\+P5\+\_\+\+V\+A\+L\+UE}~\{0x\+A\+E\+F56\+D82, 0x\+A\+E\+F56\+D82\}
+\item 
+\mbox{\Hypertarget{unit-test-bit-vector_8c_a3a43c7efd63a4c08b7a98bfd0b6fe5ab}\label{unit-test-bit-vector_8c_a3a43c7efd63a4c08b7a98bfd0b6fe5ab}} 
+\#define {\bfseries P\+V1\+\_\+\+D\+E\+A\+D\+B\+O\+S\+S\+\_\+\+E\+X\+T\+\_\+\+W\+R\+A\+P\+\_\+\+M5\+\_\+\+V\+A\+L\+UE}~\{0x\+D5\+B60\+A\+B\+B, 0x\+D5\+B60\+A\+B\+B\}
+\item 
+\mbox{\Hypertarget{unit-test-bit-vector_8c_a8736262149d96e63c17a485edd86e0e3}\label{unit-test-bit-vector_8c_a8736262149d96e63c17a485edd86e0e3}} 
+\#define {\bfseries P\+V1\+\_\+\+D\+E\+A\+D\+B\+O\+S\+S\+\_\+\+E\+X\+T\+\_\+\+W\+R\+A\+P\+\_\+\+P10\+\_\+\+V\+A\+L\+UE}~\{0x1577\+A\+B6\+C, 0x1577\+A\+B6\+C\}
+\item 
+\mbox{\Hypertarget{unit-test-bit-vector_8c_aa53e2611367b12d68ad55232ff2f954d}\label{unit-test-bit-vector_8c_aa53e2611367b12d68ad55232ff2f954d}} 
+\#define {\bfseries P\+V1\+\_\+\+D\+E\+A\+D\+B\+O\+S\+S\+\_\+\+E\+X\+T\+\_\+\+W\+R\+A\+P\+\_\+\+M10\+\_\+\+V\+A\+L\+UE}~\{0x\+B6\+C1577\+A, 0x\+B6\+C1577\+A\}
+\item 
+\#define {\bfseries fill\+\_\+vector\+\_\+with}(vec,  val,  size)
+\item 
+\#define {\bfseries vector\+\_\+match\+\_\+vector}(vec1,  vec2)
+\item 
+\#define {\bfseries vector\+\_\+match\+\_\+tab}(vec,  tab,  S)
+\item 
+\#define {\bfseries vector\+\_\+match\+\_\+val}(vec,  val,  size)
+\item 
+\mbox{\Hypertarget{unit-test-bit-vector_8c_ae02af2c3c817c7e7a340bf1b6bfb6365}\label{unit-test-bit-vector_8c_ae02af2c3c817c7e7a340bf1b6bfb6365}} 
+\#define {\bfseries P\+V\+V2\+\_\+\+V\+A\+L\+UE}~\{0x0001\+F\+F\+F\+F\}
+\item 
+\mbox{\Hypertarget{unit-test-bit-vector_8c_a5ac9a15d848c17632f11e30c5cfa6939}\label{unit-test-bit-vector_8c_a5ac9a15d848c17632f11e30c5cfa6939}} 
+\#define {\bfseries P\+V\+V3\+\_\+\+V\+A\+L\+UE}~\{0x\+F\+F\+E0003\+F,0x\+F\+F\+E0003\+F\}
+\item 
+\mbox{\Hypertarget{unit-test-bit-vector_8c_a734c60f2b8f212d784e6f4067a59daad}\label{unit-test-bit-vector_8c_a734c60f2b8f212d784e6f4067a59daad}} 
+\#define {\bfseries P\+V\+\_\+\+D\+E\+A\+D\+B\+O\+S\+S\+\_\+\+A\+A\+A\+A\+\_\+\+V\+A\+L\+UE}~\{0xdeadb055, 0xaaaa\}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{unit-test-bit-vector_8c_adcc0ff11db85b44020c86bf1a4183c29}\label{unit-test-bit-vector_8c_adcc0ff11db85b44020c86bf1a4183c29}} 
+{\bfseries S\+T\+A\+R\+T\+\_\+\+T\+E\+ST} (bit\+\_\+vector\+\_\+create\+\_\+exec)
+\item 
+\mbox{\Hypertarget{unit-test-bit-vector_8c_a2ae482ad8264f4a266053e127f5c22ad}\label{unit-test-bit-vector_8c_a2ae482ad8264f4a266053e127f5c22ad}} 
+E\+N\+D\+\_\+\+T\+E\+ST {\bfseries S\+T\+A\+R\+T\+\_\+\+T\+E\+ST} (bit\+\_\+vector\+\_\+cpy\+\_\+exec)
+\item 
+\mbox{\Hypertarget{unit-test-bit-vector_8c_a840046f31bbe711a37a38a0b213073c5}\label{unit-test-bit-vector_8c_a840046f31bbe711a37a38a0b213073c5}} 
+E\+N\+D\+\_\+\+T\+E\+ST {\bfseries S\+T\+A\+R\+T\+\_\+\+T\+E\+ST} (bit\+\_\+vector\+\_\+get\+\_\+exec)
+\item 
+\mbox{\Hypertarget{unit-test-bit-vector_8c_a07987551ba9c6926f067827e5d4b6559}\label{unit-test-bit-vector_8c_a07987551ba9c6926f067827e5d4b6559}} 
+E\+N\+D\+\_\+\+T\+E\+ST {\bfseries S\+T\+A\+R\+T\+\_\+\+T\+E\+ST} (bit\+\_\+vector\+\_\+not\+\_\+exec)
+\item 
+\mbox{\Hypertarget{unit-test-bit-vector_8c_a70e119864aed81cf0208d4ed6a402742}\label{unit-test-bit-vector_8c_a70e119864aed81cf0208d4ed6a402742}} 
+E\+N\+D\+\_\+\+T\+E\+ST {\bfseries S\+T\+A\+R\+T\+\_\+\+T\+E\+ST} (bit\+\_\+vector\+\_\+and\+\_\+exec)
+\item 
+\mbox{\Hypertarget{unit-test-bit-vector_8c_ab4bd518f0ef857e851fdd040def3a606}\label{unit-test-bit-vector_8c_ab4bd518f0ef857e851fdd040def3a606}} 
+E\+N\+D\+\_\+\+T\+E\+ST {\bfseries S\+T\+A\+R\+T\+\_\+\+T\+E\+ST} (bit\+\_\+vector\+\_\+or\+\_\+exec)
+\item 
+\mbox{\Hypertarget{unit-test-bit-vector_8c_affbda332ea234ea83b975afe8941579b}\label{unit-test-bit-vector_8c_affbda332ea234ea83b975afe8941579b}} 
+E\+N\+D\+\_\+\+T\+E\+ST {\bfseries S\+T\+A\+R\+T\+\_\+\+T\+E\+ST} (bit\+\_\+vector\+\_\+xor\+\_\+exec)
+\item 
+\mbox{\Hypertarget{unit-test-bit-vector_8c_aa0e9723fed09cb66ffd1cda87d45516e}\label{unit-test-bit-vector_8c_aa0e9723fed09cb66ffd1cda87d45516e}} 
+E\+N\+D\+\_\+\+T\+E\+ST {\bfseries S\+T\+A\+R\+T\+\_\+\+T\+E\+ST} (bit\+\_\+vector\+\_\+extract\+\_\+zero\+\_\+exec)
+\item 
+\mbox{\Hypertarget{unit-test-bit-vector_8c_aeec3636f7c8b7ea6b271844806eb9a03}\label{unit-test-bit-vector_8c_aeec3636f7c8b7ea6b271844806eb9a03}} 
+E\+N\+D\+\_\+\+T\+E\+ST {\bfseries S\+T\+A\+R\+T\+\_\+\+T\+E\+ST} (bit\+\_\+vector\+\_\+extract\+\_\+wrap\+\_\+exec)
+\item 
+\mbox{\Hypertarget{unit-test-bit-vector_8c_a9f17964cf79cb348120555c500569c38}\label{unit-test-bit-vector_8c_a9f17964cf79cb348120555c500569c38}} 
+E\+N\+D\+\_\+\+T\+E\+ST {\bfseries S\+T\+A\+R\+T\+\_\+\+T\+E\+ST} (bit\+\_\+vector\+\_\+shift\+\_\+exec)
+\item 
+\mbox{\Hypertarget{unit-test-bit-vector_8c_af31980f4645ce4df32f561b6af1b8de7}\label{unit-test-bit-vector_8c_af31980f4645ce4df32f561b6af1b8de7}} 
+E\+N\+D\+\_\+\+T\+E\+ST {\bfseries S\+T\+A\+R\+T\+\_\+\+T\+E\+ST} (bit\+\_\+vector\+\_\+join\+\_\+exec)
+\item 
+\mbox{\Hypertarget{unit-test-bit-vector_8c_a1f8ab9898078f50407e65a2622f4f945}\label{unit-test-bit-vector_8c_a1f8ab9898078f50407e65a2622f4f945}} 
+{\bfseries S\+T\+A\+R\+T\+\_\+\+T\+E\+ST} (bit\+\_\+vector\+\_\+various)
+\item 
+\mbox{\Hypertarget{unit-test-bit-vector_8c_afa72842ec5900330b255a8a5dbcf6d27}\label{unit-test-bit-vector_8c_afa72842ec5900330b255a8a5dbcf6d27}} 
+{\bfseries S\+T\+A\+R\+T\+\_\+\+T\+E\+ST} (bit\+\_\+vector\+\_\+deadboss)
+\item 
+\mbox{\Hypertarget{unit-test-bit-vector_8c_ae9bf8497ac3c350f625969edfe7ca4df}\label{unit-test-bit-vector_8c_ae9bf8497ac3c350f625969edfe7ca4df}} 
+E\+N\+D\+\_\+\+T\+E\+ST Suite $\ast$ {\bfseries cartridge\+\_\+test\+\_\+suite} ()
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Unit test code for bit\+\_\+vector and related functions. 
+
+\begin{DoxyAuthor}{Author}
+C. Hölzl, E\+P\+FL 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2020 
+\end{DoxyDate}
+
+
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{unit-test-bit-vector_8c_a85470dd17aea2a0f0c8ad68fe4a08cf1}\label{unit-test-bit-vector_8c_a85470dd17aea2a0f0c8ad68fe4a08cf1}} 
+\index{unit-\/test-\/bit-\/vector.\+c@{unit-\/test-\/bit-\/vector.\+c}!fill\+\_\+vector\+\_\+with@{fill\+\_\+vector\+\_\+with}}
+\index{fill\+\_\+vector\+\_\+with@{fill\+\_\+vector\+\_\+with}!unit-\/test-\/bit-\/vector.\+c@{unit-\/test-\/bit-\/vector.\+c}}
+\subsubsection{\texorpdfstring{fill\+\_\+vector\+\_\+with}{fill\_vector\_with}}
+{\footnotesize\ttfamily \#define fill\+\_\+vector\+\_\+with(\begin{DoxyParamCaption}\item[{}]{vec,  }\item[{}]{val,  }\item[{}]{size }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+\textcolor{keywordflow}{do}\{\(\backslash\)
+        for(\textcolor{keywordtype}{size\_t} i = 0; i<size; ++i)\{ vec->content[i] = val; \}\(\backslash\)
+    \}\textcolor{keywordflow}{while}(0)
+\end{DoxyCode}
+\mbox{\Hypertarget{unit-test-bit-vector_8c_a19ea6ecc4ee71bfae5fcff25d2af66d2}\label{unit-test-bit-vector_8c_a19ea6ecc4ee71bfae5fcff25d2af66d2}} 
+\index{unit-\/test-\/bit-\/vector.\+c@{unit-\/test-\/bit-\/vector.\+c}!vector\+\_\+match\+\_\+tab@{vector\+\_\+match\+\_\+tab}}
+\index{vector\+\_\+match\+\_\+tab@{vector\+\_\+match\+\_\+tab}!unit-\/test-\/bit-\/vector.\+c@{unit-\/test-\/bit-\/vector.\+c}}
+\subsubsection{\texorpdfstring{vector\+\_\+match\+\_\+tab}{vector\_match\_tab}}
+{\footnotesize\ttfamily \#define vector\+\_\+match\+\_\+tab(\begin{DoxyParamCaption}\item[{}]{vec,  }\item[{}]{tab,  }\item[{}]{S }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+\textcolor{keywordflow}{do} \{\(\backslash\)
+        const \textcolor{keywordtype}{size\_t} bound1 = (vec)->size / IMAGE\_LINE\_WORD\_BITS; \(\backslash\)
+        const \textcolor{keywordtype}{size\_t} bound = (bound1 < (S) ? bound1 : (S));       \(\backslash\)
+        for (\textcolor{keywordtype}{size\_t} i = 0; i < bound; ++i) \{ ck\_assert\_int\_eq((vec)->content[i], (tab)[i]); \} \(\backslash\)
+        if ((S) > bound) \{ \(\backslash\)
+            ck\_assert\_uint\_eq(S, bound1 + 1); \(\backslash\)
+            const \textcolor{keywordtype}{size\_t} shift = 8*\textcolor{keyword}{sizeof}((vec)->content[0]) - ((vec)->size % IMAGE\_LINE\_WORD\_BITS) ; \(\backslash\)
+            ck\_assert\_int\_eq((vec)->content[bound1] << shift, (tab)[bound1] << shift); \(\backslash\)
+        \} \(\backslash\)
+    \} \textcolor{keywordflow}{while}(0)
+\end{DoxyCode}
+\mbox{\Hypertarget{unit-test-bit-vector_8c_a9032b05ae6443409f6086dc32356289f}\label{unit-test-bit-vector_8c_a9032b05ae6443409f6086dc32356289f}} 
+\index{unit-\/test-\/bit-\/vector.\+c@{unit-\/test-\/bit-\/vector.\+c}!vector\+\_\+match\+\_\+val@{vector\+\_\+match\+\_\+val}}
+\index{vector\+\_\+match\+\_\+val@{vector\+\_\+match\+\_\+val}!unit-\/test-\/bit-\/vector.\+c@{unit-\/test-\/bit-\/vector.\+c}}
+\subsubsection{\texorpdfstring{vector\+\_\+match\+\_\+val}{vector\_match\_val}}
+{\footnotesize\ttfamily \#define vector\+\_\+match\+\_\+val(\begin{DoxyParamCaption}\item[{}]{vec,  }\item[{}]{val,  }\item[{}]{size }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+\textcolor{keywordflow}{do}\{\(\backslash\)
+        for(\textcolor{keywordtype}{size\_t} i = 0; i<size; ++i)\{ ck\_assert\_int\_eq(vec->content[i], val); \}\(\backslash\)
+    \}\textcolor{keywordflow}{while}(0)
+\end{DoxyCode}
+\mbox{\Hypertarget{unit-test-bit-vector_8c_adc8d3dd6f0c37c44171f5c4738e15ca2}\label{unit-test-bit-vector_8c_adc8d3dd6f0c37c44171f5c4738e15ca2}} 
+\index{unit-\/test-\/bit-\/vector.\+c@{unit-\/test-\/bit-\/vector.\+c}!vector\+\_\+match\+\_\+vector@{vector\+\_\+match\+\_\+vector}}
+\index{vector\+\_\+match\+\_\+vector@{vector\+\_\+match\+\_\+vector}!unit-\/test-\/bit-\/vector.\+c@{unit-\/test-\/bit-\/vector.\+c}}
+\subsubsection{\texorpdfstring{vector\+\_\+match\+\_\+vector}{vector\_match\_vector}}
+{\footnotesize\ttfamily \#define vector\+\_\+match\+\_\+vector(\begin{DoxyParamCaption}\item[{}]{vec1,  }\item[{}]{vec2 }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+\textcolor{keywordflow}{do}\{ \(\backslash\)
+      ck\_assert((vec1)->size == (vec2)->size); \(\backslash\)
+      const \textcolor{keywordtype}{size\_t} bound = (vec1)->size / IMAGE\_LINE\_WORD\_BITS + ((vec1)->size % IMAGE\_LINE\_WORD\_BITS ? 1 :
+      0); \(\backslash\)
+      for (\textcolor{keywordtype}{size\_t} i = 0; i < bound; ++i) \{ ck\_assert\_int\_eq((vec1)->content[i], (vec2)->content[i]); \} \(\backslash\)
+    \} \textcolor{keywordflow}{while}(0)
+\end{DoxyCode}

@@ -1,0 +1,77 @@
+\hypertarget{unit-test-cartridge_8c}{}\section{unit-\/test-\/cartridge.c File Reference}
+\label{unit-test-cartridge_8c}\index{unit-\/test-\/cartridge.\+c@{unit-\/test-\/cartridge.\+c}}
+
+
+Unit test code for cartridge and related functions.  
+
+
+{\ttfamily \#include $<$time.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$sys/types.\+h$>$}\newline
+{\ttfamily \#include $<$unistd.\+h$>$}\newline
+{\ttfamily \#include $<$pthread.\+h$>$}\newline
+{\ttfamily \#include $<$check.\+h$>$}\newline
+{\ttfamily \#include $<$inttypes.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}tests.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}cartridge.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}cpu.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}bus.\+h\char`\"{}}\newline
+Include dependency graph for unit-\/test-\/cartridge.c\+:
+% FIG 0
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{unit-test-cartridge_8c_aa4552b8131d97267d57e0e0d97dc4a9f}\label{unit-test-cartridge_8c_aa4552b8131d97267d57e0e0d97dc4a9f}} 
+\#define {\bfseries F\+I\+B\+O\+N\+A\+C\+C\+I\+\_\+\+R\+OM}~\char`\"{}tests/data/fibonacci.\+gb\char`\"{}
+\item 
+\mbox{\Hypertarget{unit-test-cartridge_8c_a6eb5ec4a679dbf4c759862654581fd7a}\label{unit-test-cartridge_8c_a6eb5ec4a679dbf4c759862654581fd7a}} 
+\#define {\bfseries F\+I\+B\+\_\+\+B\+Y\+T\+E\+S\+\_\+\+S\+I\+ZE}~32
+\item 
+\#define {\bfseries F\+I\+B\+\_\+\+B\+Y\+T\+ES}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{unit-test-cartridge_8c_a1352ec4e7a02f681db8c928ce2748af9}\label{unit-test-cartridge_8c_a1352ec4e7a02f681db8c928ce2748af9}} 
+{\bfseries S\+T\+A\+R\+T\+\_\+\+T\+E\+ST} (cartridge\+\_\+init\+\_\+err)
+\item 
+\mbox{\Hypertarget{unit-test-cartridge_8c_a5ab46445c2906b29d07579f70385f966}\label{unit-test-cartridge_8c_a5ab46445c2906b29d07579f70385f966}} 
+{\bfseries S\+T\+A\+R\+T\+\_\+\+T\+E\+ST} (cartridge\+\_\+init\+\_\+exec)
+\item 
+\mbox{\Hypertarget{unit-test-cartridge_8c_a90e07300d556edd582158118cb4cf65a}\label{unit-test-cartridge_8c_a90e07300d556edd582158118cb4cf65a}} 
+E\+N\+D\+\_\+\+T\+E\+ST {\bfseries S\+T\+A\+R\+T\+\_\+\+T\+E\+ST} (cartridge\+\_\+free\+\_\+exec)
+\item 
+\mbox{\Hypertarget{unit-test-cartridge_8c_a1eb7cb1da97dbb2a5f3223372d96a4f9}\label{unit-test-cartridge_8c_a1eb7cb1da97dbb2a5f3223372d96a4f9}} 
+E\+N\+D\+\_\+\+T\+E\+ST {\bfseries S\+T\+A\+R\+T\+\_\+\+T\+E\+ST} (cartridge\+\_\+plug\+\_\+err)
+\item 
+\mbox{\Hypertarget{unit-test-cartridge_8c_ae3f06b2efd9629a389549e17c45bffe5}\label{unit-test-cartridge_8c_ae3f06b2efd9629a389549e17c45bffe5}} 
+E\+N\+D\+\_\+\+T\+E\+ST {\bfseries S\+T\+A\+R\+T\+\_\+\+T\+E\+ST} (cartridge\+\_\+plug\+\_\+exec)
+\item 
+\mbox{\Hypertarget{unit-test-cartridge_8c_ae9bf8497ac3c350f625969edfe7ca4df}\label{unit-test-cartridge_8c_ae9bf8497ac3c350f625969edfe7ca4df}} 
+E\+N\+D\+\_\+\+T\+E\+ST Suite $\ast$ {\bfseries cartridge\+\_\+test\+\_\+suite} ()
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Unit test code for cartridge and related functions. 
+
+\begin{DoxyAuthor}{Author}
+C. Hölzl, E\+P\+FL 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2020 
+\end{DoxyDate}
+
+
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{unit-test-cartridge_8c_a933a9d1eb2addc828ac17247c266bb2b}\label{unit-test-cartridge_8c_a933a9d1eb2addc828ac17247c266bb2b}} 
+\index{unit-\/test-\/cartridge.\+c@{unit-\/test-\/cartridge.\+c}!F\+I\+B\+\_\+\+B\+Y\+T\+ES@{F\+I\+B\+\_\+\+B\+Y\+T\+ES}}
+\index{F\+I\+B\+\_\+\+B\+Y\+T\+ES@{F\+I\+B\+\_\+\+B\+Y\+T\+ES}!unit-\/test-\/cartridge.\+c@{unit-\/test-\/cartridge.\+c}}
+\subsubsection{\texorpdfstring{F\+I\+B\+\_\+\+B\+Y\+T\+ES}{FIB\_BYTES}}
+{\footnotesize\ttfamily \#define F\+I\+B\+\_\+\+B\+Y\+T\+ES}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+\{0x31, 0xff, 0xff, 0x3e, 0x0b, 0xcd, 0x0a, 0x00, 0x76, 0x00, 0xfe, 0x02,0xd8, 0xc5, 0x3d, 0x47,\(\backslash\)
+           0xcd, 0x0a, 0x00, 0x4f, 0x78, 0x3d, 0xcd, 0x0a, 0x00, 0x81, 0xc1, 0xc9, 0x00, 0x00, 0x00, 0x00 \}
+\end{DoxyCode}

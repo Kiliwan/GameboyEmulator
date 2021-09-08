@@ -1,0 +1,387 @@
+\hypertarget{bit__vector_8h}{}\section{bit\+\_\+vector.\+h File Reference}
+\label{bit__vector_8h}\index{bit\+\_\+vector.\+h@{bit\+\_\+vector.\+h}}
+
+
+Bit vectors for P\+PS projects.  
+
+
+{\ttfamily \#include \char`\"{}bit.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$stddef.\+h$>$}\newline
+{\ttfamily \#include $<$stdint.\+h$>$}\newline
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$math.\+h$>$}\newline
+Include dependency graph for bit\+\_\+vector.\+h\+:
+% FIG 0
+This graph shows which files directly or indirectly include this file\+:
+% FIG 1
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structbit__vector__t}{bit\+\_\+vector\+\_\+t}
+\begin{DoxyCompactList}\small\item\em Type to represent image lines. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{bit__vector_8h_a13184c8002dd21939dda9719afe121f2}\label{bit__vector_8h_a13184c8002dd21939dda9719afe121f2}} 
+\#define {\bfseries C\+L\+A\+M\+P32}(X)~((X \% 32 == 0) ? X \+: (X/32 + 1)$\ast$32)
+\item 
+\mbox{\Hypertarget{bit__vector_8h_a5524151de136a14b1a059603c3a16d8a}\label{bit__vector_8h_a5524151de136a14b1a059603c3a16d8a}} 
+\#define \hyperlink{bit__vector_8h_a5524151de136a14b1a059603c3a16d8a}{G\+E\+N\+E\+R\+A\+T\+E\+\_\+\+FF}(X)~(0x\+F\+F\+F\+F\+F\+F\+F\+F $>$$>$ (32 -\/ X))
+\begin{DoxyCompactList}\small\item\em function to generate a word with X bits set to 1 (where X \% 4 == 0) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{bit__vector_8h_ae3eea6c25461b616ecb15c90bcacf238}\label{bit__vector_8h_ae3eea6c25461b616ecb15c90bcacf238}} 
+\#define \hyperlink{bit__vector_8h_ae3eea6c25461b616ecb15c90bcacf238}{G\+E\+N\+E\+R\+A\+T\+E\+\_\+\+M\+AX}(X)~((X $<$ I\+M\+A\+G\+E\+\_\+\+L\+I\+N\+E\+\_\+\+W\+O\+R\+D\+\_\+\+B\+I\+TS) ? 1 \+: (X/I\+M\+A\+G\+E\+\_\+\+L\+I\+N\+E\+\_\+\+W\+O\+R\+D\+\_\+\+B\+I\+TS))
+\begin{DoxyCompactList}\small\item\em integer division or 1 if the result is 0 \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{bit__vector_8h_aaddd8b6b5597f9dcd441d0c5216d22dd}\label{bit__vector_8h_aaddd8b6b5597f9dcd441d0c5216d22dd}} 
+\#define {\bfseries I\+M\+A\+G\+E\+\_\+\+L\+I\+N\+E\+\_\+\+W\+O\+R\+D\+\_\+\+B\+I\+TS}~32
+\item 
+\mbox{\Hypertarget{bit__vector_8h_a86fd4404b140711fdb77326609c0f393}\label{bit__vector_8h_a86fd4404b140711fdb77326609c0f393}} 
+\#define {\bfseries B\+Y\+T\+E\+\_\+\+S\+I\+ZE}~8
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{structbit__vector__t}{bit\+\_\+vector\+\_\+t} $\ast$ \hyperlink{bit__vector_8h_aaf890a22967f75e664a67ff03cadbd8e}{bit\+\_\+vector\+\_\+create} (size\+\_\+t size, \hyperlink{bit_8h_ab6e831ce3850688e9d0c2bb9ec57fb45}{bit\+\_\+t} value)
+\begin{DoxyCompactList}\small\item\em Create a bit vector of a given size and fill it with bit value. \end{DoxyCompactList}\item 
+\hyperlink{structbit__vector__t}{bit\+\_\+vector\+\_\+t} $\ast$ \hyperlink{bit__vector_8h_abf54a51a53a09fc175c71ac48cb6779d}{bit\+\_\+vector\+\_\+cpy} (const \hyperlink{structbit__vector__t}{bit\+\_\+vector\+\_\+t} $\ast$pbv)
+\begin{DoxyCompactList}\small\item\em Create a copy of a bit vector. \end{DoxyCompactList}\item 
+\hyperlink{bit_8h_ab6e831ce3850688e9d0c2bb9ec57fb45}{bit\+\_\+t} \hyperlink{bit__vector_8h_a78fa231b7d754bddcfc93e8959ba575d}{bit\+\_\+vector\+\_\+get} (const \hyperlink{structbit__vector__t}{bit\+\_\+vector\+\_\+t} $\ast$pbv, size\+\_\+t index)
+\begin{DoxyCompactList}\small\item\em Get the value of a given bit in a bit vector. \end{DoxyCompactList}\item 
+\hyperlink{structbit__vector__t}{bit\+\_\+vector\+\_\+t} $\ast$ \hyperlink{bit__vector_8h_ac3ed2cd41ec9c469ed37ddbc5702fe19}{bit\+\_\+vector\+\_\+not} (\hyperlink{structbit__vector__t}{bit\+\_\+vector\+\_\+t} $\ast$pbv)
+\begin{DoxyCompactList}\small\item\em Compute logical N\+OT of a bit vector. \end{DoxyCompactList}\item 
+\hyperlink{structbit__vector__t}{bit\+\_\+vector\+\_\+t} $\ast$ \hyperlink{bit__vector_8h_ab0956f7cc792604e93dbe76f193ea3bb}{bit\+\_\+vector\+\_\+and} (\hyperlink{structbit__vector__t}{bit\+\_\+vector\+\_\+t} $\ast$pbv1, const \hyperlink{structbit__vector__t}{bit\+\_\+vector\+\_\+t} $\ast$pbv2)
+\begin{DoxyCompactList}\small\item\em Compute logical A\+ND of two bit vectors. \end{DoxyCompactList}\item 
+\hyperlink{structbit__vector__t}{bit\+\_\+vector\+\_\+t} $\ast$ \hyperlink{bit__vector_8h_a76247ab88c605222e0fb076f31461054}{bit\+\_\+vector\+\_\+or} (\hyperlink{structbit__vector__t}{bit\+\_\+vector\+\_\+t} $\ast$pbv1, const \hyperlink{structbit__vector__t}{bit\+\_\+vector\+\_\+t} $\ast$pbv2)
+\begin{DoxyCompactList}\small\item\em Compute logical OR of two bit vectors. \end{DoxyCompactList}\item 
+\hyperlink{structbit__vector__t}{bit\+\_\+vector\+\_\+t} $\ast$ \hyperlink{bit__vector_8h_a33928a54a13d4424eef2423047d61240}{bit\+\_\+vector\+\_\+xor} (\hyperlink{structbit__vector__t}{bit\+\_\+vector\+\_\+t} $\ast$pbv1, const \hyperlink{structbit__vector__t}{bit\+\_\+vector\+\_\+t} $\ast$pbv2)
+\begin{DoxyCompactList}\small\item\em Compute logical X\+OR of two bit vectors. \end{DoxyCompactList}\item 
+\hyperlink{structbit__vector__t}{bit\+\_\+vector\+\_\+t} $\ast$ \hyperlink{bit__vector_8h_a3bff26666704f45be536af1b8e5a3059}{bit\+\_\+vector\+\_\+extract\+\_\+zero\+\_\+ext} (const \hyperlink{structbit__vector__t}{bit\+\_\+vector\+\_\+t} $\ast$pbv, int64\+\_\+t index, size\+\_\+t size)
+\begin{DoxyCompactList}\small\item\em Create a new bit vector extracted from another bit vector (zero extended) \end{DoxyCompactList}\item 
+\hyperlink{structbit__vector__t}{bit\+\_\+vector\+\_\+t} $\ast$ \hyperlink{bit__vector_8h_a244815f3d572c41be2b5aa6dceeb06a3}{bit\+\_\+vector\+\_\+extract\+\_\+wrap\+\_\+ext} (const \hyperlink{structbit__vector__t}{bit\+\_\+vector\+\_\+t} $\ast$pbv, int64\+\_\+t index, size\+\_\+t size)
+\begin{DoxyCompactList}\small\item\em Create a new bit vector extracted from another bit vector (wrap extended) \end{DoxyCompactList}\item 
+\hyperlink{structbit__vector__t}{bit\+\_\+vector\+\_\+t} $\ast$ \hyperlink{bit__vector_8h_ad0070757c07e95a117c1e77422cacf24}{bit\+\_\+vector\+\_\+shift} (const \hyperlink{structbit__vector__t}{bit\+\_\+vector\+\_\+t} $\ast$pbv, int64\+\_\+t shift)
+\begin{DoxyCompactList}\small\item\em Create a new bit vector shifted from another bit vector. \end{DoxyCompactList}\item 
+\hyperlink{structbit__vector__t}{bit\+\_\+vector\+\_\+t} $\ast$ \hyperlink{bit__vector_8h_aa417c6e6f4b946898d602b7796dc552c}{bit\+\_\+vector\+\_\+join} (const \hyperlink{structbit__vector__t}{bit\+\_\+vector\+\_\+t} $\ast$pbv1, const \hyperlink{structbit__vector__t}{bit\+\_\+vector\+\_\+t} $\ast$pbv2, int64\+\_\+t shift)
+\begin{DoxyCompactList}\small\item\em Join two bit vectors into a new bit vector. \end{DoxyCompactList}\item 
+int \hyperlink{bit__vector_8h_aee05217d862e988fef8466e2f93ff49e}{bit\+\_\+vector\+\_\+print} (const \hyperlink{structbit__vector__t}{bit\+\_\+vector\+\_\+t} $\ast$pbv)
+\begin{DoxyCompactList}\small\item\em Print bit vector values. \end{DoxyCompactList}\item 
+int \hyperlink{bit__vector_8h_a8326b0319a73255e05ef8bdf388b7890}{bit\+\_\+vector\+\_\+println} (const char $\ast$prefix, const \hyperlink{structbit__vector__t}{bit\+\_\+vector\+\_\+t} $\ast$pbv)
+\begin{DoxyCompactList}\small\item\em Print a bit vector as a line with a prefix. \end{DoxyCompactList}\item 
+void \hyperlink{bit__vector_8h_a613eb0c62c03353bb9d0f27a3291e632}{bit\+\_\+vector\+\_\+free} (\hyperlink{structbit__vector__t}{bit\+\_\+vector\+\_\+t} $\ast$$\ast$pbv)
+\begin{DoxyCompactList}\small\item\em Frees a bit vector. \end{DoxyCompactList}\item 
+\hyperlink{structbit__vector__t}{bit\+\_\+vector\+\_\+t} $\ast$ \hyperlink{bit__vector_8h_a77950926ae5d2949bd991adc0cb9fd05}{bit\+\_\+vector\+\_\+extract} (\hyperlink{bit_8h_ab6e831ce3850688e9d0c2bb9ec57fb45}{bit\+\_\+t} type, const \hyperlink{structbit__vector__t}{bit\+\_\+vector\+\_\+t} $\ast$pbv, int64\+\_\+t index, size\+\_\+t size)
+\begin{DoxyCompactList}\small\item\em Create a new bit vector extracted from another bit vector (wrap or zero extended) \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Bit vectors for P\+PS projects. 
+
+\begin{DoxyAuthor}{Author}
+J.-\/C. Chappelier \& C. Hölzl, E\+P\+FL 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2019 
+\end{DoxyDate}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{bit__vector_8h_ab0956f7cc792604e93dbe76f193ea3bb}\label{bit__vector_8h_ab0956f7cc792604e93dbe76f193ea3bb}} 
+\index{bit\+\_\+vector.\+h@{bit\+\_\+vector.\+h}!bit\+\_\+vector\+\_\+and@{bit\+\_\+vector\+\_\+and}}
+\index{bit\+\_\+vector\+\_\+and@{bit\+\_\+vector\+\_\+and}!bit\+\_\+vector.\+h@{bit\+\_\+vector.\+h}}
+\subsubsection{\texorpdfstring{bit\+\_\+vector\+\_\+and()}{bit\_vector\_and()}}
+{\footnotesize\ttfamily \hyperlink{structbit__vector__t}{bit\+\_\+vector\+\_\+t}$\ast$ bit\+\_\+vector\+\_\+and (\begin{DoxyParamCaption}\item[{\hyperlink{structbit__vector__t}{bit\+\_\+vector\+\_\+t} $\ast$}]{pbv1,  }\item[{const \hyperlink{structbit__vector__t}{bit\+\_\+vector\+\_\+t} $\ast$}]{pbv2 }\end{DoxyParamCaption})}
+
+
+
+Compute logical A\+ND of two bit vectors. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pbv1} & pointer to first bit vector \\
+\hline
+{\em pbv2} & pointer to second bit vector \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+pointer to the first bit vector 
+\end{DoxyReturn}
+\mbox{\Hypertarget{bit__vector_8h_abf54a51a53a09fc175c71ac48cb6779d}\label{bit__vector_8h_abf54a51a53a09fc175c71ac48cb6779d}} 
+\index{bit\+\_\+vector.\+h@{bit\+\_\+vector.\+h}!bit\+\_\+vector\+\_\+cpy@{bit\+\_\+vector\+\_\+cpy}}
+\index{bit\+\_\+vector\+\_\+cpy@{bit\+\_\+vector\+\_\+cpy}!bit\+\_\+vector.\+h@{bit\+\_\+vector.\+h}}
+\subsubsection{\texorpdfstring{bit\+\_\+vector\+\_\+cpy()}{bit\_vector\_cpy()}}
+{\footnotesize\ttfamily \hyperlink{structbit__vector__t}{bit\+\_\+vector\+\_\+t}$\ast$ bit\+\_\+vector\+\_\+cpy (\begin{DoxyParamCaption}\item[{const \hyperlink{structbit__vector__t}{bit\+\_\+vector\+\_\+t} $\ast$}]{pbv }\end{DoxyParamCaption})}
+
+
+
+Create a copy of a bit vector. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pbv} & pointer to the bit vector to copy \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+pointer to the copy of given bit vector 
+\end{DoxyReturn}
+\mbox{\Hypertarget{bit__vector_8h_aaf890a22967f75e664a67ff03cadbd8e}\label{bit__vector_8h_aaf890a22967f75e664a67ff03cadbd8e}} 
+\index{bit\+\_\+vector.\+h@{bit\+\_\+vector.\+h}!bit\+\_\+vector\+\_\+create@{bit\+\_\+vector\+\_\+create}}
+\index{bit\+\_\+vector\+\_\+create@{bit\+\_\+vector\+\_\+create}!bit\+\_\+vector.\+h@{bit\+\_\+vector.\+h}}
+\subsubsection{\texorpdfstring{bit\+\_\+vector\+\_\+create()}{bit\_vector\_create()}}
+{\footnotesize\ttfamily \hyperlink{structbit__vector__t}{bit\+\_\+vector\+\_\+t}$\ast$ bit\+\_\+vector\+\_\+create (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{size,  }\item[{\hyperlink{bit_8h_ab6e831ce3850688e9d0c2bb9ec57fb45}{bit\+\_\+t}}]{value }\end{DoxyParamCaption})}
+
+
+
+Create a bit vector of a given size and fill it with bit value. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em size,size} & in bits of the vector \\
+\hline
+{\em value,bit} & value \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+pointer to created bit vector 
+\end{DoxyReturn}
+\mbox{\Hypertarget{bit__vector_8h_a77950926ae5d2949bd991adc0cb9fd05}\label{bit__vector_8h_a77950926ae5d2949bd991adc0cb9fd05}} 
+\index{bit\+\_\+vector.\+h@{bit\+\_\+vector.\+h}!bit\+\_\+vector\+\_\+extract@{bit\+\_\+vector\+\_\+extract}}
+\index{bit\+\_\+vector\+\_\+extract@{bit\+\_\+vector\+\_\+extract}!bit\+\_\+vector.\+h@{bit\+\_\+vector.\+h}}
+\subsubsection{\texorpdfstring{bit\+\_\+vector\+\_\+extract()}{bit\_vector\_extract()}}
+{\footnotesize\ttfamily \hyperlink{structbit__vector__t}{bit\+\_\+vector\+\_\+t}$\ast$ bit\+\_\+vector\+\_\+extract (\begin{DoxyParamCaption}\item[{\hyperlink{bit_8h_ab6e831ce3850688e9d0c2bb9ec57fb45}{bit\+\_\+t}}]{type,  }\item[{const \hyperlink{structbit__vector__t}{bit\+\_\+vector\+\_\+t} $\ast$}]{pbv,  }\item[{int64\+\_\+t}]{index,  }\item[{size\+\_\+t}]{size }\end{DoxyParamCaption})}
+
+
+
+Create a new bit vector extracted from another bit vector (wrap or zero extended) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em type} & indicated type of extraction (0 for zero, 1 for wrap) \\
+\hline
+{\em pbv} & pointer to bit vector \\
+\hline
+{\em index} & index from where to start extraction \\
+\hline
+{\em size} & size in bit of new bit vector \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+pointer new bit vector 
+\end{DoxyReturn}
+\mbox{\Hypertarget{bit__vector_8h_a244815f3d572c41be2b5aa6dceeb06a3}\label{bit__vector_8h_a244815f3d572c41be2b5aa6dceeb06a3}} 
+\index{bit\+\_\+vector.\+h@{bit\+\_\+vector.\+h}!bit\+\_\+vector\+\_\+extract\+\_\+wrap\+\_\+ext@{bit\+\_\+vector\+\_\+extract\+\_\+wrap\+\_\+ext}}
+\index{bit\+\_\+vector\+\_\+extract\+\_\+wrap\+\_\+ext@{bit\+\_\+vector\+\_\+extract\+\_\+wrap\+\_\+ext}!bit\+\_\+vector.\+h@{bit\+\_\+vector.\+h}}
+\subsubsection{\texorpdfstring{bit\+\_\+vector\+\_\+extract\+\_\+wrap\+\_\+ext()}{bit\_vector\_extract\_wrap\_ext()}}
+{\footnotesize\ttfamily \hyperlink{structbit__vector__t}{bit\+\_\+vector\+\_\+t}$\ast$ bit\+\_\+vector\+\_\+extract\+\_\+wrap\+\_\+ext (\begin{DoxyParamCaption}\item[{const \hyperlink{structbit__vector__t}{bit\+\_\+vector\+\_\+t} $\ast$}]{pbv,  }\item[{int64\+\_\+t}]{index,  }\item[{size\+\_\+t}]{size }\end{DoxyParamCaption})}
+
+
+
+Create a new bit vector extracted from another bit vector (wrap extended) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pbv} & pointer to bit vector \\
+\hline
+{\em index} & index from where to start extraction \\
+\hline
+{\em size} & size in bit of new bit vector \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+pointer new bit vector 
+\end{DoxyReturn}
+\mbox{\Hypertarget{bit__vector_8h_a3bff26666704f45be536af1b8e5a3059}\label{bit__vector_8h_a3bff26666704f45be536af1b8e5a3059}} 
+\index{bit\+\_\+vector.\+h@{bit\+\_\+vector.\+h}!bit\+\_\+vector\+\_\+extract\+\_\+zero\+\_\+ext@{bit\+\_\+vector\+\_\+extract\+\_\+zero\+\_\+ext}}
+\index{bit\+\_\+vector\+\_\+extract\+\_\+zero\+\_\+ext@{bit\+\_\+vector\+\_\+extract\+\_\+zero\+\_\+ext}!bit\+\_\+vector.\+h@{bit\+\_\+vector.\+h}}
+\subsubsection{\texorpdfstring{bit\+\_\+vector\+\_\+extract\+\_\+zero\+\_\+ext()}{bit\_vector\_extract\_zero\_ext()}}
+{\footnotesize\ttfamily \hyperlink{structbit__vector__t}{bit\+\_\+vector\+\_\+t}$\ast$ bit\+\_\+vector\+\_\+extract\+\_\+zero\+\_\+ext (\begin{DoxyParamCaption}\item[{const \hyperlink{structbit__vector__t}{bit\+\_\+vector\+\_\+t} $\ast$}]{pbv,  }\item[{int64\+\_\+t}]{index,  }\item[{size\+\_\+t}]{size }\end{DoxyParamCaption})}
+
+
+
+Create a new bit vector extracted from another bit vector (zero extended) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pbv} & pointer to bit vector \\
+\hline
+{\em index} & index from where to start extraction \\
+\hline
+{\em size} & size in bit of new bit vector \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+pointer new bit vector 
+\end{DoxyReturn}
+\mbox{\Hypertarget{bit__vector_8h_a613eb0c62c03353bb9d0f27a3291e632}\label{bit__vector_8h_a613eb0c62c03353bb9d0f27a3291e632}} 
+\index{bit\+\_\+vector.\+h@{bit\+\_\+vector.\+h}!bit\+\_\+vector\+\_\+free@{bit\+\_\+vector\+\_\+free}}
+\index{bit\+\_\+vector\+\_\+free@{bit\+\_\+vector\+\_\+free}!bit\+\_\+vector.\+h@{bit\+\_\+vector.\+h}}
+\subsubsection{\texorpdfstring{bit\+\_\+vector\+\_\+free()}{bit\_vector\_free()}}
+{\footnotesize\ttfamily void bit\+\_\+vector\+\_\+free (\begin{DoxyParamCaption}\item[{\hyperlink{structbit__vector__t}{bit\+\_\+vector\+\_\+t} $\ast$$\ast$}]{pbv }\end{DoxyParamCaption})}
+
+
+
+Frees a bit vector. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pbv} & pointer to bit vector pointer \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{bit__vector_8h_a78fa231b7d754bddcfc93e8959ba575d}\label{bit__vector_8h_a78fa231b7d754bddcfc93e8959ba575d}} 
+\index{bit\+\_\+vector.\+h@{bit\+\_\+vector.\+h}!bit\+\_\+vector\+\_\+get@{bit\+\_\+vector\+\_\+get}}
+\index{bit\+\_\+vector\+\_\+get@{bit\+\_\+vector\+\_\+get}!bit\+\_\+vector.\+h@{bit\+\_\+vector.\+h}}
+\subsubsection{\texorpdfstring{bit\+\_\+vector\+\_\+get()}{bit\_vector\_get()}}
+{\footnotesize\ttfamily \hyperlink{bit_8h_ab6e831ce3850688e9d0c2bb9ec57fb45}{bit\+\_\+t} bit\+\_\+vector\+\_\+get (\begin{DoxyParamCaption}\item[{const \hyperlink{structbit__vector__t}{bit\+\_\+vector\+\_\+t} $\ast$}]{pbv,  }\item[{size\+\_\+t}]{index }\end{DoxyParamCaption})}
+
+
+
+Get the value of a given bit in a bit vector. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pbv} & pointer to the bit vector \\
+\hline
+{\em index} & index of bit \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+value of bit at index 
+\end{DoxyReturn}
+\mbox{\Hypertarget{bit__vector_8h_aa417c6e6f4b946898d602b7796dc552c}\label{bit__vector_8h_aa417c6e6f4b946898d602b7796dc552c}} 
+\index{bit\+\_\+vector.\+h@{bit\+\_\+vector.\+h}!bit\+\_\+vector\+\_\+join@{bit\+\_\+vector\+\_\+join}}
+\index{bit\+\_\+vector\+\_\+join@{bit\+\_\+vector\+\_\+join}!bit\+\_\+vector.\+h@{bit\+\_\+vector.\+h}}
+\subsubsection{\texorpdfstring{bit\+\_\+vector\+\_\+join()}{bit\_vector\_join()}}
+{\footnotesize\ttfamily \hyperlink{structbit__vector__t}{bit\+\_\+vector\+\_\+t}$\ast$ bit\+\_\+vector\+\_\+join (\begin{DoxyParamCaption}\item[{const \hyperlink{structbit__vector__t}{bit\+\_\+vector\+\_\+t} $\ast$}]{pbv1,  }\item[{const \hyperlink{structbit__vector__t}{bit\+\_\+vector\+\_\+t} $\ast$}]{pbv2,  }\item[{int64\+\_\+t}]{shift }\end{DoxyParamCaption})}
+
+
+
+Join two bit vectors into a new bit vector. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pbv1} & pointer to first bit vector \\
+\hline
+{\em pbv2} & pointer to second bit vector \\
+\hline
+{\em shift} & bit shift count \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+pointer new bit vector containing pbv1 values until shift (excluded) followed by values from pbv2 
+\end{DoxyReturn}
+\mbox{\Hypertarget{bit__vector_8h_ac3ed2cd41ec9c469ed37ddbc5702fe19}\label{bit__vector_8h_ac3ed2cd41ec9c469ed37ddbc5702fe19}} 
+\index{bit\+\_\+vector.\+h@{bit\+\_\+vector.\+h}!bit\+\_\+vector\+\_\+not@{bit\+\_\+vector\+\_\+not}}
+\index{bit\+\_\+vector\+\_\+not@{bit\+\_\+vector\+\_\+not}!bit\+\_\+vector.\+h@{bit\+\_\+vector.\+h}}
+\subsubsection{\texorpdfstring{bit\+\_\+vector\+\_\+not()}{bit\_vector\_not()}}
+{\footnotesize\ttfamily \hyperlink{structbit__vector__t}{bit\+\_\+vector\+\_\+t}$\ast$ bit\+\_\+vector\+\_\+not (\begin{DoxyParamCaption}\item[{\hyperlink{structbit__vector__t}{bit\+\_\+vector\+\_\+t} $\ast$}]{pbv }\end{DoxyParamCaption})}
+
+
+
+Compute logical N\+OT of a bit vector. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pbv} & pointer to the bit vector \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+pointer to the bit vector 
+\end{DoxyReturn}
+\mbox{\Hypertarget{bit__vector_8h_a76247ab88c605222e0fb076f31461054}\label{bit__vector_8h_a76247ab88c605222e0fb076f31461054}} 
+\index{bit\+\_\+vector.\+h@{bit\+\_\+vector.\+h}!bit\+\_\+vector\+\_\+or@{bit\+\_\+vector\+\_\+or}}
+\index{bit\+\_\+vector\+\_\+or@{bit\+\_\+vector\+\_\+or}!bit\+\_\+vector.\+h@{bit\+\_\+vector.\+h}}
+\subsubsection{\texorpdfstring{bit\+\_\+vector\+\_\+or()}{bit\_vector\_or()}}
+{\footnotesize\ttfamily \hyperlink{structbit__vector__t}{bit\+\_\+vector\+\_\+t}$\ast$ bit\+\_\+vector\+\_\+or (\begin{DoxyParamCaption}\item[{\hyperlink{structbit__vector__t}{bit\+\_\+vector\+\_\+t} $\ast$}]{pbv1,  }\item[{const \hyperlink{structbit__vector__t}{bit\+\_\+vector\+\_\+t} $\ast$}]{pbv2 }\end{DoxyParamCaption})}
+
+
+
+Compute logical OR of two bit vectors. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pbv1} & pointer to first bit vector \\
+\hline
+{\em pbv2} & pointer to second bit vector \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+pointer to the first bit vector 
+\end{DoxyReturn}
+\mbox{\Hypertarget{bit__vector_8h_aee05217d862e988fef8466e2f93ff49e}\label{bit__vector_8h_aee05217d862e988fef8466e2f93ff49e}} 
+\index{bit\+\_\+vector.\+h@{bit\+\_\+vector.\+h}!bit\+\_\+vector\+\_\+print@{bit\+\_\+vector\+\_\+print}}
+\index{bit\+\_\+vector\+\_\+print@{bit\+\_\+vector\+\_\+print}!bit\+\_\+vector.\+h@{bit\+\_\+vector.\+h}}
+\subsubsection{\texorpdfstring{bit\+\_\+vector\+\_\+print()}{bit\_vector\_print()}}
+{\footnotesize\ttfamily int bit\+\_\+vector\+\_\+print (\begin{DoxyParamCaption}\item[{const \hyperlink{structbit__vector__t}{bit\+\_\+vector\+\_\+t} $\ast$}]{pbv }\end{DoxyParamCaption})}
+
+
+
+Print bit vector values. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pbv} & pointer to bit vector \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+count of printed characters 
+\end{DoxyReturn}
+\mbox{\Hypertarget{bit__vector_8h_a8326b0319a73255e05ef8bdf388b7890}\label{bit__vector_8h_a8326b0319a73255e05ef8bdf388b7890}} 
+\index{bit\+\_\+vector.\+h@{bit\+\_\+vector.\+h}!bit\+\_\+vector\+\_\+println@{bit\+\_\+vector\+\_\+println}}
+\index{bit\+\_\+vector\+\_\+println@{bit\+\_\+vector\+\_\+println}!bit\+\_\+vector.\+h@{bit\+\_\+vector.\+h}}
+\subsubsection{\texorpdfstring{bit\+\_\+vector\+\_\+println()}{bit\_vector\_println()}}
+{\footnotesize\ttfamily int bit\+\_\+vector\+\_\+println (\begin{DoxyParamCaption}\item[{const char $\ast$}]{prefix,  }\item[{const \hyperlink{structbit__vector__t}{bit\+\_\+vector\+\_\+t} $\ast$}]{pbv }\end{DoxyParamCaption})}
+
+
+
+Print a bit vector as a line with a prefix. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em prefix} & string to use as prefix \\
+\hline
+{\em pbv} & pointer to bit vector \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+count of printed characters 
+\end{DoxyReturn}
+\mbox{\Hypertarget{bit__vector_8h_ad0070757c07e95a117c1e77422cacf24}\label{bit__vector_8h_ad0070757c07e95a117c1e77422cacf24}} 
+\index{bit\+\_\+vector.\+h@{bit\+\_\+vector.\+h}!bit\+\_\+vector\+\_\+shift@{bit\+\_\+vector\+\_\+shift}}
+\index{bit\+\_\+vector\+\_\+shift@{bit\+\_\+vector\+\_\+shift}!bit\+\_\+vector.\+h@{bit\+\_\+vector.\+h}}
+\subsubsection{\texorpdfstring{bit\+\_\+vector\+\_\+shift()}{bit\_vector\_shift()}}
+{\footnotesize\ttfamily \hyperlink{structbit__vector__t}{bit\+\_\+vector\+\_\+t}$\ast$ bit\+\_\+vector\+\_\+shift (\begin{DoxyParamCaption}\item[{const \hyperlink{structbit__vector__t}{bit\+\_\+vector\+\_\+t} $\ast$}]{pbv,  }\item[{int64\+\_\+t}]{shift }\end{DoxyParamCaption})}
+
+
+
+Create a new bit vector shifted from another bit vector. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pbv} & pointer to bit vector \\
+\hline
+{\em shift} & bit shift count \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+pointer new bit vector 
+\end{DoxyReturn}
+\mbox{\Hypertarget{bit__vector_8h_a33928a54a13d4424eef2423047d61240}\label{bit__vector_8h_a33928a54a13d4424eef2423047d61240}} 
+\index{bit\+\_\+vector.\+h@{bit\+\_\+vector.\+h}!bit\+\_\+vector\+\_\+xor@{bit\+\_\+vector\+\_\+xor}}
+\index{bit\+\_\+vector\+\_\+xor@{bit\+\_\+vector\+\_\+xor}!bit\+\_\+vector.\+h@{bit\+\_\+vector.\+h}}
+\subsubsection{\texorpdfstring{bit\+\_\+vector\+\_\+xor()}{bit\_vector\_xor()}}
+{\footnotesize\ttfamily \hyperlink{structbit__vector__t}{bit\+\_\+vector\+\_\+t}$\ast$ bit\+\_\+vector\+\_\+xor (\begin{DoxyParamCaption}\item[{\hyperlink{structbit__vector__t}{bit\+\_\+vector\+\_\+t} $\ast$}]{pbv1,  }\item[{const \hyperlink{structbit__vector__t}{bit\+\_\+vector\+\_\+t} $\ast$}]{pbv2 }\end{DoxyParamCaption})}
+
+
+
+Compute logical X\+OR of two bit vectors. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pbv1} & pointer to first bit vector \\
+\hline
+{\em pbv2} & pointer to second bit vector \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+pointer to the first bit vector 
+\end{DoxyReturn}

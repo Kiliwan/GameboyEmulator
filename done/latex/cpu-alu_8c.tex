@@ -1,0 +1,86 @@
+\hypertarget{cpu-alu_8c}{}\section{cpu-\/alu.c File Reference}
+\label{cpu-alu_8c}\index{cpu-\/alu.\+c@{cpu-\/alu.\+c}}
+
+
+Game Boy C\+PU simulation, A\+LU part asked to students.  
+
+
+{\ttfamily \#include \char`\"{}cpu-\/alu.\+h\char`\"{}}\newline
+Include dependency graph for cpu-\/alu.c\+:
+% FIG 0
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{cpu-alu_8c_a317e6ad3371e3d8e5c3403e32e9d80b5}\label{cpu-alu_8c_a317e6ad3371e3d8e5c3403e32e9d80b5}} 
+\#define \hyperlink{cpu-alu_8c_a317e6ad3371e3d8e5c3403e32e9d80b5}{I\+S\+\_\+\+V\+A\+L\+I\+D\+\_\+\+F\+L\+A\+G\+\_\+\+S\+RC}(x)~(x == C\+L\+E\+AR $\vert$$\vert$ x == S\+ET $\vert$$\vert$ x == A\+LU $\vert$$\vert$ x == C\+PU)
+\begin{DoxyCompactList}\small\item\em Checks if x is a valid flag source. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{cpu-alu_8c_a1850c8ec5243fcb17417f3318acbc4e3}\label{cpu-alu_8c_a1850c8ec5243fcb17417f3318acbc4e3}} 
+\#define {\bfseries C\+H\+E\+C\+K\+\_\+\+F\+L\+A\+G\+\_\+\+S\+RC}(x)~\hyperlink{error_8h_a83c518271b7028053a924a3cff9e5e58}{M\+\_\+\+R\+E\+Q\+U\+I\+RE}(\hyperlink{cpu-alu_8c_a317e6ad3371e3d8e5c3403e32e9d80b5}{I\+S\+\_\+\+V\+A\+L\+I\+D\+\_\+\+F\+L\+A\+G\+\_\+\+S\+RC}(x), E\+R\+R\+\_\+\+B\+A\+D\+\_\+\+P\+A\+R\+A\+M\+E\+T\+ER, \char`\"{}Parameter \%d for \char`\"{} \#x \char`\"{} is not valid\char`\"{}, x)
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{cpu-alu_8c_afe6c263f10df836653f53ef451182fe1}\label{cpu-alu_8c_afe6c263f10df836653f53ef451182fe1}} 
+int {\bfseries cpu\+\_\+dispatch\+\_\+alu\+\_\+ext} (const \hyperlink{structinstruction__t}{instruction\+\_\+t} $\ast$lu, \hyperlink{structcpu__t}{cpu\+\_\+t} $\ast$cpu)
+\item 
+int \hyperlink{cpu-alu_8c_ac780d6a4222a48f38ef077b29ca9dca2}{cpu\+\_\+combine\+\_\+alu\+\_\+flags} (\hyperlink{structcpu__t}{cpu\+\_\+t} $\ast$cpu, \hyperlink{cpu-alu_8h_a4c967c3e85658e567133a3f087ad8da9}{flag\+\_\+src\+\_\+t} Z, \hyperlink{cpu-alu_8h_a4c967c3e85658e567133a3f087ad8da9}{flag\+\_\+src\+\_\+t} N, \hyperlink{cpu-alu_8h_a4c967c3e85658e567133a3f087ad8da9}{flag\+\_\+src\+\_\+t} H, \hyperlink{cpu-alu_8h_a4c967c3e85658e567133a3f087ad8da9}{flag\+\_\+src\+\_\+t} C)
+\begin{DoxyCompactList}\small\item\em Combine flag sources and write them to F register. \end{DoxyCompactList}\item 
+int \hyperlink{cpu-alu_8c_ab160349665b976fd9744ef060ec11b34}{cpu\+\_\+dispatch\+\_\+alu} (const \hyperlink{structinstruction__t}{instruction\+\_\+t} $\ast$lu, \hyperlink{structcpu__t}{cpu\+\_\+t} $\ast$cpu)
+\begin{DoxyCompactList}\small\item\em Executes an A\+LU instruction. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Game Boy C\+PU simulation, A\+LU part asked to students. 
+
+\begin{DoxyDate}{Date}
+2019 
+\end{DoxyDate}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{cpu-alu_8c_ac780d6a4222a48f38ef077b29ca9dca2}\label{cpu-alu_8c_ac780d6a4222a48f38ef077b29ca9dca2}} 
+\index{cpu-\/alu.\+c@{cpu-\/alu.\+c}!cpu\+\_\+combine\+\_\+alu\+\_\+flags@{cpu\+\_\+combine\+\_\+alu\+\_\+flags}}
+\index{cpu\+\_\+combine\+\_\+alu\+\_\+flags@{cpu\+\_\+combine\+\_\+alu\+\_\+flags}!cpu-\/alu.\+c@{cpu-\/alu.\+c}}
+\subsubsection{\texorpdfstring{cpu\+\_\+combine\+\_\+alu\+\_\+flags()}{cpu\_combine\_alu\_flags()}}
+{\footnotesize\ttfamily int cpu\+\_\+combine\+\_\+alu\+\_\+flags (\begin{DoxyParamCaption}\item[{\hyperlink{structcpu__t}{cpu\+\_\+t} $\ast$}]{cpu,  }\item[{\hyperlink{cpu-alu_8h_a4c967c3e85658e567133a3f087ad8da9}{flag\+\_\+src\+\_\+t}}]{Z,  }\item[{\hyperlink{cpu-alu_8h_a4c967c3e85658e567133a3f087ad8da9}{flag\+\_\+src\+\_\+t}}]{N,  }\item[{\hyperlink{cpu-alu_8h_a4c967c3e85658e567133a3f087ad8da9}{flag\+\_\+src\+\_\+t}}]{H,  }\item[{\hyperlink{cpu-alu_8h_a4c967c3e85658e567133a3f087ad8da9}{flag\+\_\+src\+\_\+t}}]{C }\end{DoxyParamCaption})}
+
+
+
+Combine flag sources and write them to F register. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em cpu} & cpu source and target to use \\
+\hline
+{\em Z} & flag source for Z flag bit \\
+\hline
+{\em N} & flat source for N flag bit \\
+\hline
+{\em H} & flag source for H flag bit \\
+\hline
+{\em C} & flag source for C flag bit\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Error code 
+\end{DoxyReturn}
+\mbox{\Hypertarget{cpu-alu_8c_ab160349665b976fd9744ef060ec11b34}\label{cpu-alu_8c_ab160349665b976fd9744ef060ec11b34}} 
+\index{cpu-\/alu.\+c@{cpu-\/alu.\+c}!cpu\+\_\+dispatch\+\_\+alu@{cpu\+\_\+dispatch\+\_\+alu}}
+\index{cpu\+\_\+dispatch\+\_\+alu@{cpu\+\_\+dispatch\+\_\+alu}!cpu-\/alu.\+c@{cpu-\/alu.\+c}}
+\subsubsection{\texorpdfstring{cpu\+\_\+dispatch\+\_\+alu()}{cpu\_dispatch\_alu()}}
+{\footnotesize\ttfamily int cpu\+\_\+dispatch\+\_\+alu (\begin{DoxyParamCaption}\item[{const \hyperlink{structinstruction__t}{instruction\+\_\+t} $\ast$}]{lu,  }\item[{\hyperlink{structcpu__t}{cpu\+\_\+t} $\ast$}]{cpu }\end{DoxyParamCaption})}
+
+
+
+Executes an A\+LU instruction. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em lu} & instruction \\
+\hline
+{\em cpu,the} & C\+PU which shall execute \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+error code 
+\end{DoxyReturn}

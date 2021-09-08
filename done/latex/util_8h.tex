@@ -1,0 +1,70 @@
+\hypertarget{util_8h}{}\section{util.\+h File Reference}
+\label{util_8h}\index{util.\+h@{util.\+h}}
+
+
+Some tool macros/functions.  
+
+
+{\ttfamily \#include $<$inttypes.\+h$>$}\newline
+Include dependency graph for util.\+h\+:
+% FIG 0
+This graph shows which files directly or indirectly include this file\+:
+% FIG 1
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{util_8h_ab795c7ed25edebadeccc5ecf535c2563}\label{util_8h_ab795c7ed25edebadeccc5ecf535c2563}} 
+\#define \hyperlink{util_8h_ab795c7ed25edebadeccc5ecf535c2563}{\+\_\+unused}~\+\_\+\+\_\+attribute\+\_\+\+\_\+((unused))
+\begin{DoxyCompactList}\small\item\em tag a variable as P\+O\+T\+E\+N\+T\+I\+A\+L\+LY unused, to avoid compiler warnings \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{util_8h_a827ff2924cd56d8a373832be9d927215}\label{util_8h_a827ff2924cd56d8a373832be9d927215}} 
+\#define \hyperlink{util_8h_a827ff2924cd56d8a373832be9d927215}{free\+\_\+const\+\_\+ptr}(X)~free((void$\ast$)X)
+\begin{DoxyCompactList}\small\item\em useful to free pointers to const without warning. Use with care! \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{util_8h_ac728a34787951006cba3e1be64ad54f7}\label{util_8h_ac728a34787951006cba3e1be64ad54f7}} 
+\#define \hyperlink{util_8h_ac728a34787951006cba3e1be64ad54f7}{zero\+\_\+init\+\_\+var}(X)~memset(\&X, 0, sizeof(X))
+\begin{DoxyCompactList}\small\item\em useful to init a variable (typically a struct) directly or through a pointer \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{util_8h_a195360d09cd5b1ad4838cf12fb7245c7}\label{util_8h_a195360d09cd5b1ad4838cf12fb7245c7}} 
+\#define {\bfseries zero\+\_\+init\+\_\+ptr}(X)~memset(X, 0, sizeof($\ast$X))
+\item 
+\mbox{\Hypertarget{util_8h_aabb7cb51c3a45dfa4f6ad2a5729f0c46}\label{util_8h_aabb7cb51c3a45dfa4f6ad2a5729f0c46}} 
+\#define \hyperlink{util_8h_aabb7cb51c3a45dfa4f6ad2a5729f0c46}{S\+I\+Z\+E\+\_\+\+T\+\_\+\+F\+MT}~\char`\"{}\%zu\char`\"{}
+\begin{DoxyCompactList}\small\item\em useful to have C99 (!) zu to compile in Windows \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+uint16\+\_\+t \hyperlink{util_8h_a703e30a65720be67b361e111510d8b16}{b2l\+\_\+16} (const uint16\+\_\+t)
+\begin{DoxyCompactList}\small\item\em convert big-\/endian 16 bits integer to little-\/endian. If already little-\/endian, return same value. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{util_8h_a47ef5f144371efadfa1257a5908f209a}\label{util_8h_a47ef5f144371efadfa1257a5908f209a}} 
+uint16\+\_\+t \hyperlink{util_8h_a47ef5f144371efadfa1257a5908f209a}{l2b\+\_\+16} (const uint16\+\_\+t)
+\begin{DoxyCompactList}\small\item\em convert little-\/endian 16 bits integer to big-\/endian. If already big-\/endian, return same value. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Some tool macros/functions. 
+
+\begin{DoxyAuthor}{Author}
+Jean-\/\+Cédric Chappelier 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2017-\/2019 
+\end{DoxyDate}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{util_8h_a703e30a65720be67b361e111510d8b16}\label{util_8h_a703e30a65720be67b361e111510d8b16}} 
+\index{util.\+h@{util.\+h}!b2l\+\_\+16@{b2l\+\_\+16}}
+\index{b2l\+\_\+16@{b2l\+\_\+16}!util.\+h@{util.\+h}}
+\subsubsection{\texorpdfstring{b2l\+\_\+16()}{b2l\_16()}}
+{\footnotesize\ttfamily uint16\+\_\+t b2l\+\_\+16 (\begin{DoxyParamCaption}\item[{const uint16\+\_\+t}]{input }\end{DoxyParamCaption})}
+
+
+
+convert big-\/endian 16 bits integer to little-\/endian. If already little-\/endian, return same value. 
+
+convert big-\/endian 16 bits integer to little-\/endian. If already little-\/endian, return same value.
+
+.c \begin{DoxyAuthor}{Author}
+J.-\/C. Chappelier, E\+P\+FL 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+08.\+2019 
+\end{DoxyDate}

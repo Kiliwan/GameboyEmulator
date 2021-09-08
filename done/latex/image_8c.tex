@@ -1,0 +1,448 @@
+\hypertarget{image_8c}{}\section{image.\+c File Reference}
+\label{image_8c}\index{image.\+c@{image.\+c}}
+
+
+Image for P\+PS projects.  
+
+
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}error.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}image.\+h\char`\"{}}\newline
+Include dependency graph for image.\+c\+:
+% FIG 0
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{image_8c_a94dff304676703f5d64bbfb2ad5f2871}\label{image_8c_a94dff304676703f5d64bbfb2ad5f2871}} 
+\#define {\bfseries size\+\_\+to\+\_\+content\+\_\+size}(size)~(((size) / I\+M\+A\+G\+E\+\_\+\+L\+I\+N\+E\+\_\+\+W\+O\+R\+D\+\_\+\+B\+I\+TS) + (((size) \% I\+M\+A\+G\+E\+\_\+\+L\+I\+N\+E\+\_\+\+W\+O\+R\+D\+\_\+\+B\+I\+TS==0)?0\+:1))
+\item 
+\mbox{\Hypertarget{image_8c_a0d4b1dcf7e93d4a4dd4cf9b8dd9ef00c}\label{image_8c_a0d4b1dcf7e93d4a4dd4cf9b8dd9ef00c}} 
+\#define {\bfseries index\+\_\+to\+\_\+content\+\_\+index}(index)~((index)/ I\+M\+A\+G\+E\+\_\+\+L\+I\+N\+E\+\_\+\+W\+O\+R\+D\+\_\+\+B\+I\+TS)
+\item 
+\mbox{\Hypertarget{image_8c_aec8f04354bcc74f3de215219c08246a8}\label{image_8c_aec8f04354bcc74f3de215219c08246a8}} 
+\#define {\bfseries do\+\_\+image\+\_\+line}(piml)~do(piml, lsb); do(piml, msb); do(piml, opacity)
+\item 
+\#define {\bfseries M\+\_\+\+R\+E\+Q\+U\+I\+R\+E\+\_\+\+N\+O\+N\+\_\+\+N\+U\+L\+L\+\_\+\+I\+M\+A\+G\+E\+\_\+\+L\+I\+NE}(iml)
+\item 
+\#define {\bfseries M\+\_\+\+R\+E\+Q\+U\+I\+R\+E\+\_\+\+M\+A\+T\+C\+H\+I\+N\+G\+\_\+\+I\+M\+A\+G\+E\+\_\+\+L\+I\+N\+E\+\_\+\+S\+I\+ZE}(iml1,  iml2)
+\item 
+\mbox{\Hypertarget{image_8c_a1f6e024ddc0dbaac2a8048884f747ea0}\label{image_8c_a1f6e024ddc0dbaac2a8048884f747ea0}} 
+\#define {\bfseries do}(I,  X)~I-\/$>$X = \hyperlink{bit__vector_8h_aaf890a22967f75e664a67ff03cadbd8e}{bit\+\_\+vector\+\_\+create}(size, 0)
+\item 
+\mbox{\Hypertarget{image_8c_a1f6e024ddc0dbaac2a8048884f747ea0}\label{image_8c_a1f6e024ddc0dbaac2a8048884f747ea0}} 
+\#define {\bfseries do}(I,  X)~I-\/$>$X = \hyperlink{bit__vector_8h_ad0070757c07e95a117c1e77422cacf24}{bit\+\_\+vector\+\_\+shift}(iml.\+X, shift)
+\item 
+\mbox{\Hypertarget{image_8c_a1f6e024ddc0dbaac2a8048884f747ea0}\label{image_8c_a1f6e024ddc0dbaac2a8048884f747ea0}} 
+\#define {\bfseries do}(I,  X)~I-\/$>$X = \hyperlink{bit__vector_8h_a244815f3d572c41be2b5aa6dceeb06a3}{bit\+\_\+vector\+\_\+extract\+\_\+wrap\+\_\+ext}(iml.\+X, index, size)
+\item 
+\mbox{\Hypertarget{image_8c_ac4ac2f3d0b972143bdac49afd5da7bba}\label{image_8c_ac4ac2f3d0b972143bdac49afd5da7bba}} 
+\#define {\bfseries P\+A\+L\+E\+T\+T\+E\+\_\+\+M\+A\+S\+K\+\_\+\+B\+IT}~0x01
+\item 
+\mbox{\Hypertarget{image_8c_a1f6e024ddc0dbaac2a8048884f747ea0}\label{image_8c_a1f6e024ddc0dbaac2a8048884f747ea0}} 
+\#define {\bfseries do}(I,  X)~I-\/$>$X = \hyperlink{bit__vector_8h_abf54a51a53a09fc175c71ac48cb6779d}{bit\+\_\+vector\+\_\+cpy}(iml.\+X)
+\item 
+\mbox{\Hypertarget{image_8c_a1f6e024ddc0dbaac2a8048884f747ea0}\label{image_8c_a1f6e024ddc0dbaac2a8048884f747ea0}} 
+\#define {\bfseries do}(I,  X)~I-\/$>$X = \hyperlink{bit__vector_8h_abf54a51a53a09fc175c71ac48cb6779d}{bit\+\_\+vector\+\_\+cpy}(iml2.\+X)
+\item 
+\mbox{\Hypertarget{image_8c_a1f6e024ddc0dbaac2a8048884f747ea0}\label{image_8c_a1f6e024ddc0dbaac2a8048884f747ea0}} 
+\#define {\bfseries do}(I,  X)~I-\/$>$X = \hyperlink{bit__vector_8h_aa417c6e6f4b946898d602b7796dc552c}{bit\+\_\+vector\+\_\+join}(iml1.\+X, iml2.\+X, start)
+\item 
+\mbox{\Hypertarget{image_8c_a1f6e024ddc0dbaac2a8048884f747ea0}\label{image_8c_a1f6e024ddc0dbaac2a8048884f747ea0}} 
+\#define {\bfseries do}(I,  X)~memcpy(I-\/$>$content\mbox{[}y\mbox{]}.X-\/$>$content, line.\+X-\/$>$content, size\+\_\+to\+\_\+content\+\_\+size(I-\/$>$content\mbox{[}y\mbox{]}.X-\/$>$size) $\ast$ sizeof(uint32\+\_\+t))
+\item 
+\#define {\bfseries do}(I,  X)
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{image_8c_aaf1964c42e9c9d29dfd0d2f4a215250d}{image\+\_\+line\+\_\+create} (\hyperlink{structimage__line__}{image\+\_\+line\+\_\+t} $\ast$piml, size\+\_\+t size)
+\begin{DoxyCompactList}\small\item\em Create an image. \end{DoxyCompactList}\item 
+int \hyperlink{image_8c_a59a3fe44cccc718f01ecc5ccba740d32}{image\+\_\+line\+\_\+set\+\_\+word} (\hyperlink{structimage__line__}{image\+\_\+line\+\_\+t} $\ast$piml, size\+\_\+t index, uint32\+\_\+t msb, uint32\+\_\+t lsb)
+\begin{DoxyCompactList}\small\item\em Sets value of a word in the image line. \end{DoxyCompactList}\item 
+int \hyperlink{image_8c_acfec9e3222b6c31e2ed31eba80da878c}{image\+\_\+line\+\_\+shift} (\hyperlink{structimage__line__}{image\+\_\+line\+\_\+t} $\ast$output, \hyperlink{structimage__line__}{image\+\_\+line\+\_\+t} iml, int64\+\_\+t shift)
+\begin{DoxyCompactList}\small\item\em Shift image line. \end{DoxyCompactList}\item 
+int \hyperlink{image_8c_a4df7eadfe8811e94dac171ea459ab7ca}{image\+\_\+line\+\_\+extract\+\_\+wrap\+\_\+ext} (\hyperlink{structimage__line__}{image\+\_\+line\+\_\+t} $\ast$output, \hyperlink{structimage__line__}{image\+\_\+line\+\_\+t} iml, int64\+\_\+t index, size\+\_\+t size)
+\begin{DoxyCompactList}\small\item\em Extract image line (wrapping) \end{DoxyCompactList}\item 
+int \hyperlink{image_8c_aa1fba0319904323850159d916ed2b507}{image\+\_\+line\+\_\+map\+\_\+colors} (\hyperlink{structimage__line__}{image\+\_\+line\+\_\+t} $\ast$output, \hyperlink{structimage__line__}{image\+\_\+line\+\_\+t} iml, palette\+\_\+t map)
+\begin{DoxyCompactList}\small\item\em Apply Palette to image line. \end{DoxyCompactList}\item 
+int \hyperlink{image_8c_a47d08e4a337220591df98dfc8f165b7e}{image\+\_\+line\+\_\+below\+\_\+with\+\_\+opacity} (\hyperlink{structimage__line__}{image\+\_\+line\+\_\+t} $\ast$output, \hyperlink{structimage__line__}{image\+\_\+line\+\_\+t} iml1, \hyperlink{structimage__line__}{image\+\_\+line\+\_\+t} iml2, \hyperlink{structbit__vector__t}{bit\+\_\+vector\+\_\+t} $\ast$p\+\_\+opacity)
+\begin{DoxyCompactList}\small\item\em Combine two image lines using opacity. \end{DoxyCompactList}\item 
+int \hyperlink{image_8c_adf1498c04d5071a4a318f6765d0afce2}{image\+\_\+line\+\_\+below} (\hyperlink{structimage__line__}{image\+\_\+line\+\_\+t} $\ast$output, \hyperlink{structimage__line__}{image\+\_\+line\+\_\+t} iml1, \hyperlink{structimage__line__}{image\+\_\+line\+\_\+t} iml2)
+\begin{DoxyCompactList}\small\item\em Combine two image lines (using iml2 opacity) \end{DoxyCompactList}\item 
+int \hyperlink{image_8c_a7f9cd5f58c0053139a7624e824376aee}{image\+\_\+line\+\_\+join} (\hyperlink{structimage__line__}{image\+\_\+line\+\_\+t} $\ast$output, \hyperlink{structimage__line__}{image\+\_\+line\+\_\+t} iml1, \hyperlink{structimage__line__}{image\+\_\+line\+\_\+t} iml2, int64\+\_\+t start)
+\begin{DoxyCompactList}\small\item\em Join two image lines. \end{DoxyCompactList}\item 
+void \hyperlink{image_8c_aa3994c0bb508a9ac19b419e21be7f687}{image\+\_\+line\+\_\+free} (\hyperlink{structimage__line__}{image\+\_\+line\+\_\+t} $\ast$piml)
+\begin{DoxyCompactList}\small\item\em Free image line. \end{DoxyCompactList}\item 
+int \hyperlink{image_8c_a5c9c5a586619bcf2ced56293311869b2}{image\+\_\+create} (\hyperlink{structimage__}{image\+\_\+t} $\ast$pim, size\+\_\+t width, size\+\_\+t height)
+\begin{DoxyCompactList}\small\item\em Creates an image of given width and height. \end{DoxyCompactList}\item 
+int \hyperlink{image_8c_ad5ff25c6d2486cac237a665847dd0e38}{image\+\_\+set\+\_\+line} (\hyperlink{structimage__}{image\+\_\+t} $\ast$pim, size\+\_\+t y, \hyperlink{structimage__line__}{image\+\_\+line\+\_\+t} line)
+\begin{DoxyCompactList}\small\item\em Set line content of image (copying values) \end{DoxyCompactList}\item 
+int \hyperlink{image_8c_a2c1ec3b86885c3c3a1c4fb3dedd1c11a}{image\+\_\+get\+\_\+pixel} (uint8\+\_\+t $\ast$output, \hyperlink{structimage__}{image\+\_\+t} $\ast$pim, size\+\_\+t x, size\+\_\+t y)
+\begin{DoxyCompactList}\small\item\em Get pixel value from image. \end{DoxyCompactList}\item 
+int \hyperlink{image_8c_a01a3f6570a580a94572dfb3a44f303b9}{image\+\_\+own\+\_\+line\+\_\+content} (\hyperlink{structimage__}{image\+\_\+t} $\ast$pim, size\+\_\+t y, \hyperlink{structimage__line__}{image\+\_\+line\+\_\+t} line)
+\begin{DoxyCompactList}\small\item\em Set line content of image (using provided bit vectors pointers) \end{DoxyCompactList}\item 
+void \hyperlink{image_8c_ab78e6459f8f468f90ee8bd9783e06627}{image\+\_\+free} (\hyperlink{structimage__}{image\+\_\+t} $\ast$pim)
+\begin{DoxyCompactList}\small\item\em Free image. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Image for P\+PS projects. 
+
+\begin{DoxyAuthor}{Author}
+J.-\/C. Chappelier \& C. Hölzl, E\+P\+FL 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2020 
+\end{DoxyDate}
+
+
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{image_8c_a1f6e024ddc0dbaac2a8048884f747ea0}\label{image_8c_a1f6e024ddc0dbaac2a8048884f747ea0}} 
+\index{image.\+c@{image.\+c}!do@{do}}
+\index{do@{do}!image.\+c@{image.\+c}}
+\subsubsection{\texorpdfstring{do}{do}}
+{\footnotesize\ttfamily \#define do(\begin{DoxyParamCaption}\item[{}]{I,  }\item[{}]{X }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+\hyperlink{bit__vector_8h_a613eb0c62c03353bb9d0f27a3291e632}{bit\_vector\_free}(&(I->content[y].X)); \(\backslash\)
+    I->content[y].X = line.X
+\end{DoxyCode}
+\mbox{\Hypertarget{image_8c_a24c26f8d54796e5f4c28bcf37f750bac}\label{image_8c_a24c26f8d54796e5f4c28bcf37f750bac}} 
+\index{image.\+c@{image.\+c}!M\+\_\+\+R\+E\+Q\+U\+I\+R\+E\+\_\+\+M\+A\+T\+C\+H\+I\+N\+G\+\_\+\+I\+M\+A\+G\+E\+\_\+\+L\+I\+N\+E\+\_\+\+S\+I\+ZE@{M\+\_\+\+R\+E\+Q\+U\+I\+R\+E\+\_\+\+M\+A\+T\+C\+H\+I\+N\+G\+\_\+\+I\+M\+A\+G\+E\+\_\+\+L\+I\+N\+E\+\_\+\+S\+I\+ZE}}
+\index{M\+\_\+\+R\+E\+Q\+U\+I\+R\+E\+\_\+\+M\+A\+T\+C\+H\+I\+N\+G\+\_\+\+I\+M\+A\+G\+E\+\_\+\+L\+I\+N\+E\+\_\+\+S\+I\+ZE@{M\+\_\+\+R\+E\+Q\+U\+I\+R\+E\+\_\+\+M\+A\+T\+C\+H\+I\+N\+G\+\_\+\+I\+M\+A\+G\+E\+\_\+\+L\+I\+N\+E\+\_\+\+S\+I\+ZE}!image.\+c@{image.\+c}}
+\subsubsection{\texorpdfstring{M\+\_\+\+R\+E\+Q\+U\+I\+R\+E\+\_\+\+M\+A\+T\+C\+H\+I\+N\+G\+\_\+\+I\+M\+A\+G\+E\+\_\+\+L\+I\+N\+E\+\_\+\+S\+I\+ZE}{M\_REQUIRE\_MATCHING\_IMAGE\_LINE\_SIZE}}
+{\footnotesize\ttfamily \#define M\+\_\+\+R\+E\+Q\+U\+I\+R\+E\+\_\+\+M\+A\+T\+C\+H\+I\+N\+G\+\_\+\+I\+M\+A\+G\+E\+\_\+\+L\+I\+N\+E\+\_\+\+S\+I\+ZE(\begin{DoxyParamCaption}\item[{}]{iml1,  }\item[{}]{iml2 }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+\textcolor{keywordflow}{do}\{ \(\backslash\)
+        M\_REQUIRE\_NON\_NULL\_IMAGE\_LINE(iml1);\(\backslash\)
+        M\_REQUIRE\_NON\_NULL\_IMAGE\_LINE(iml2);\(\backslash\)
+        M\_REQUIRE((iml1).lsb->size == (iml2).lsb->size, ERR\_BAD\_PARAMETER, \textcolor{stringliteral}{"%s"}, \textcolor{stringliteral}{"Sizes do not match"}); \(\backslash\)
+        M\_REQUIRE((iml1).msb->size == (iml2).msb->size, ERR\_BAD\_PARAMETER, \textcolor{stringliteral}{"%s"}, \textcolor{stringliteral}{"Sizes do not match"}); \(\backslash\)
+        M\_REQUIRE((iml1).opacity->size == (iml2).opacity->size, ERR\_BAD\_PARAMETER, \textcolor{stringliteral}{"%s"}, \textcolor{stringliteral}{"Sizes do not
+       match"}); \(\backslash\)
+    \} \textcolor{keywordflow}{while}(0)
+\end{DoxyCode}
+\mbox{\Hypertarget{image_8c_ab136c66a9ac642e95bb6791dcfd912e1}\label{image_8c_ab136c66a9ac642e95bb6791dcfd912e1}} 
+\index{image.\+c@{image.\+c}!M\+\_\+\+R\+E\+Q\+U\+I\+R\+E\+\_\+\+N\+O\+N\+\_\+\+N\+U\+L\+L\+\_\+\+I\+M\+A\+G\+E\+\_\+\+L\+I\+NE@{M\+\_\+\+R\+E\+Q\+U\+I\+R\+E\+\_\+\+N\+O\+N\+\_\+\+N\+U\+L\+L\+\_\+\+I\+M\+A\+G\+E\+\_\+\+L\+I\+NE}}
+\index{M\+\_\+\+R\+E\+Q\+U\+I\+R\+E\+\_\+\+N\+O\+N\+\_\+\+N\+U\+L\+L\+\_\+\+I\+M\+A\+G\+E\+\_\+\+L\+I\+NE@{M\+\_\+\+R\+E\+Q\+U\+I\+R\+E\+\_\+\+N\+O\+N\+\_\+\+N\+U\+L\+L\+\_\+\+I\+M\+A\+G\+E\+\_\+\+L\+I\+NE}!image.\+c@{image.\+c}}
+\subsubsection{\texorpdfstring{M\+\_\+\+R\+E\+Q\+U\+I\+R\+E\+\_\+\+N\+O\+N\+\_\+\+N\+U\+L\+L\+\_\+\+I\+M\+A\+G\+E\+\_\+\+L\+I\+NE}{M\_REQUIRE\_NON\_NULL\_IMAGE\_LINE}}
+{\footnotesize\ttfamily \#define M\+\_\+\+R\+E\+Q\+U\+I\+R\+E\+\_\+\+N\+O\+N\+\_\+\+N\+U\+L\+L\+\_\+\+I\+M\+A\+G\+E\+\_\+\+L\+I\+NE(\begin{DoxyParamCaption}\item[{}]{iml }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+\textcolor{keywordflow}{do}\{ \(\backslash\)
+        M\_REQUIRE\_NON\_NULL((iml).lsb); \(\backslash\)
+        M\_REQUIRE\_NON\_NULL((iml).msb); \(\backslash\)
+        M\_REQUIRE\_NON\_NULL((iml).opacity); \(\backslash\)
+    \} \textcolor{keywordflow}{while}(0)
+\end{DoxyCode}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{image_8c_a5c9c5a586619bcf2ced56293311869b2}\label{image_8c_a5c9c5a586619bcf2ced56293311869b2}} 
+\index{image.\+c@{image.\+c}!image\+\_\+create@{image\+\_\+create}}
+\index{image\+\_\+create@{image\+\_\+create}!image.\+c@{image.\+c}}
+\subsubsection{\texorpdfstring{image\+\_\+create()}{image\_create()}}
+{\footnotesize\ttfamily int image\+\_\+create (\begin{DoxyParamCaption}\item[{\hyperlink{structimage__}{image\+\_\+t} $\ast$}]{pim,  }\item[{size\+\_\+t}]{width,  }\item[{size\+\_\+t}]{height }\end{DoxyParamCaption})}
+
+
+
+Creates an image of given width and height. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pim} & pointer to image \\
+\hline
+{\em width} & image width \\
+\hline
+{\em height} & image height \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Error code 
+\end{DoxyReturn}
+\mbox{\Hypertarget{image_8c_ab78e6459f8f468f90ee8bd9783e06627}\label{image_8c_ab78e6459f8f468f90ee8bd9783e06627}} 
+\index{image.\+c@{image.\+c}!image\+\_\+free@{image\+\_\+free}}
+\index{image\+\_\+free@{image\+\_\+free}!image.\+c@{image.\+c}}
+\subsubsection{\texorpdfstring{image\+\_\+free()}{image\_free()}}
+{\footnotesize\ttfamily void image\+\_\+free (\begin{DoxyParamCaption}\item[{\hyperlink{structimage__}{image\+\_\+t} $\ast$}]{pim }\end{DoxyParamCaption})}
+
+
+
+Free image. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pim} & pointer to image \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{image_8c_a2c1ec3b86885c3c3a1c4fb3dedd1c11a}\label{image_8c_a2c1ec3b86885c3c3a1c4fb3dedd1c11a}} 
+\index{image.\+c@{image.\+c}!image\+\_\+get\+\_\+pixel@{image\+\_\+get\+\_\+pixel}}
+\index{image\+\_\+get\+\_\+pixel@{image\+\_\+get\+\_\+pixel}!image.\+c@{image.\+c}}
+\subsubsection{\texorpdfstring{image\+\_\+get\+\_\+pixel()}{image\_get\_pixel()}}
+{\footnotesize\ttfamily int image\+\_\+get\+\_\+pixel (\begin{DoxyParamCaption}\item[{uint8\+\_\+t $\ast$}]{output,  }\item[{\hyperlink{structimage__}{image\+\_\+t} $\ast$}]{pim,  }\item[{size\+\_\+t}]{x,  }\item[{size\+\_\+t}]{y }\end{DoxyParamCaption})}
+
+
+
+Get pixel value from image. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em output} & pointer to write pixel value to \\
+\hline
+{\em pim} & pointer to image \\
+\hline
+{\em x} & row index of pixel \\
+\hline
+{\em y} & line index of pixel \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Error code 
+\end{DoxyReturn}
+\mbox{\Hypertarget{image_8c_adf1498c04d5071a4a318f6765d0afce2}\label{image_8c_adf1498c04d5071a4a318f6765d0afce2}} 
+\index{image.\+c@{image.\+c}!image\+\_\+line\+\_\+below@{image\+\_\+line\+\_\+below}}
+\index{image\+\_\+line\+\_\+below@{image\+\_\+line\+\_\+below}!image.\+c@{image.\+c}}
+\subsubsection{\texorpdfstring{image\+\_\+line\+\_\+below()}{image\_line\_below()}}
+{\footnotesize\ttfamily int image\+\_\+line\+\_\+below (\begin{DoxyParamCaption}\item[{\hyperlink{structimage__line__}{image\+\_\+line\+\_\+t} $\ast$}]{output,  }\item[{\hyperlink{structimage__line__}{image\+\_\+line\+\_\+t}}]{iml1,  }\item[{\hyperlink{structimage__line__}{image\+\_\+line\+\_\+t}}]{iml2 }\end{DoxyParamCaption})}
+
+
+
+Combine two image lines (using iml2 opacity) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em output} & pointer to write output to \\
+\hline
+{\em iml1} & image line to combine \\
+\hline
+{\em iml2} & image line to combine \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Error code 
+\end{DoxyReturn}
+\mbox{\Hypertarget{image_8c_a47d08e4a337220591df98dfc8f165b7e}\label{image_8c_a47d08e4a337220591df98dfc8f165b7e}} 
+\index{image.\+c@{image.\+c}!image\+\_\+line\+\_\+below\+\_\+with\+\_\+opacity@{image\+\_\+line\+\_\+below\+\_\+with\+\_\+opacity}}
+\index{image\+\_\+line\+\_\+below\+\_\+with\+\_\+opacity@{image\+\_\+line\+\_\+below\+\_\+with\+\_\+opacity}!image.\+c@{image.\+c}}
+\subsubsection{\texorpdfstring{image\+\_\+line\+\_\+below\+\_\+with\+\_\+opacity()}{image\_line\_below\_with\_opacity()}}
+{\footnotesize\ttfamily int image\+\_\+line\+\_\+below\+\_\+with\+\_\+opacity (\begin{DoxyParamCaption}\item[{\hyperlink{structimage__line__}{image\+\_\+line\+\_\+t} $\ast$}]{output,  }\item[{\hyperlink{structimage__line__}{image\+\_\+line\+\_\+t}}]{iml1,  }\item[{\hyperlink{structimage__line__}{image\+\_\+line\+\_\+t}}]{iml2,  }\item[{\hyperlink{structbit__vector__t}{bit\+\_\+vector\+\_\+t} $\ast$}]{p\+\_\+opacity }\end{DoxyParamCaption})}
+
+
+
+Combine two image lines using opacity. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em output} & pointer to write output to \\
+\hline
+{\em iml1} & image line to combine \\
+\hline
+{\em iml2} & image line to combine \\
+\hline
+{\em p\+\_\+opacity} & bit vector pointer to use for opacity \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Error code 
+\end{DoxyReturn}
+\mbox{\Hypertarget{image_8c_aaf1964c42e9c9d29dfd0d2f4a215250d}\label{image_8c_aaf1964c42e9c9d29dfd0d2f4a215250d}} 
+\index{image.\+c@{image.\+c}!image\+\_\+line\+\_\+create@{image\+\_\+line\+\_\+create}}
+\index{image\+\_\+line\+\_\+create@{image\+\_\+line\+\_\+create}!image.\+c@{image.\+c}}
+\subsubsection{\texorpdfstring{image\+\_\+line\+\_\+create()}{image\_line\_create()}}
+{\footnotesize\ttfamily int image\+\_\+line\+\_\+create (\begin{DoxyParamCaption}\item[{\hyperlink{structimage__line__}{image\+\_\+line\+\_\+t} $\ast$}]{piml,  }\item[{size\+\_\+t}]{size }\end{DoxyParamCaption})}
+
+
+
+Create an image. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em piml} & pointer to image line \\
+\hline
+{\em size} & length of line in pixels \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Error code 
+\end{DoxyReturn}
+\mbox{\Hypertarget{image_8c_a4df7eadfe8811e94dac171ea459ab7ca}\label{image_8c_a4df7eadfe8811e94dac171ea459ab7ca}} 
+\index{image.\+c@{image.\+c}!image\+\_\+line\+\_\+extract\+\_\+wrap\+\_\+ext@{image\+\_\+line\+\_\+extract\+\_\+wrap\+\_\+ext}}
+\index{image\+\_\+line\+\_\+extract\+\_\+wrap\+\_\+ext@{image\+\_\+line\+\_\+extract\+\_\+wrap\+\_\+ext}!image.\+c@{image.\+c}}
+\subsubsection{\texorpdfstring{image\+\_\+line\+\_\+extract\+\_\+wrap\+\_\+ext()}{image\_line\_extract\_wrap\_ext()}}
+{\footnotesize\ttfamily int image\+\_\+line\+\_\+extract\+\_\+wrap\+\_\+ext (\begin{DoxyParamCaption}\item[{\hyperlink{structimage__line__}{image\+\_\+line\+\_\+t} $\ast$}]{output,  }\item[{\hyperlink{structimage__line__}{image\+\_\+line\+\_\+t}}]{iml,  }\item[{int64\+\_\+t}]{index,  }\item[{size\+\_\+t}]{size }\end{DoxyParamCaption})}
+
+
+
+Extract image line (wrapping) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em output} & pointer to write output to \\
+\hline
+{\em iml} & image line to extract \\
+\hline
+{\em index} & index from which to extract \\
+\hline
+{\em size} & size of new vector \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Error code 
+\end{DoxyReturn}
+\mbox{\Hypertarget{image_8c_aa3994c0bb508a9ac19b419e21be7f687}\label{image_8c_aa3994c0bb508a9ac19b419e21be7f687}} 
+\index{image.\+c@{image.\+c}!image\+\_\+line\+\_\+free@{image\+\_\+line\+\_\+free}}
+\index{image\+\_\+line\+\_\+free@{image\+\_\+line\+\_\+free}!image.\+c@{image.\+c}}
+\subsubsection{\texorpdfstring{image\+\_\+line\+\_\+free()}{image\_line\_free()}}
+{\footnotesize\ttfamily void image\+\_\+line\+\_\+free (\begin{DoxyParamCaption}\item[{\hyperlink{structimage__line__}{image\+\_\+line\+\_\+t} $\ast$}]{piml }\end{DoxyParamCaption})}
+
+
+
+Free image line. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em piml} & pointer to image line \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{image_8c_a7f9cd5f58c0053139a7624e824376aee}\label{image_8c_a7f9cd5f58c0053139a7624e824376aee}} 
+\index{image.\+c@{image.\+c}!image\+\_\+line\+\_\+join@{image\+\_\+line\+\_\+join}}
+\index{image\+\_\+line\+\_\+join@{image\+\_\+line\+\_\+join}!image.\+c@{image.\+c}}
+\subsubsection{\texorpdfstring{image\+\_\+line\+\_\+join()}{image\_line\_join()}}
+{\footnotesize\ttfamily int image\+\_\+line\+\_\+join (\begin{DoxyParamCaption}\item[{\hyperlink{structimage__line__}{image\+\_\+line\+\_\+t} $\ast$}]{output,  }\item[{\hyperlink{structimage__line__}{image\+\_\+line\+\_\+t}}]{iml1,  }\item[{\hyperlink{structimage__line__}{image\+\_\+line\+\_\+t}}]{iml2,  }\item[{int64\+\_\+t}]{start }\end{DoxyParamCaption})}
+
+
+
+Join two image lines. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em output} & pointer to write output to \\
+\hline
+{\em iml1} & image line to join (values from 0 to start) \\
+\hline
+{\em iml2} & image line to join (values from start to end) \\
+\hline
+{\em start} & index from which to use iml2 values \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Error code 
+\end{DoxyReturn}
+\mbox{\Hypertarget{image_8c_aa1fba0319904323850159d916ed2b507}\label{image_8c_aa1fba0319904323850159d916ed2b507}} 
+\index{image.\+c@{image.\+c}!image\+\_\+line\+\_\+map\+\_\+colors@{image\+\_\+line\+\_\+map\+\_\+colors}}
+\index{image\+\_\+line\+\_\+map\+\_\+colors@{image\+\_\+line\+\_\+map\+\_\+colors}!image.\+c@{image.\+c}}
+\subsubsection{\texorpdfstring{image\+\_\+line\+\_\+map\+\_\+colors()}{image\_line\_map\_colors()}}
+{\footnotesize\ttfamily int image\+\_\+line\+\_\+map\+\_\+colors (\begin{DoxyParamCaption}\item[{\hyperlink{structimage__line__}{image\+\_\+line\+\_\+t} $\ast$}]{output,  }\item[{\hyperlink{structimage__line__}{image\+\_\+line\+\_\+t}}]{iml,  }\item[{palette\+\_\+t}]{map }\end{DoxyParamCaption})}
+
+
+
+Apply Palette to image line. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em output} & pointer to write output to \\
+\hline
+{\em iml} & image line to use palette on \\
+\hline
+{\em map} & palette to use \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Error code 
+\end{DoxyReturn}
+\mbox{\Hypertarget{image_8c_a59a3fe44cccc718f01ecc5ccba740d32}\label{image_8c_a59a3fe44cccc718f01ecc5ccba740d32}} 
+\index{image.\+c@{image.\+c}!image\+\_\+line\+\_\+set\+\_\+word@{image\+\_\+line\+\_\+set\+\_\+word}}
+\index{image\+\_\+line\+\_\+set\+\_\+word@{image\+\_\+line\+\_\+set\+\_\+word}!image.\+c@{image.\+c}}
+\subsubsection{\texorpdfstring{image\+\_\+line\+\_\+set\+\_\+word()}{image\_line\_set\_word()}}
+{\footnotesize\ttfamily int image\+\_\+line\+\_\+set\+\_\+word (\begin{DoxyParamCaption}\item[{\hyperlink{structimage__line__}{image\+\_\+line\+\_\+t} $\ast$}]{piml,  }\item[{size\+\_\+t}]{index,  }\item[{uint32\+\_\+t}]{msb,  }\item[{uint32\+\_\+t}]{lsb }\end{DoxyParamCaption})}
+
+
+
+Sets value of a word in the image line. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em piml} & pointer to image line \\
+\hline
+{\em index} & word index to set value \\
+\hline
+{\em msb} & value of msb to use \\
+\hline
+{\em lsb} & value of lsb to use \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Error code 
+\end{DoxyReturn}
+\mbox{\Hypertarget{image_8c_acfec9e3222b6c31e2ed31eba80da878c}\label{image_8c_acfec9e3222b6c31e2ed31eba80da878c}} 
+\index{image.\+c@{image.\+c}!image\+\_\+line\+\_\+shift@{image\+\_\+line\+\_\+shift}}
+\index{image\+\_\+line\+\_\+shift@{image\+\_\+line\+\_\+shift}!image.\+c@{image.\+c}}
+\subsubsection{\texorpdfstring{image\+\_\+line\+\_\+shift()}{image\_line\_shift()}}
+{\footnotesize\ttfamily int image\+\_\+line\+\_\+shift (\begin{DoxyParamCaption}\item[{\hyperlink{structimage__line__}{image\+\_\+line\+\_\+t} $\ast$}]{output,  }\item[{\hyperlink{structimage__line__}{image\+\_\+line\+\_\+t}}]{iml,  }\item[{int64\+\_\+t}]{shift }\end{DoxyParamCaption})}
+
+
+
+Shift image line. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em output} & pointer to write output to \\
+\hline
+{\em iml} & image line to shift \\
+\hline
+{\em shift} & shift amount \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Error code 
+\end{DoxyReturn}
+\mbox{\Hypertarget{image_8c_a01a3f6570a580a94572dfb3a44f303b9}\label{image_8c_a01a3f6570a580a94572dfb3a44f303b9}} 
+\index{image.\+c@{image.\+c}!image\+\_\+own\+\_\+line\+\_\+content@{image\+\_\+own\+\_\+line\+\_\+content}}
+\index{image\+\_\+own\+\_\+line\+\_\+content@{image\+\_\+own\+\_\+line\+\_\+content}!image.\+c@{image.\+c}}
+\subsubsection{\texorpdfstring{image\+\_\+own\+\_\+line\+\_\+content()}{image\_own\_line\_content()}}
+{\footnotesize\ttfamily int image\+\_\+own\+\_\+line\+\_\+content (\begin{DoxyParamCaption}\item[{\hyperlink{structimage__}{image\+\_\+t} $\ast$}]{pim,  }\item[{size\+\_\+t}]{y,  }\item[{\hyperlink{structimage__line__}{image\+\_\+line\+\_\+t}}]{line }\end{DoxyParamCaption})}
+
+
+
+Set line content of image (using provided bit vectors pointers) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pim} & pointer to image \\
+\hline
+{\em y} & line index to set \\
+\hline
+{\em line} & line to use bit vectors from \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Error code 
+\end{DoxyReturn}
+\mbox{\Hypertarget{image_8c_ad5ff25c6d2486cac237a665847dd0e38}\label{image_8c_ad5ff25c6d2486cac237a665847dd0e38}} 
+\index{image.\+c@{image.\+c}!image\+\_\+set\+\_\+line@{image\+\_\+set\+\_\+line}}
+\index{image\+\_\+set\+\_\+line@{image\+\_\+set\+\_\+line}!image.\+c@{image.\+c}}
+\subsubsection{\texorpdfstring{image\+\_\+set\+\_\+line()}{image\_set\_line()}}
+{\footnotesize\ttfamily int image\+\_\+set\+\_\+line (\begin{DoxyParamCaption}\item[{\hyperlink{structimage__}{image\+\_\+t} $\ast$}]{pim,  }\item[{size\+\_\+t}]{y,  }\item[{\hyperlink{structimage__line__}{image\+\_\+line\+\_\+t}}]{line }\end{DoxyParamCaption})}
+
+
+
+Set line content of image (copying values) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pim} & pointer to image \\
+\hline
+{\em y} & line index \\
+\hline
+{\em line} & new line value to use \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Error code 
+\end{DoxyReturn}

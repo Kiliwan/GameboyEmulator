@@ -1,0 +1,120 @@
+\hypertarget{unit-test-alu_8c}{}\section{unit-\/test-\/alu.c File Reference}
+\label{unit-test-alu_8c}\index{unit-\/test-\/alu.\+c@{unit-\/test-\/alu.\+c}}
+
+
+Unit test code for alu and related functions.  
+
+
+{\ttfamily \#include $<$time.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$sys/types.\+h$>$}\newline
+{\ttfamily \#include $<$unistd.\+h$>$}\newline
+{\ttfamily \#include $<$pthread.\+h$>$}\newline
+{\ttfamily \#include $<$check.\+h$>$}\newline
+{\ttfamily \#include $<$inttypes.\+h$>$}\newline
+{\ttfamily \#include $<$assert.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}tests.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}alu.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}bit.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}error.\+h\char`\"{}}\newline
+Include dependency graph for unit-\/test-\/alu.c\+:
+% FIG 0
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define {\bfseries L\+O\+O\+P\+\_\+\+ON}(T)
+\item 
+\mbox{\Hypertarget{unit-test-alu_8c_a412e475035f76eb4fed2cfd999c8d89c}\label{unit-test-alu_8c_a412e475035f76eb4fed2cfd999c8d89c}} 
+\#define {\bfseries A\+S\+S\+E\+R\+T\+\_\+\+E\+Q\+\_\+\+N\+B\+\_\+\+EL}(T1,  T2)~static\+\_\+assert(sizeof(T1) / sizeof($\ast$T1) == sizeof(T2) / sizeof($\ast$T2), \char`\"{}Wrong Size in test tables\char`\"{})
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{unit-test-alu_8c_aebc0b969f0efb7d792af3cc9bcd18907}\label{unit-test-alu_8c_aebc0b969f0efb7d792af3cc9bcd18907}} 
+{\bfseries S\+T\+A\+R\+T\+\_\+\+T\+E\+ST} (flags\+\_\+get\+\_\+exec)
+\item 
+\mbox{\Hypertarget{unit-test-alu_8c_ac69780b0b006f55440bf4c82c6ce9029}\label{unit-test-alu_8c_ac69780b0b006f55440bf4c82c6ce9029}} 
+E\+N\+D\+\_\+\+T\+E\+ST {\bfseries S\+T\+A\+R\+T\+\_\+\+T\+E\+ST} (flags\+\_\+set\+\_\+exec)
+\item 
+\mbox{\Hypertarget{unit-test-alu_8c_aa037737aea6bcce5c6197456a8e3c987}\label{unit-test-alu_8c_aa037737aea6bcce5c6197456a8e3c987}} 
+E\+N\+D\+\_\+\+T\+E\+ST {\bfseries S\+T\+A\+R\+T\+\_\+\+T\+E\+ST} (alu\+\_\+add8\+\_\+err)
+\item 
+\mbox{\Hypertarget{unit-test-alu_8c_a2409940f645abfdce43bb61e10594b97}\label{unit-test-alu_8c_a2409940f645abfdce43bb61e10594b97}} 
+E\+N\+D\+\_\+\+T\+E\+ST {\bfseries S\+T\+A\+R\+T\+\_\+\+T\+E\+ST} (alu\+\_\+add8\+\_\+exec)
+\item 
+\mbox{\Hypertarget{unit-test-alu_8c_a62cb716b15c04b9f6702229fef176046}\label{unit-test-alu_8c_a62cb716b15c04b9f6702229fef176046}} 
+E\+N\+D\+\_\+\+T\+E\+ST {\bfseries S\+T\+A\+R\+T\+\_\+\+T\+E\+ST} (alu\+\_\+add16\+\_\+low\+\_\+err)
+\item 
+\mbox{\Hypertarget{unit-test-alu_8c_a20f503022b559184f57e5c8c5af84c6a}\label{unit-test-alu_8c_a20f503022b559184f57e5c8c5af84c6a}} 
+E\+N\+D\+\_\+\+T\+E\+ST {\bfseries S\+T\+A\+R\+T\+\_\+\+T\+E\+ST} (alu\+\_\+add16\+\_\+low\+\_\+exec)
+\item 
+\mbox{\Hypertarget{unit-test-alu_8c_adb6ce08e23edfca5ccc9526b161fb581}\label{unit-test-alu_8c_adb6ce08e23edfca5ccc9526b161fb581}} 
+E\+N\+D\+\_\+\+T\+E\+ST {\bfseries S\+T\+A\+R\+T\+\_\+\+T\+E\+ST} (alu\+\_\+add16\+\_\+high\+\_\+err)
+\item 
+\mbox{\Hypertarget{unit-test-alu_8c_a39afdeb5ca5d55174a2a174f9e24d031}\label{unit-test-alu_8c_a39afdeb5ca5d55174a2a174f9e24d031}} 
+E\+N\+D\+\_\+\+T\+E\+ST {\bfseries S\+T\+A\+R\+T\+\_\+\+T\+E\+ST} (alu\+\_\+add16\+\_\+high\+\_\+exec)
+\item 
+\mbox{\Hypertarget{unit-test-alu_8c_a799d19463c6d352c56f934f0c718ed1a}\label{unit-test-alu_8c_a799d19463c6d352c56f934f0c718ed1a}} 
+E\+N\+D\+\_\+\+T\+E\+ST {\bfseries S\+T\+A\+R\+T\+\_\+\+T\+E\+ST} (alu\+\_\+sub8\+\_\+err)
+\item 
+\mbox{\Hypertarget{unit-test-alu_8c_a43ec645b4ac116426f2bc8a7374acd80}\label{unit-test-alu_8c_a43ec645b4ac116426f2bc8a7374acd80}} 
+E\+N\+D\+\_\+\+T\+E\+ST {\bfseries S\+T\+A\+R\+T\+\_\+\+T\+E\+ST} (alu\+\_\+sub8\+\_\+exec)
+\item 
+\mbox{\Hypertarget{unit-test-alu_8c_af8b88a9be00ad6b6ea081bb0ceed8db0}\label{unit-test-alu_8c_af8b88a9be00ad6b6ea081bb0ceed8db0}} 
+E\+N\+D\+\_\+\+T\+E\+ST {\bfseries S\+T\+A\+R\+T\+\_\+\+T\+E\+ST} (alu\+\_\+shift\+\_\+err)
+\item 
+\mbox{\Hypertarget{unit-test-alu_8c_adf08eb5f1c3f34a754d419884968bc43}\label{unit-test-alu_8c_adf08eb5f1c3f34a754d419884968bc43}} 
+E\+N\+D\+\_\+\+T\+E\+ST {\bfseries S\+T\+A\+R\+T\+\_\+\+T\+E\+ST} (alu\+\_\+shift\+\_\+exec)
+\item 
+\mbox{\Hypertarget{unit-test-alu_8c_abf126dae44b38cd2c770248c212a887e}\label{unit-test-alu_8c_abf126dae44b38cd2c770248c212a887e}} 
+E\+N\+D\+\_\+\+T\+E\+ST {\bfseries S\+T\+A\+R\+T\+\_\+\+T\+E\+ST} (alu\+\_\+shift\+R\+A\+\_\+err)
+\item 
+\mbox{\Hypertarget{unit-test-alu_8c_a89fd052e6ce65ae183e349e702e26028}\label{unit-test-alu_8c_a89fd052e6ce65ae183e349e702e26028}} 
+E\+N\+D\+\_\+\+T\+E\+ST {\bfseries S\+T\+A\+R\+T\+\_\+\+T\+E\+ST} (alu\+\_\+shift\+R\+A\+\_\+exec)
+\item 
+\mbox{\Hypertarget{unit-test-alu_8c_aeca7f59a6f771060128f6d07a77fea29}\label{unit-test-alu_8c_aeca7f59a6f771060128f6d07a77fea29}} 
+E\+N\+D\+\_\+\+T\+E\+ST {\bfseries S\+T\+A\+R\+T\+\_\+\+T\+E\+ST} (alu\+\_\+rotate\+\_\+err)
+\item 
+\mbox{\Hypertarget{unit-test-alu_8c_aa06e3d994ed547a22590f2176b481870}\label{unit-test-alu_8c_aa06e3d994ed547a22590f2176b481870}} 
+E\+N\+D\+\_\+\+T\+E\+ST {\bfseries S\+T\+A\+R\+T\+\_\+\+T\+E\+ST} (alu\+\_\+rotate\+\_\+exec)
+\item 
+\mbox{\Hypertarget{unit-test-alu_8c_a92ab2e5401642e7e7c2e1e197d4d33fb}\label{unit-test-alu_8c_a92ab2e5401642e7e7c2e1e197d4d33fb}} 
+E\+N\+D\+\_\+\+T\+E\+ST {\bfseries S\+T\+A\+R\+T\+\_\+\+T\+E\+ST} (alu\+\_\+carryrotate\+\_\+err)
+\item 
+\mbox{\Hypertarget{unit-test-alu_8c_ac9cd74d38c2bcae7c3827f60b20e3ed1}\label{unit-test-alu_8c_ac9cd74d38c2bcae7c3827f60b20e3ed1}} 
+E\+N\+D\+\_\+\+T\+E\+ST {\bfseries S\+T\+A\+R\+T\+\_\+\+T\+E\+ST} (alu\+\_\+carryrotate\+\_\+exec)
+\item 
+\mbox{\Hypertarget{unit-test-alu_8c_a9942b766a70847794d9eba89f6f01b42}\label{unit-test-alu_8c_a9942b766a70847794d9eba89f6f01b42}} 
+E\+N\+D\+\_\+\+T\+E\+ST Suite $\ast$ {\bfseries bus\+\_\+test\+\_\+suite} ()
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Unit test code for alu and related functions. 
+
+\begin{DoxyAuthor}{Author}
+C. Hölzl \& J.-\/C Chappelier, E\+P\+FL 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2019
+\end{DoxyDate}
+\begin{DoxyAuthor}{Author}
+C. Hölzl, E\+P\+FL 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2019 
+\end{DoxyDate}
+
+
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{unit-test-alu_8c_aacea32bb563e40cc17843f7d5163527b}\label{unit-test-alu_8c_aacea32bb563e40cc17843f7d5163527b}} 
+\index{unit-\/test-\/alu.\+c@{unit-\/test-\/alu.\+c}!L\+O\+O\+P\+\_\+\+ON@{L\+O\+O\+P\+\_\+\+ON}}
+\index{L\+O\+O\+P\+\_\+\+ON@{L\+O\+O\+P\+\_\+\+ON}!unit-\/test-\/alu.\+c@{unit-\/test-\/alu.\+c}}
+\subsubsection{\texorpdfstring{L\+O\+O\+P\+\_\+\+ON}{LOOP\_ON}}
+{\footnotesize\ttfamily \#define L\+O\+O\+P\+\_\+\+ON(\begin{DoxyParamCaption}\item[{}]{T }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+\textcolor{keyword}{const} \textcolor{keywordtype}{size\_t} s\_ = \textcolor{keyword}{sizeof}(T) / \textcolor{keyword}{sizeof}(*T);  \(\backslash\)
+  for(\textcolor{keywordtype}{size\_t} i\_ = 0; i\_ < s\_; ++i\_)
+\end{DoxyCode}

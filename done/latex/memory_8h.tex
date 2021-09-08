@@ -1,0 +1,88 @@
+\hypertarget{memory_8h}{}\section{memory.\+h File Reference}
+\label{memory_8h}\index{memory.\+h@{memory.\+h}}
+
+
+Memory for Gamemu.  
+
+
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$stdint.\+h$>$}\newline
+{\ttfamily \#include $<$stddef.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}error.\+h\char`\"{}}\newline
+Include dependency graph for memory.\+h\+:
+% FIG 0
+This graph shows which files directly or indirectly include this file\+:
+% FIG 1
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structmemory__t}{memory\+\_\+t}
+\begin{DoxyCompactList}\small\item\em Structure for memory, Holds a pointer to the memory, its size and if it is writable. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{memory_8h_a8a6444037e4d5cc2bf8ba22a9d9e33ca}\label{memory_8h_a8a6444037e4d5cc2bf8ba22a9d9e33ca}} 
+typedef uint16\+\_\+t \hyperlink{memory_8h_a8a6444037e4d5cc2bf8ba22a9d9e33ca}{addr\+\_\+t}
+\begin{DoxyCompactList}\small\item\em types for Game Boy data (8 bits) and addresses (16 bits) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{memory_8h_aa5a8c9b1a9886f19af279aee47dff745}\label{memory_8h_aa5a8c9b1a9886f19af279aee47dff745}} 
+typedef uint8\+\_\+t {\bfseries data\+\_\+t}
+\item 
+\mbox{\Hypertarget{memory_8h_a946b046bbf7bb96dd91f0d372184b909}\label{memory_8h_a946b046bbf7bb96dd91f0d372184b909}} 
+typedef struct \hyperlink{structmemory__t}{memory\+\_\+t} \hyperlink{memory_8h_a946b046bbf7bb96dd91f0d372184b909}{memory\+\_\+t}
+\begin{DoxyCompactList}\small\item\em Structure for memory, Holds a pointer to the memory, its size and if it is writable. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{memory_8h_a703cde51014f095053cfd4d0f015baae}{mem\+\_\+create} (\hyperlink{structmemory__t}{memory\+\_\+t} $\ast$mem, size\+\_\+t size)
+\begin{DoxyCompactList}\small\item\em Creates memory structure. \end{DoxyCompactList}\item 
+void \hyperlink{memory_8h_a3b5a09e0381fcf0ee611583f0222b27a}{mem\+\_\+free} (\hyperlink{structmemory__t}{memory\+\_\+t} $\ast$mem)
+\begin{DoxyCompactList}\small\item\em Destroys memory structure. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Memory for Gamemu. 
+
+\begin{DoxyAuthor}{Author}
+C. Hölzl, E\+P\+FL 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2019 
+\end{DoxyDate}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{memory_8h_a703cde51014f095053cfd4d0f015baae}\label{memory_8h_a703cde51014f095053cfd4d0f015baae}} 
+\index{memory.\+h@{memory.\+h}!mem\+\_\+create@{mem\+\_\+create}}
+\index{mem\+\_\+create@{mem\+\_\+create}!memory.\+h@{memory.\+h}}
+\subsubsection{\texorpdfstring{mem\+\_\+create()}{mem\_create()}}
+{\footnotesize\ttfamily int mem\+\_\+create (\begin{DoxyParamCaption}\item[{\hyperlink{structmemory__t}{memory\+\_\+t} $\ast$}]{mem,  }\item[{size\+\_\+t}]{size }\end{DoxyParamCaption})}
+
+
+
+Creates memory structure. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em mem} & memory structure pointer to initialize \\
+\hline
+{\em size} & size of the memory to create \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+error code 
+\end{DoxyReturn}
+\mbox{\Hypertarget{memory_8h_a3b5a09e0381fcf0ee611583f0222b27a}\label{memory_8h_a3b5a09e0381fcf0ee611583f0222b27a}} 
+\index{memory.\+h@{memory.\+h}!mem\+\_\+free@{mem\+\_\+free}}
+\index{mem\+\_\+free@{mem\+\_\+free}!memory.\+h@{memory.\+h}}
+\subsubsection{\texorpdfstring{mem\+\_\+free()}{mem\_free()}}
+{\footnotesize\ttfamily void mem\+\_\+free (\begin{DoxyParamCaption}\item[{\hyperlink{structmemory__t}{memory\+\_\+t} $\ast$}]{mem }\end{DoxyParamCaption})}
+
+
+
+Destroys memory structure. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em mem} & memory structure pointer to destroy \\
+\hline
+\end{DoxyParams}

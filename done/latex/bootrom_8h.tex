@@ -1,0 +1,88 @@
+\hypertarget{bootrom_8h}{}\section{bootrom.\+h File Reference}
+\label{bootrom_8h}\index{bootrom.\+h@{bootrom.\+h}}
+
+
+Game Boy Boot R\+OM.  
+
+
+{\ttfamily \#include \char`\"{}bus.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}component.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}gameboy.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}error.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}memory.\+h\char`\"{}}\newline
+Include dependency graph for bootrom.\+h\+:
+% FIG 0
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{bootrom_8h_a0a35694dca22d803b696b3ac80ef923d}\label{bootrom_8h_a0a35694dca22d803b696b3ac80ef923d}} 
+\#define \hyperlink{bootrom_8h_a0a35694dca22d803b696b3ac80ef923d}{G\+A\+M\+E\+B\+O\+Y\+\_\+\+B\+O\+O\+T\+\_\+\+R\+O\+M\+\_\+\+C\+O\+N\+T\+E\+NT}
+\begin{DoxyCompactList}\small\item\em Game Boy Boot R\+OM content. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{bootrom_8h_a2f6c218e8937234ce3e5588824b04d90}\label{bootrom_8h_a2f6c218e8937234ce3e5588824b04d90}} 
+\#define \hyperlink{bootrom_8h_a2f6c218e8937234ce3e5588824b04d90}{bootrom\+\_\+plug}(c,  bus)~\hyperlink{bus_8h_a386edaf5382cf5876c99c7ce85cca05b}{bus\+\_\+forced\+\_\+plug}(bus, c, B\+O\+O\+T\+\_\+\+R\+O\+M\+\_\+\+S\+T\+A\+RT, B\+O\+O\+T\+\_\+\+R\+O\+M\+\_\+\+E\+ND, 0)
+\begin{DoxyCompactList}\small\item\em Macro to plug bootrom onto the bus. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{bootrom_8h_a4d0351e40ab218478db81b235b4402cf}\label{bootrom_8h_a4d0351e40ab218478db81b235b4402cf}} 
+\#define \hyperlink{bootrom_8h_a4d0351e40ab218478db81b235b4402cf}{bootrom\+\_\+unplug}(c,  bus)~\hyperlink{bus_8h_a7d34c169ceee21b8e388443985f76221}{bus\+\_\+unplug}(bus, c);
+\begin{DoxyCompactList}\small\item\em Macro to unplug bootrom from the bus. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{bootrom_8h_a1427c3a5e965c3448a47fcdc939cbc9e}\label{bootrom_8h_a1427c3a5e965c3448a47fcdc939cbc9e}} 
+\#define \hyperlink{bootrom_8h_a1427c3a5e965c3448a47fcdc939cbc9e}{bootrom\+\_\+free}(c)~\hyperlink{component_8h_a7d62f447ee3a885ed687fb86e19e8dae}{component\+\_\+free}(c);
+\begin{DoxyCompactList}\small\item\em Macro to free bootrom. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{bootrom_8h_a279eebe5aebf7346f945647d43ab5a13}{bootrom\+\_\+init} (\hyperlink{structcomponent__t}{component\+\_\+t} $\ast$c)
+\begin{DoxyCompactList}\small\item\em Writes bootrom content to a component. \end{DoxyCompactList}\item 
+int \hyperlink{bootrom_8h_a7d283f1db99ab25855d7bc09aa376c59}{bootrom\+\_\+bus\+\_\+listener} (\hyperlink{structgameboy__}{gameboy\+\_\+t} $\ast$gameboy, \hyperlink{memory_8h_a8a6444037e4d5cc2bf8ba22a9d9e33ca}{addr\+\_\+t} addr)
+\begin{DoxyCompactList}\small\item\em Bootrom bus listening handler. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Game Boy Boot R\+OM. 
+
+\begin{DoxyAuthor}{Author}
+J.-\/C. Chappelier 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+11/2019 
+\end{DoxyDate}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{bootrom_8h_a7d283f1db99ab25855d7bc09aa376c59}\label{bootrom_8h_a7d283f1db99ab25855d7bc09aa376c59}} 
+\index{bootrom.\+h@{bootrom.\+h}!bootrom\+\_\+bus\+\_\+listener@{bootrom\+\_\+bus\+\_\+listener}}
+\index{bootrom\+\_\+bus\+\_\+listener@{bootrom\+\_\+bus\+\_\+listener}!bootrom.\+h@{bootrom.\+h}}
+\subsubsection{\texorpdfstring{bootrom\+\_\+bus\+\_\+listener()}{bootrom\_bus\_listener()}}
+{\footnotesize\ttfamily int bootrom\+\_\+bus\+\_\+listener (\begin{DoxyParamCaption}\item[{\hyperlink{structgameboy__}{gameboy\+\_\+t} $\ast$}]{gameboy,  }\item[{\hyperlink{memory_8h_a8a6444037e4d5cc2bf8ba22a9d9e33ca}{addr\+\_\+t}}]{addr }\end{DoxyParamCaption})}
+
+
+
+Bootrom bus listening handler. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em gameboy} & gameboy \\
+\hline
+{\em address} & trigger address \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+error code 
+\end{DoxyReturn}
+\mbox{\Hypertarget{bootrom_8h_a279eebe5aebf7346f945647d43ab5a13}\label{bootrom_8h_a279eebe5aebf7346f945647d43ab5a13}} 
+\index{bootrom.\+h@{bootrom.\+h}!bootrom\+\_\+init@{bootrom\+\_\+init}}
+\index{bootrom\+\_\+init@{bootrom\+\_\+init}!bootrom.\+h@{bootrom.\+h}}
+\subsubsection{\texorpdfstring{bootrom\+\_\+init()}{bootrom\_init()}}
+{\footnotesize\ttfamily int bootrom\+\_\+init (\begin{DoxyParamCaption}\item[{\hyperlink{structcomponent__t}{component\+\_\+t} $\ast$}]{c }\end{DoxyParamCaption})}
+
+
+
+Writes bootrom content to a component. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em c} & component to write the bootrom content to \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+error code 
+\end{DoxyReturn}

@@ -1,0 +1,12 @@
+digraph "cpu_t"
+{
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  Node1 [label="cpu_t",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node2 -> Node1 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" high_ram" ];
+  Node2 [label="component_t",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$structcomponent__t.html",tooltip="Component data structure. Holds a pointer to its memory and start/end addresses. "];
+  Node3 -> Node2 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" mem" ];
+  Node3 [label="memory_t",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$structmemory__t.html",tooltip="Structure for memory, Holds a pointer to the memory, its size and if it is writable. "];
+  Node4 -> Node1 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" alu" ];
+  Node4 [label="alu_output_t",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$structalu__output__t.html",tooltip="type alu_output_t holds a structure with a 16bit value field (usualy using only the 8 lsb)..."];
+}

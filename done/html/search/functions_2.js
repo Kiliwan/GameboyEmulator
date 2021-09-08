@@ -1,0 +1,28 @@
+var searchData=
+[
+  ['cartridge_5ffree',['cartridge_free',['../cartridge_8h.html#a91ee0304b0bd404a589bff7ba7a45021',1,'cartridge.c']]],
+  ['cartridge_5finit',['cartridge_init',['../cartridge_8h.html#a03f31347d794a9864b12e8cb50328949',1,'cartridge.c']]],
+  ['cartridge_5finit_5ffrom_5ffile',['cartridge_init_from_file',['../cartridge_8h.html#a2362ed0b19b3dd3eb4dac8dabe10147a',1,'cartridge.c']]],
+  ['cartridge_5fplug',['cartridge_plug',['../cartridge_8h.html#a5aae442b041b1b27701ce56e613e95ab',1,'cartridge.c']]],
+  ['component_5fcreate',['component_create',['../component_8h.html#a7774f00e205f6d588602d6e9dcda417a',1,'component.c']]],
+  ['component_5ffree',['component_free',['../component_8h.html#a7d62f447ee3a885ed687fb86e19e8dae',1,'component.c']]],
+  ['component_5fshared',['component_shared',['../component_8h.html#a54486f0bee17ccb61a725d7d1b50cdee',1,'component.c']]],
+  ['cpu_5fcombine_5falu_5fflags',['cpu_combine_alu_flags',['../cpu-alu_8c.html#ac780d6a4222a48f38ef077b29ca9dca2',1,'cpu_combine_alu_flags(cpu_t *cpu, flag_src_t Z, flag_src_t N, flag_src_t H, flag_src_t C):&#160;cpu-alu.c'],['../cpu-alu_8h.html#ac780d6a4222a48f38ef077b29ca9dca2',1,'cpu_combine_alu_flags(cpu_t *cpu, flag_src_t Z, flag_src_t N, flag_src_t H, flag_src_t C):&#160;cpu-alu.c']]],
+  ['cpu_5fcycle',['cpu_cycle',['../cpu_8c.html#a91f4a5651c00c4455a22124efdefce7a',1,'cpu_cycle(cpu_t *cpu):&#160;cpu.c'],['../cpu_8h.html#a91f4a5651c00c4455a22124efdefce7a',1,'cpu_cycle(cpu_t *cpu):&#160;cpu.c']]],
+  ['cpu_5fdispatch_5falu',['cpu_dispatch_alu',['../cpu-alu_8c.html#ab160349665b976fd9744ef060ec11b34',1,'cpu_dispatch_alu(const instruction_t *lu, cpu_t *cpu):&#160;cpu-alu.c'],['../cpu-alu_8h.html#ab160349665b976fd9744ef060ec11b34',1,'cpu_dispatch_alu(const instruction_t *lu, cpu_t *cpu):&#160;cpu-alu.c']]],
+  ['cpu_5fdispatch_5fstorage',['cpu_dispatch_storage',['../cpu-storage_8h.html#a59cdfbe22b2caa6792b7bbb53656e3ef',1,'cpu-storage.c']]],
+  ['cpu_5ffree',['cpu_free',['../cpu_8c.html#aeb9f829d867a0e851703b6c5d2a991cb',1,'cpu_free(cpu_t *cpu):&#160;cpu.c'],['../cpu_8h.html#aeb9f829d867a0e851703b6c5d2a991cb',1,'cpu_free(cpu_t *cpu):&#160;cpu.c']]],
+  ['cpu_5finit',['cpu_init',['../cpu_8c.html#a7449e22f2f4ab77db550aff8db36f3df',1,'cpu_init(cpu_t *cpu):&#160;cpu.c'],['../cpu_8h.html#a7449e22f2f4ab77db550aff8db36f3df',1,'cpu_init(cpu_t *cpu):&#160;cpu.c']]],
+  ['cpu_5fplug',['cpu_plug',['../cpu_8c.html#a6410926983c64b5a2b2f99782f4e9e12',1,'cpu_plug(cpu_t *cpu, bus_t *bus):&#160;cpu.c'],['../cpu_8h.html#a6410926983c64b5a2b2f99782f4e9e12',1,'cpu_plug(cpu_t *cpu, bus_t *bus):&#160;cpu.c']]],
+  ['cpu_5fread16_5fat_5fidx',['cpu_read16_at_idx',['../cpu-storage_8h.html#aa4dd23db2c717ae059d9daff6051501b',1,'cpu-storage.c']]],
+  ['cpu_5fread_5fat_5fidx',['cpu_read_at_idx',['../cpu-storage_8h.html#a344ca7bbdfd21880efbf1fa20c5750b9',1,'cpu-storage.c']]],
+  ['cpu_5freg_5fget',['cpu_reg_get',['../cpu-registers_8c.html#abe62e977d253f7a6be79d0b5ca8f105f',1,'cpu_reg_get(const cpu_t *cpu, reg_kind reg):&#160;cpu-registers.c'],['../cpu-registers_8h.html#abe62e977d253f7a6be79d0b5ca8f105f',1,'cpu_reg_get(const cpu_t *cpu, reg_kind reg):&#160;cpu-registers.c']]],
+  ['cpu_5freg_5fpair_5fget',['cpu_reg_pair_get',['../cpu-registers_8c.html#a259712cddf80a16395900832af372953',1,'cpu_reg_pair_get(const cpu_t *cpu, reg_pair_kind reg):&#160;cpu-registers.c'],['../cpu-registers_8h.html#a259712cddf80a16395900832af372953',1,'cpu_reg_pair_get(const cpu_t *cpu, reg_pair_kind reg):&#160;cpu-registers.c']]],
+  ['cpu_5freg_5fpair_5fset',['cpu_reg_pair_set',['../cpu-registers_8c.html#aa7482c91cfc29f6a4a1ba62127f6ea35',1,'cpu_reg_pair_set(cpu_t *cpu, reg_pair_kind reg, uint16_t value):&#160;cpu-registers.c'],['../cpu-registers_8h.html#aa7482c91cfc29f6a4a1ba62127f6ea35',1,'cpu_reg_pair_set(cpu_t *cpu, reg_pair_kind reg, uint16_t value):&#160;cpu-registers.c']]],
+  ['cpu_5freg_5fset',['cpu_reg_set',['../cpu-registers_8c.html#a422598e03e342ec1c700cd61a3bc69b6',1,'cpu_reg_set(cpu_t *cpu, reg_kind reg, uint8_t value):&#160;cpu-registers.c'],['../cpu-registers_8h.html#a422598e03e342ec1c700cd61a3bc69b6',1,'cpu_reg_set(cpu_t *cpu, reg_kind reg, uint8_t value):&#160;cpu-registers.c']]],
+  ['cpu_5frequest_5finterrupt',['cpu_request_interrupt',['../cpu_8c.html#a7ceb3d318a738ef0b62c77b267dcf7d8',1,'cpu_request_interrupt(cpu_t *cpu, interrupt_t i):&#160;cpu.c'],['../cpu_8h.html#a7ceb3d318a738ef0b62c77b267dcf7d8',1,'cpu_request_interrupt(cpu_t *cpu, interrupt_t i):&#160;cpu.c']]],
+  ['cpu_5fsp_5fpop',['cpu_SP_pop',['../cpu-storage_8h.html#a809e7f4261a0d5f17708404017d50eb4',1,'cpu-storage.c']]],
+  ['cpu_5fsp_5fpush',['cpu_SP_push',['../cpu-storage_8h.html#aba3b649b19e786e16958bb4d8b478ab3',1,'cpu-storage.c']]],
+  ['cpu_5fwrite16_5fat_5fidx',['cpu_write16_at_idx',['../cpu-storage_8h.html#a0028e52dcb528bbee5ab3945357f2729',1,'cpu-storage.c']]],
+  ['cpu_5fwrite_5fat_5fidx',['cpu_write_at_idx',['../cpu-storage_8h.html#ae76e9c113ecf820b05d8b5f5db09b229',1,'cpu-storage.c']]]
+];

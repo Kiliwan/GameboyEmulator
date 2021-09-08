@@ -1,0 +1,208 @@
+\hypertarget{cpu_8h}{}\section{cpu.\+h File Reference}
+\label{cpu_8h}\index{cpu.\+h@{cpu.\+h}}
+
+
+C\+PU model for P\+P\+S-\/\+G\+Bemul project, high level interface.  
+
+
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}alu.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}bus.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}error.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}opcode.\+h\char`\"{}}\newline
+Include dependency graph for cpu.\+h\+:
+% FIG 0
+This graph shows which files directly or indirectly include this file\+:
+% FIG 1
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structcpu__t}{cpu\+\_\+t}
+\begin{DoxyCompactList}\small\item\em Type to represent C\+PU. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{cpu_8h_a12fbc5cceda01e15f1aea1af8ea0b4d8}\label{cpu_8h_a12fbc5cceda01e15f1aea1af8ea0b4d8}} 
+\#define {\bfseries R\+E\+G\+\_\+\+IF}~0x\+F\+F0F
+\item 
+\mbox{\Hypertarget{cpu_8h_a5a450d6e80fa90a8cb2ee169283a5602}\label{cpu_8h_a5a450d6e80fa90a8cb2ee169283a5602}} 
+\#define {\bfseries R\+E\+G\+\_\+\+IE}~0x\+F\+F\+FF
+\item 
+\mbox{\Hypertarget{cpu_8h_ab8bc060221f5c62841f5571db3349844}\label{cpu_8h_ab8bc060221f5c62841f5571db3349844}} 
+\#define {\bfseries H\+I\+G\+H\+\_\+\+R\+A\+M\+\_\+\+S\+T\+A\+RT}~0x\+F\+F80
+\item 
+\mbox{\Hypertarget{cpu_8h_a7f35b65b6b6a1262ae051191f09e8e78}\label{cpu_8h_a7f35b65b6b6a1262ae051191f09e8e78}} 
+\#define {\bfseries H\+I\+G\+H\+\_\+\+R\+A\+M\+\_\+\+E\+ND}~0x\+F\+F\+FE
+\item 
+\mbox{\Hypertarget{cpu_8h_a6d062e60fe59604de9790ad691be264c}\label{cpu_8h_a6d062e60fe59604de9790ad691be264c}} 
+\#define {\bfseries H\+I\+G\+H\+\_\+\+R\+A\+M\+\_\+\+S\+I\+ZE}~((H\+I\+G\+H\+\_\+\+R\+A\+M\+\_\+\+E\+ND -\/ H\+I\+G\+H\+\_\+\+R\+A\+M\+\_\+\+S\+T\+A\+RT)+1)
+\item 
+\mbox{\Hypertarget{cpu_8h_a979f157bc0d4128e830bea10d9b5b9ba}\label{cpu_8h_a979f157bc0d4128e830bea10d9b5b9ba}} 
+\#define \hyperlink{cpu_8h_a979f157bc0d4128e830bea10d9b5b9ba}{I\+R\+E\+G\+\_\+\+S\+I\+ZE}~8
+\begin{DoxyCompactList}\small\item\em size of the interruption registers \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{cpu_8h_a88bb6a7aec42963691c5643bb9b40e48}\label{cpu_8h_a88bb6a7aec42963691c5643bb9b40e48}} 
+\#define \hyperlink{cpu_8h_a88bb6a7aec42963691c5643bb9b40e48}{I\+N\+T\+E\+R\+R\+U\+P\+T\+I\+O\+N\+\_\+\+S\+T\+A\+RT}~0x40
+\begin{DoxyCompactList}\small\item\em address start to where interruption are treated \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{cpu_8h_a3b70ebee99e28a8ff17ac5a13c649e7b}\label{cpu_8h_a3b70ebee99e28a8ff17ac5a13c649e7b}} 
+\#define \hyperlink{cpu_8h_a3b70ebee99e28a8ff17ac5a13c649e7b}{I\+N\+T\+E\+R\+R\+U\+P\+T\+I\+O\+N\+\_\+\+C\+Y\+C\+L\+ES}~5
+\begin{DoxyCompactList}\small\item\em cycles to treat interruption \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{cpu_8h_aaee1e9ac6b126777a7202c7a285e5ab6}\label{cpu_8h_aaee1e9ac6b126777a7202c7a285e5ab6}} 
+typedef struct \hyperlink{structcpu__t}{cpu\+\_\+t} \hyperlink{cpu_8h_aaee1e9ac6b126777a7202c7a285e5ab6}{cpu\+\_\+t}
+\begin{DoxyCompactList}\small\item\em Type to represent C\+PU. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{cpu_8h_aa2df1a487217dc7dae6bbbf1f2f2f882}\label{cpu_8h_aa2df1a487217dc7dae6bbbf1f2f2f882}} 
+enum \hyperlink{cpu_8h_aa2df1a487217dc7dae6bbbf1f2f2f882}{interrupt\+\_\+t} \{ \newline
+{\bfseries V\+B\+L\+A\+NK}, 
+{\bfseries L\+C\+D\+\_\+\+S\+T\+AT}, 
+{\bfseries T\+I\+M\+ER}, 
+{\bfseries S\+E\+R\+I\+AL}, 
+\newline
+{\bfseries J\+O\+Y\+P\+AD}
+ \}\begin{DoxyCompactList}\small\item\em Type to represent C\+PU interupts. \end{DoxyCompactList}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{cpu_8h_a91f4a5651c00c4455a22124efdefce7a}{cpu\+\_\+cycle} (\hyperlink{structcpu__t}{cpu\+\_\+t} $\ast$cpu)
+\begin{DoxyCompactList}\small\item\em Run one C\+PU cycle. \end{DoxyCompactList}\item 
+int \hyperlink{cpu_8h_a6410926983c64b5a2b2f99782f4e9e12}{cpu\+\_\+plug} (\hyperlink{structcpu__t}{cpu\+\_\+t} $\ast$cpu, \hyperlink{bus_8h_a68c80bdf896e826e4cb082244ce35427}{bus\+\_\+t} $\ast$bus)
+\begin{DoxyCompactList}\small\item\em Plugs a bus into the cpu. \end{DoxyCompactList}\item 
+int \hyperlink{cpu_8h_a7449e22f2f4ab77db550aff8db36f3df}{cpu\+\_\+init} (\hyperlink{structcpu__t}{cpu\+\_\+t} $\ast$cpu)
+\begin{DoxyCompactList}\small\item\em Starts the cpu by initializing all registers at zero. \end{DoxyCompactList}\item 
+void \hyperlink{cpu_8h_aeb9f829d867a0e851703b6c5d2a991cb}{cpu\+\_\+free} (\hyperlink{structcpu__t}{cpu\+\_\+t} $\ast$cpu)
+\begin{DoxyCompactList}\small\item\em Frees a cpu. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{cpu_8h_a7ceb3d318a738ef0b62c77b267dcf7d8}\label{cpu_8h_a7ceb3d318a738ef0b62c77b267dcf7d8}} 
+void \hyperlink{cpu_8h_a7ceb3d318a738ef0b62c77b267dcf7d8}{cpu\+\_\+request\+\_\+interrupt} (\hyperlink{structcpu__t}{cpu\+\_\+t} $\ast$cpu, \hyperlink{cpu_8h_aa2df1a487217dc7dae6bbbf1f2f2f882}{interrupt\+\_\+t} i)
+\begin{DoxyCompactList}\small\item\em Set an interruption. \end{DoxyCompactList}\item 
+int \hyperlink{cpu_8h_a9b18bb5232dfc6e23161a7614c82acbd}{I\+F\+\_\+\+I\+E\+\_\+compare} (\hyperlink{structcpu__t}{cpu\+\_\+t} $\ast$cpu)
+\begin{DoxyCompactList}\small\item\em Check if there is a bit equal to 1 in IE and IF. \end{DoxyCompactList}\item 
+int \hyperlink{cpu_8h_a08507af22a686123f9d9d52f89751622}{test\+\_\+cc} (int cc, \hyperlink{alu_8h_abadb4591ed8f9b06ae6b6a53337ce19e}{flags\+\_\+t} flags)
+\begin{DoxyCompactList}\small\item\em Check flag conditions. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+C\+PU model for P\+P\+S-\/\+G\+Bemul project, high level interface. 
+
+\begin{DoxyAuthor}{Author}
+J.-\/C. Chappelier \& C. Hölzl, E\+P\+FL 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2019 
+\end{DoxyDate}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{cpu_8h_a91f4a5651c00c4455a22124efdefce7a}\label{cpu_8h_a91f4a5651c00c4455a22124efdefce7a}} 
+\index{cpu.\+h@{cpu.\+h}!cpu\+\_\+cycle@{cpu\+\_\+cycle}}
+\index{cpu\+\_\+cycle@{cpu\+\_\+cycle}!cpu.\+h@{cpu.\+h}}
+\subsubsection{\texorpdfstring{cpu\+\_\+cycle()}{cpu\_cycle()}}
+{\footnotesize\ttfamily int cpu\+\_\+cycle (\begin{DoxyParamCaption}\item[{\hyperlink{structcpu__t}{cpu\+\_\+t} $\ast$}]{cpu }\end{DoxyParamCaption})}
+
+
+
+Run one C\+PU cycle. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em cpu} & (modified), the C\+PU which shall run \\
+\hline
+{\em cycle,the} & cycle number to run, starting from 0 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+error code 
+\end{DoxyReturn}
+\mbox{\Hypertarget{cpu_8h_aeb9f829d867a0e851703b6c5d2a991cb}\label{cpu_8h_aeb9f829d867a0e851703b6c5d2a991cb}} 
+\index{cpu.\+h@{cpu.\+h}!cpu\+\_\+free@{cpu\+\_\+free}}
+\index{cpu\+\_\+free@{cpu\+\_\+free}!cpu.\+h@{cpu.\+h}}
+\subsubsection{\texorpdfstring{cpu\+\_\+free()}{cpu\_free()}}
+{\footnotesize\ttfamily void cpu\+\_\+free (\begin{DoxyParamCaption}\item[{\hyperlink{structcpu__t}{cpu\+\_\+t} $\ast$}]{cpu }\end{DoxyParamCaption})}
+
+
+
+Frees a cpu. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em cpu} & cpu to free \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{cpu_8h_a7449e22f2f4ab77db550aff8db36f3df}\label{cpu_8h_a7449e22f2f4ab77db550aff8db36f3df}} 
+\index{cpu.\+h@{cpu.\+h}!cpu\+\_\+init@{cpu\+\_\+init}}
+\index{cpu\+\_\+init@{cpu\+\_\+init}!cpu.\+h@{cpu.\+h}}
+\subsubsection{\texorpdfstring{cpu\+\_\+init()}{cpu\_init()}}
+{\footnotesize\ttfamily int cpu\+\_\+init (\begin{DoxyParamCaption}\item[{\hyperlink{structcpu__t}{cpu\+\_\+t} $\ast$}]{cpu }\end{DoxyParamCaption})}
+
+
+
+Starts the cpu by initializing all registers at zero. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em cpu} & cpu to start\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+error code 
+\end{DoxyReturn}
+\mbox{\Hypertarget{cpu_8h_a6410926983c64b5a2b2f99782f4e9e12}\label{cpu_8h_a6410926983c64b5a2b2f99782f4e9e12}} 
+\index{cpu.\+h@{cpu.\+h}!cpu\+\_\+plug@{cpu\+\_\+plug}}
+\index{cpu\+\_\+plug@{cpu\+\_\+plug}!cpu.\+h@{cpu.\+h}}
+\subsubsection{\texorpdfstring{cpu\+\_\+plug()}{cpu\_plug()}}
+{\footnotesize\ttfamily int cpu\+\_\+plug (\begin{DoxyParamCaption}\item[{\hyperlink{structcpu__t}{cpu\+\_\+t} $\ast$}]{cpu,  }\item[{\hyperlink{bus_8h_a68c80bdf896e826e4cb082244ce35427}{bus\+\_\+t} $\ast$}]{bus }\end{DoxyParamCaption})}
+
+
+
+Plugs a bus into the cpu. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em cpu} & cpu to plug into \\
+\hline
+{\em bus} & bus to plug\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+error code 
+\end{DoxyReturn}
+\mbox{\Hypertarget{cpu_8h_a9b18bb5232dfc6e23161a7614c82acbd}\label{cpu_8h_a9b18bb5232dfc6e23161a7614c82acbd}} 
+\index{cpu.\+h@{cpu.\+h}!I\+F\+\_\+\+I\+E\+\_\+compare@{I\+F\+\_\+\+I\+E\+\_\+compare}}
+\index{I\+F\+\_\+\+I\+E\+\_\+compare@{I\+F\+\_\+\+I\+E\+\_\+compare}!cpu.\+h@{cpu.\+h}}
+\subsubsection{\texorpdfstring{I\+F\+\_\+\+I\+E\+\_\+compare()}{IF\_IE\_compare()}}
+{\footnotesize\ttfamily int I\+F\+\_\+\+I\+E\+\_\+compare (\begin{DoxyParamCaption}\item[{\hyperlink{structcpu__t}{cpu\+\_\+t} $\ast$}]{cpu }\end{DoxyParamCaption})}
+
+
+
+Check if there is a bit equal to 1 in IE and IF. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em cpu} & cpu to check\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+index of the bit or -\/1 if none found 
+\end{DoxyReturn}
+\mbox{\Hypertarget{cpu_8h_a08507af22a686123f9d9d52f89751622}\label{cpu_8h_a08507af22a686123f9d9d52f89751622}} 
+\index{cpu.\+h@{cpu.\+h}!test\+\_\+cc@{test\+\_\+cc}}
+\index{test\+\_\+cc@{test\+\_\+cc}!cpu.\+h@{cpu.\+h}}
+\subsubsection{\texorpdfstring{test\+\_\+cc()}{test\_cc()}}
+{\footnotesize\ttfamily int test\+\_\+cc (\begin{DoxyParamCaption}\item[{int}]{cc,  }\item[{\hyperlink{alu_8h_abadb4591ed8f9b06ae6b6a53337ce19e}{flags\+\_\+t}}]{flags }\end{DoxyParamCaption})}
+
+
+
+Check flag conditions. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em cc} & condition to check, flags flags to check condition on\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+1 if condition tested true, 0 if false 
+\end{DoxyReturn}

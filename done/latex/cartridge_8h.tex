@@ -1,0 +1,153 @@
+\hypertarget{cartridge_8h}{}\section{cartridge.\+h File Reference}
+\label{cartridge_8h}\index{cartridge.\+h@{cartridge.\+h}}
+
+
+Game Boy Cartridge simulation header.  
+
+
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}component.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}bus.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}error.\+h\char`\"{}}\newline
+Include dependency graph for cartridge.\+h\+:
+% FIG 0
+This graph shows which files directly or indirectly include this file\+:
+% FIG 1
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structcartridge__t}{cartridge\+\_\+t}
+\begin{DoxyCompactList}\small\item\em Cartridge type. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{cartridge_8h_aa09aaebe6de0da9bf2d0185d20d7ad63}\label{cartridge_8h_aa09aaebe6de0da9bf2d0185d20d7ad63}} 
+\#define {\bfseries B\+A\+N\+K\+\_\+\+R\+O\+M0\+\_\+\+S\+T\+A\+RT}~0x0000
+\item 
+\mbox{\Hypertarget{cartridge_8h_a7f7ee22d947b1f3934437cbbd5a9b124}\label{cartridge_8h_a7f7ee22d947b1f3934437cbbd5a9b124}} 
+\#define {\bfseries B\+A\+N\+K\+\_\+\+R\+O\+M0\+\_\+\+E\+ND}~0x3\+F\+FF
+\item 
+\mbox{\Hypertarget{cartridge_8h_acd305e55f8994ae3edbe0c7bfeaff71e}\label{cartridge_8h_acd305e55f8994ae3edbe0c7bfeaff71e}} 
+\#define {\bfseries B\+A\+N\+K\+\_\+\+R\+O\+M0\+\_\+\+S\+I\+ZE}~((B\+A\+N\+K\+\_\+\+R\+O\+M0\+\_\+\+E\+ND -\/ B\+A\+N\+K\+\_\+\+R\+O\+M0\+\_\+\+S\+T\+A\+RT) + 1)
+\item 
+\mbox{\Hypertarget{cartridge_8h_af213f5d1f7e4c250cada2eb174e0b796}\label{cartridge_8h_af213f5d1f7e4c250cada2eb174e0b796}} 
+\#define {\bfseries B\+A\+N\+K\+\_\+\+R\+O\+M1\+\_\+\+S\+T\+A\+RT}~0x4000
+\item 
+\mbox{\Hypertarget{cartridge_8h_adc0cd609278d928ddb156f81cfa94ef0}\label{cartridge_8h_adc0cd609278d928ddb156f81cfa94ef0}} 
+\#define {\bfseries B\+A\+N\+K\+\_\+\+R\+O\+M1\+\_\+\+E\+ND}~0x7\+F\+FF
+\item 
+\mbox{\Hypertarget{cartridge_8h_ac69f85ac1f2261283cbc33880d13fc1b}\label{cartridge_8h_ac69f85ac1f2261283cbc33880d13fc1b}} 
+\#define {\bfseries B\+A\+N\+K\+\_\+\+R\+O\+M1\+\_\+\+S\+I\+ZE}~((B\+A\+N\+K\+\_\+\+R\+O\+M1\+\_\+\+E\+ND -\/ B\+A\+N\+K\+\_\+\+R\+O\+M1\+\_\+\+S\+T\+A\+RT) + 1)
+\item 
+\mbox{\Hypertarget{cartridge_8h_a1a0b23dc3eb9388d9cd8ecb7270d0ab5}\label{cartridge_8h_a1a0b23dc3eb9388d9cd8ecb7270d0ab5}} 
+\#define {\bfseries B\+A\+N\+K\+\_\+\+R\+O\+M\+\_\+\+S\+I\+ZE}~(B\+A\+N\+K\+\_\+\+R\+O\+M0\+\_\+\+S\+I\+ZE + B\+A\+N\+K\+\_\+\+R\+O\+M1\+\_\+\+S\+I\+ZE)
+\item 
+\mbox{\Hypertarget{cartridge_8h_a94f86886e2fc9c7ca87cb1b1be87682c}\label{cartridge_8h_a94f86886e2fc9c7ca87cb1b1be87682c}} 
+\#define {\bfseries C\+A\+R\+T\+R\+I\+D\+G\+E\+\_\+\+G\+A\+M\+E\+\_\+\+T\+I\+T\+L\+E\+\_\+\+S\+T\+A\+RT}~0x0134
+\item 
+\mbox{\Hypertarget{cartridge_8h_a54f1ef0bb51a9ad2ea7c1e11c5073c72}\label{cartridge_8h_a54f1ef0bb51a9ad2ea7c1e11c5073c72}} 
+\#define {\bfseries C\+A\+R\+T\+R\+I\+D\+G\+E\+\_\+\+G\+A\+M\+E\+\_\+\+T\+I\+T\+L\+E\+\_\+\+E\+ND}~0x0143
+\item 
+\mbox{\Hypertarget{cartridge_8h_ab2a522f8a8463cbc7e8109d89450584b}\label{cartridge_8h_ab2a522f8a8463cbc7e8109d89450584b}} 
+\#define {\bfseries C\+A\+R\+T\+R\+I\+D\+G\+E\+\_\+\+T\+Y\+P\+E\+\_\+\+A\+D\+DR}~0x0147
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{cartridge_8h_a2362ed0b19b3dd3eb4dac8dabe10147a}{cartridge\+\_\+init\+\_\+from\+\_\+file} (\hyperlink{structcomponent__t}{component\+\_\+t} $\ast$c, const char $\ast$filename)
+\begin{DoxyCompactList}\small\item\em Reads a file into the memory of a component. \end{DoxyCompactList}\item 
+int \hyperlink{cartridge_8h_a03f31347d794a9864b12e8cb50328949}{cartridge\+\_\+init} (\hyperlink{structcartridge__t}{cartridge\+\_\+t} $\ast$ct, const char $\ast$filename)
+\begin{DoxyCompactList}\small\item\em Initiates a cartridge given a filename. \end{DoxyCompactList}\item 
+int \hyperlink{cartridge_8h_a5aae442b041b1b27701ce56e613e95ab}{cartridge\+\_\+plug} (\hyperlink{structcartridge__t}{cartridge\+\_\+t} $\ast$ct, \hyperlink{bus_8h_a68c80bdf896e826e4cb082244ce35427}{bus\+\_\+t} bus)
+\begin{DoxyCompactList}\small\item\em Plugs a cartridge to the bus. \end{DoxyCompactList}\item 
+void \hyperlink{cartridge_8h_a91ee0304b0bd404a589bff7ba7a45021}{cartridge\+\_\+free} (\hyperlink{structcartridge__t}{cartridge\+\_\+t} $\ast$ct)
+\begin{DoxyCompactList}\small\item\em Frees a cartridge. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Game Boy Cartridge simulation header. 
+
+\begin{DoxyAuthor}{Author}
+C. Hölzl, E\+P\+FL 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2019 
+\end{DoxyDate}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{cartridge_8h_a91ee0304b0bd404a589bff7ba7a45021}\label{cartridge_8h_a91ee0304b0bd404a589bff7ba7a45021}} 
+\index{cartridge.\+h@{cartridge.\+h}!cartridge\+\_\+free@{cartridge\+\_\+free}}
+\index{cartridge\+\_\+free@{cartridge\+\_\+free}!cartridge.\+h@{cartridge.\+h}}
+\subsubsection{\texorpdfstring{cartridge\+\_\+free()}{cartridge\_free()}}
+{\footnotesize\ttfamily void cartridge\+\_\+free (\begin{DoxyParamCaption}\item[{\hyperlink{structcartridge__t}{cartridge\+\_\+t} $\ast$}]{ct }\end{DoxyParamCaption})}
+
+
+
+Frees a cartridge. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em ct} & cartridge to free \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{cartridge_8h_a03f31347d794a9864b12e8cb50328949}\label{cartridge_8h_a03f31347d794a9864b12e8cb50328949}} 
+\index{cartridge.\+h@{cartridge.\+h}!cartridge\+\_\+init@{cartridge\+\_\+init}}
+\index{cartridge\+\_\+init@{cartridge\+\_\+init}!cartridge.\+h@{cartridge.\+h}}
+\subsubsection{\texorpdfstring{cartridge\+\_\+init()}{cartridge\_init()}}
+{\footnotesize\ttfamily int cartridge\+\_\+init (\begin{DoxyParamCaption}\item[{\hyperlink{structcartridge__t}{cartridge\+\_\+t} $\ast$}]{ct,  }\item[{const char $\ast$}]{filename }\end{DoxyParamCaption})}
+
+
+
+Initiates a cartridge given a filename. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em ct} & cartridge to initiate \\
+\hline
+{\em filename} & file to read from \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+error code 
+\end{DoxyReturn}
+\mbox{\Hypertarget{cartridge_8h_a2362ed0b19b3dd3eb4dac8dabe10147a}\label{cartridge_8h_a2362ed0b19b3dd3eb4dac8dabe10147a}} 
+\index{cartridge.\+h@{cartridge.\+h}!cartridge\+\_\+init\+\_\+from\+\_\+file@{cartridge\+\_\+init\+\_\+from\+\_\+file}}
+\index{cartridge\+\_\+init\+\_\+from\+\_\+file@{cartridge\+\_\+init\+\_\+from\+\_\+file}!cartridge.\+h@{cartridge.\+h}}
+\subsubsection{\texorpdfstring{cartridge\+\_\+init\+\_\+from\+\_\+file()}{cartridge\_init\_from\_file()}}
+{\footnotesize\ttfamily int cartridge\+\_\+init\+\_\+from\+\_\+file (\begin{DoxyParamCaption}\item[{\hyperlink{structcomponent__t}{component\+\_\+t} $\ast$}]{c,  }\item[{const char $\ast$}]{filename }\end{DoxyParamCaption})}
+
+
+
+Reads a file into the memory of a component. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em c} & component to write to \\
+\hline
+{\em filename} & file to read from \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+error code 
+\end{DoxyReturn}
+\mbox{\Hypertarget{cartridge_8h_a5aae442b041b1b27701ce56e613e95ab}\label{cartridge_8h_a5aae442b041b1b27701ce56e613e95ab}} 
+\index{cartridge.\+h@{cartridge.\+h}!cartridge\+\_\+plug@{cartridge\+\_\+plug}}
+\index{cartridge\+\_\+plug@{cartridge\+\_\+plug}!cartridge.\+h@{cartridge.\+h}}
+\subsubsection{\texorpdfstring{cartridge\+\_\+plug()}{cartridge\_plug()}}
+{\footnotesize\ttfamily int cartridge\+\_\+plug (\begin{DoxyParamCaption}\item[{\hyperlink{structcartridge__t}{cartridge\+\_\+t} $\ast$}]{ct,  }\item[{\hyperlink{bus_8h_a68c80bdf896e826e4cb082244ce35427}{bus\+\_\+t}}]{bus }\end{DoxyParamCaption})}
+
+
+
+Plugs a cartridge to the bus. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em ct} & cartridge to plug \\
+\hline
+{\em bus} & bus to plug into \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+error code 
+\end{DoxyReturn}

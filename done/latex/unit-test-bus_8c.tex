@@ -1,0 +1,78 @@
+\hypertarget{unit-test-bus_8c}{}\section{unit-\/test-\/bus.c File Reference}
+\label{unit-test-bus_8c}\index{unit-\/test-\/bus.\+c@{unit-\/test-\/bus.\+c}}
+
+
+Unit test code for bus and related functions.  
+
+
+{\ttfamily \#include $<$time.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$sys/types.\+h$>$}\newline
+{\ttfamily \#include $<$unistd.\+h$>$}\newline
+{\ttfamily \#include $<$pthread.\+h$>$}\newline
+{\ttfamily \#include $<$check.\+h$>$}\newline
+{\ttfamily \#include $<$inttypes.\+h$>$}\newline
+{\ttfamily \#include $<$assert.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}tests.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}bus.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}component.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}error.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}util.\+h\char`\"{}}\newline
+Include dependency graph for unit-\/test-\/bus.c\+:
+% FIG 0
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define {\bfseries I\+N\+IT}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{unit-test-bus_8c_af1bc724cc87168986b4dc6523d37eaeb}\label{unit-test-bus_8c_af1bc724cc87168986b4dc6523d37eaeb}} 
+{\bfseries S\+T\+A\+R\+T\+\_\+\+T\+E\+ST} (bus\+\_\+plug\+\_\+err)
+\item 
+\mbox{\Hypertarget{unit-test-bus_8c_a01b0406fcb184bb66b83f43ca387dc31}\label{unit-test-bus_8c_a01b0406fcb184bb66b83f43ca387dc31}} 
+E\+N\+D\+\_\+\+T\+E\+ST {\bfseries S\+T\+A\+R\+T\+\_\+\+T\+E\+ST} (bus\+\_\+plug\+\_\+exec)
+\item 
+\mbox{\Hypertarget{unit-test-bus_8c_acc540d69bb3fb0ef66042f58bc4a0118}\label{unit-test-bus_8c_acc540d69bb3fb0ef66042f58bc4a0118}} 
+E\+N\+D\+\_\+\+T\+E\+ST {\bfseries S\+T\+A\+R\+T\+\_\+\+T\+E\+ST} (bus\+\_\+read\+\_\+err)
+\item 
+\mbox{\Hypertarget{unit-test-bus_8c_add0c190b9efb665e92807ec19191ad90}\label{unit-test-bus_8c_add0c190b9efb665e92807ec19191ad90}} 
+E\+N\+D\+\_\+\+T\+E\+ST {\bfseries S\+T\+A\+R\+T\+\_\+\+T\+E\+ST} (bus\+\_\+read\+\_\+exec)
+\item 
+\mbox{\Hypertarget{unit-test-bus_8c_aa43ed648e83fc1023723286d621d024d}\label{unit-test-bus_8c_aa43ed648e83fc1023723286d621d024d}} 
+E\+N\+D\+\_\+\+T\+E\+ST {\bfseries S\+T\+A\+R\+T\+\_\+\+T\+E\+ST} (bus\+\_\+write\+\_\+err)
+\item 
+\mbox{\Hypertarget{unit-test-bus_8c_a9576910a1ea53981ee93251b9bdc54a0}\label{unit-test-bus_8c_a9576910a1ea53981ee93251b9bdc54a0}} 
+E\+N\+D\+\_\+\+T\+E\+ST {\bfseries S\+T\+A\+R\+T\+\_\+\+T\+E\+ST} (bus\+\_\+write\+\_\+exec)
+\item 
+\mbox{\Hypertarget{unit-test-bus_8c_a9942b766a70847794d9eba89f6f01b42}\label{unit-test-bus_8c_a9942b766a70847794d9eba89f6f01b42}} 
+E\+N\+D\+\_\+\+T\+E\+ST Suite $\ast$ {\bfseries bus\+\_\+test\+\_\+suite} ()
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Unit test code for bus and related functions. 
+
+\begin{DoxyAuthor}{Author}
+C. Hölzl, E\+P\+FL 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2019 
+\end{DoxyDate}
+
+
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{unit-test-bus_8c_ab5889105dcd019008c9448dff61323f6}\label{unit-test-bus_8c_ab5889105dcd019008c9448dff61323f6}} 
+\index{unit-\/test-\/bus.\+c@{unit-\/test-\/bus.\+c}!I\+N\+IT@{I\+N\+IT}}
+\index{I\+N\+IT@{I\+N\+IT}!unit-\/test-\/bus.\+c@{unit-\/test-\/bus.\+c}}
+\subsubsection{\texorpdfstring{I\+N\+IT}{INIT}}
+{\footnotesize\ttfamily \#define I\+N\+IT}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+\hyperlink{bus_8h_a68c80bdf896e826e4cb082244ce35427}{bus\_t} bus; \(\backslash\)
+    zero\_init\_var(bus); \(\backslash\)
+    component\_t c; \(\backslash\)
+    zero\_init\_var(c)
+\end{DoxyCode}
